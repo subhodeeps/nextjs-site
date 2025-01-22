@@ -39,6 +39,7 @@ export function BaseFooter({
 
     return (
         <footer className={cn("mt-auto pt-12", className)}>
+            {/* Super subtle gradient line */}
             <div className="relative w-full mb-8">
                 <div className="absolute inset-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-400/20 to-transparent" />
             </div>
@@ -49,14 +50,17 @@ export function BaseFooter({
                 "flex flex-col items-center gap-4 sm:gap-6",
                 "text-sm text-muted-foreground/60"
             )}>
+                {/* Navigation Links - First Row */}
                 {navigationLinks && (showToTop || showSectionName) && (
                     <div className="flex flex-wrap items-center justify-center gap-x-3">
                         {navigationLinks}
                     </div>
                 )}
 
+                {/* Social Links and Copyright - Second Row */}
                 {(showSocialLinks || showCopyright) && (
-                    <div className="flex flex-col items-center gap-4">
+                    <div className="flex items-center justify-center gap-6 sm:gap-8">
+                        {/* Social Links */}
                         {showSocialLinks && (
                             <div className="flex items-center gap-6">
                                 {socialLinks.map((link, index) => (
@@ -89,6 +93,8 @@ export function BaseFooter({
                             </div>
                         )}
                         
+                        
+                        {/* Copyright */}
                         {showCopyright && (
                             <motion.span 
                                 className="text-[10px] sm:text-xs text-purple-400"
@@ -103,9 +109,8 @@ export function BaseFooter({
                 )}
             </div>
 
+            {/* Bottom padding */}
             <div className="h-8" />
         </footer>
     )
-}
-
-export default BaseFooter;
+} 
