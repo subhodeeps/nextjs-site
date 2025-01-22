@@ -20,7 +20,7 @@ export default function Chapter1() {
                 { href: '/', label: 'Home', emoji: '👾' },
                 { href: '/learning', label: 'Learning' },
                 { href: '/learning/books', label: 'STEM Books' },
-                { href: '/notes/books/scattering-from-black-holes', label: 'Scattering from Black Holes by Futterman' },
+                { href: '/learning/books/scattering-from-black-holes', label: 'Scattering from Black Holes by Futterman' },
                 { label: 'Chapter 1' }
               ]}
             />
