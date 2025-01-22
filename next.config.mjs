@@ -1,14 +1,16 @@
+// next.config.mjs
 import createMDX from '@next/mdx'
- 
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // Required for static export
-
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  basePath: '',
+  assetPrefix: '',
 }
- 
-const withMDX = createMDX({
-})
- 
+
+const withMDX = createMDX({})
+
 export default withMDX(nextConfig)

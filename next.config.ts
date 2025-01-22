@@ -1,10 +1,15 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
+import createMDX from '@next/mdx'
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  basePath: '',
+  assetPrefix: '',
+}
 
-  output: "export", // Enables static export
-  /* config options here */
-  reactStrictMode: true,
-};
+const withMDX = createMDX({})
 
-export default nextConfig;
+export default withMDX(nextConfig)
