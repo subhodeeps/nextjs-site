@@ -1,17 +1,17 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Learning Utensils | sumit.ml',
-    description: 'Tools, resources, and materials I use in my learning journey',
+    title: 'Curriculum Vitae | subhodeep',
+    description: 'Curriculum Vitae',
     openGraph: {
-        title: 'Learning Utensils | sumit.ml',
-        description: 'Tools, resources, and materials I use in my learning journey',
+        title: 'Curriculum Vitae |subhodeep',
+        description: 'Curriculum Vitae',
         type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Learning Utensils | sumit.ml',
-        description: 'Tools, resources, and materials I use in my learning journey',
+        title: 'Curriculum Vitae | subhodeep',
+        description: 'Curriculum Vitae',
     }
 }
 

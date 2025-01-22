@@ -51,12 +51,12 @@ export function SocialLinks() {
             label: "arXiv"
         },
         {
-            href: "https://x.com/sumitdotml",
+            href: "https://x.com/astres_occlus",
             icon: <SiGmail className="w-4 h-4" />,
             label: "twitter"
         },
         {
-            href: "mailto:sumit@sumit.ml",
+            href: "mailto:subhodeep.sarkar1@gmail.com",
             icon: <Mail className="w-4 h-4" />,
             label: "email"
         }

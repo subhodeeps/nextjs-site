@@ -25,7 +25,7 @@ const CVSection = ({ icon, title, content }: { icon: React.ReactNode; title: str
         {title}
       </TextHeading>
     </div>
-    <div>{content}</div>
+    <div><Text>{content}</Text></div>
   </motion.div>
 );
 
