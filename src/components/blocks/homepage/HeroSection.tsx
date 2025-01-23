@@ -105,11 +105,11 @@ export function HeroSection() {
                                     notes and tutorials
                                     </Link>
                                     ‎ on various topics interesting. I also try to document what I am reading for pleasure. You can take a look at those{' '}
-                                    <Link href="/learning/weekly-reflections" className="text-purple-500 font-bold hover:underline">
+                                    <Link href="/reading" className="text-purple-500 font-bold hover:underline">
                                         here
                                     </Link>
                                     . You can also find some of my other notes and writings on my {' '}
-                                    <Link href="/learning" className="text-purple-500 font-bold hover:underline">
+                                    <Link href="/blog" className="text-purple-500 font-bold hover:underline">
                                         blog
                                     </Link>
                                     .
