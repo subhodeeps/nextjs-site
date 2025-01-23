@@ -36,7 +36,7 @@ export default function Learning() {
                     </div>
 
                     <Text variant="muted" className="mb-8">
-                        Most of the stuff here is hosted on a separate repository with a different theme and architecture because a) I wanted to keep using Jekyll and Liquid to make sites, b) I wanted to implement a roam-research like database based on the principle of <i>Zettelkasten</i> and c) I failed to make markdown and KaTeX work over here. 
+                        Most of the stuff listed here is hosted on a separate <Link href="https://notes-subhodeeps.vercel.app/" className="text-purple-500 font-bold hover:underline">project/repository</Link> because [a] I wanted to keep using other tools to make sites, [b] I wanted to implement a roam-research like workspace based on the principle of <i>Zettelkasten</i> and [c] I failed to make markdown and KaTeX work over here. 
                     </Text>
 
                     <StackVertical gap="none">
