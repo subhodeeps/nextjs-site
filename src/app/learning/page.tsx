@@ -9,6 +9,7 @@ import { ReferenceCard } from "./_components/ReferenceCard";
 import TextHeading from "@/components/ui/text-heading/text-heading";
 import Text from "@/components/ui/text/text";
 import { SectionFooter } from "@/components/layout/footer/SectionFooter";
+import Link from 'next/link'
 
 export default function Learning() {
     return (
