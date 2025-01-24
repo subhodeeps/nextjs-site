@@ -12,7 +12,8 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'In the time of chimpanzees I was a monkey | subhodeep',
         description: 'I don\'t really know what I\'m doing',
-    }
+    },
+    verification: { google: "JfvlM1XeQizWzQrb51mAuBNk0wpUeRdKKxJ9Voq0BHc" }
 }
 
 export default function Layout({
@@ -22,3 +23,4 @@ export default function Layout({
 }) {
     return children
 } 
+
