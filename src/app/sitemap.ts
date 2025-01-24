@@ -17,6 +17,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    // Add more routes as needed
+    {
+        url: 'https://subhodeeps.vercel.app/cv',
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      },
+      {
+        url: 'https://subhodeeps.vercel.app/reading',
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      },
+      {
+        url: 'https://subhodeeps.vercel.app/learning',
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      },
+      {
+        url: 'https://subhodeeps.vercel.app/blog',
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      }
   ]
 }
