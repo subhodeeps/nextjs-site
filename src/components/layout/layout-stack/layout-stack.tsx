@@ -1,5 +1,13 @@
 import { cn } from '@/lib/utils/utils'
 
+import type { Metadata } from 'next'
+ 
+// google verification Static metadata
+export const metadata: Metadata = {
+    verification: { google: "JfvlM1XeQizWzQrb51mAuBNk0wpUeRdKKxJ9Voq0BHc" },
+    
+}
+
 interface FlexStackProps {
     children: React.ReactNode;
     className?: string;
