@@ -7,6 +7,8 @@ import { Analytics } from "@vercel/analytics/react"
 export const metadata: Metadata = {
   title: 'subhodeep | home',
   description: 'academic website, cv and stuff',
+  verification: { 
+    google: "JfvlM1XeQizWzQrb51mAuBNk0wpUeRdKKxJ9Voq0BHc" }
 }
 
 export default function RootLayout({

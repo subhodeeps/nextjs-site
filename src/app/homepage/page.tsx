@@ -27,3 +27,5 @@ export default function Homepage() {
     </>
   )
 }
+import type { Metadata } from 'next'
+ 
