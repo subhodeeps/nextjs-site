@@ -31,8 +31,7 @@ export default function Learning() {
                             Learning
                         </TextHeading>
                         <Text variant="muted" className="mb-8">
-                            A collection of references and notes that I have collected from my learning journey. Mostly
-                            Math and ML-related.
+                            A collection of references and notes, mostly on physics, maths and programming. 
                         </Text>
                     </div>
 
