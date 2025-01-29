@@ -7,6 +7,7 @@ import { SectionFooter } from "@/components/layout/footer/SectionFooter"
 import Text from "@/components/ui/text/text"
 import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb"
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
+import Link from 'next/link'
 
 export default function About() {
     return (
@@ -33,8 +34,11 @@ export default function About() {
                             <img
                                 src="/photo.jpg"
                                 alt="Profile photo"
-                                className="rounded-lg w-full h-auto"
+                                className="rounded-lg w-full h-auto mb-2"
                             />
+                            <Text size="xs" variant="muted" className="text-center">
+                                Selfie with  <Link href="https://en.wikipedia.org/wiki/Chaukhamba" className="text-purple-500 font-bold hover:underline">Chaukhamba </Link> @ <Link href="https://en.wikipedia.org/wiki/Deoria_Tal" className="text-purple-500 font-bold hover:underline">Deori Taal</Link>, Jan 2024.
+                            </Text>
                         </div>
                         
                         <div className="space-y-8">
