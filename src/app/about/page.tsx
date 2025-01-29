@@ -27,7 +27,7 @@ export default function About() {
                     <TextHeading as="h1" weight="bold">
                         In the time of chimpanzees, I was a monkey...
                     </TextHeading>
-                    <Text variant="muted" size="xs" className="mb-8">January 14, 2025</Text>
+                    <Text variant="muted" size="xs" className="mb-8">January 29, 2025</Text>
                     
                     <div className="flow-root">
                         <div className="float-left mr-6 mb-4 w-48 md:w-64">
@@ -37,7 +37,7 @@ export default function About() {
                                 className="rounded-lg w-full h-auto mb-2"
                             />
                             <Text size="xs" variant="muted" className="text-center">
-                                Selfie with  <Link href="https://en.wikipedia.org/wiki/Chaukhamba" className="text-purple-500 font-bold hover:underline">Chaukhamba </Link> @ <Link href="https://en.wikipedia.org/wiki/Deoria_Tal" className="text-purple-500 font-bold hover:underline">Deori Taal</Link>, Jan 2024.
+                                Selfie with  <Link href="https://en.wikipedia.org/wiki/Chaukhamba" className="text-purple-500 font-bold hover:underline">Chaukhamba </Link> @ <Link href="https://en.wikipedia.org/wiki/Deoria_Tal" className="text-purple-500 font-bold hover:underline">Deoria Tal</Link>, Jan 2024.
                             </Text>
                         </div>
                         
