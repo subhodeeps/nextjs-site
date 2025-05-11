@@ -31,7 +31,7 @@ export default function Learning() {
                         Research and Publications
                     </TextHeading>
                     <Text variant="muted" className="mb-8">
-                        My research encompasses various aspects of black hole physics. I am particularly interested in black hole perturbation theory and questions related to the stability of the quasinormal mode spectrum of black holes. I’m also interested in the prospect of doing fundamental physics with gravitational waves. Beyond black holes and general relativity, I’m keenly interested in exploring dynamical systems, and the application of machine learning techniques in physics and vice versa.
+                        My research interests include various aspects of gravitation and black hole physics. Broadly speaking, I use theoretical and computational tools to explore classical and quantum aspects of black holes, aiming to better understand how gravity behaves in extreme regimes. I am particularly interested in black hole perturbation theory and questions related to the stability of the quasinormal mode spectrum of black holes. I’m also interested in the prospect of doing fundamental physics with gravitational waves. Beyond black holes and general relativity, I’m keenly interested in exploring dynamical systems, and the application of machine learning techniques in physics and vice versa.
                     </Text>
 
                     <TextHeading as="h2" weight="bold">
