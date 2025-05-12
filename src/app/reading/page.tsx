@@ -99,7 +99,8 @@ export default function Learning() {
                     </div>
 
                     <Text variant="muted" className="mb-8">
-                        A simularca of (a fragment of) my library can be found <Link href="https://subhodeeps.github.io/jekyll-bookworm/" className="text-purple-500 font-bold hover:underline">here</Link>. I will however move the content  to my <Link href="https://just-the-notes.vercel.app/" className="text-purple-500 font-bold hover:underline">foam worksapce</Link>.
+                        A simularca of (a fragment of) my library can be found <Link href="https://hobby-site.vercel.app/" className="text-purple-500 font-bold hover:underline">here</Link>. 
+                        
                     </Text>
                 </div>
             </StackVertical>
