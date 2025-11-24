@@ -66,36 +66,6 @@ export function CurrentWork() {
         },
 
         {
-            icon: <Apple className="w-4 h-4" />,
-            text: (
-                <a
-                    href="https://nar.iiita.ac.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-500 hover:underline"
-                >
-                    [07 -- 09 MAR 2025] Workshop on Numerical and Analytical Relativity @
-                    IIITA.
-                </a>
-            ),
-        },
-
-        {
-            icon: <Apple className="w-4 h-4" />,
-            text: (
-                <a
-                    href="https://physics.iitm.ac.in/~csgc/events/sbhgw2024"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-500 hover:underline"
-                >
-                    [10 -- 14 FEB 2025] Second School on Black Holes and Gravitational
-                    Waves @ IITM.
-                </a>
-            ),
-        },
-
-        {
             icon: <History className="w-4 h-4" />,
             text: (
                 <a

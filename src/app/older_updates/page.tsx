@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
 import { SectionFooter } from "@/components/layout/footer/SectionFooter"
 import Link from "next/link"
 import { motion } from 'framer-motion'
-import { BookOpen, Brain, Briefcase, Video, GraduationCap, FileText } from 'lucide-react'
+import { BookOpen, Brain, Briefcase, Video, Apple, GraduationCap, FileText } from 'lucide-react'
 
 const WorkItem = ({ icon, text, delay }: { icon: React.ReactNode; text: React.ReactNode; delay: number }) => (
   <motion.div
@@ -27,8 +27,38 @@ const WorkItem = ({ icon, text, delay }: { icon: React.ReactNode; text: React.Re
 
 export default function OlderUpdates() {
   const items = [
+    {
+      icon: <Apple className="w-4 h-4" />,
+      text: (
+        <a
+          href="https://nar.iiita.ac.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-500 hover:underline"
+        >
+          [07 -- 09 MAR 2025] Workshop on Numerical and Analytical Relativity @
+          IIITA.
+        </a>
+      ),
+    },
 
-      {
+
+    {
+      icon: <Apple className="w-4 h-4" />,
+      text: (
+        <a
+          href="https://physics.iitm.ac.in/~csgc/events/sbhgw2024"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-500 hover:underline"
+        >
+          [10 -- 14 FEB 2025] Second School on Black Holes and Gravitational
+          Waves @ IITM.
+        </a>
+      ),
+    },
+
+    {
       icon: <Brain className="w-4 h-4" />,
       text: "[04 Nov 2024] Successfully defended my Ph.D. thesis at IIIT Allahabad.",
     },
@@ -126,7 +156,7 @@ export default function OlderUpdates() {
       <StackVertical gap="md">
         {/* Breadcrumb */}
         <div className="flex items-center justify-between">
-          <DynamicBreadcrumb 
+          <DynamicBreadcrumb
             items={[
               { href: '/', label: 'Home', emoji: '👾' },
               { label: 'older_updates' }
@@ -146,7 +176,7 @@ export default function OlderUpdates() {
 
           <StackVertical gap="md">
             {items.map((item, index) => (
-              <WorkItem 
+              <WorkItem
                 key={index}
                 icon={item.icon}
                 text={item.text}
@@ -156,7 +186,7 @@ export default function OlderUpdates() {
           </StackVertical>
         </div>
       </StackVertical>
-      
+
       <SectionFooter color="purple" showToTop={false} />
     </BaseContainer>
   )
