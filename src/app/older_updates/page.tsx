@@ -27,32 +27,13 @@ const WorkItem = ({ icon, text, delay }: { icon: React.ReactNode; text: React.Re
 
 export default function OlderUpdates() {
   const items = [
-      {
-      icon: <Brain className="w-4 h-4" />,
-      text: "[04 Nov 2024] Successfully defended my Ph.D. thesis at IIIT Allahabad.",
-    },
 
-     {
-      icon: <BookOpen className="w-4 h-4" />,
-      text: (
-        <a
-          href="https://doi.org/10.1103/PhysRevD.109.104021"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
-        >
-          [07 May 2024] Published in PRD: Gravitational atoms in the braneworld
-          scenario.
-        </a>
-      ),
-    },
 
     {
       icon: <Briefcase className="w-4 h-4" />,
       text: "[01 Apr 2024] Joined the CSGC-IITM as a postdoctoral fellow.",
     },
-
-
+    
     {
       icon: <FileText className="w-4 h-4" />,
       text: (
