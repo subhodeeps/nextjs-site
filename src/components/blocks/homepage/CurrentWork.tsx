@@ -65,7 +65,61 @@ export function CurrentWork() {
       text: "[25 Feb 2025] Talk at SINP.",
     },
 
-    
+    {
+      icon: <Apple className="w-4 h-4" />,
+      text: (
+        <a
+          href="https://nar.iiita.ac.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-500 hover:underline"
+        >
+          [07 -- 09 MAR 2025] Workshop on Numerical and Analytical Relativity @
+          IIITA.
+        </a>
+      ),
+    },
+
+    {
+      icon: <Apple className="w-4 h-4" />,
+      text: (
+        <a
+          href="https://physics.iitm.ac.in/~csgc/events/sbhgw2024"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-500 hover:underline"
+        >
+          [10 -- 14 FEB 2025] Second School on Black Holes and Gravitational
+          Waves @ IITM.
+        </a>
+      ),
+    },
+
+    {
+      icon: <Brain className="w-4 h-4" />,
+      text: "[04 Nov 2024] Successfully defended my Ph.D. thesis at IIIT Allahabad.",
+    },
+
+    {
+      icon: <BookOpen className="w-4 h-4" />,
+      text: (
+        <a
+          href="https://doi.org/10.1103/PhysRevD.109.104021"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-500 hover:underline"
+        >
+          [07 May 2024] Published in PRD: Gravitational atoms in the braneworld
+          scenario.
+        </a>
+      ),
+    },
+
+    {
+      icon: <Briefcase className="w-4 h-4" />,
+      text: "[01 Apr 2024] Joined the CSGC-IITM as a postdoctoral fellow.",
+    },
+
     {
       icon: <History className="w-4 h-4" />,
       text: (
