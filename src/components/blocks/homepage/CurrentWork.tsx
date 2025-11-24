@@ -60,6 +60,19 @@ function WorkItem({
 
 export function CurrentWork() {
     const items = [
+
+        {
+            icon: <BookOpen className="w-4 h-4" />,
+            text: (<a href="https://arxiv.org/abs/2511.14841" target="_blank" rel="noopener noreferrer" className="text-purple-500 hover:underline">
+                [20 Nov 2025] Vitor's ICTS lecture notes are out!
+                </a>),
+        },
+
+        {
+            icon: <Box className="w-4 h-4" />,
+            text: "[05 Mar 2025] Talk at CMI.",
+        },
+
         {
             icon: <Box className="w-4 h-4" />,
             text: "[25 Feb 2025] Talk at SINP.",
