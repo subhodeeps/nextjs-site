@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
 import { SectionFooter } from "@/components/layout/footer/SectionFooter"
 import Link from "next/link"
 import { motion } from 'framer-motion'
-import { BookOpen, Briefcase, Video, GraduationCap, FileText } from 'lucide-react'
+import { BookOpen, Brain, Briefcase, Video, GraduationCap, FileText } from 'lucide-react'
 
 const WorkItem = ({ icon, text, delay }: { icon: React.ReactNode; text: React.ReactNode; delay: number }) => (
   <motion.div
@@ -28,12 +28,17 @@ const WorkItem = ({ icon, text, delay }: { icon: React.ReactNode; text: React.Re
 export default function OlderUpdates() {
   const items = [
 
+      {
+      icon: <Brain className="w-4 h-4" />,
+      text: "[04 Nov 2024] Successfully defended my Ph.D. thesis at IIIT Allahabad.",
+    },
+
 
     {
       icon: <Briefcase className="w-4 h-4" />,
       text: "[01 Apr 2024] Joined the CSGC-IITM as a postdoctoral fellow.",
     },
-    
+
     {
       icon: <FileText className="w-4 h-4" />,
       text: (
