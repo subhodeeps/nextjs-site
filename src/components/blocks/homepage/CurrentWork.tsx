@@ -96,12 +96,6 @@ export function CurrentWork() {
     },
 
     {
-      icon: <Brain className="w-4 h-4" />,
-      text: "[04 Nov 2024] Successfully defended my Ph.D. thesis at IIIT Allahabad.",
-    },
-
-
-    {
       icon: <History className="w-4 h-4" />,
       text: (
         <a
