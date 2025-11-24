@@ -27,6 +27,14 @@ const WorkItem = ({ icon, text, delay }: { icon: React.ReactNode; text: React.Re
 
 export default function OlderUpdates() {
   const items = [
+
+
+    {
+      icon: <Briefcase className="w-4 h-4" />,
+      text: "[01 Apr 2024] Joined the CSGC-IITM as a postdoctoral fellow.",
+    },
+
+    
     {
       icon: <FileText className="w-4 h-4" />,
       text: (

@@ -115,10 +115,6 @@ export function CurrentWork() {
       ),
     },
 
-    {
-      icon: <Briefcase className="w-4 h-4" />,
-      text: "[01 Apr 2024] Joined the CSGC-IITM as a postdoctoral fellow.",
-    },
 
     {
       icon: <History className="w-4 h-4" />,
