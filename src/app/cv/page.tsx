@@ -120,7 +120,7 @@ export default function CVPage() {
 
         </div>
 
-        {/* ⭐ Image added at the base */}
+      
         <div className="relative w-full aspect-[4/3] sm:aspect-[2/1] md:aspect-[21/9] rounded-lg overflow-hidden my-8">
           <Image
             className="object-cover"
