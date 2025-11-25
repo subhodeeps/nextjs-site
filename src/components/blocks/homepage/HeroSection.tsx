@@ -9,7 +9,6 @@ import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
 import Link from 'next/link'
 import Image from 'next/image'
 import Ruler from '@/components/ui/ruler/ruler'
-import { List, ListItem } from '@/components/ui/list/list'
 
 export function HeroSection() {
     return (
@@ -21,11 +20,11 @@ export function HeroSection() {
         >
             <div className="relative">
                 <StackVertical gap="xs">
+
+                    {/* Floating emoji */}
                     <motion.div
-                        animate={{ 
-                            y: [0, -10, 0],
-                        }}
-                        transition={{ 
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{
                             duration: 3,
                             repeat: Infinity,
                             ease: "easeInOut"
@@ -35,6 +34,7 @@ export function HeroSection() {
                         👾
                     </motion.div>
 
+                    {/* Title */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -46,79 +46,72 @@ export function HeroSection() {
                         </TextHeading>
                     </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                    >
-                        <Text >
-                            Hey, how are you! I am 
-                            {' '}
-                                    <Link href="/about" className="text-purple-500 font-bold hover:underline">
-                                        Subhodeep
-                                    </Link>.
+                    {/* Intro */}
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+                        <Text>
+                            Hey, how are you! I am{' '}
+                            <Link href="/about" className="text-purple-500 font-bold hover:underline">
+                                Subhodeep
+                            </Link>.
                         </Text>
 
-                        <Ruler color='colorless' marginTop='lg' marginBottom='none'/>
+                        <Ruler color="colorless" marginTop="lg" marginBottom="none" />
 
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                        >
+                        {/* Paragraph 1 */}
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
                             <Text>
-                                I am a postdoctoral researcher at IIT Madras, India. I love gravity, programming, books, and biryani. Welcome to my corner of the internet! :3
+                                I am a postdoctoral researcher at IIT Madras, India. I love gravity, programming, books,
+                                and biryani. Welcome to my corner of the internet! :3
                             </Text>
-                          
                         </motion.div>
 
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                        >       
-                                <Ruler color='colorless' marginTop='lg' marginBottom='none'/>
+                        {/* Paragraph 2 */}
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
+                            <Ruler color="colorless" marginTop="lg" marginBottom="none" />
 
-                                <Text>
-                                    I am interested in various aspects of black holes in general relativity and beyond. To know more about my work, please check out my{' '}
-                                    <Link href="/research" className="text-purple-500 font-bold hover:underline">
-                                        publications
-                                    </Link>
-                                    . 
-                                </Text>
+                            <Text>
+                                I am interested in various aspects of black holes in general relativity and beyond. To
+                                know more about my work, please check out my{' '}
+                                <Link href="/research" className="text-purple-500 font-bold hover:underline">
+                                    publications
+                                </Link>
+                                .
+                            </Text>
 
-                                <Ruler color='colorless' marginTop='lg' marginBottom='none'/>
+                            <Ruler color="colorless" marginTop="lg" marginBottom="none" />
 
-                                <Text>
-                                   You can find my complete CV  {' '}
-                                    <Link href="/cv" className="text-purple-500 font-bold hover:underline">
-                                        here
-                                    </Link>
-                                    .
-                                </Text>
+                            <Text>
+                                You can find my complete CV{' '}
+                                <Link href="/cv" className="text-purple-500 font-bold hover:underline">
+                                    here
+                                </Link>
+                                .
+                            </Text>
 
-                                <Ruler color='colorless' marginTop='lg' marginBottom='none'/>
+                            <Ruler color="colorless" marginTop="lg" marginBottom="none" />
 
-                                <Text>
-                                   You may find some of my technical {' '}
-                                    <Link href="/learning" className="text-purple-500 font-bold hover:underline">
+                            <Text>
+                                You may find some of my technical{' '}
+                                <Link href="/learning" className="text-purple-500 font-bold hover:underline">
                                     notes and tutorials
-                                    </Link>
-                                    ‎ on various topics interesting. I also try to document what I am reading for pleasure. You can take a look at those{' '}
-                                    <Link href="/reading" className="text-purple-500 font-bold hover:underline">
-                                        here
-                                    </Link>
-                                    . You can also find some of my other notes and writings on my {' '}
-                                    <Link href="/blog" className="text-purple-500 font-bold hover:underline">
-                                        blog
-                                    </Link>
-                                    .
-                                </Text>
+                                </Link>{' '}
+                                on various topics interesting. I also try to document what I am reading for pleasure.
+                                You can take a look at those{' '}
+                                <Link href="/reading" className="text-purple-500 font-bold hover:underline">
+                                    here
+                                </Link>
+                                . You can also find some of my other notes and writings on my{' '}
+                                <Link href="/blog" className="text-purple-500 font-bold hover:underline">
+                                    blog
+                                </Link>
+                                .
+                            </Text>
                         </motion.div>
                     </motion.div>
                 </StackVertical>
             </div>
 
+            {/* Cover Image */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -129,8 +122,8 @@ export function HeroSection() {
                     <Image
                         className="object-cover"
                         fill
-                        src="/pretty.jpg" 
-                        alt="A photo of a huge shrub dotted with flowers inside the Jamia campus that I took in November 2023."
+                        src="/pretty.jpg"
+                        alt="A shrub with flowers inside the Jamia campus, photographed November 2023."
                         priority
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
                     />
@@ -138,4 +131,4 @@ export function HeroSection() {
             </motion.div>
         </motion.div>
     )
-} 
+}

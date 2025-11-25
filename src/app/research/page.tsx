@@ -9,6 +9,7 @@ import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb"
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
 import Link from "next/link"
 import Ruler from "@/components/ui/ruler/ruler"
+import Image from "next/image"
 
 export default function Learning() {
     return (
@@ -57,9 +58,9 @@ export default function Learning() {
                                 The Physics of Black Holes and Their Environments: Consequences for Gravitational Wave Science
                             </Link>
                             <br />
-                                Vitor Cardoso, Shauvik Biswas, Subhodeep Sarkar
+                            Vitor Cardoso, Shauvik Biswas, Subhodeep Sarkar
                             <br />
-                                arXiv:2511.14841 [gr-qc]
+                            arXiv:2511.14841 [gr-qc]
                         </Text>
                     </StackVertical>
 
@@ -152,7 +153,20 @@ export default function Learning() {
                 for bibliometrics and a possibly updated list of papers.
             </Text>
 
+            <div className="relative w-full aspect-[4/3] sm:aspect-[2/1] md:aspect-[21/9] rounded-lg overflow-hidden my-8">
+                <Image
+                    className="object-cover"
+                    fill
+                    src="/rudranath.jpg"
+                    alt="The Garhwal Himalayas, en route to Rudranath Temple, Sept 2023."
+                    priority
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
+                />
+            </div>
+
             <SectionFooter color="purple" showToTop={false} />
+
+
         </BaseContainer>
     )
 }
