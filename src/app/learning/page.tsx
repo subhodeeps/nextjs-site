@@ -64,7 +64,7 @@ export default function Learning() {
                         className="object-cover"
                         fill
                         src="/books.jpg"
-                        alt="A shrub with flowers inside the Jamia campus, photographed November 2023."
+                        alt="Some books!."
                         priority
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
                     />
