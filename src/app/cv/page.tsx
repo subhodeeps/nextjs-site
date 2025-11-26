@@ -125,7 +125,7 @@ export default function CVPage() {
           <Image
             className="object-cover"
             fill
-            src="/thinkpad.jpg"
+            src="/rainbow.jpg"
             alt="tank."
             priority
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
