@@ -125,7 +125,7 @@ export default function CVPage() {
           <Image
             className="object-cover"
             fill
-            src="/rainbow.jpg"
+            src="/gulistan_e_ghalib.jpg"
             alt="tank."
             priority
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
