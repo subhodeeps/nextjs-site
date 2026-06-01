@@ -59,18 +59,7 @@ export default function About() {
 
             <div className="space-y-8">
               <Text>
-                Hey! I'm Subhodeep, a postdoctoral researcher at the Indian
-                Institute of Technology, Madras. Formally, I am attached to the
-                Department of Physics and the Centre for Strings, Gravitation
-                and Cosmology at IIT Madras. My research interests include
-                various aspects of gravitation and black hole physics, focusing
-                on the internal structure of black holes, quasinormal modes,
-                gravitational lensing, and black hole shadows. Broadly speaking,
-                I use theoretical and computational tools to explore classical
-                and quantum aspects of black holes, aiming to better understand
-                how gravity behaves in extreme regimes. I’m also interested in
-                the prospect of doing fundamental physics with gravitational
-                waves. To learn more about my work, please check out my{" "}
+                Hey! I'm Subhodeep, a postdoctoral researcher at the Indian Institute of Technology Gandhinagar. Earlier, I was a postdoc at IIT Madras. My research focuses on strong-field probes of general relativity. I use black hole perturbation theory and numerical relativity to study gravitational collapse, quasinormal modes, late-time dynamics, and ringdown physics. More broadly, I use theoretical and computational methods to understand how gravity behaves in extreme regions of spacetime, particularly in the vicinity of black holes and exotic compact objects. Much of this work is motivated by the prospect of using gravitational waves to address fundamental questions in physics. I am also interested in understanding the optical appearance of compact objects through gravitational lensing and black hole shadows. These can provide complementary and potentially observable probes of strong-field gravity. Together with gravitational waves, they may help constrain deviations from general relativity. To learn more about my work, please check out my{" "}
                 <Link
                   href="/research"
                   className="text-purple-500 font-bold hover:underline"
@@ -80,27 +69,13 @@ export default function About() {
                 .
               </Text>
               <Text>
-                I have recently defended my Ph.D. thesis at the Indian Institute
-                of Information Technology, Allahabad where I worked under the
-                supervision of Dr. Srijit Bhattacharjee. I have also served as a
-                research fellow at the Centre for Theoretical Physics, Jamia
-                Millia Islamia under Prof. Anjan Ananda Sen. At, IIT Madras, I
-                work principally with Dr. Dawood Kothawala.
+              I defended my Ph.D. thesis at the Indian Institute of Information Technology Allahabad in 2019, where I was mentored by Srijit Bhattacharjee. Following my doctoral studies, I was a Research Fellow at the Centre for Theoretical Physics, Jamia Millia Islamia, and worked closely with Anjan Ananda Sen. I then joined IIT Madras, where I worked with Dawood Kothawala. At IIT Gandhinagar, I work with Sudipta Sarkar. I also collaborate closely with Sumanta Chakraborty at IACS, Kolkata.
               </Text>
               <Text>
-                Beyond black holes and general relativity, I'm keenly interested
-                in exploring dynamical systems, and the application of machine
-                learning techniques in physics and vice versa. I also take
-                pleasure in teaching physics, mathematics, and programming. In
-                the past, I have actively assisted my supervisor in teaching a
-                diverse range of subjects such as numerical methods and
-                computational physics, biostatistics, Python programming, and
-                classical and quantum mechanics.
+                More broadly, my interests also include dynamical systems and chaos around compact objects, as well as the application of machine learning techniques to problems in gravitational physics and related areas. Alongside research, I enjoy teaching physics, mathematics, and programming. I have previously assisted my mentors in teaching courses like numerical methods and computational physics, biostatistics, Python programming, and classical and quantum mechanics.
               </Text>
               <Text>
-                I also enjoy meeting and collaborating with new people. So,
-                please feel free to get in touch if you'd like to discuss and
-                study some of the broad topics I've mentioned here!
+              I enjoy interacting and collaborating with new people, and I am always open to conversations on the topics mentioned above. Feel free to drop a line if you would like to exchange ideas, discuss physics, or explore important questions, such as which of us would want to strangle the other first while writing a paper together.
               </Text>
             </div>
           </div>
