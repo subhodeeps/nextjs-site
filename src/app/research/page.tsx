@@ -52,6 +52,22 @@ export default function Learning() {
 
                         <Text className="font-bold hover:text-purple-500">
                             <Link
+                                href="https://inspirehep.net/literature/3162425"
+                                className="text-purple-500 font-bold hover:underline"
+                            >
+                                When the Ringing Stops: Purely Imaginary Modes in the Ringdown Spectrum of Dynamical Black Holes
+                            </Link>
+                            <br />
+                            Lodovico Capuano, Thomas Lovo, Gorka Prieto-Varela, Subhodeep Sarkar, Adrien Kuntz, Enrico Barausse, Dawood Kothawala
+                            <br />
+                            arXiv:2605.28951 [gr-qc]
+                        </Text>
+                    </StackVertical>
+
+                    <StackVertical gap="md">
+
+                        <Text className="font-bold hover:text-purple-500">
+                            <Link
                                 href="https://inspirehep.net/literature/3084799"
                                 className="text-purple-500 font-bold hover:underline"
                             >
