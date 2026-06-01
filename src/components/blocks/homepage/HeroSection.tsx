@@ -78,8 +78,7 @@ export function HeroSection() {
             >
               <Text>
                 I am a postdoctoral researcher at IIT <del>Madras</del>{" "}
-                Gandhinagar, India. I love gravity, programming, books, and
-                biryani. Welcome to my corner of the internet! :3
+                Gandhinagar, India. I love gravity, programming, and books. Welcome to my corner of the internet! :3
               </Text>
             </motion.div>
 
