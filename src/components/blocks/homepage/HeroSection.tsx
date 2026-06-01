@@ -77,7 +77,7 @@ export function HeroSection() {
               transition={{ delay: 0.5 }}
             >
               <Text>
-                I am a postdoctoral researcher at IIT <del>Madras</del> 
+                I am a postdoctoral researcher at IIT <del>Madras</del>{" "}
                 Gandhinagar, India. I love gravity, programming, books, and
                 biryani. Welcome to my corner of the internet! :3
               </Text>
