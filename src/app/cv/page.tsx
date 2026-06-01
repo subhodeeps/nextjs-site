@@ -84,7 +84,8 @@ export default function CVPage() {
             title="Employment"
             content={
               <ul className="list-disc list-inside space-y-1">
-                <li>Postdoctoral Researcher, Centre for Strings, Gravitation and Cosmology, IIT Madras (Apr 2024 - Present)</li>
+                <li>Postdoctoral Researcher, Department of Physics, IIT Gandhinagar (Jun 2026 - Ongoing)</li>
+                <li>Postdoctoral Researcher, Centre for Strings, Gravitation and Cosmology, IIT Madras (Apr 2024 - May 2026)</li>
                 <li>Research Fellow, Centre for Theoretical Physics, Jamia Millia Islamia (Feb 2023 - Mar 2024)</li>
                 <li>Senior Research Fellow and Teaching Assistant, IIIT Allahabad (Jul 2021 - Feb 2023)</li>
                 <li>Junior Research Fellow and Teaching Assistant, IIIT Allahabad (Jul 2019 - Jul 2021)</li>
