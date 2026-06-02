@@ -16,7 +16,7 @@ export default function Learning() {
         <BaseContainer size="md" paddingX="md" paddingY="lg">
             <StackVertical gap="md">
 
-                /* Breadcrumb */
+                {/* Breadcrumb */}
                 <div className="flex items-center justify-between">
                     <DynamicBreadcrumb
                         items={[
@@ -27,7 +27,7 @@ export default function Learning() {
                     <ThemeToggle />
                 </div>
 
-                /* Header */
+                {/* Header */}
                 <div>
                     <TextHeading as="h1" weight="bold">
                         Research and Publications
