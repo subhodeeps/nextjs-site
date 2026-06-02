@@ -64,8 +64,6 @@ export default function Learning() {
                         </Text>
                     </StackVertical>
 
-                    <StackVertical gap="md">
-
                         <Text className="font-bold hover:text-purple-500">
                             <Link
                                 href="https://inspirehep.net/literature/3084799"
