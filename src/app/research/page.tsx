@@ -34,14 +34,7 @@ export default function Learning() {
                     </TextHeading>
 
                     <Text variant="muted" className="mb-8">
-                        My research interests include various aspects of gravitation and black hole physics. Broadly
-                        speaking, I use theoretical and computational tools to explore classical and quantum aspects of
-                        black holes, aiming to better understand how gravity behaves in extreme regimes. I am
-                        particularly interested in black hole perturbation theory and questions related to the stability
-                        of the quasinormal mode spectrum of black holes. I'm also interested in the prospect of doing
-                        fundamental physics with gravitational waves. Beyond black holes and general relativity, I'm
-                        keenly interested in exploring dynamical systems, and the application of machine learning
-                        techniques in physics and vice versa.
+                        My research focuses on strong-field probes of general relativity, black holes, and gravitational-wave physics. I use theoretical and computational methods, particularly black hole perturbation theory and numerical relativity, to study gravitational collapse, quasinormal modes, late-time dynamics, and ringdown physics. More broadly, I am interested in understanding how gravity behaves in extreme regions of spacetime and how how gravitational waves, black hole shadows, gravitational lensing, and geodesic motion can be used to test gravity in the strong-field regime. I have also been fortunate to collaborate with many researchers in these areas. You can find more about my collaborators and co-authors on my collaborations page.
                     </Text>
 
                     <TextHeading as="h2" weight="bold">
