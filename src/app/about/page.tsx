@@ -97,50 +97,16 @@ export default function About() {
                 numerical methods and computational physics, biostatistics,
                 Python programming, and classical and quantum mechanics.
               </Text>
-              
               <Text>
                 I defended my Ph.D. thesis at the Indian Institute of
                 Information Technology Allahabad in 2019, where I was mentored
-                by{" "}
-                <Link
-                  href="https://profile.iiita.ac.in/srijit/"
-                  className="text-purple-500 font-bold hover:underline"
-                >
-                  Srijit Bhattacharjee
-                </Link>
-                . Towards the end of my doctoral studies, I was a Research
-                Fellow at the Centre for Theoretical Physics, Jamia Millia
-                Islamia, and worked closely with{" "}
-                <Link
-                  href="https://www.ctp-jamia.res.in/people/aasen.html"
-                  className="text-purple-500 font-bold hover:underline"
-                >
-                  Anjan Ananda Sen
-                </Link>
-                . After completing my Ph.D., I joined IIT Madras, where I worked
-                with{" "}
-                <Link
-                  href="https://physics.iitm.ac.in/~dawood/"
-                  className="text-purple-500 font-bold hover:underline"
-                >
-                  Dawood Kothawala
-                </Link>
-                . I am currently at IIT Gandhinagar, working with{" "}
-                <Link
-                  href="https://iitgn.ac.in/faculty/phy/fac-sudipta"
-                  className="text-purple-500 font-bold hover:underline"
-                >
-                  Sudipta Sarkar
-                </Link>
-                . I also collaborate closely with{" "}
-                <Link
-                  href="https://sumantachakraborty.weebly.com/"
-                  className="text-purple-500 font-bold hover:underline"
-                >
-                  Sumanta Chakraborty
-                </Link>{" "}
-                at IACS, Kolkata.You can find more about my collaborators and
-                co-authors on my{" "}
+                by Srijit Bhattacharjee. Towards the end of my doctoral studies, I was a
+                Research Fellow at the Centre for Theoretical Physics, Jamia
+                Millia Islamia, and worked closely with Anjan Ananda Sen. I then
+                joined IIT Madras, where I worked with Dawood Kothawala. At IIT
+                Gandhinagar, I work with Sudipta Sarkar. I also collaborate
+                closely with Sumanta Chakraborty at IACS, Kolkata. You can find
+                more about my collaborators and co-authors on my{" "}
                 <Link
                   href="/research"
                   className="text-purple-500 font-bold hover:underline"
@@ -151,12 +117,10 @@ export default function About() {
               </Text>
               <Text>
                 I enjoy interacting and collaborating with new people, and I am
-                always open to conversations on the topics mentioned above. Feel
-                free to drop a line to discuss physics, exchange ideas, or
-                discover how long it takes before one of us tries to strangle
-                the other while writing a paper.
+                always open to conversations on the topics mentioned above. Feel free to drop a line to discuss physics, exchange ideas, or discover how long it takes before one of us tries to strangle the other while writing a paper.
               </Text>
             </div>
+
           </div>
         </div>
       </StackVertical>
