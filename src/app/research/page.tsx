@@ -62,7 +62,6 @@ export default function Learning() {
                             <br />
                             arXiv:2605.28951 [gr-qc]
                         </Text>
-                    </StackVertical>
 
                         <Text className="font-bold hover:text-purple-500">
                             <Link
