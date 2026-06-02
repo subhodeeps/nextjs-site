@@ -90,7 +90,7 @@ export default function About() {
                 .
               </Text>
               <Text>
-                Besides my primary research, my interests also include dynamical
+                Besides my primary research, my interests include dynamical
                 systems and machine learning in physics. Alongside research, I
                 enjoy teaching physics, mathematics, and programming. I have
                 previously assisted my mentors in teaching courses like
@@ -111,20 +111,16 @@ export default function About() {
                   href="/research"
                   className="text-purple-500 font-bold hover:underline"
                 >
-                  collaborators and co-authors
+                  collaborations
                 </Link>{" "}
                 page.
               </Text>
               <Text>
                 I enjoy interacting and collaborating with new people, and I am
-                always open to conversations on the topics mentioned above. Feel
-                free to drop a line if you would like to exchange ideas, discuss
-                physics, or explore important questions, such as which of us
-                would want to strangle the other first while writing a paper
-                together.
+                always open to conversations on the topics mentioned above. Feel free to drop a line to discuss physics, exchange ideas, or discover how long it takes before one of us tries to strangle the other while writing a paper.
               </Text>
             </div>
-            
+
           </div>
         </div>
       </StackVertical>
