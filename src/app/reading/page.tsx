@@ -14,39 +14,33 @@ export default function Learning() {
     const books = [
         {
             id: 1,
-            title: "Breasts and Eggs",
-            author: "Mieko Kawakami",
-            cover: "/covers/kawakami.jpeg"
+            title: "Figuring",
+            author: "Maria Popova",
+            cover: "/covers/popova.jpg"
         },
         {
             id: 2,
-            title: "The Meaning of Science",
-            author: "Tim Lewens",
-            cover: "/covers/lewens.jpg"
+            title: "Pachinko",
+            author: "Min Jin Lee",
+            cover: "/covers/pachinko.jpg"
         },
         {
             id: 3,
-            title: "Orlando",
-            author: "Virginia Woolf",
-            cover: "/covers/orlando.jpg"
+            title: "Inspector Imanishi Investigates",
+            author: "Seicho Matsumoto",
+            cover: "/covers/imanishi.jpg"
         },
         {
             id: 4,
-            title: "Case Histories",
-            author: "Kate Atkinson",
-            cover: "/covers/brodie1.jpg"
+            title: "Aristotle: Understanding the World's Greatest Philosopher",
+            author: "John Sellars",
+            cover: "/covers/aristotle.jpg"
         },
         {
             id: 5,
-            title: "The Songlines",
-            author: "Bruce Chatwin",
-            cover:  "/covers/songlines.jpg"
-        },
-         {
-            id: 6,
-            title: "Butter",
-            author: "Asako Yuzuki",
-            cover:  "/covers/butter_india.jpg"
+            title: "In a Flight of Starlings: The Wonders of Complex Systems",
+            author: "Giorgio Parisi",
+            cover:  "/covers/parisi.jpg"
         }
     ];
 
