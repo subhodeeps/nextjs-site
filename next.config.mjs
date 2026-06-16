@@ -1,20 +1,16 @@
 // next.config.mjs
-
 import createMDX from '@next/mdx'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Required for static site generation (GitHub Pages)
+  // Required for static exports
   output: 'export',
   images: {
     unoptimized: true,
   },
-  
-  // Must match your GitHub repository name exactly
-  basePath: '/nextjs-site',
-  
+    
   // Ensures MDX files are treated as pages
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   
@@ -43,19 +39,3 @@ const withMDX = createMDX({
 })
 
 export default withMDX(nextConfig)
-
-// import createMDX from '@next/mdx'
-
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   output: 'export',
-//   images: {
-//     unoptimized: true,
-//   },
-//   basePath: '',
-//   assetPrefix: '',
-// }
-
-// const withMDX = createMDX({})
-
-// export default withMDX(nextConfig)
