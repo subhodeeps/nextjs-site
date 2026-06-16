@@ -39,21 +39,7 @@ export default function About() {
                 className="rounded-lg w-full h-auto mb-2"
               />
               <Text size="xs" variant="muted" className="text-center">
-                Selfie with{" "}
-                <Link
-                  href="https://en.wikipedia.org/wiki/Chaukhamba"
-                  className="text-purple-500 font-bold hover:underline"
-                >
-                  Chaukhamba{" "}
-                </Link>{" "}
-                @{" "}
-                <Link
-                  href="https://en.wikipedia.org/wiki/Deoria_Tal"
-                  className="text-purple-500 font-bold hover:underline"
-                >
-                  Deoria Tal
-                </Link>
-                , Jan 2024.
+              Bengaluru, Jun 2026.
               </Text>
             </div>
 
