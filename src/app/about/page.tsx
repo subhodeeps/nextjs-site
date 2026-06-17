@@ -94,7 +94,7 @@ export default function About() {
                 closely with Sumanta Chakraborty at IACS, Kolkata. You can find
                 more about my collaborators and co-authors on my{" "}
                 <Link
-                  href="/research"
+                  href="/collaborations"
                   className="text-purple-500 font-bold hover:underline"
                 >
                   collaborations
