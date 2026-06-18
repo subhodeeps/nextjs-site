@@ -68,7 +68,7 @@ export default function Collaborators() {
         {/* Header */}
         <div>
           <TextHeading as="h1" weight="bold">
-            Collaborations (or The Real MVPs)
+            Collaborations (or, The Real MVPs)
           </TextHeading>
 
           <Text variant="muted" className="mb-10">
