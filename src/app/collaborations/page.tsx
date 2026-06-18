@@ -68,15 +68,11 @@ export default function Collaborators() {
         {/* Header */}
         <div>
           <TextHeading as="h1" weight="bold">
-            Collaborations (for lack of a better word)
+            Collaborations (or The Real MVPs)
           </TextHeading>
 
           <Text variant="muted" className="mb-10">
-            I have been incredibly fortunate to collaborate and regularly interact with many amazing individuals whose
-            insight, work ethic, generosity, and enthusiasm for physics have
-            profoundly influenced my own approach to research. I include some photos
-            here, but the page is under construction and I hope it remains that way 
-            for as long as I am in the business.
+            Research is rarely a solitary endeavor. I have been incredibly fortunate to collaborate and regularly interact with many amazing individuals whose insight, work ethic, generosity, and enthusiasm for physics have profoundly influenced my own approach to research. This page contains photographs of some of the people with whom I have worked, from whom I have learned, and with whom I have exchanged ideas. It is necessarily incomplete, and I hope it remains that way for as long as I'm in the business.
           </Text>
 
           {/* Pass the static data into the Client Component to handle the random shuffle */}
