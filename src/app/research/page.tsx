@@ -1,189 +1,200 @@
-'use client'
+"use client";
 
-import BaseContainer from "@/components/layout/container/base-container"
-import { StackVertical } from "@/components/layout/layout-stack/layout-stack"
-import TextHeading from "@/components/ui/text-heading/text-heading"
-import { SectionFooter } from "@/components/layout/footer/SectionFooter"
-import Text from "@/components/ui/text/text"
-import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb"
-import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
-import Link from "next/link"
-import Ruler from "@/components/ui/ruler/ruler"
-import Image from "next/image"
+import BaseContainer from "@/components/layout/container/base-container";
+import { StackVertical } from "@/components/layout/layout-stack/layout-stack";
+import TextHeading from "@/components/ui/text-heading/text-heading";
+import { SectionFooter } from "@/components/layout/footer/SectionFooter";
+import Text from "@/components/ui/text/text";
+import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb";
+import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
+import Link from "next/link";
+import Ruler from "@/components/ui/ruler/ruler";
+import Image from "next/image";
 
 export default function Learning() {
-    return (
-        <BaseContainer size="md" paddingX="md" paddingY="lg">
-            <StackVertical gap="md">
+  return (
+    <BaseContainer size="md" paddingX="md" paddingY="lg">
+      <StackVertical gap="md">
+        {/* Breadcrumb */}
+        <div className="flex items-center justify-between">
+          <DynamicBreadcrumb
+            items={[
+              { href: "/", label: "Home", emoji: "👾" },
+              { label: "Research" },
+            ]}
+          />
+          <ThemeToggle />
+        </div>
 
-                {/* Breadcrumb */}
-                <div className="flex items-center justify-between">
-                    <DynamicBreadcrumb
-                        items={[
-                            { href: "/", label: "Home", emoji: "👾" },
-                            { label: "Research" }
-                        ]}
-                    />
-                    <ThemeToggle />
-                </div>
+        {/* Header */}
+        <div>
+          <TextHeading as="h1" weight="bold">
+            Research and Publications
+          </TextHeading>
 
-                {/* Header */}
-                <div>
-                    <TextHeading as="h1" weight="bold">
-                        Research and Publications
-                    </TextHeading>
+          <Text variant="muted" className="mb-8">
+            My research focuses on strong-field probes of general relativity,
+            black holes, and gravitational-wave physics. I use theoretical and
+            computational methods, particularly black hole perturbation theory
+            and numerical relativity, to study gravitational collapse,
+            quasinormal modes, ringdown physics and late-time dynamics. More
+            broadly, I am interested in understanding how gravity behaves in
+            extreme regions of spacetime and how gravitational waves, black hole
+            shadows, gravitational lensing, and geodesic motion can be used to
+            test gravity in the strong-field regime.
+          </Text>
 
-                    <Text variant="muted" className="mb-8">
-                        My research focuses on strong-field probes of general relativity, black holes, and gravitational-wave physics. I use theoretical and computational methods, particularly black hole perturbation theory and numerical relativity, to study gravitational collapse, quasinormal modes, late-time dynamics, and ringdown physics. More broadly, I am interested in understanding how gravity behaves in extreme regions of spacetime and how gravitational waves, black hole shadows, gravitational lensing, and geodesic motion can be used to test gravity in the strong-field regime. I have also been fortunate to collaborate with many researchers in these areas, whose insight, work ethic, generosity, and enthusiasm for the subject have profoundly influenced my own approach to research. You can find more about my collaborators and co-authors on my{" "}
-                <Link
-                  href="/collaborations"
-                  className="text-purple-500 font-bold hover:underline"
-                >
-                  collaborations
-                </Link>{" "}
-                page.
-                    </Text>
+          <Text variant="muted" className="mb-8">
+            I have also been fortunate to collaborate with many researchers in
+            these areas. The{" "}
+            <Link
+              href="/collaborations"
+              className="text-purple-500 font-bold hover:underline"
+            >
+              collaborations
+            </Link>{" "}
+            page contains photographs of some of my mentors, collaborators,
+            co-authors, and cherished colleagues.
+          </Text>
 
-                    <TextHeading as="h2" weight="bold">
-                        Preprints
-                    </TextHeading>
+          <TextHeading as="h2" weight="bold">
+            Preprints
+          </TextHeading>
 
-                    <StackVertical gap="md">
-
-                        <Text className="font-bold hover:text-purple-500">
-                            <Link
-                                href="https://inspirehep.net/literature/3162425"
-                                className="text-purple-500 font-bold hover:underline"
-                            >
-                                When the Ringing Stops: Purely Imaginary Modes in the Ringdown Spectrum of Dynamical Black Holes
-                            </Link>
-                            <br />
-                            Lodovico Capuano, Thomas Lovo, Gorka Prieto-Varela, Subhodeep Sarkar, Adrien Kuntz, Enrico Barausse, Dawood Kothawala
-                            <br />
-                            arXiv:2605.28951 [gr-qc]
-                        </Text>
-
-                        <Text className="font-bold hover:text-purple-500">
-                            <Link
-                                href="https://inspirehep.net/literature/3084799"
-                                className="text-purple-500 font-bold hover:underline"
-                            >
-                                The Physics of Black Holes and Their Environments: Consequences for Gravitational Wave Science
-                            </Link>
-                            <br />
-                            Vitor Cardoso, Shauvik Biswas, Subhodeep Sarkar
-                            <br />
-                            arXiv:2511.14841 [gr-qc]
-                        </Text>
-                    </StackVertical>
-
-                    <TextHeading as="h2" weight="bold">
-                        Published Papers
-                    </TextHeading>
-
-                    <StackVertical gap="md">
-
-                        <Text className="font-bold hover:text-purple-500">
-                            <Link
-                                href="https://inspirehep.net/literature/2735894"
-                                className="text-purple-500 font-bold hover:underline"
-                            >
-                                Gravitational atoms in the braneworld scenario
-                            </Link>
-                            <br />
-                            Sunil Singh Bohra, Subhodeep Sarkar, and Anjan Ananda Sen
-                            <br />
-                            Phys. Rev. D 2024.
-                        </Text>
-
-                        <Text className="font-bold hover:text-purple-500">
-                            <Link
-                                href="https://inspirehep.net/literature/2651487"
-                                className="text-purple-500 font-bold hover:underline"
-                            >
-                                Perturbing the perturbed: Stability of quasinormal modes in presence of a positive
-                                cosmological constant
-                            </Link>
-                            <br />
-                            Subhodeep Sarkar, Mostafizur Rahman, and Sumanta Chakraborty
-                            <br />
-                            Phys. Rev. D 2023.
-                        </Text>
-
-                        <Text className="font-bold hover:text-purple-500">
-                            <Link
-                                href="https://inspirehep.net/literature/1940051"
-                                className="text-purple-500 font-bold hover:underline"
-                            >
-                                Can we detect a supertranslated black hole?
-                            </Link>
-                            <br />
-                            Subhodeep Sarkar, Shailesh Kumar, and Srijit Bhattacharjee
-                            <br />
-                            Phys. Rev. D 2022.
-                        </Text>
-
-                        <Text className="font-bold hover:text-purple-500">
-                            <Link
-                                href="https://inspirehep.net/literature/1830603"
-                                className="text-purple-500 font-bold hover:underline"
-                            >
-                                Scalar perturbations of black holes in Jackiw-Teitelboim gravity
-                            </Link>
-                            <br />
-                            Srijit Bhattacharjee, Subhodeep Sarkar, and Arpan Bhattacharyya
-                            <br />
-                            Phys. Rev. D 2021.
-                        </Text>
-
-                        <Text className="font-bold hover:text-purple-500">
-                            <Link
-                                href="https://inspirehep.net/literature/1797104"
-                                className="text-purple-500 font-bold hover:underline"
-                            >
-                                Mass inflation and strong cosmic censorship in a nonextreme BTZ black hole
-                            </Link>
-                            <br />
-                            Srijit Bhattacharjee, Shailesh Kumar, and Subhodeep Sarkar
-                            <br />
-                            Phys. Rev. D 2020.
-                        </Text>
-
-                    </StackVertical>
-                </div>
-            </StackVertical>
-
-            <Ruler color="colorless" marginTop="lg" marginBottom="none" />
-
-            <Text variant="muted" className="mb-8">
-                Please visit my{" "}
-                <Link
-                    href="https://inspirehep.net/authors/1797180?ui-citation-summary=true"
-                    className="text-purple-500 font-bold hover:underline"
-                >
-                    INSPIRE-HEP profile
-                </Link>{" "}
-                for bibliometrics and a possibly updated list of papers.
+          <StackVertical gap="md">
+            <Text className="font-bold hover:text-purple-500">
+              <Link
+                href="https://inspirehep.net/literature/3162425"
+                className="text-purple-500 font-bold hover:underline"
+              >
+                When the Ringing Stops: Purely Imaginary Modes in the Ringdown
+                Spectrum of Dynamical Black Holes
+              </Link>
+              <br />
+              Lodovico Capuano, Thomas Lovo, Gorka Prieto-Varela, Subhodeep
+              Sarkar, Adrien Kuntz, Enrico Barausse, Dawood Kothawala
+              <br />
+              arXiv:2605.28951 [gr-qc]
             </Text>
 
-            <div className="relative w-full aspect-[4/3] sm:aspect-[2/1] md:aspect-[21/9] rounded-lg overflow-hidden my-8">
-                <Image
-                    className="object-cover"
-                    fill
-                    src="/rudranath.jpg"
-                    alt="The Garhwal Himalayas, en route to Rudranath Temple, Sept 2023."
-                    priority
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
-                />
-            </div>
+            <Text className="font-bold hover:text-purple-500">
+              <Link
+                href="https://inspirehep.net/literature/3084799"
+                className="text-purple-500 font-bold hover:underline"
+              >
+                The Physics of Black Holes and Their Environments: Consequences
+                for Gravitational Wave Science
+              </Link>
+              <br />
+              Vitor Cardoso, Shauvik Biswas, Subhodeep Sarkar
+              <br />
+              arXiv:2511.14841 [gr-qc]
+            </Text>
+          </StackVertical>
 
-            <SectionFooter color="purple" showToTop={false} />
+          <TextHeading as="h2" weight="bold">
+            Published Papers
+          </TextHeading>
 
+          <StackVertical gap="md">
+            <Text className="font-bold hover:text-purple-500">
+              <Link
+                href="https://inspirehep.net/literature/2735894"
+                className="text-purple-500 font-bold hover:underline"
+              >
+                Gravitational atoms in the braneworld scenario
+              </Link>
+              <br />
+              Sunil Singh Bohra, Subhodeep Sarkar, and Anjan Ananda Sen
+              <br />
+              Phys. Rev. D 2024.
+            </Text>
 
-        </BaseContainer>
-    )
+            <Text className="font-bold hover:text-purple-500">
+              <Link
+                href="https://inspirehep.net/literature/2651487"
+                className="text-purple-500 font-bold hover:underline"
+              >
+                Perturbing the perturbed: Stability of quasinormal modes in
+                presence of a positive cosmological constant
+              </Link>
+              <br />
+              Subhodeep Sarkar, Mostafizur Rahman, and Sumanta Chakraborty
+              <br />
+              Phys. Rev. D 2023.
+            </Text>
+
+            <Text className="font-bold hover:text-purple-500">
+              <Link
+                href="https://inspirehep.net/literature/1940051"
+                className="text-purple-500 font-bold hover:underline"
+              >
+                Can we detect a supertranslated black hole?
+              </Link>
+              <br />
+              Subhodeep Sarkar, Shailesh Kumar, and Srijit Bhattacharjee
+              <br />
+              Phys. Rev. D 2022.
+            </Text>
+
+            <Text className="font-bold hover:text-purple-500">
+              <Link
+                href="https://inspirehep.net/literature/1830603"
+                className="text-purple-500 font-bold hover:underline"
+              >
+                Scalar perturbations of black holes in Jackiw-Teitelboim gravity
+              </Link>
+              <br />
+              Srijit Bhattacharjee, Subhodeep Sarkar, and Arpan Bhattacharyya
+              <br />
+              Phys. Rev. D 2021.
+            </Text>
+
+            <Text className="font-bold hover:text-purple-500">
+              <Link
+                href="https://inspirehep.net/literature/1797104"
+                className="text-purple-500 font-bold hover:underline"
+              >
+                Mass inflation and strong cosmic censorship in a nonextreme BTZ
+                black hole
+              </Link>
+              <br />
+              Srijit Bhattacharjee, Shailesh Kumar, and Subhodeep Sarkar
+              <br />
+              Phys. Rev. D 2020.
+            </Text>
+          </StackVertical>
+        </div>
+      </StackVertical>
+
+      <Ruler color="colorless" marginTop="lg" marginBottom="none" />
+
+      <Text variant="muted" className="mb-8">
+        Please visit my{" "}
+        <Link
+          href="https://inspirehep.net/authors/1797180?ui-citation-summary=true"
+          className="text-purple-500 font-bold hover:underline"
+        >
+          INSPIRE-HEP profile
+        </Link>{" "}
+        for bibliometrics and a possibly updated list of papers.
+      </Text>
+
+      <div className="relative w-full aspect-[4/3] sm:aspect-[2/1] md:aspect-[21/9] rounded-lg overflow-hidden my-8">
+        <Image
+          className="object-cover"
+          fill
+          src="/rudranath.jpg"
+          alt="The Garhwal Himalayas, en route to Rudranath Temple, Sept 2023."
+          priority
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
+        />
+      </div>
+
+      <SectionFooter color="purple" showToTop={false} />
+    </BaseContainer>
+  );
 }
-
 
 // 'use client'
 
@@ -227,8 +238,6 @@ export default function Learning() {
 
 //                     <StackVertical gap="md">
 
-
-
 //                         <Text className="font-bold hover:text-purple-500">
 //                             <Link href="https://inspirehep.net/literature/2735894" className="text-purple-500 font-bold hover:underline">Gravitational atoms in the braneworld scenario </Link><br />Sunil Singh Bohra, Subhodeep Sarkar, and Anjan Ananda Sen<br />Phys. Rev. D 2024.
 //                         </Text>
@@ -244,7 +253,6 @@ export default function Learning() {
 //                         <Text className="font-bold hover:text-purple-500">
 //                             <Link href="https://inspirehep.net/literature/1797104" className="text-purple-500 font-bold hover:underline">Mass inflation and strong cosmic censorship in a nonextreme BTZ black hole</Link><br />Srijit Bhattacharjee, Shailesh Kumar, and Subhodeep Sarkar<br />Phys. Rev. D 2020.
 //                         </Text>
-
 
 //                     </StackVertical>
 //                 </div>
