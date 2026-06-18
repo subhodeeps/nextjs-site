@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/ui/theme/theme-provider'
 import { cn } from '@/lib/utils/utils'
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
@@ -32,10 +32,10 @@ export default function RootLayout({
             <div className="flex-1 flex flex-col">
               <main className="container mx-auto mt-4 px-4 flex-1">
                 {children}
-		<Analytics />
               </main>
             </div>
           </div>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
