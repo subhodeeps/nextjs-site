@@ -1,5 +1,6 @@
 "use client";
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import BaseContainer from "@/components/layout/container/base-container";
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack";
 import { HomepageFooter } from "@/components/layout/footer/HomepageFooter";

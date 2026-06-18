@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 export const metadata: Metadata = {
   title: "In the time of chimpanzees I was a monkey | subhodeep",
   description: "I don't really know what I'm doing",
