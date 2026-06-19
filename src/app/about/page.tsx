@@ -50,7 +50,7 @@ export default function About() {
                 IIT Madras. My research focuses on strong-field probes of
                 general relativity. I use black hole perturbation theory and
                 numerical relativity to study gravitational collapse,
-                quasinormal modes, late-time dynamics, and ringdown physics.
+                quasinormal modes and ringdown physics.
               </Text>
               <Text>
                 More broadly, I use theoretical and computational methods to
