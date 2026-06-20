@@ -68,7 +68,7 @@ export default function CVPage() {
             <Text>
               You can find my complete CV{' '}
               <Link
-                href="/files/subhodeepIITMcv.pdf"
+                href="/files/CV_subhodeep.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-purple-500 hover:underline"
