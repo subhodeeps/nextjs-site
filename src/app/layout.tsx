@@ -36,6 +36,7 @@ export default function RootLayout({
             </div>
           </div>
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
