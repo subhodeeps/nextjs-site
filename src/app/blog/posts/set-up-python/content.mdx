@@ -1,0 +1,393 @@
+---
+title: "Setting Up a Scientific Python Environment on macOS (Apple Silicon)"
+description: "A guide to creating a virtual environment for scientific Python development."
+date: "June 23, 2026"
+readingTime: "5 min read"
+---
+# Setting Up a Scientific Python Environment on macOS (Apple Silicon)
+
+This guide walks through creating a dedicated scientific Python environment called **`numerics`**, installing common scientific packages, and making the environment available inside Jupyter notebooks.
+
+The instructions assume:
+
+* macOS on Apple Silicon (M1/M2/M3)
+* Python installed via Homebrew
+* Terminal application available
+
+## 1. Check Your Python Installation
+
+Before creating an environment, verify that Python is installed and available from Homebrew.
+
+```bash
+python3 --version
+which python3
+```
+
+Expected output:
+
+```text
+Python 3.14.x
+/opt/homebrew/bin/python3
+```
+
+If Python is not installed through Homebrew, install it first:
+
+```bash
+brew install python
+```
+
+---
+
+## 2. Create a Dedicated Virtual Environment
+
+Using a virtual environment keeps scientific packages isolated from the system Python installation.
+
+Create a directory to store virtual environments:
+
+```bash
+mkdir -p ~/venvs
+```
+
+Create the environment:
+
+```bash
+python3 -m venv ~/venvs/numerics
+```
+
+Activate it:
+
+```bash
+source ~/venvs/numerics/bin/activate
+```
+
+Your shell prompt should now begin with:
+
+```text
+(numerics)
+```
+
+Confirm that Python is coming from the virtual environment:
+
+```bash
+which python
+```
+
+Expected output:
+
+```text
+/Users/subhodeep/venvs/numerics/bin/python
+```
+
+---
+
+## 3. Upgrade Packaging Tools
+
+Upgrade the package-management tools before installing scientific software:
+
+```bash
+pip install --upgrade pip setuptools wheel
+```
+
+Verify:
+
+```bash
+pip --version
+```
+
+---
+
+## 4. Create a Requirements File
+
+Create a file named:
+
+```text
+~/numerics-requirements.txt
+```
+
+Populate it with the packages you want installed.
+
+Example:
+
+```text
+numpy
+scipy
+pandas
+matplotlib
+seaborn
+numba
+ipykernel
+jupyterlab
+```
+
+---
+
+## 5. Install the Scientific Stack
+
+Install all packages listed in the requirements file:
+
+```bash
+pip install -r ~/numerics-requirements.txt
+```
+
+Depending on the number of packages and internet speed, installation may take several minutes.
+
+Occasionally you may see messages such as:
+
+```text
+WARNING: Cache entry deserialization failed, entry ignored
+```
+
+These warnings are generally harmless and can be ignored.
+
+---
+
+## 6. Register the Environment with Jupyter
+
+Register the virtual environment as a Jupyter kernel so it appears as a selectable notebook kernel.
+
+```bash
+python -m ipykernel install \
+    --user \
+    --name numerics \
+    --display-name "Python (numerics)"
+```
+
+After completion, Jupyter notebooks will offer:
+
+```text
+Python (numerics)
+```
+
+as a kernel option.
+
+---
+
+## 7. Test the Installation
+
+Launch an interactive Python session:
+
+```bash
+python
+```
+
+Run:
+
+```python
+import numpy
+import scipy
+import pandas
+import matplotlib
+import seaborn
+import numba
+
+print("OK")
+```
+
+Expected output:
+
+```text
+OK
+```
+
+Exit Python:
+
+```python
+quit()
+```
+
+---
+
+## 8. Verify Jupyter Kernel Registration
+
+List all installed Jupyter kernels:
+
+```bash
+jupyter kernelspec list
+```
+
+Example output:
+
+```text
+Available kernels:
+  numerics
+  julia-1.12
+  wolframlanguage13.3
+```
+
+The exact list will depend on your machine.
+
+---
+
+## 9. Daily Usage
+
+Activate the environment whenever you want to work in it:
+
+```bash
+source ~/venvs/numerics/bin/activate
+```
+
+Deactivate when finished:
+
+```bash
+deactivate
+```
+
+Install additional packages later:
+
+```bash
+pip install PACKAGE_NAME
+```
+
+Upgrade a specific package:
+
+```bash
+pip install --upgrade PACKAGE_NAME
+```
+
+Check for outdated packages:
+
+```bash
+pip list --outdated
+```
+
+---
+
+## 10. Create a Reproducible Snapshot
+
+Save the exact package versions currently installed:
+
+```bash
+pip freeze > ~/numerics-lock.txt
+```
+
+The generated file can later be used to recreate the environment exactly:
+
+```bash
+pip install -r ~/numerics-lock.txt
+```
+
+This is useful for reproducible research, sharing environments with collaborators, and recovering a working setup after system upgrades.
+
+---
+
+## 11. Create a Quick-Access Alias
+
+To jump into your scientific environment from any terminal directory, add an alias to your shell configuration file.
+
+Open your `.zshrc` file:
+
+```bash
+nano ~/.zshrc
+
+```
+
+Add this line to the bottom:
+
+```bash
+# Scientific Python Environment
+alias numerics='source ~/venvs/numerics/bin/activate'
+
+```
+
+Save, exit, and reload:
+
+```bash
+source ~/.zshrc
+
+```
+
+Now, simply type `numerics` in any terminal to jump into your workspace.
+
+---
+
+## Useful Commands
+
+### Show Installed Packages
+
+```bash
+pip list
+```
+
+### Display Environment Location
+
+```bash
+which python
+```
+
+### Display Package Details
+
+```bash
+pip show numpy
+```
+
+### Remove the Environment Completely
+
+```bash
+rm -rf ~/venvs/numerics
+```
+
+### Remove the Jupyter Kernel
+
+```bash
+jupyter kernelspec uninstall numerics
+```
+
+---
+
+
+##  Requirements File (`numerics-requirements.txt`)
+
+Create this file in your **home directory** (`~/`) , this file defines the full scientific stack that will be installed:
+
+```text
+# Core & High-Performance
+numpy
+scipy
+numba
+numexpr
+joblib
+psutil
+
+# Data Analysis & Storage
+pandas
+xarray
+dask
+h5py
+tables
+zarr
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Math & Symbolic
+sympy
+uncertainties
+mpmath
+
+# Statistics & Inference
+statsmodels
+scikit-learn
+emcee
+corner
+lmfit
+
+# Domain Specific
+astropy
+
+# Interoperability
+juliacall
+wolframclient
+
+# Terminal & Formatting
+tabulate
+prettytable
+rich
+tqdm
+
+# Jupyter
+jupyterlab
+ipykernel
+
+```

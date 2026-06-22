@@ -1,4 +1,4 @@
-'use client'
+
 
 import { MDXComponents } from 'mdx/types'
 import Ruler from '@/components/ui/ruler/ruler'

@@ -128,7 +128,7 @@ export default function CodeBlock({ code, language, className }: CodeBlockProps)
                             "text-[13px] sm:text-sm",
                             "bg-transparent" // Forces Prism to inherit our Tailwind background!
                         )}
-                        style={{ ...style, backgroundColor: 'transparent' }}
+                        style={{ ...style, backgroundColor: 'transparent', fontFamily: 'inherit' }}
                     >
                         {tokens.slice(0, -1).map((line, i) => (
                             <div key={i} {...getLineProps({ line, className: "leading-6 sm:leading-7" })}>
