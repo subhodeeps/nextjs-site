@@ -1,10 +1,12 @@
 import { notFound } from 'next/navigation'
-import { blogPosts } from '../_data/posts'
+import { getBlogPosts } from '../_data/posts' // Updated import
 
 type Params = Promise<{ slug: string }>
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
+    const blogPosts = getBlogPosts() // Fetch the posts!
+    
     return blogPosts.map((post) => ({
         slug: post.slug,
     }))
@@ -12,31 +14,38 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Params }) {
     const { slug } = await params
+    const blogPosts = getBlogPosts() // Fetch the posts!
+    
+    // Find the post once for efficiency
+    const post = blogPosts.find(p => p.slug === slug)
+    
+    // If it doesn't exist, return empty metadata
+    if (!post) return {}
   
     return {
-      title: `${blogPosts.find(post => post.slug === slug)?.title} | subhodeep`,
+      title: `${post.title} | subhodeep`,
       openGraph: {
-        title: `${blogPosts.find(post => post.slug === slug)?.title} | subhodeep`,
-        description: `${blogPosts.find(post => post.slug === slug)?.description}`,
+        title: `${post.title} | subhodeep`,
+        description: post.description,
         images: [
           {
             url: `/blog/posts/${slug}/opengraph-image.png`,
             width: 1200,
             height: 630,
-            alt: `${blogPosts.find(post => post.slug === slug)?.description}`,
+            alt: post.description,
           },
         ],
       },
       twitter: {
         card: "summary_large_image",
-        title: `${blogPosts.find(post => post.slug === slug)?.title} | subhodeep`,
-        description: `${blogPosts.find(post => post.slug === slug)?.description}`,
+        title: `${post.title} | subhodeep`,
+        description: post.description,
         images: [
           {
             url: `/blog/posts/${slug}/twitter-image.png`,
             width: 1200,
             height: 630,
-            alt: `${blogPosts.find(post => post.slug === slug)?.description}`,
+            alt: post.description,
           },
         ],
       },
@@ -50,6 +59,7 @@ export default async function BlogPost({
     params: Params 
 }) {
     const { slug } = await params
+    const blogPosts = getBlogPosts() // Fetch the posts!
     
     // Find the matching blog post
     const post = blogPosts.find(post => post.slug === slug)
@@ -63,4 +73,3 @@ export default async function BlogPost({
     const PostComponent = (await import(`../posts/${slug}/page`)).default
     return <PostComponent />
 }
-

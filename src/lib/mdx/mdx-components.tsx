@@ -1,86 +1,89 @@
 'use client'
 
 import { MDXComponents } from 'mdx/types'
-import TextHeading from '@/components/ui/text-heading/text-heading'
-import Text from '@/components/ui/text/text'
-import { List, ListItem } from '@/components/ui/list/list'
 import Ruler from '@/components/ui/ruler/ruler'
 import { cn } from '@/lib/utils/utils'
 import { monoFont } from '@/styles/fonts/fonts'
 import CodeBlock from '@/components/blocks/code-block/code-block'
 
 export const mdxComponents: MDXComponents = {
-    // Headings
+    // Headings - Clean margins and crisp white text
     h1: ({ children }) => (
-        <TextHeading as="h1" weight="bold" className="mt-8 mb-4">
+        <h1 className={cn("mt-10 mb-6 text-2xl sm:text-3xl font-bold tracking-tight text-foreground dark:text-white")}>
             {children}
-        </TextHeading>
+        </h1>
     ),
     h2: ({ children }) => (
-        <TextHeading as="h2" weight="bold" className="mt-6 mb-3">
+        <h2 className={cn("mt-8 mb-4 text-xl sm:text-2xl font-bold tracking-tight text-foreground dark:text-gray-100", monoFont.className)}>
             {children}
-        </TextHeading>
+        </h2>
     ),
     h3: ({ children }) => (
-        <TextHeading as="h3" weight="medium" className="mt-4 mb-2">
+        <h3 className={cn("mt-6 mb-4 text-lg sm:text-xl font-semibold tracking-tight text-foreground dark:text-gray-200", monoFont.className)}>
             {children}
-        </TextHeading>
+        </h3>
     ),
     h4: ({ children }) => (
-        <TextHeading as="h4" weight="medium" className="mt-3 mb-2">
+        <h4 className={cn("mt-6 mb-4 text-base sm:text-lg font-semibold tracking-tight text-foreground dark:text-gray-200", monoFont.className)}>
             {children}
-        </TextHeading>
+        </h4>
     ),
 
-    // Paragraph
+    // Paragraphs - Tall line height and soft gray color exactly like the screenshot
     p: ({ children }) => (
-        <Text className="mb-4 text-foreground dark:text-foreground">
+        <p className={cn("mb-6 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-neutral-700 dark:text-gray-300", monoFont.className)}>
             {children}
-        </Text>
+        </p>
     ),
 
-    // Lists
+    // Lists - Proper hanging indents, spaced items, and dimmed markers
     ul: ({ children }) => (
-        <List className="mb-4">
+        <ul className={cn("mb-6 ml-6 list-disc space-y-3 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-neutral-700 dark:text-gray-300 marker:text-neutral-500", monoFont.className)}>
             {children}
-        </List>
+        </ul>
     ),
     ol: ({ children }) => (
-        <List type="ordered" className="mb-4">
+        <ol className={cn("mb-6 ml-6 list-decimal space-y-3 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-neutral-700 dark:text-gray-300 marker:text-neutral-500", monoFont.className)}>
             {children}
-        </List>
+        </ol>
     ),
     li: ({ children }) => (
-        <ListItem>
+        <li className={cn("pl-2", monoFont.className)}>
             {children}
-        </ListItem>
+        </li>
     ),
 
     // Inline text styling
     strong: ({ children }) => (
-        <span className="font-bold text-foreground dark:text-foreground">
+        <strong className={cn("font-bold text-foreground dark:text-white", monoFont.className)}>
             {children}
-        </span>
+        </strong>
     ),
     em: ({ children }) => (
-        <span className="italic text-muted-foreground dark:text-muted-foreground">
+        <span className={cn("italic text-muted-foreground dark:text-gray-400", monoFont.className)}>
             {children}
         </span>
     ),
-		code: ({ children, className }) => {
+    
+    // Strip the default pre tag completely to fix double-box issues
+    pre: ({ children }) => (
+        <>{children}</>
+    ),
+
+    // Code blocks and inline code
+    code: ({ children, className }) => {
         const match = /language-(\w+)/.exec(className || '');
         const language = match ? match[1] : '';
 
         if (!language) {
-            // Inline code
+            // Purple inline code styling + Monospace
             return (
                 <code className={cn(
                     monoFont.className,
                     "px-1.5 py-0.5 mx-0.5 my-0.5",
-                    "text-inherit",
-                    "bg-purple-100/80 dark:bg-purple-900/50",
+                    "bg-purple-100/80 dark:bg-purple-900/40",
                     "text-purple-800 dark:text-purple-200",
-                    "rounded-md",
+                    "rounded-md text-[0.85em]",
                     "inline-block leading-normal"
                 )}>
                     {children}
@@ -88,38 +91,41 @@ export const mdxComponents: MDXComponents = {
             );
         }
 
-        // Code block
         return (
-            <CodeBlock 
-                code={children as string} 
-                language={language} 
-            />
+            <div className="my-8">
+                <CodeBlock 
+                    code={children as string} 
+                    language={language} 
+                />
+            </div>
         );
     }, 
 
-    // Block elements
+    // Blockquotes
     blockquote: ({ children }) => (
         <blockquote className={cn(
             "pl-4 border-l-2 border-purple-500/50",
-            "my-4 italic",
-            "text-muted-foreground/90 dark:text-muted-foreground/90"
+            "my-6 italic",
+            "text-muted-foreground/90 dark:text-gray-400",
+            monoFont.className
         )}>
             {children}
         </blockquote>
     ),
-    hr: () => <Ruler color="gray" marginTop="md" marginBottom="md" />,
+    
+    // Ruler
+    hr: () => <Ruler color="gray" marginTop="lg" marginBottom="lg" />,
 
-    // Links
+    // Links - Subtle purple underline that matches your aesthetic
     a: ({ href, children }) => (
         <a 
             href={href} 
             className={cn(
-                "text-purple-600 dark:text-purple-300",
-                "hover:text-purple-700 dark:hover:text-purple-200",
+                "text-foreground dark:text-gray-200 font-medium",
                 "transition-colors duration-200",
                 "underline underline-offset-4",
-                "decoration-purple-300/50 dark:decoration-purple-500/50",
-                "hover:decoration-purple-400 dark:hover:decoration-purple-400"
+                "decoration-purple-500/50 hover:decoration-purple-400",
+                monoFont.className
             )}
             target={href?.startsWith('http') ? '_blank' : undefined}
             rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -127,4 +133,4 @@ export const mdxComponents: MDXComponents = {
             {children}
         </a>
     ),
-} 
+}

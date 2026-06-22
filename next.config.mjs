@@ -2,8 +2,11 @@
 import createMDX from '@next/mdx'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   // Required for static exports
   output: 'export',
@@ -33,9 +36,10 @@ const nextConfig = {
 // Injects the math plugins so LaTeX renders correctly
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, remarkFrontmatter, remarkMdxFrontmatter],
     rehypePlugins: [rehypeKatex],
   },
 })
 
 export default withMDX(nextConfig)
+

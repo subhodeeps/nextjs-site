@@ -1,0 +1,224 @@
+---
+title: "Transfer Files from Ubuntu to Arch Linux over SSH/SFTP"
+description: "A short guide to securely transferring files between Ubuntu and Arch Linux using rsync and SSH."
+date: "June 23, 2026"
+readingTime: "5 min read"
+---
+
+# Transfer Files from Ubuntu to Arch Linux over SSH/SFTP
+
+## Requirements
+
+Both machines must:
+- be powered on
+- be connected to the same local network/Wi-Fi
+- have SSH available on the Arch machine
+
+---
+
+## 1. Setup SSH server on Arch Linux
+
+On the Arch machine:
+
+Install OpenSSH:
+
+```bash
+sudo pacman -S openssh
+```
+
+Enable and start SSH server:
+
+```bash
+sudo systemctl enable --now sshd
+```
+
+Verify SSH server is running:
+
+```bash
+systemctl status sshd
+```
+
+You should see:
+
+```text
+active (running)
+```
+
+---
+
+## 2. Find Arch machine IP address
+
+On Arch:
+
+```bash
+ip addr
+```
+
+Look for your Wi-Fi or Ethernet interface.
+
+Example:
+
+```text
+3: wlp0s20f3: ...
+    inet 192.168.1.42/24
+subho/
+```
+
+---
+
+## Install rsync if needed
+
+Ubuntu:
+
+```bash
+sudo apt install rsync
+```
+
+Arch:
+
+```bash
+sudo pacman -S rsync
+```
+
+---
+
+## Large transfers with rsync
+
+### Standard transfer
+
+```bash
+rsync -avh --progress myfolder/ subho@192.168.1.42:/home/subho/myfolder/
+```
+
+### Transfer with compression
+
+```bash
+rsync -avzh --progress myfolder/ subho@192.168.1.42:/home/subho/myfolder/
+```
+
+`-z` enables compression during transfer.
+
+Useful for:
+- slower Wi-Fi
+- remote transfers
+- text/code/compressible files
+
+Usually NOT useful for:
+- `.mp4`
+- `.mkv`
+- `.zip`
+- `.jpg`
+- other already-compressed files
+
+Compression may slightly increase CPU usage.
+
+Both commands:
+- copy files
+- preserve source files
+- overwrite changed destination files automatically
+- skip identical files
+
+Options:
+- `-a` archive mode
+- `-v` verbose
+- `-z` compress during transfer
+- `-h` human readable
+- `--progress` show progress
+
+---
+
+## Preview changes without modifying anything
+
+```bash
+rsync -avhn --progress myfolder/ subho@192.168.1.42:/home/subho/myfolder/
+```
+
+`-n` means dry run.
+
+---
+
+## Prevent overwriting existing destination files
+
+```bash
+rsync -avh --ignore-existing myfolder/ subho@192.168.1.42:/home/subho/myfolder/
+```
+
+---
+
+## Move files instead of copying
+
+```bash
+rsync -avh --progress --remove-source-files myfolder/ subho@192.168.1.42:/home/subho/myfolder/
+```
+
+With compression:
+
+```bash
+rsync -avzh --progress --remove-source-files myfolder/ subho@192.168.1.42:/home/subho/myfolder/
+```
+
+This:
+- copies files to Arch
+- deletes transferred source files
+- does NOT remove empty source directories
+
+Remove leftover empty directories:
+
+```bash
+find myfolder -type d -empty -delete
+```
+
+---
+
+# Troubleshooting
+
+## Test network connectivity
+
+From Ubuntu:
+
+```bash
+ping 192.168.1.42
+```
+
+---
+
+## Check SSH server again
+
+On Arch:
+
+```bash
+systemctl status sshd
+```
+
+---
+
+## Firewall issues
+
+Temporarily allow SSH:
+
+```bash
+sudo ufw allow 22/tcp
+```
+
+or disable firewall temporarily for testing.
+
+---
+
+# Optional: Passwordless login
+
+Generate SSH key on Ubuntu:
+
+```bash
+ssh-keygen
+```
+
+Copy key to Arch:
+
+```bash
+ssh-copy-id subho@192.168.1.42
+
+```
+
+After this:
+- no password prompts
+- easier SCP/rsync usage

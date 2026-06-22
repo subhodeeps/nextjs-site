@@ -2,7 +2,7 @@ import BaseContainer from "@/components/layout/container/base-container"
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack"
 import { BlogCard } from "./_components/BlogCard"
 import { BlogHeader } from "./_components/BlogHeader"
-import { blogPosts } from "./_data/posts"
+import { getBlogPosts } from "./_data/posts"
 import { SectionFooter } from "@/components/layout/footer/SectionFooter"
 import { Metadata } from "next"
 
@@ -12,6 +12,9 @@ export const metadata: Metadata = {
 }
 
 export default function BlogListing() {
+    // THIS IS THE MISSING LINE: Execute the function to get the array of posts
+    const blogPosts = getBlogPosts(); 
+
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">
             <StackVertical gap="md">
