@@ -41,6 +41,20 @@ export default function Learning() {
             title: "In a Flight of Starlings: The Wonders of Complex Systems",
             author: "Giorgio Parisi",
             cover:  "/covers/parisi.jpg"
+        },
+
+        {
+            id: 6,
+            title: "The Sense of Style: The Thinking Person's Guide to Writing in the 21st Century",
+            author: "Steven Pinker",
+            cover:  "/covers/sos.jpg"
+        },
+
+        {
+            id: 7,
+            title: "Ghost-Eye",
+            author: "Amitav Ghosh",
+            cover:  "/covers/ghosteye.jpg"
         }
     ];
 
