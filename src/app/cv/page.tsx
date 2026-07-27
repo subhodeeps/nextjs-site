@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import BaseContainer from "@/components/layout/container/base-container";
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack";
@@ -7,66 +7,37 @@ import Text from "@/components/ui/text/text";
 import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb";
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
 import { SectionFooter } from "@/components/layout/footer/SectionFooter";
-import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Code } from 'lucide-react';
+import { Briefcase, GraduationCap, Code } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const CVSection = ({
-  icon,
-  title,
-  content
-}: {
-  icon: React.ReactNode;
-  title: string;
-  content: React.ReactNode;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    className="mb-6"
-  >
-    <div className="flex items-center gap-4 mb-4">
-      <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-purple-100/50 dark:bg-purple-900/50">
-        {icon}
-      </div>
-      <TextHeading as="h2" weight="bold">
-        {title}
-      </TextHeading>
-    </div>
-    <div>{content}</div>
-  </motion.div>
-);
 
 export default function CVPage() {
   return (
     <BaseContainer size="md" paddingX="md" paddingY="lg">
       <StackVertical gap="md">
 
-        {/* Breadcrumb */}
         <div className="flex items-center justify-between">
-          <DynamicBreadcrumb 
+          <DynamicBreadcrumb
             items={[
-              { href: '/', label: 'Home', emoji: '👾' },
-              { label: 'CV' }
+              { href: "/", label: "Home", emoji: "👾" },
+              { label: "CV" },
             ]}
           />
           <ThemeToggle />
         </div>
 
-        {/* Header */}
         <div>
           <TextHeading as="h1" weight="bold">
             Curriculum Vitae
           </TextHeading>
+
           <Text variant="muted" className="mb-8">
             A summary of my academic and professional journey. You can find the complete version below.
           </Text>
 
           <div className="mb-8">
             <Text>
-              You can find my complete CV{' '}
+              You can find my complete CV{" "}
               <Link
                 href="/files/CV_subhodeep.pdf"
                 target="_blank"
@@ -79,57 +50,97 @@ export default function CVPage() {
           </div>
 
           {/* Employment */}
-          <CVSection 
-            icon={<Briefcase className="w-4 h-4" aria-hidden="true" />}
-            title="Employment"
-            content={
-              <ul className="list-disc list-inside space-y-1">
-                <li>Postdoctoral Researcher, Department of Physics, IIT Gandhinagar (Jun 2026 - Ongoing)</li>
-                <li>Postdoctoral Researcher, Centre for Strings, Gravitation and Cosmology, IIT Madras (Apr 2024 - May 2026)</li>
-                <li>Research Fellow, Centre for Theoretical Physics, Jamia Millia Islamia (Feb 2023 - Mar 2024)</li>
-                <li>Senior Research Fellow and Teaching Assistant, IIIT Allahabad (Jul 2021 - Feb 2023)</li>
-                <li>Junior Research Fellow and Teaching Assistant, IIIT Allahabad (Jul 2019 - Jul 2021)</li>
-              </ul>
-            }
-          />
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Briefcase className="w-5 h-5 text-purple-500" />
+              <TextHeading as="h2" weight="bold">
+                Employment
+              </TextHeading>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
+                <Text>•</Text>
+                <Text>Postdoctoral Researcher, Department of Physics, IIT Gandhinagar</Text>
+                <Text variant="muted" className="whitespace-nowrap">Jun 2026 – Ongoing!</Text>
+              </div>
+              <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
+                <Text>•</Text>
+                <Text>Postdoctoral Researcher, Centre for Strings, Gravitation and Cosmology, IIT Madras</Text>
+                <Text variant="muted" className="whitespace-nowrap">Apr 2024 – May 2026</Text>
+              </div>
+              <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
+                <Text>•</Text>
+                <Text>Research Fellow, Centre for Theoretical Physics, Jamia Millia Islamia</Text>
+                <Text variant="muted" className="whitespace-nowrap">Feb 2023 – Mar 2024</Text>
+              </div>
+              <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
+                <Text>•</Text>
+                <Text>Senior Research Fellow and Teaching Assistant, IIIT Allahabad</Text>
+                <Text variant="muted" className="whitespace-nowrap">Jul 2021 – Feb 2023</Text>
+              </div>
+              <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
+                <Text>•</Text>
+                <Text>Junior Research Fellow and Teaching Assistant, IIIT Allahabad</Text>
+                <Text variant="muted" className="whitespace-nowrap">Jul 2019 – Jul 2021</Text>
+              </div>
+            </div>
+          </div>
 
           {/* Education */}
-          <CVSection 
-            icon={<GraduationCap className="w-4 h-4" aria-hidden="true" />} 
-            title="Education" 
-            content={
-              <ul className="list-disc list-inside space-y-1">
-                <li>Ph.D in Physics, IIIT Allahabad (2024)</li>
-                <li>M.Sc. in Physics, Jamia Millia Islamia, New Delhi (2018)</li>
-                <li>B.Sc. (Honours) in Physics, University of Calcutta, Kolkata (2016)</li>
-              </ul>
-            }
-          />
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <GraduationCap className="w-5 h-5 text-purple-500" />
+              <TextHeading as="h2" weight="bold">
+                Education
+              </TextHeading>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
+                <Text>•</Text>
+                <Text>Ph.D. in Physics, IIIT Allahabad</Text>
+                <Text variant="muted" className="whitespace-nowrap">2024</Text>
+              </div>
+              <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
+                <Text>•</Text>
+                <Text>M.Sc. in Physics, Jamia Millia Islamia, New Delhi</Text>
+                <Text variant="muted" className="whitespace-nowrap">2018</Text>
+              </div>
+              <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
+                <Text>•</Text>
+                <Text>B.Sc. (Honours) in Physics, University of Calcutta, Kolkata</Text>
+                <Text variant="muted" className="whitespace-nowrap">2016</Text>
+              </div>
+            </div>
+          </div>
 
           {/* Skills */}
-          <CVSection 
-            icon={<Code className="w-4 h-4" aria-hidden="true" />} 
-            title="Skills" 
-            content={
-              <Text>
-                python, jupyter, git, numpy, matplotlib, pandas, scipy, tensorflow, keras, scikit, onnx,
-                sympy, c, fortran, julia, haskell, mathematica, octave, veusz, gnuplot, latex
-                (some of these are probably pokemon!)
-              </Text>
-            }
-          />
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Code className="w-5 h-5 text-purple-500" />
+              <TextHeading as="h2" weight="bold">
+                Skills
+              </TextHeading>
+            </div>
 
+            <Text>
+              Python, Jupyter, Git, NumPy, Matplotlib, Pandas, SciPy,
+              TensorFlow, Keras, Scikit-learn, ONNX, SymPy, C, Fortran,
+              Julia, Haskell, Mathematica, Octave, Veusz, Gnuplot,
+              LaTeX.
+            </Text>
+          </div>
         </div>
 
-      
         <div className="relative w-full aspect-[4/3] sm:aspect-[2/1] md:aspect-[21/9] rounded-lg overflow-hidden my-8">
           <Image
-            className="object-cover"
-            fill
             src="/gulistan_e_ghalib.jpg"
-            alt="tank."
+            alt="Gulistan-e-Ghalib"
+            fill
+            className="object-cover"
             priority
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
+            sizes="(max-width:640px)100vw,(max-width:1024px)90vw,80vw"
           />
         </div>
 
