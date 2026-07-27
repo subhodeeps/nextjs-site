@@ -76,6 +76,59 @@ export default function MarginaliaPage() {
                             </Text>
                         </li>
 
+                        <li className="pl-2 mb-4">
+                        <Text>
+                            <Link 
+                                href="https://app.box.com/s/l2wc6ju4go4n0w71oleeuexqw2hgq0x9"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                            >
+                                This is Water
+                            </Link>
+                            {" "}David Foster Wallace. (Read the{" "}
+                            <Link 
+                                href="https://fs.blog/david-foster-wallace-this-is-water/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                            >
+                                transcript
+                            </Link>
+                            {" "}or listen to the{" "}
+                            <Link 
+                                href="https://youtu.be/eC7xzavzEKY?si=CLrkt0vJFs4K_-dU"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                            >
+                                audio
+                            </Link>
+                            ).
+                        </Text>
+                    </li>
+                    
+                    <li className="pl-2 mb-4">
+                            <Text>
+                                <Link 
+                                    href="https://app.box.com/s/7n5x9erqmgmp76mnn65x391qt1xdyjce"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                >
+                                    Samsa in Love
+                                </Link>
+                                {" "}Haruki Murakami. October 28, 2013 issue{" "}
+                                <Link 
+                                    href="https://www.newyorker.com/magazine/2013/10/28/samsa-in-love"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                >
+                                    The New Yorker
+                                </Link>.
+                            </Text>
+                        </li>
                     </ul>
                 </StackVertical>
                 </div>
