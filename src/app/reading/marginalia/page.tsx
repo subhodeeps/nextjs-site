@@ -7,8 +7,7 @@ import { SectionFooter } from "@/components/layout/footer/SectionFooter"
 import Text from "@/components/ui/text/text"
 import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb"
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
-import { notes } from "../_data/posts" 
-import { ReferenceCard } from "../_components/ReferenceCard" 
+import Link from "next/link"
 
 export default function MarginaliaPage() {
     return (
@@ -35,16 +34,50 @@ export default function MarginaliaPage() {
                         Excerpts, takeaways and collections of short-form writing that left an impression.
                     </Text>
 
-                    {/* Stacked Display of Notes */}
-                    <StackVertical gap="none" className="mb-12">
-                        {notes.map((note, index) => (
-                            <ReferenceCard
-                                key={note.id}
-                                post={note}
-                                isLast={index === notes.length - 1}
-                            />
-                        ))}
-                    </StackVertical>
+            
+                <StackVertical gap="none" className="mb-12">
+                    <ul className="list-disc pl-5 marker:text-muted-foreground">
+                        
+                        {/* Calvino */}
+                        <li className="pl-2 mb-4">
+                            <Text>
+                                <Link 
+                                    href="https://app.box.com/s/6ptwjwfgf13jni7qcnynwi2irvfa31d7"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                >
+                                    Why Read the Classics?
+                                </Link>
+                                {" "}Italo Calvino (translated by Martin McLaughlin), 1991.
+                            </Text>
+                        </li>
+
+                        {/* McEwan */}
+                        <li className="pl-2 mb-4">
+                            <Text>
+                                <Link 
+                                    href="https://app.box.com/s/ks1vlfuhd7bk3jopwgql3s8mk1vljmih"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                >
+                                    Düssel…
+                                </Link>
+                                {" "}Ian McEwan. A story, July 19, 2018 issue,{" "}
+                                <Link 
+                                    href="https://www.nybooks.com/articles/2018/07/19/dussel/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                >
+                                    New York Review of Books
+                                </Link>.
+                            </Text>
+                        </li>
+
+                    </ul>
+                </StackVertical>
                 </div>
 
             </StackVertical>
