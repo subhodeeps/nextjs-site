@@ -15,7 +15,6 @@ export const metadata: Metadata = {
         description: 'A collection of references and notes from my learning journey',
     }
 }
-
 export default function Layout({
     children,
 }: {

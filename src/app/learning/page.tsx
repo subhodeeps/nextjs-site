@@ -37,18 +37,22 @@ export default function Learning() {
                 </div>
 
                 <Text variant="muted" className="mb-8">
-                    Most of the stuff listed here is hosted on a separate{" "}
-                    <Link
-                        href="https://just-the-notes.vercel.app/"
-                        className="text-purple-500 font-bold hover:underline"
-                    >
-                        project/repository
-                    </Link>{" "}
-                    because [a] I wanted to keep using other tools to make sites, [b] I wanted
-                    to implement a roam-research like workspace based on <i>Zettelkasten</i>,
-                    and [c] I failed to make markdown and KaTeX work over here.
-                </Text>
 
+                    Over time, I've collected and written notes on things I've learned or found interesting, mainly for my own reference. Since others might find them useful too, I've made them public. Most of the collection lives in a separate{" "}
+
+                    <Link
+
+                        href="https://just-the-notes.vercel.app/"
+
+                        className="text-purple-500 font-bold hover:underline"
+
+                    >
+
+                        repository
+
+                    </Link>. Below are a few highlights from the collection.
+
+                </Text>
                 <StackVertical gap="none">
                     {notes.map((note, index) => (
                         <ReferenceCard
