@@ -3,10 +3,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
     title: 'Reading | subhodeep',
-    description: 'Books I am reading',
+    description: "Notes on things I've read, links to pieces I love, plus the books I'm trying to get through.",
     openGraph: {
         title: 'Reading | subhodeep',
-        description: 'Books I am reading',
+        description: "Notes on things I've read, links to pieces I love, plus the books I'm trying to get through.",
         type: 'website',
         images: [
             {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Reading | subhodeep',
-        description: 'Books I am reading',
+        description: "Notes on things I've read, links to pieces I love, plus the books I'm trying to get through.",
         images: ['/reading/twitter-image.png'],
     }
 }
@@ -29,5 +29,10 @@ export default function Layout({
 }: {
     children: React.ReactNode
 }) {
-    return children
-} 
+    return (
+        <>
+            {children}
+            <SpeedInsights />
+        </>
+    )
+}

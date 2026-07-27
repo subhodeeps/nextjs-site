@@ -10,28 +10,28 @@ import { IndividualPageFooter } from "@/components/layout/footer/IndividualPageF
 
 
 export default function References() {
-	return (
-		<BaseContainer size="md" paddingX="md" paddingY="lg">
-			<StackVertical gap="md">
-				<div className="flex items-center justify-between">
-					<DynamicBreadcrumb
-						items={[
-							{ href: "/", label: "Home", emoji: "👾" },
-							{ href: "/learning", label: "Learning" },
-							{ label: "Articles and Essays" },
-						]}
-					/>
-					<ThemeToggle />
-				</div>
-				<div className="prose dark:prose-invert max-w-none">
-					<Content components={mdxComponents} />
-				</div>
-			</StackVertical>
+    return (
+        <BaseContainer size="md" paddingX="md" paddingY="lg">
+            <StackVertical gap="md">
+                <div className="flex items-center justify-between">
+                    <DynamicBreadcrumb
+                        items={[
+                            { href: "/", label: "Home", emoji: "👾" },
+                            { href: "/reading", label: "Reading" },
+                            { label: "Essays and Fiction Worth Reading" },
+                        ]}
+                    />
+                    <ThemeToggle />
+                </div>
+                <div className="prose dark:prose-invert max-w-none">
+                    <Content components={mdxComponents} />
+                </div>
+            </StackVertical>
 
-			<IndividualPageFooter
-				parentPageName="Learning"
-				showToTop={true}
-			/>
-		</BaseContainer>
-	);
+            <IndividualPageFooter
+                parentPageName="Reading"
+                showToTop={true}
+            />
+        </BaseContainer>
+    );
 }
