@@ -4,7 +4,8 @@
 // The photos are every image in public/collabs/. This file reads that folder when
 // the site is built (it has no 'use client', so it never runs in the browser) and
 // hands the list to grid.tsx, which shuffles it in the visitor's browser, so the
-// order changes on every visit. To add a photo, put it in public/collabs/.
+// order changes on every visit. To add a photo, put it in public/collabs/; to give
+// it a caption, add an entry to ./_data/captions.ts.
 import fs from 'fs'
 import path from 'path'
 import sizeOf from 'image-size'
@@ -18,15 +19,18 @@ import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
 
 // Import the new client component
 import CollaboratorGrid from './grid'
+import { captions } from './_data/captions'
 
-// One photo: its address, the alt text made from its file name, and its size in
-// pixels (the image component needs the size to reserve space for it)
+// One photo: its address, the alt text made from its file name, its size in
+// pixels (the image component needs the size to reserve space for it) and its
+// caption from ./_data/captions.ts, if it has one
 type CollaboratorPhoto = {
     id: string
     name: string
     photoUrl: string
     width: number
     height: number
+    caption?: string
 }
 
 /** The Collaborations page; it collects the photos, then draws the text and the grid. */
@@ -59,6 +63,7 @@ export default function Collaborators() {
                     photoUrl: `/collabs/${file}`,
                     width: dimensions.width ?? 1200,
                     height: dimensions.height ?? 1200,
+                    caption: captions[file],
                 }
             })
     } catch (error) {
