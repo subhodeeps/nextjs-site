@@ -8,6 +8,8 @@ subhodeeps.github.io redirects to it.
 If you know Jekyll but not Next.js, start with
 [docs/for-jekyll-users.md](docs/for-jekyll-users.md), which maps one onto the
 other. Every code file also begins with a comment that explains what it does.
+Step-by-step guides for routine changes, such as adding a book, a photograph,
+a paper, or a blog post, are listed in [docs/README.md](docs/README.md).
 
 ## Software
 
@@ -59,6 +61,8 @@ src/
 ├── app/                  # one directory per section: about, blog, collaborations,
 │                         # cv, learning, older_updates, reading, research
 ├── components/           # page blocks (including the homepage), layout, and UI
+├── content/
+│   └── updates.md        # the updates on the homepage and Older Updates
 ├── lib/
 │   ├── mdx/              # styling for MDX content
 │   └── og/               # link-preview image lookup
@@ -96,6 +100,9 @@ top of `src/components/ui/terminal-nav/terminal-nav.tsx`, where the design is
 documented.
 
 ## Adding content
+
+This section summarizes where each kind of content is kept; the guides in
+[docs/](docs/README.md) describe each change in detail, with examples.
 
 ### Blog posts
 
@@ -164,6 +171,14 @@ details are optional: the translator, publisher, publication date, page count,
 ISBN, blurb, and a link to a review. Most of them can be copied from calibre's
 book details. The cards on the Learning page, which link to its subpages, come
 from `src/app/learning/_data/posts.ts`.
+
+### Updates
+
+All updates are listed in `src/content/updates.md`, one per line and newest
+first, in the form `- DATE | KIND | TEXT`, where the kind selects the icon and
+links are written in Markdown. The homepage shows the newest six (a number set
+at the top of the file), and the Older Updates page shows the rest, so no entry
+has to be moved by hand.
 
 ### CV
 

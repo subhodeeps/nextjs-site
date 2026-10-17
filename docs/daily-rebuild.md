@@ -22,7 +22,8 @@ The workflow file must already be on GitHub, in the `master` branch.
 4. Copy the URL that appears. It looks like
    `https://api.vercel.com/v1/integrations/deploy/prj_.../...`.
 
-Keep the URL private: anyone who has it can start a build of the site.
+The URL should be kept private, since anyone who has it can start a build of
+the site.
 
 ### 2. Store the URL as a GitHub secret
 
@@ -48,8 +49,8 @@ Run the workflow by hand, either with
 gh workflow run refresh-citations.yml --repo subhodeeps/nextjs-site
 ```
 
-or from <https://github.com/subhodeeps/nextjs-site/actions>: open **Refresh
-citation counts** and click **Run workflow** on `master`.
+or from <https://github.com/subhodeeps/nextjs-site/actions>, by opening
+**Refresh citation counts** and clicking **Run workflow** on `master`.
 
 Within a minute the run should finish with a green tick, and a new deployment,
 started by the Deploy Hook, should appear in the **Deployments** tab of the
@@ -67,8 +68,8 @@ Vercel project. From then on the workflow runs by itself every day.
   repositories without commits for 60 days. Re-enable the workflow from the
   Actions tab, where GitHub shows a notice.
 - **A run starts late.** GitHub may start scheduled runs up to an hour late
-  when it is busy; nothing needs to be done.
-- **The counts did not change after a rebuild.** The answers from INSPIRE-HEP
+  when it is busy; such delays need no action.
+- **The counts did not change after a rebuild.** Responses from INSPIRE-HEP
   are reused for up to 12 hours (`revalidate` in
   `src/app/research/_lib/inspire.ts`), so a build less than 12 hours after the
   previous one shows the same counts.
