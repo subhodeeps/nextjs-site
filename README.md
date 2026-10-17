@@ -10,6 +10,7 @@ subhodeeps.github.io redirects to it.
 - [Next.js 16](https://nextjs.org) (App Router, bundled with webpack),
   React 19, and TypeScript
 - Tailwind CSS 3 for styling
+- JetBrains Mono for text and code, and Fira Code for headings
 - MDX for long-form pages, with KaTeX for equations and prism-react-renderer
   for syntax highlighting
 - framer-motion for animation and next-themes for the light and dark modes

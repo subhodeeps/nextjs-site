@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils/utils'
-import { sansFont } from '@/styles/fonts/fonts'
+import { headingFont } from '@/styles/fonts/fonts'
 
 interface TextHeadingProps {
     children: React.ReactNode;
@@ -44,7 +44,7 @@ export default function TextHeading({ children, className, as = 'h1', weight = '
             id={id}
             className={cn(
                 defaultSizes[as], 
-                sansFont.className, 
+                headingFont.className, 
                 fontWeights[weight], 
                 margin && defaultMargin[as],
                 'text-foreground dark:text-amore-slate-shade',

@@ -3,28 +3,28 @@
 import { MDXComponents } from 'mdx/types'
 import Ruler from '@/components/ui/ruler/ruler'
 import { cn } from '@/lib/utils/utils'
-import { monoFont } from '@/styles/fonts/fonts'
+import { headingFont, monoFont } from '@/styles/fonts/fonts'
 import CodeBlock from '@/components/blocks/code-block/code-block'
 
 export const mdxComponents: MDXComponents = {
     // Headings - Clean margins and crisp white text
     h1: ({ children }) => (
-        <h1 className={cn("mt-10 mb-6 text-2xl sm:text-3xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade")}>
+        <h1 className={cn("mt-10 mb-6 text-2xl sm:text-3xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade", headingFont.className)}>
             {children}
         </h1>
     ),
     h2: ({ children }) => (
-        <h2 className={cn("mt-8 mb-4 text-xl sm:text-2xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade", monoFont.className)}>
+        <h2 className={cn("mt-8 mb-4 text-xl sm:text-2xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade", headingFont.className)}>
             {children}
         </h2>
     ),
     h3: ({ children }) => (
-        <h3 className={cn("mt-6 mb-4 text-lg sm:text-xl font-semibold tracking-tight text-foreground dark:text-amore-slate-shade", monoFont.className)}>
+        <h3 className={cn("mt-6 mb-4 text-lg sm:text-xl font-semibold tracking-tight text-foreground dark:text-amore-slate-shade", headingFont.className)}>
             {children}
         </h3>
     ),
     h4: ({ children }) => (
-        <h4 className={cn("mt-6 mb-4 text-base sm:text-lg font-semibold tracking-tight text-foreground dark:text-amore-slate-shade", monoFont.className)}>
+        <h4 className={cn("mt-6 mb-4 text-base sm:text-lg font-semibold tracking-tight text-foreground dark:text-amore-slate-shade", headingFont.className)}>
             {children}
         </h4>
     ),

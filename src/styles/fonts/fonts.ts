@@ -1,13 +1,14 @@
-import { IBM_Plex_Mono, Geist } from 'next/font/google'
+import { JetBrains_Mono, Fira_Code } from 'next/font/google'
 
-export const monoFont = IBM_Plex_Mono({
-    subsets: ['latin'],
-    weight: ['400', '500', '600'],
+// Body text, navigation and code. It is set on <body> in the root layout, so it
+// is the default everywhere. Both fonts include Greek, for symbols such as Λ.
+export const monoFont = JetBrains_Mono({
+    subsets: ['latin', 'greek'],
     variable: '--font-mono',
 })
 
-export const sansFont = Geist({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    variable: '--font-sans',
+// Headings
+export const headingFont = Fira_Code({
+    subsets: ['latin', 'greek'],
+    variable: '--font-heading',
 })

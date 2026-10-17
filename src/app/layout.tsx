@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/ui/theme/theme-provider'
 import { cn } from '@/lib/utils/utils'
+import { monoFont } from '@/styles/fonts/fonts'
 import { ogImages } from '@/lib/og/og-images'
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -29,7 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body className={cn(
-        "h-full bg-background transition-colors duration-300"
+        "h-full bg-background transition-colors duration-300",
+        monoFont.className
       )}>
         <ThemeProvider
           attribute="class"
