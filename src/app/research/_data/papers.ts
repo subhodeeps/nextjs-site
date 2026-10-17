@@ -14,11 +14,20 @@
 // so its chip appears only when the paper's Web of Science address is given:
 //
 //     { inspire: '2735894', wos: 'https://www.webofscience.com/wos/woscc/full-record/WOS:...' },
+//
+// A person's name can be linked, in one entry's author list, by giving the name
+// as INSPIRE writes it ("First Last") and the address:
+//
+//     { inspire: '...', people: { 'Srijit Bhattacharjee': 'https://...' } },
 
-/** One entry: the INSPIRE record number, and optionally the Web of Science address */
+/**
+ * One entry: the INSPIRE record number, and optionally the Web of Science address
+ * and links for people's names
+ */
 export type PaperEntry = {
     inspire: string
     wos?: string
+    people?: Record<string, string>
 }
 
 export const papers: PaperEntry[] = [
@@ -32,7 +41,10 @@ export const papers: PaperEntry[] = [
 ]
 
 // The PhD thesis, shown in a section of its own after the papers
-export const thesis: PaperEntry = { inspire: '3162653' }
+export const thesis: PaperEntry = {
+    inspire: '3162653',
+    people: { 'Srijit Bhattacharjee': 'https://profile.iiita.ac.in/srijit/' },
+}
 
 // My name as INSPIRE writes it ("First Last"); it is set apart in the author lists
 export const me = 'Subhodeep Sarkar'

@@ -39,9 +39,21 @@ server, e.g., `npx serve@latest out`.
 The site is generated as a static export (`output: 'export'` in
 `next.config.mjs`). Vercel builds and deploys it from this GitHub repository.
 
+### Daily rebuild
+
+The citation counts on the Research page are fetched from INSPIRE-HEP at build
+time, so the site is rebuilt every day to keep them current. The GitHub Actions
+workflow `.github/workflows/refresh-citations.yml` runs daily at 08:30 UTC
+(2 p.m. in India), after INSPIRE-HEP's daily update, and starts a Vercel build
+through a Deploy Hook whose URL is stored as the GitHub secret
+`VERCEL_DEPLOY_HOOK`. Step-by-step instructions for setting up the hook and
+the secret, testing them, and fixing common problems are in
+[`docs/daily-rebuild.md`](docs/daily-rebuild.md).
+
 ## Repository structure
 
 ```text
+.github/workflows/        # the daily rebuild (refresh-citations.yml)
 docs/                     # notes for working on the site
 src/
 ├── app/                  # one directory per section: about, blog, collaborations,
@@ -53,6 +65,7 @@ src/
 ├── styles/               # fonts and background patterns
 └── mdx-components.tsx    # connects the MDX styling to Next.js
 public/
+├── blog/                 # images for blog posts, one directory per post
 ├── collabs/              # photos for the Collaborations page
 ├── covers/               # book covers for the Reading page
 ├── files/                # CV PDFs
@@ -139,10 +152,8 @@ moves to Published Papers once INSPIRE-HEP records the journal. Web of Science
 links cannot be derived from a paper's identifiers, so the Web of Science chip
 appears only for entries that give the record's address (`wos`). If INSPIRE-HEP
 cannot be reached during a build, the build fails and the deployed site is left
-unchanged. To keep the citation counts current, the workflow
-`.github/workflows/refresh-citations.yml` rebuilds the site every day
-through a Vercel Deploy Hook, whose address is stored as the GitHub secret
-`VERCEL_DEPLOY_HOOK`.
+unchanged. The citation counts are kept current by a daily rebuild (see
+[Daily rebuild](#daily-rebuild)).
 
 ### Reading and Learning
 

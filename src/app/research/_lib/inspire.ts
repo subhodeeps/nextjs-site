@@ -16,6 +16,7 @@ export type Paper = {
     authors: string[] // "First Last"
     supervisors: string[] // for a thesis, "First Last"
     institution?: string // for a thesis, the university
+    people: Record<string, string> // links for people's names, from ../_data/papers.ts
     venue?: { label: string; url?: string } // the journal reference, or the thesis degree and year
     arxiv?: { label: string; url: string } // the arXiv number
     abstractHtml?: string // the abstract as HTML, with any $...$ maths set by KaTeX
@@ -179,6 +180,7 @@ export async function getPaper(entry: PaperEntry): Promise<Paper> {
         authors: people.filter((a) => !isSupervisor(a)).map((a) => displayName(a.full_name)),
         supervisors: people.filter(isSupervisor).map((a) => displayName(a.full_name)),
         institution: isThesis ? record.thesis_info?.institutions?.[0]?.name : undefined,
+        people: entry.people ?? {},
         venue,
         arxiv: arxivChip,
         abstractHtml: abstract ? abstractHtml(abstract.value) : undefined,

@@ -44,15 +44,37 @@ const sites = {
     wos: { icon: SiClarivate, label: 'wos', name: 'Web of Science' },
 }
 
-/** "A, B, and C", "A and B" or "A", with my own name set apart */
-function Authors({ names, me }: { names: string[]; me: string }) {
+/**
+ * "A, B, and C", "A and B" or "A", with my own name set apart, and the names
+ * listed in `links` (from the entry in ../_data/papers.ts) linked
+ */
+function Authors({
+    names,
+    me,
+    links = {},
+}: {
+    names: string[]
+    me: string
+    links?: Record<string, string>
+}) {
     return (
         <>
             {names.map((name, i) => (
                 <span key={i}>
                     {i > 0 && (names.length > 2 ? ', ' : ' ')}
                     {i > 0 && i === names.length - 1 && 'and '}
-                    <span className={name === me ? 'text-foreground' : undefined}>{name}</span>
+                    {links[name] ? (
+                        <a
+                            href={links[name]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline decoration-accent-muted/50 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent-muted"
+                        >
+                            {name}
+                        </a>
+                    ) : (
+                        <span className={name === me ? 'text-foreground' : undefined}>{name}</span>
+                    )}
                 </span>
             ))}
         </>
@@ -90,11 +112,12 @@ export function PaperItem({ paper, me }: { paper: Paper; me: string }) {
                 {paper.title}
             </a>
             <p className="mt-1 text-muted-foreground">
-                <Authors names={paper.authors} me={me} />
+                <Authors names={paper.authors} me={me} links={paper.people} />
                 {/* For a thesis: the supervisor and the university */}
                 {paper.supervisors.length > 0 && (
                     <>
-                        , supervised by <Authors names={paper.supervisors} me={me} />
+                        , supervised by{' '}
+                        <Authors names={paper.supervisors} me={me} links={paper.people} />
                     </>
                 )}
                 {paper.institution && <> · {paper.institution}</>}
