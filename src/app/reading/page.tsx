@@ -81,7 +81,7 @@ export default function Reading() {
 
                     {/* Combined Text */}
                     <Text variant="muted" className="mb-8">
-                        Books that I am currently reading (or, at least, trying to). A simularca of
+                        Books that I am currently reading (or, at least, trying to). A simulacrum of
                         (a fragment of) my library can be found{' '}
                         <Link
                             href="https://hobby-site.vercel.app/"

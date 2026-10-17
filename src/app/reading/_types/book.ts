@@ -14,5 +14,7 @@ export interface Book {
     pages?: number
     isbn?: string
     blurb?: string // the description; a blank line starts a new paragraph
-    review?: string // the address of a review, shown as a "Read my review" link
+    reviews?: { source: string; url: string }[] // reviews elsewhere, such as { source: 'The Guardian', url: 'https://…' }
+    openLibrary?: string // the book's page on Open Library
+    review?: string // the address of my own review, shown as a "Read my review" link
 }

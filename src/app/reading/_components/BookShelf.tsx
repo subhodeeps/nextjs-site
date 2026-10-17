@@ -179,10 +179,25 @@ export function BookShelf({ books }: { books: ShelfBook[] }) {
     )
 }
 
+/** A link that opens in a new tab, in the accent colour */
+function ExternalLink({ href, children }: { href: string; children: React.ReactNode }) {
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn('rounded-sm text-accent hover:underline', focusRing)}
+        >
+            {children}
+        </a>
+    )
+}
+
 /**
  * The text beside an enlarged cover: the title (with any subtitle on a line of
- * its own), the author, the details that were given, the blurb and the link to a
- * review. Whatever ../_data/books.ts leaves out is not shown.
+ * its own), the author, the details that were given (with the reviews elsewhere
+ * and the Open Library page), the blurb and the link to my own review. Whatever
+ * ../_data/books.ts leaves out is not shown.
  */
 function BookDetails({ book }: { book: Book }) {
     // "Aristotle: Understanding ..." becomes the title "Aristotle" and the
@@ -199,6 +214,7 @@ function BookDetails({ book }: { book: Book }) {
         ['ISBN', book.isbn],
     ]
     const givenRows = rows.filter(([, value]) => value)
+    const hasLinks = (book.reviews?.length ?? 0) > 0 || Boolean(book.openLibrary)
 
     // The paragraphs of the blurb, split at blank lines; a single line break
     // inside a paragraph counts as a space
@@ -219,7 +235,7 @@ function BookDetails({ book }: { book: Book }) {
             {subtitle && <Text variant="muted">{subtitle}</Text>}
             <Text className="mt-2">{book.author}</Text>
 
-            {givenRows.length > 0 && (
+            {(givenRows.length > 0 || hasLinks) && (
                 <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 text-xs sm:text-sm">
                     {givenRows.map(([label, value]) => (
                         <Fragment key={label}>
@@ -227,6 +243,30 @@ function BookDetails({ book }: { book: Book }) {
                             <dd>{value}</dd>
                         </Fragment>
                     ))}
+                    {/* The reviews elsewhere, as links separated by dots */}
+                    {book.reviews && book.reviews.length > 0 && (
+                        <>
+                            <dt className="text-muted-foreground">Reviews</dt>
+                            <dd>
+                                {book.reviews.map((item, i) => (
+                                    <Fragment key={item.url}>
+                                        {i > 0 && (
+                                            <span className="text-muted-foreground"> · </span>
+                                        )}
+                                        <ExternalLink href={item.url}>{item.source}</ExternalLink>
+                                    </Fragment>
+                                ))}
+                            </dd>
+                        </>
+                    )}
+                    {book.openLibrary && (
+                        <>
+                            <dt className="text-muted-foreground">Catalog</dt>
+                            <dd>
+                                <ExternalLink href={book.openLibrary}>Open Library</ExternalLink>
+                            </dd>
+                        </>
+                    )}
                 </dl>
             )}
 
