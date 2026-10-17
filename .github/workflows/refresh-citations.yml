@@ -1,0 +1,30 @@
+# .github/workflows/refresh-citations.yml
+#
+# Rebuilds the site on Vercel every day, so that the citation counts on
+# the Research page, which are fetched from INSPIRE-HEP when the site is built,
+# stay current without a push. It asks Vercel to rebuild through a Deploy Hook:
+# create one in the Vercel project (Settings, Git, Deploy Hooks, branch master)
+# and save its address as a GitHub secret named VERCEL_DEPLOY_HOOK (repository
+# Settings, Secrets and variables, Actions). Until then this job does nothing.
+# It can also be run by hand from the Actions tab (workflow_dispatch).
+name: Refresh citation counts
+
+on:
+    schedule:
+        # Every day at 08:30 UTC (2 pm in India), after INSPIRE's daily update
+        - cron: '30 8 * * *'
+    workflow_dispatch:
+
+jobs:
+    rebuild:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Ask Vercel to rebuild the site
+              env:
+                  HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+              run: |
+                  if [ -z "$HOOK" ]; then
+                    echo "The VERCEL_DEPLOY_HOOK secret is not set, so there is nothing to do."
+                    exit 0
+                  fi
+                  curl --fail --silent --show-error --request POST "$HOOK"

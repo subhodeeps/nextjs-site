@@ -5,10 +5,10 @@
 // page (src/app/older_updates/page.tsx).
 import { motion } from 'framer-motion'
 // Icons from the lucide-react package, drawn as <Briefcase className="w-4 h-4" />
-import { Briefcase, Box, History, BookOpen } from 'lucide-react'
+import { BookOpen, Box, Briefcase, History, Newspaper } from 'lucide-react'
 import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
 import Text from '@/components/ui/text/text'
-import TextHeading from '@/components/ui/text-heading/text-heading'
+import SectionHeading from '@/components/ui/text-heading/section-heading'
 import Link from 'next/link'
 
 interface WorkItemProps {
@@ -137,7 +137,7 @@ export function CurrentWork() {
             transition={{ delay: 1, duration: 0.5 }}
         >
             <StackVertical gap="none">
-                <TextHeading as="h2">Updates</TextHeading>
+                <SectionHeading icon={Newspaper}>Updates</SectionHeading>
                 <StackVertical gap="md">
                     {/* One WorkItem per entry; each appears 0.1 s after the one above it */}
                     {items.map((item, index) => (

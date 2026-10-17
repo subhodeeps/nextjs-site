@@ -8,6 +8,7 @@
 import BaseContainer from '@/components/layout/container/base-container'
 import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
 import TextHeading from '@/components/ui/text-heading/text-heading'
+import SectionHeading from '@/components/ui/text-heading/section-heading'
 import Text from '@/components/ui/text/text'
 import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
 import { SectionFooter } from '@/components/layout/footer/SectionFooter'
@@ -53,12 +54,7 @@ export default function CVPage() {
 
                     {/* Employment */}
                     <div className="mb-8">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Briefcase className="w-5 h-5 text-accent-muted" />
-                            <TextHeading as="h2" weight="bold">
-                                Employment
-                            </TextHeading>
-                        </div>
+                        <SectionHeading icon={Briefcase}>Employment</SectionHeading>
 
                         <div className="flex flex-col gap-3">
                             <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
@@ -113,12 +109,7 @@ export default function CVPage() {
 
                     {/* Education */}
                     <div className="mb-8">
-                        <div className="flex items-center gap-3 mb-4">
-                            <GraduationCap className="w-5 h-5 text-accent-muted" />
-                            <TextHeading as="h2" weight="bold">
-                                Education
-                            </TextHeading>
-                        </div>
+                        <SectionHeading icon={GraduationCap}>Education</SectionHeading>
 
                         <div className="flex flex-col gap-2">
                             <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
@@ -149,12 +140,7 @@ export default function CVPage() {
 
                     {/* Skills */}
                     <div className="mb-8">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Code className="w-5 h-5 text-accent-muted" />
-                            <TextHeading as="h2" weight="bold">
-                                Skills
-                            </TextHeading>
-                        </div>
+                        <SectionHeading icon={Code}>Skills</SectionHeading>
 
                         <Text>
                             python, jupyter, vulpix, git, numpy, matplotlib, feebas, pandas, scipy,

@@ -118,7 +118,27 @@ In MDX files, write inline equations as `$...$` and displayed equations as
 
 Every image in `public/collabs/` (`.jpg`, `.jpeg`, `.png`, or `.webp`) appears
 on the Collaborations page. The file name, without its extension, serves as the
-alt text, with underscores and hyphens shown as spaces.
+alt text, with underscores and hyphens shown as spaces. A photo can be given a
+caption in `src/app/collaborations/_data/captions.ts`, with links written as in
+Markdown; the caption appears under the enlarged photo and replaces the alt
+text.
+
+### Papers
+
+The papers on the Research page are listed in
+`src/app/research/_data/papers.ts` by their INSPIRE-HEP record numbers, newest
+first, with the thesis listed separately. The title, authors, journal
+reference, abstract, BibTeX entry, and citation count of each paper are fetched
+from the INSPIRE-HEP API when the site is built, so a new paper needs only its
+record number. A paper without a journal reference appears under Preprints and
+moves to Published Papers once INSPIRE-HEP records the journal. Web of Science
+links cannot be derived from a paper's identifiers, so the Web of Science chip
+appears only for entries that give the record's address (`wos`). If INSPIRE-HEP
+cannot be reached during a build, the build fails and the deployed site is left
+unchanged. To keep the citation counts current, the workflow
+`.github/workflows/refresh-citations.yml` rebuilds the site every day
+through a Vercel Deploy Hook, whose address is stored as the GitHub secret
+`VERCEL_DEPLOY_HOOK`.
 
 ### Reading and Learning
 

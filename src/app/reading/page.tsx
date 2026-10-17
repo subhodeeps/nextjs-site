@@ -12,16 +12,14 @@ import sizeOf from 'image-size'
 import BaseContainer from '@/components/layout/container/base-container'
 import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
 import TextHeading from '@/components/ui/text-heading/text-heading'
+import SectionHeading from '@/components/ui/text-heading/section-heading'
+import { BookOpen, NotebookPen } from 'lucide-react'
 import { SectionFooter } from '@/components/layout/footer/SectionFooter'
 import Text from '@/components/ui/text/text'
 import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
 import Link from 'next/link'
 import { books } from './_data/books'
 import { BookShelf, ShelfBook } from './_components/BookShelf'
-
-// The section headings, at the size and weight of the card titles on the
-// Learning page
-const sectionHeading = 'mb-2 text-sm sm:text-base md:text-base lg:text-lg'
 
 /** The Reading page: the introduction, the Marginalia section and the books. */
 export default function Reading() {
@@ -57,9 +55,7 @@ export default function Reading() {
 
                     {/* Marginalia Section Header */}
                     <div className="mb-12">
-                        <TextHeading as="h3" weight="medium" className={sectionHeading}>
-                            Marginalia
-                        </TextHeading>
+                        <SectionHeading icon={NotebookPen}>Marginalia</SectionHeading>
 
                         <Text variant="muted">
                             Excerpts, takeaways and collections of short-form writing that left an
@@ -75,9 +71,7 @@ export default function Reading() {
                     </div>
 
                     {/* Heading before the covers */}
-                    <TextHeading as="h3" weight="medium" className={sectionHeading}>
-                        Currently Reading
-                    </TextHeading>
+                    <SectionHeading icon={BookOpen}>Currently Reading</SectionHeading>
 
                     {/* Combined Text */}
                     <Text variant="muted" className="mb-8">

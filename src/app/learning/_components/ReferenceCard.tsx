@@ -27,13 +27,25 @@ export function ReferenceCard({ post, isLast }: { post: NotesTypes; isLast?: boo
             >
                 <article>
                     <StackVertical gap="xs">
-                        <TextHeading
-                            as="h4"
-                            weight="medium"
-                            className={cn('group-hover:text-accent transition-colors duration-300')}
-                        >
-                            {post.title}
-                        </TextHeading>
+                        {/* The title, after the card's icon if it has one; both turn
+                            purple when the card is hovered */}
+                        <div className="flex items-center gap-2">
+                            {post.icon && (
+                                <post.icon
+                                    aria-hidden
+                                    className="h-4 w-4 shrink-0 text-accent-muted transition-colors duration-300 group-hover:text-accent"
+                                />
+                            )}
+                            <TextHeading
+                                as="h4"
+                                weight="medium"
+                                className={cn(
+                                    'my-0 group-hover:text-accent transition-colors duration-300',
+                                )}
+                            >
+                                {post.title}
+                            </TextHeading>
+                        </div>
                         <Text variant="muted" size="sm" className="line-clamp-2">
                             {post.description}
                         </Text>

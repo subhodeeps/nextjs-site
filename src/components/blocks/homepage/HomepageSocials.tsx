@@ -3,7 +3,8 @@
 // The "Socials" paragraph at the bottom of the home page.
 'use client'
 
-import TextHeading from '@/components/ui/text-heading/text-heading'
+import SectionHeading from '@/components/ui/text-heading/section-heading'
+import { AtSign } from 'lucide-react'
 import Text from '@/components/ui/text/text'
 import Link from 'next/link'
 
@@ -15,9 +16,7 @@ import Link from 'next/link'
 export function HomepageSocials() {
     return (
         <div>
-            <TextHeading as="h2" weight="bold">
-                Socials
-            </TextHeading>
+            <SectionHeading icon={AtSign}>Socials</SectionHeading>
             <Text>
                 I enjoy meeting and collaborating with new people. So, please feel free to ping me
                 at{' '}
