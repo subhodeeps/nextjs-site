@@ -10,7 +10,9 @@
 //
 // The grid is laid out in "justified rows", as on photo sites: the photos in a
 // row share one height and keep their own shape (nothing is cropped), and each
-// row fills the width. The enlarged view grows out of the clicked photo; ← and →
+// row fills the width. On phones the photos form two rows instead, each swiped
+// sideways on its own, so that the page stays short however many photos there
+// are. The enlarged view grows out of the clicked photo; ← and →
 // (or a swipe on a phone, or the ‹ › buttons under the photo) move through the
 // photos, and Esc, the close button, the backdrop or a click on the photo closes it.
 'use client'
@@ -115,6 +117,9 @@ export default function CollaboratorGrid({
     const [selected, setSelected] = useState<number | null>(null)
     const [opened, setOpened] = useState<number | null>(null)
     const [direction, setDirection] = useState(0)
+    // Whether the screen is at least 640px wide (Tailwind's sm:): the wrapping
+    // grid there, the two swiped rows below that
+    const [isWide, setIsWide] = useState(true)
 
     // Handles on elements of the page, for moving the keyboard focus: the photos
     // in the grid (looked up by their id, not their position, because the motion
@@ -130,15 +135,27 @@ export default function CollaboratorGrid({
         setIsMounted(true)
     }, [initialPeople])
 
+    // Follow the screen width, including when a phone is turned sideways
+    useEffect(() => {
+        const query = window.matchMedia('(min-width: 640px)')
+        const update = () => setIsWide(query.matches)
+        update()
+        query.addEventListener('change', update)
+        return () => query.removeEventListener('change', update)
+    }, [])
+
     const open = (i: number) => {
         setDirection(0)
         setOpened(i)
         setSelected(i)
     }
 
-    // Closing gives the keyboard focus back to the photo being shown
+    // Closing gives the keyboard focus back to the photo being shown, and scrolls
+    // it into view (on phones, the swiped row moves to it)
     const close = () => {
-        if (selected !== null) tiles.current[people[selected].id]?.focus({ preventScroll: true })
+        const tile = selected === null ? null : tiles.current[people[selected].id]
+        tile?.focus({ preventScroll: true })
+        tile?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
         setDirection(0)
         setSelected(null)
     }
@@ -191,54 +208,111 @@ export default function CollaboratorGrid({
 
     const photo = selected === null ? null : people[selected]
 
+    // One photo in the grid, at position i of the shuffled list. Its width is
+    // (row height × its width-to-height ratio), and in the wrapping grid it also
+    // grows in proportion to that ratio, which keeps the photos in a row at one
+    // height while the row fills the width.
+    const tile = (i: number) => {
+        const person = people[i]
+        const ratio = person.width / person.height
+        return (
+            <motion.button
+                key={person.id}
+                // The same layoutId as the enlarged photo, which makes that one grow
+                // out of this one
+                layoutId={`photo-${person.id}`}
+                ref={(element) => {
+                    tiles.current[person.id] = element
+                }}
+                type="button"
+                aria-haspopup="dialog"
+                aria-label={`Enlarge photo ${i + 1} of ${people.length}`}
+                onClick={() => open(i)}
+                style={
+                    isWide
+                        ? { flexGrow: ratio, flexBasis: `calc(var(--row) * ${ratio})` }
+                        : { width: `calc(var(--row) * ${ratio})` }
+                }
+                // min-w-0 lets a photo be narrower than its image file, so that the
+                // widths above decide how many fit in a row; shrink-0 keeps the photos
+                // in the swiped rows at their full width
+                className={cn(
+                    'group min-w-0 overflow-hidden rounded-md',
+                    !isWide && 'shrink-0',
+                    focusRing,
+                )}
+            >
+                <Image
+                    src={person.photoUrl}
+                    alt={person.caption ? captionText(person.caption) : person.name}
+                    width={person.width}
+                    height={person.height}
+                    className="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+            </motion.button>
+        )
+    }
+
+    // For phones: the photos split into two rows. Each photo, in the shuffled
+    // order, goes into whichever row is shorter so far, so the rows end together.
+    const rows: number[][] = [[], []]
+    const rowWidths = [0, 0]
+    people.forEach((person, i) => {
+        const r = rowWidths[0] <= rowWidths[1] ? 0 : 1
+        rows[r].push(i)
+        rowWidths[r] += person.width / person.height
+    })
+
     return (
         // reducedMotion="user" turns the movement off for visitors who have asked
         // their system for reduced motion
         <MotionConfig reducedMotion="user">
-            {/* The grid: each photo grows from a base width of (row height × its
-                width-to-height ratio) in proportion to that ratio, which keeps the
-                photos in a row at one height while the row fills the width. The row
-                height is the --row value: 110px on phones, 150px from sm:, 170px from
-                lg:. The last item, an empty spacer, keeps the last row from stretching. */}
-            <div
-                className={cn(
-                    'flex w-full flex-wrap gap-2 [--row:110px] sm:[--row:150px] lg:[--row:170px]',
-                    'transition-opacity duration-500',
-                    isMounted ? 'opacity-100' : 'opacity-0',
-                )}
-            >
-                {people.map((person, i) => {
-                    const ratio = person.width / person.height
-                    return (
-                        <motion.button
-                            key={person.id}
-                            // The same layoutId as the enlarged photo, which makes that
-                            // one grow out of this one
-                            layoutId={`photo-${person.id}`}
-                            ref={(element) => {
-                                tiles.current[person.id] = element
-                            }}
-                            type="button"
-                            aria-haspopup="dialog"
-                            aria-label={`Enlarge photo ${i + 1} of ${people.length}`}
-                            onClick={() => open(i)}
-                            style={{ flexGrow: ratio, flexBasis: `calc(var(--row) * ${ratio})` }}
-                            // min-w-0 lets a photo be narrower than its image file, so
-                            // that the widths above decide how many fit in a row
-                            className={cn('group min-w-0 overflow-hidden rounded-md', focusRing)}
+            {isWide ? (
+                // From sm: rows that wrap, 150px high (170px from lg:). The last item,
+                // an empty spacer, keeps the last row from stretching.
+                <div
+                    className={cn(
+                        'flex flex-wrap gap-2 [--row:150px] lg:[--row:170px]',
+                        'transition-opacity duration-500',
+                        isMounted ? 'opacity-100' : 'opacity-0',
+                    )}
+                >
+                    {people.map((_, i) => tile(i))}
+                    <div aria-hidden className="grow-[10]" />
+                </div>
+            ) : (
+                // On phones: two rows of photos, 150px high, each swiped sideways on its
+                // own (overflow-x-auto), so the page does not grow longer as photos
+                // are added. Each row reaches the edges of the screen, so the next
+                // photo peeks in: its negative side margins, calc(50% - 50vw), cancel
+                // the page's side gutter (percentages there refer to the page column's
+                // width), and its padding, calc(50vw - 50%), puts the gutter back
+                // inside. The scroll bars are hidden.
+                <div
+                    className={cn(
+                        'flex flex-col gap-2 [--row:150px]',
+                        'transition-opacity duration-500',
+                        isMounted ? 'opacity-100' : 'opacity-0',
+                    )}
+                >
+                    {rows.map((row, r) => (
+                        <div
+                            key={r}
+                            className={cn(
+                                'mx-[calc(50%-50vw)] flex gap-2 overflow-x-auto px-[calc(50vw-50%)] py-1',
+                                '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+                            )}
                         >
-                            <Image
-                                src={person.photoUrl}
-                                alt={person.caption ? captionText(person.caption) : person.name}
-                                width={person.width}
-                                height={person.height}
-                                className="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.03]"
-                            />
-                        </motion.button>
-                    )
-                })}
-                <div aria-hidden className="grow-[10]" />
-            </div>
+                            {row.map((i) => tile(i))}
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {/* On phones, a faint hint under the swiped rows */}
+            <p aria-hidden className="mt-2 text-xs text-accent-muted/60 sm:hidden">
+                # swipe for more →
+            </p>
 
             {/* The enlarged view. AnimatePresence lets it animate out when it closes. */}
             <AnimatePresence>
