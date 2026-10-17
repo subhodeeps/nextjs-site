@@ -122,9 +122,13 @@ alt text, with underscores and hyphens shown as spaces.
 
 ### Reading and Learning
 
-The book list on the Reading page is defined in `src/app/reading/page.tsx`, and
-the cover images are in `public/covers/`. The cards on the Learning page, which
-link to its subpages, come from `src/app/learning/_data/posts.ts`.
+The books on the Reading page are listed in `src/app/reading/_data/books.ts`,
+and their covers are in `public/covers/`. An entry needs a title, an author,
+and a cover; clicking the cover enlarges it next to the book's details. The
+details are optional: the translator, publisher, publication date, page count,
+ISBN, blurb, and a link to a review. Most of them can be copied from calibre's
+book details. The cards on the Learning page, which link to its subpages, come
+from `src/app/learning/_data/posts.ts`.
 
 ### CV
 

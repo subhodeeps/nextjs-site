@@ -1,9 +1,13 @@
 // src/app/reading/page.tsx
 //
 // The Reading page at /reading: a link to Marginalia, then the books currently
-// being read. To change the books, edit the `books` list below; the cover images
-// are in public/covers/.
-'use client'
+// being read. The books are listed in ./_data/books.ts, and their covers are in
+// public/covers/. This file reads the size of each cover when the site is built
+// (it has no 'use client', so it never runs in the browser) and hands the list to
+// ./_components/BookShelf.tsx, which draws the covers and the enlarged view.
+import fs from 'fs'
+import path from 'path'
+import sizeOf from 'image-size'
 
 import BaseContainer from '@/components/layout/container/base-container'
 import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
@@ -12,58 +16,28 @@ import { SectionFooter } from '@/components/layout/footer/SectionFooter'
 import Text from '@/components/ui/text/text'
 import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
 import Link from 'next/link'
-import Image from 'next/image'
+import { books } from './_data/books'
+import { BookShelf, ShelfBook } from './_components/BookShelf'
 
-/**
- * The Reading page. `books` is the list of books shown in the gallery, like a
- * _data file inside the page: each has a unique id, a title, an author and the
- * path of its cover image.
- */
+// The section headings, at the size and weight of the card titles on the
+// Learning page
+const sectionHeading = 'mb-2 text-sm sm:text-base md:text-base lg:text-lg'
+
+/** The Reading page: the introduction, the Marginalia section and the books. */
 export default function Reading() {
-    const books = [
-        {
-            id: 1,
-            title: 'Figuring',
-            author: 'Maria Popova',
-            cover: '/covers/popova.jpg',
-        },
-        {
-            id: 2,
-            title: 'Pachinko',
-            author: 'Min Jin Lee',
-            cover: '/covers/pachinko.jpg',
-        },
-        {
-            id: 3,
-            title: 'Inspector Imanishi Investigates',
-            author: 'Seicho Matsumoto',
-            cover: '/covers/imanishi.jpg',
-        },
-        {
-            id: 4,
-            title: "Aristotle: Understanding the World's Greatest Philosopher",
-            author: 'John Sellars',
-            cover: '/covers/aristotle.jpg',
-        },
-        {
-            id: 5,
-            title: 'In a Flight of Starlings: The Wonders of Complex Systems',
-            author: 'Giorgio Parisi',
-            cover: '/covers/parisi.jpg',
-        },
-        {
-            id: 6,
-            title: "The Sense of Style: The Thinking Person's Guide to Writing in the 21st Century",
-            author: 'Steven Pinker',
-            cover: '/covers/sos.jpg',
-        },
-        {
-            id: 7,
-            title: 'Ghost-Eye',
-            author: 'Amitav Ghosh',
-            cover: '/covers/ghosteye.jpg',
-        },
-    ]
+    // Add the size of each cover in pixels, read from its file (`...book` copies
+    // the book's own fields). If a file cannot be read, the cover gets the 2:3
+    // shape of a typical book, and the problem is reported in the terminal.
+    const shelf: ShelfBook[] = books.map((book) => {
+        try {
+            const file = fs.readFileSync(path.join(process.cwd(), 'public', book.cover))
+            const { width, height } = sizeOf(file)
+            return { ...book, width: width ?? 400, height: height ?? 600 }
+        } catch (error) {
+            console.error(`Could not read the cover ${book.cover}:`, error)
+            return { ...book, width: 400, height: 600 }
+        }
+    })
 
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">
@@ -83,7 +57,7 @@ export default function Reading() {
 
                     {/* Marginalia Section Header */}
                     <div className="mb-12">
-                        <TextHeading as="h3" weight="semibold" className="mb-2 text-xl sm:text-2xl">
+                        <TextHeading as="h3" weight="medium" className={sectionHeading}>
                             Marginalia
                         </TextHeading>
 
@@ -100,8 +74,8 @@ export default function Reading() {
                         </Text>
                     </div>
 
-                    {/* Heading before the gallery */}
-                    <TextHeading as="h3" weight="semibold" className="mb-2 text-xl sm:text-2xl">
+                    {/* Heading before the covers */}
+                    <TextHeading as="h3" weight="medium" className={sectionHeading}>
                         Currently Reading
                     </TextHeading>
 
@@ -118,28 +92,9 @@ export default function Reading() {
                         .
                     </Text>
 
-                    {/* Book Grid: two columns on phones, three from md:, five from lg:.
-                        One cover, title and author per book in the list above. */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
-                        {books.map((book) => (
-                            <div key={book.id} className="flex flex-col space-y-2">
-                                <div className="w-full cursor-pointer group">
-                                    <Image
-                                        src={book.cover}
-                                        alt={book.title}
-                                        className="rounded-lg shadow-md transition-transform duration-200 group-hover:scale-105 w-full h-auto"
-                                        width={240}
-                                        height={320}
-                                    />
-                                </div>
-                                <div className="space-y-1">
-                                    <TextHeading as="h3" weight="medium" className="line-clamp-2">
-                                        {book.title}
-                                    </TextHeading>
-                                    <Text variant="muted">{book.author}</Text>
-                                </div>
-                            </div>
-                        ))}
+                    {/* The covers; clicking one shows the book's details */}
+                    <div className="mb-8">
+                        <BookShelf books={shelf} />
                     </div>
                 </div>
             </StackVertical>
