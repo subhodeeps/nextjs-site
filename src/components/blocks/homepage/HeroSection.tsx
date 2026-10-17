@@ -1,3 +1,8 @@
+// src/components/blocks/homepage/HeroSection.tsx
+//
+// The top of the home page: the title, the introduction paragraphs and the photo.
+// Edit the text here to change the introduction. The 'use client' line below lets
+// the entrance animations run in the browser.
 "use client";
 
 import { motion } from "framer-motion";
@@ -8,6 +13,14 @@ import Link from "next/link";
 import Image from "next/image";
 import Ruler from "@/components/ui/ruler/ruler";
 
+/**
+ * The home page's introduction.
+ *
+ * Each <motion.div> fades its content in: it starts at `initial` (invisible) and
+ * moves to `animate` (visible) after `delay` seconds, so the paragraphs appear one
+ * after another. {" "} inserts a space, because JSX drops the spaces at the end of
+ * a line, before a tag such as <Link>.
+ */
 export function HeroSection() {
   return (
     <motion.div
@@ -130,7 +143,8 @@ export function HeroSection() {
         </StackVertical>
       </div>
 
-      {/* Cover Image */}
+      {/* Cover Image. `fill` makes the image cover its box, whose shape (aspect-[4/3]
+          and so on) changes with the screen width; `priority` loads it first. */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

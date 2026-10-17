@@ -1,3 +1,7 @@
+// src/app/learning/books/scattering-from-black-holes/chapter-1/page.tsx
+//
+// The page at /learning/books/scattering-from-black-holes/chapter-1: the notes on
+// chapter 1, written in notes.mdx next to this file.
 'use client'
 
 import Notes from './notes.mdx'
@@ -7,6 +11,7 @@ import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
 import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
 import { IndividualPageFooter } from '@/components/layout/footer/IndividualPageFooter'
 
+/** Draws notes.mdx with the site's Markdown styles, between the navigation and the footer. */
 export default function Chapter1() {
   return (
     <>
@@ -14,7 +19,8 @@ export default function Chapter1() {
         <StackVertical gap="md">
           <TerminalNav />
 
-          {/* MDX Content */}
+          {/* MDX Content. (The prose classes belong to Tailwind's typography plugin,
+              which the site does not install, so they have no effect.) */}
           <div className="prose dark:prose-invert max-w-none">
             <Notes components={mdxComponents} />
           </div>

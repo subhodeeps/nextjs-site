@@ -1,3 +1,7 @@
+// src/components/ui/text-heading/text-heading.tsx
+//
+// A heading in the heading font (Fira Code), used for page titles and section
+// headings, as <TextHeading as="h1">Research</TextHeading>.
 import { cn } from '@/lib/utils/utils'
 import { headingFont } from '@/styles/fonts/fonts'
 
@@ -10,6 +14,7 @@ interface TextHeadingProps {
     id?: string;
 }
 
+// Font size for each level; each grows at the sm:, md: and lg: screen widths
 const defaultSizes = {
     h1: 'text-xl sm:text-2xl md:text-2xl lg:text-3xl',
     h2: 'text-lg sm:text-xl md:text-xl lg:text-2xl',
@@ -28,6 +33,7 @@ const fontWeights = {
     thin: 'font-thin'
 }
 
+// Space above and below for each level
 const defaultMargin = {
     h1: 'mb-4 mt-6',
     h2: 'mb-3 mt-5',
@@ -37,15 +43,26 @@ const defaultMargin = {
     h6: 'mb-1 mt-1'
 }
 
+/**
+ * A heading.
+ *
+ * @param as        the heading level, 'h1' (default) to 'h6'; it sets the size
+ * @param weight    font weight (default 'semibold')
+ * @param margin    turns the level's default spacing on. Its value itself is not
+ *                  used: any value gives the spacing in defaultMargin for that level.
+ * @param id        an anchor, so the heading can be linked to as #id
+ * @param className extra Tailwind classes, which win over the defaults
+ */
 export default function TextHeading({ children, className, as = 'h1', weight = 'semibold', margin = 'mb-4 mt-6', id }: TextHeadingProps) {
+    // The tag to draw (h1, h2, ...), chosen by the `as` prop
     const Component = as;
     return (
-        <Component 
+        <Component
             id={id}
             className={cn(
-                defaultSizes[as], 
-                headingFont.className, 
-                fontWeights[weight], 
+                defaultSizes[as],
+                headingFont.className,
+                fontWeights[weight],
                 margin && defaultMargin[as],
                 'text-foreground dark:text-amore-slate-shade',
                 className
@@ -54,4 +71,4 @@ export default function TextHeading({ children, className, as = 'h1', weight = '
             {children}
         </Component>
     );
-} 
+}

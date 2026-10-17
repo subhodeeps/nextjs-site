@@ -1,9 +1,17 @@
+// src/components/blocks/homepage/HomepageSocials.tsx
+//
+// The "Socials" paragraph at the bottom of the home page.
 'use client'
 
 import TextHeading from '@/components/ui/text-heading/text-heading'
 import Text from '@/components/ui/text/text'
 import Link from 'next/link'
 
+/**
+ * The Socials section, with the email address and the Twitter link. <Link> from
+ * next/link works like <a>; for pages of this site it also loads the next page
+ * without a full reload.
+ */
 export function HomepageSocials() {
     return (
         <div>

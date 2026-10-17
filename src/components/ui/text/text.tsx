@@ -1,3 +1,7 @@
+// src/components/ui/text/text.tsx
+//
+// A paragraph of text with the site's sizes and colours, used throughout the
+// pages as <Text>...</Text> or, for grey secondary text, <Text variant="muted">.
 import { cn } from '@/lib/utils/utils'
 import { monoFont } from '@/styles/fonts/fonts'
 
@@ -12,7 +16,8 @@ interface TextProps {
     truncate?: boolean;
 }
 
-// Define types for the default styles
+// Define types for the default styles. TextProps['size'] means "the type of the
+// size prop", and NonNullable removes the "or missing" that the ? added.
 type TextSize = NonNullable<TextProps['size']>
 type TextWeight = NonNullable<TextProps['weight']>
 type TextVariant = NonNullable<TextProps['variant']>
@@ -29,6 +34,7 @@ const defaultStyles = {
     truncate: false
 }
 
+// Font size for each size name; the size grows at the sm: and md: screen widths
 const textSizes = {
     xs: 'text-[10px] sm:text-xs md:text-xs',           // 10px -> 12px -> 12px
     sm: 'text-xs sm:text-sm md:text-sm',               // 12px -> 14px -> 14px
@@ -45,6 +51,8 @@ const fontWeights = {
     bold: 'font-bold'
 }
 
+// Text colour for each variant. The colours come from the amore palettes; a
+// dark:... class sets the colour used in the dark theme.
 const variants = {
     default: 'text-foreground',
     purple: 'text-accent',
@@ -70,8 +78,19 @@ const transforms = {
     capitalize: 'capitalize'
 }
 
-export default function Text({ 
-    children, 
+/**
+ * A <p> of text.
+ *
+ * @param size      font size (default 'sm': 12px on phones, 14px from sm: up)
+ * @param weight    'normal' (default), 'medium', 'semibold' or 'bold'
+ * @param variant   colour (default 'default'); 'muted' for secondary text
+ * @param align     text alignment (default 'left')
+ * @param transform upper- or lower-case the text
+ * @param truncate  cut the text off with "..." when it does not fit on one line
+ * @param className extra Tailwind classes, which win over the ones above
+ */
+export default function Text({
+    children,
     className,
     size = defaultStyles.size,
     weight = defaultStyles.weight,
@@ -80,7 +99,9 @@ export default function Text({
     transform = defaultStyles.transform,
     truncate = defaultStyles.truncate
 }: TextProps) {
-    // Use the provided value or fall back to default
+    // Use the provided value or fall back to default. (The defaults above already
+    // do this; these lines are a second safety net. `a || b` means a, or b if a
+    // is empty.)
     const finalSize = size || defaultStyles.size
     const finalWeight = weight || defaultStyles.weight
     const finalVariant = variant || defaultStyles.variant
@@ -101,4 +122,4 @@ export default function Text({
             {children}
         </p>
     );
-} 
+}

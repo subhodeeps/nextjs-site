@@ -1,3 +1,8 @@
+// src/components/blocks/callout/callout.tsx
+//
+// A highlighted note box with an icon and a title, for tips and warnings inside a
+// page: <Callout variant="orange" title="Careful">...</Callout>. No page uses it
+// at the moment. To use it in an .mdx file, import it at the top of the file.
 import { cn } from '@/lib/utils/utils'
 import Text from '@/components/ui/text/text'
 import { Info, AlertTriangle, CheckCircle2, AlertCircle, Lightbulb } from 'lucide-react'
@@ -73,15 +78,26 @@ const variants = {
     }
 }
 
-export default function Callout({ 
-    children, 
+/**
+ * A callout box.
+ *
+ * @param variant      the colour and icon: 'purple' (a tip, the default),
+ *                     'orange' (a warning), 'red', 'green' or 'blue'
+ * @param title        a heading shown next to the icon; without it, no icon either
+ * @param marginTop    space above; giving either margin replaces the default space
+ * @param marginBottom space below
+ */
+export default function Callout({
+    children,
     className,
     variant = 'purple',
     title,
     marginTop: mt,
     marginBottom: mb
 }: CalloutProps) {
+    // The icon for this variant; a component kept in a variable is drawn as <IconComponent />
     const IconComponent = variants[variant].Icon
+    // Use the default space above and below only when neither margin was given
     const spacing = mt || mb ? null : 'md'
     
     return (

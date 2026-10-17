@@ -1,3 +1,8 @@
+// src/app/learning/books/scattering-from-black-holes/page.tsx
+//
+// The page at /learning/books/scattering-from-black-holes: notes on the book by
+// Futterman, Handler and Matzner, with one link per chapter. Each chapter is a
+// folder next to this file (chapter-1/), with its notes in notes.mdx.
 'use client'
 
 import BaseContainer from "@/components/layout/container/base-container";
@@ -9,7 +14,8 @@ import TextHeading from "@/components/ui/text-heading/text-heading";
 import Text from "@/components/ui/text/text";
 import Link from "next/link";
 
-export default function LLMFromScratchRaschka() {
+/** The book's page: title, last-updated date, a note that it is under construction, and the chapter links. */
+export default function ScatteringFromBlackHoles() {
 
     return (
         <>

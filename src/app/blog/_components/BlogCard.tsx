@@ -1,3 +1,7 @@
+// src/app/blog/_components/BlogCard.tsx
+//
+// One entry in the blog index: the post's title, description, date and reading
+// time, all linking to the post.
 import Link from "next/link"
 import { cn } from "@/lib/utils/utils"
 import { StackVertical, StackHorizontal } from "@/components/layout/layout-stack/layout-stack"
@@ -5,6 +9,15 @@ import Text from "@/components/ui/text/text"
 import TextHeading from "@/components/ui/text-heading/text-heading"
 import { BlogPost } from "../_types/blog"
 
+/**
+ * A post's entry in the blog index.
+ *
+ * @param post   the post, with the fields listed in ../_types/blog.ts
+ * @param isLast true for the last post, which gets no dividing line below it
+ *
+ * The outer element has the class "group", so classes inside it written
+ * group-hover:... apply when the mouse is anywhere over the card.
+ */
 export function BlogCard({ post, isLast }: { post: BlogPost; isLast?: boolean }) {
     return (
         <div className="group">

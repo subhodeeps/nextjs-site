@@ -1,4 +1,8 @@
 // tsconfig.json
+//
+// Settings for TypeScript, which checks the types in the .ts and .tsx files when
+// the site is built. Most of these are Next.js defaults; the ones worth knowing
+// are commented. (Comments are allowed in this file, but not in package.json.)
 {
   "compilerOptions": {
     "target": "es5",
@@ -9,7 +13,9 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
+    // Check types strictly, which catches more mistakes
     "strict": true,
+    // Only check; Next.js itself turns TypeScript into JavaScript
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -23,7 +29,9 @@
         "name": "next"
       }
     ],
+    // Imports without ./ or @/, such as "app/blog/...", are looked up in src/
     "baseUrl": "src/",
+    // Shortcuts used in imports: "@/components/x" means "src/components/x"
     "paths": {
       "@/styles/*": [
         "styles/*"
@@ -39,6 +47,7 @@
       ]
     }
   },
+  // The files to check; .next/types holds types that Next.js generates
   "include": [
     "next-env.d.ts",
     "**/*.ts",

@@ -1,3 +1,8 @@
+// src/components/ui/terminal-nav/terminal-nav.tsx
+//
+// The navigation at the top of every page. Each page includes it as
+// <TerminalNav />. The 'use client' line below makes it run in the browser,
+// because it reacts to taps and to the Esc key.
 'use client'
 
 import Link from 'next/link'
@@ -58,13 +63,24 @@ const LONG_PATH = 15
 
 const focusRing = 'rounded-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
 
+/**
+ * The navigation prompt with its theme toggle.
+ *
+ * @param className extra Tailwind classes, such as "mb-8" for space below
+ */
 export function TerminalNav({ className }: { className?: string }) {
+    // The current address, such as "/learning/books", split into its parts:
+    // ["learning", "books"]. filter(Boolean) drops the empty part before the first /.
     const pathname = usePathname()
     const segments = pathname.split('/').filter(Boolean)
     const shorten = `~/${segments.join('/')}`.length > LONG_PATH
     const atHome = segments.length === 0
+    // Whether the listing is showing. useState keeps the value while the page is
+    // open; setOpen changes it and redraws the navigation.
     const [open, setOpen] = useState(atHome)
 
+    // While the listing is open, listen for the Esc key and close it. The function
+    // returned at the end removes the listener again when it is no longer needed.
     useEffect(() => {
         if (!open) return
         const onKey = (event: KeyboardEvent) => {
@@ -84,6 +100,9 @@ export function TerminalNav({ className }: { className?: string }) {
                         <Link href="/" aria-label="Home" className={focusRing}>{PROMPT_SYMBOL}</Link>
                     )}
 
+                    {/* The path: ~ followed by one part per segment. ['~', ...segments]
+                        is a new list with ~ in front; .map loops over it, and i is
+                        the position (0 for ~). */}
                     <span>
                         {['~', ...segments].map((label, i) => {
                             const href = i === 0 ? '/' : `/${segments.slice(0, i).join('/')}`
@@ -132,6 +151,7 @@ export function TerminalNav({ className }: { className?: string }) {
                 <ThemeToggle />
             </div>
 
+            {/* The output of `ls`, drawn only while `open` is true */}
             {open && (
                 <ul id="terminal-nav-output" className="mt-1 grid grid-cols-[repeat(3,max-content)] gap-x-[2ch] sm:flex sm:flex-wrap">
                     {SECTIONS.map((name) => (

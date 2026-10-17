@@ -1,3 +1,7 @@
+// src/components/layout/footer/SectionFooter.tsx
+//
+// The footer of a section's main page (About, Research, CV, Learning, Reading,
+// Blog): "To the Top | Home Page", the social icons and the copyright line.
 'use client'
 
 import { BaseFooter } from './BaseFooter'
@@ -5,37 +9,39 @@ import { FooterLink } from './_components/FooterLink'
 import { FooterDivider } from './_components/FooterDivider'
 
 interface SectionFooterProps {
-    color?: string;
     showToTop?: boolean;
     showHomePage?: boolean;
     showSocialLinks?: boolean;
     showCopyright?: boolean;
 }
 
-export function SectionFooter({ 
-    color = 'purple',
+/**
+ * A section page's footer, as <SectionFooter showToTop={false} />. Each `show...`
+ * prop (all true by default) switches one part of it on or off.
+ */
+export function SectionFooter({
     showToTop = true,
     showHomePage = true,
     showSocialLinks = true,
     showCopyright = true
 }: SectionFooterProps) {
+    // The link row; the divider appears only when there is a link on each side
     const navigationLinks = (
         <>
             {showToTop && (
                 <>
-                    <FooterLink href="#top" color={color}>To the Top</FooterLink>
-                    {showHomePage && <FooterDivider color={color} />}
+                    <FooterLink href="#top">To the Top</FooterLink>
+                    {showHomePage && <FooterDivider />}
                 </>
             )}
             {showHomePage && (
-                <FooterLink href="/" color={color}>Home Page</FooterLink>
+                <FooterLink href="/">Home Page</FooterLink>
             )}
         </>
     )
 
     return (
-        <BaseFooter 
-            color={color}
+        <BaseFooter
             navigationLinks={navigationLinks}
             className="mt-6"
             showToTop={showToTop}

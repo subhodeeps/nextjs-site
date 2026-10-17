@@ -1,3 +1,8 @@
+// src/app/research/page.tsx
+//
+// The Research page at /research: a summary of the research, then the preprints
+// and the published papers. Each paper is one <Text> block with a <Link> to its
+// INSPIRE-HEP record; to add a paper, copy a block and change the link and text.
 "use client";
 
 import BaseContainer from "@/components/layout/container/base-container";
@@ -10,7 +15,8 @@ import Link from "next/link";
 import Ruler from "@/components/ui/ruler/ruler";
 import Image from "next/image";
 
-export default function Learning() {
+/** The Research page: summary, preprints, publications, a photo and the footer. */
+export default function Research() {
   return (
     <BaseContainer size="md" paddingX="md" paddingY="lg">
       <StackVertical gap="md">
@@ -181,10 +187,15 @@ export default function Learning() {
         />
       </div>
 
-      <SectionFooter color="purple" showToTop={false} />
+      <SectionFooter showToTop={false} />
     </BaseContainer>
   );
 }
+
+// ---------------------------------------------------------------------------
+// An older version of this page, kept commented out. It has no effect on the
+// site and can be deleted.
+// ---------------------------------------------------------------------------
 
 // 'use client'
 
@@ -252,7 +263,7 @@ export default function Learning() {
 //             <Text variant="muted" className="mb-8">
 //                 Please visit my <Link href="https://inspirehep.net/authors/1797180?ui-citation-summary=true" className="text-accent font-bold hover:underline">INSPIRE-HEP profile </Link> for bibliometrics and a possibly updated list of papers.
 //             </Text>
-//             <SectionFooter color="purple" showToTop={false} />
+//             <SectionFooter showToTop={false} />
 //         </BaseContainer>
 //     )
 // }

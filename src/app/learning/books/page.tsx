@@ -1,3 +1,7 @@
+// src/app/learning/books/page.tsx
+//
+// The page at /learning/books: the books with notes. Each book is one <Text> with
+// a <Link> to its page; copy one to add a book.
 'use client'
 
 import BaseContainer from "@/components/layout/container/base-container"
@@ -8,6 +12,7 @@ import { TerminalNav } from "@/components/ui/terminal-nav/terminal-nav"
 import { IndividualPageFooter } from "@/components/layout/footer/IndividualPageFooter"
 import Link from "next/link"
 
+/** The Books page: the list of books, a note that it is under construction, and the footer. */
 export default function Books() {
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">

@@ -1,3 +1,7 @@
+// src/app/learning/_components/ReferenceCard.tsx
+//
+// One card on the Learning page, linking to one of its subpages: a title, a
+// description and the date it was last updated. The cards come from ../_data/posts.ts.
 import Link from "next/link"
 import { cn } from "@/lib/utils/utils"
 import { StackVertical, StackHorizontal } from "@/components/layout/layout-stack/layout-stack"
@@ -5,6 +9,12 @@ import Text from "@/components/ui/text/text"
 import TextHeading from "@/components/ui/text-heading/text-heading"
 import { NotesTypes } from "../_types/note-types"
 
+/**
+ * A card for one entry of ../_data/posts.ts.
+ *
+ * @param post   the entry; an href starting with http opens in a new tab
+ * @param isLast true for the last card, which gets no dividing line below it
+ */
 export function ReferenceCard({ post, isLast }: { post: NotesTypes; isLast?: boolean }) {
     const isExternalLink = post.href.startsWith('http')
     

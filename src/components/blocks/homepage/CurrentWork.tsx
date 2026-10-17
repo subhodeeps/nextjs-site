@@ -1,4 +1,10 @@
+// src/components/blocks/homepage/CurrentWork.tsx
+//
+// The "Updates" list on the home page. To add an update, add an entry at the top
+// of the `items` list in CurrentWork below; move old ones to the Older Updates
+// page (src/app/older_updates/page.tsx).
 import { motion } from "framer-motion";
+// Icons from the lucide-react package, drawn as <Briefcase className="w-4 h-4" />
 import {
   Briefcase,
   Box,
@@ -19,6 +25,16 @@ interface WorkItemProps {
   endText?: string;
 }
 
+/**
+ * One update: an icon, then the text, sliding in after `delay` seconds.
+ *
+ * @param icon          the icon to show on the left
+ * @param text          the update itself: plain text, or a link written as <a>
+ * @param hyperlink     optional address of a link added after the text, with
+ * @param hyperlinkText its text, and
+ * @param endText       optional text after the link. (The items below put their
+ *                      links inside `text` instead, so these three are unused.)
+ */
 function WorkItem({
   icon,
   text,
@@ -48,6 +64,11 @@ function WorkItem({
   );
 }
 
+/**
+ * The Updates section. `items` is the list of updates, newest first, like a
+ * _data file inside the component: each entry has an icon and a text, which is
+ * either a plain string or a link.
+ */
 export function CurrentWork() {
   const items = [
 
@@ -133,6 +154,7 @@ export function CurrentWork() {
       <StackVertical gap="none">
         <TextHeading as="h2">Updates</TextHeading>
         <StackVertical gap="md">
+          {/* One WorkItem per entry; each appears 0.1 s after the one above it */}
           {items.map((item, index) => (
             <WorkItem
               key={index}

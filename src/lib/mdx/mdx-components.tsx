@@ -1,4 +1,13 @@
-
+// src/lib/mdx/mdx-components.tsx
+//
+// How Markdown is drawn on the site. When an .mdx file is turned into a page,
+// each Markdown element is rendered by the matching entry below: a "# Title"
+// line by h1, a paragraph by p, a [link](...) by a, a fenced code block by
+// code, and so on. This is where to change how posts and notes look. (Next.js
+// finds this list through src/mdx-components.tsx.)
+//
+// Each entry is a small component: `({ children }) => (...)` takes the
+// element's content, `children`, and returns the HTML to draw around it.
 
 import { MDXComponents } from 'mdx/types'
 import Ruler from '@/components/ui/ruler/ruler'
@@ -7,7 +16,7 @@ import { headingFont, monoFont } from '@/styles/fonts/fonts'
 import CodeBlock from '@/components/blocks/code-block/code-block'
 
 export const mdxComponents: MDXComponents = {
-    // Headings - Clean margins and crisp white text
+    // Headings use the heading font (Fira Code); dark:... sets the dark-theme colour
     h1: ({ children }) => (
         <h1 className={cn("mt-10 mb-6 text-2xl sm:text-3xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade", headingFont.className)}>
             {children}
@@ -29,14 +38,14 @@ export const mdxComponents: MDXComponents = {
         </h4>
     ),
 
-    // Paragraphs - Tall line height and soft gray color exactly like the screenshot
+    // Paragraphs: 15px on phones, 16px from the sm: width up, with tall line spacing
     p: ({ children }) => (
         <p className={cn("mb-6 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-foreground", monoFont.className)}>
             {children}
         </p>
     ),
 
-    // Lists - Proper hanging indents, spaced items, and dimmed markers
+    // Lists: indented, spaced items with dimmed bullets and numbers
     ul: ({ children }) => (
         <ul className={cn("mb-6 ml-6 list-disc space-y-3 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-foreground marker:text-muted-foreground", monoFont.className)}>
             {children}
@@ -53,7 +62,7 @@ export const mdxComponents: MDXComponents = {
         </li>
     ),
 
-    // Inline text styling
+    // **bold** and *italic* text
     strong: ({ children }) => (
         <strong className={cn("font-bold text-foreground dark:text-amore-slate-shade", monoFont.className)}>
             {children}
@@ -64,19 +73,22 @@ export const mdxComponents: MDXComponents = {
             {children}
         </span>
     ),
-    
-    // Strip the default pre tag completely to fix double-box issues
+
+    // Markdown wraps code blocks in <pre><code>. The <pre> is dropped here, and the
+    // code entry below draws the whole block, so there are not two boxes.
     pre: ({ children }) => (
         <>{children}</>
     ),
 
-    // Code blocks and inline code
+    // Both `inline code` and fenced code blocks arrive here. A fenced block with a
+    // language (```bash) has className "language-bash"; inline code has none.
     code: ({ children, className }) => {
+        // Pull the language name out of "language-bash", if there is one
         const match = /language-(\w+)/.exec(className || '');
         const language = match ? match[1] : '';
 
         if (!language) {
-            // Purple inline code styling + Monospace
+            // Inline code: tinted accent background, accent text
             return (
                 <code className={cn(
                     monoFont.className,
@@ -91,17 +103,18 @@ export const mdxComponents: MDXComponents = {
             );
         }
 
+        // A code block: highlighted, with a copy button (components/blocks/code-block)
         return (
             <div className="my-8">
-                <CodeBlock 
-                    code={children as string} 
-                    language={language} 
+                <CodeBlock
+                    code={children as string}
+                    language={language}
                 />
             </div>
         );
-    }, 
+    },
 
-    // Blockquotes
+    // > quoted text
     blockquote: ({ children }) => (
         <blockquote className={cn(
             "pl-4 border-l-2 border-accent-muted/50",
@@ -112,14 +125,15 @@ export const mdxComponents: MDXComponents = {
             {children}
         </blockquote>
     ),
-    
-    // Ruler
+
+    // A --- line becomes a horizontal rule
     hr: () => <Ruler color="gray" marginTop="lg" marginBottom="lg" />,
 
-    // Links - Subtle purple underline that matches your aesthetic
+    // Links: body-coloured text with a faint accent underline. Links to other
+    // websites (starting with http) open in a new tab.
     a: ({ href, children }) => (
-        <a 
-            href={href} 
+        <a
+            href={href}
             className={cn(
                 "text-foreground dark:text-amore-slate-shade font-medium",
                 "transition-colors duration-200",

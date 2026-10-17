@@ -5,6 +5,10 @@ collects my research, CV, blog posts, and notes on reading and learning. The
 site is served at [subhodeeps.vercel.app](https://subhodeeps.vercel.app), and
 subhodeeps.github.io redirects to it.
 
+If you know Jekyll but not Next.js, start with
+[docs/for-jekyll-users.md](docs/for-jekyll-users.md), which maps one onto the
+other. Every code file also begins with a comment that explains what it does.
+
 ## Software
 
 - [Next.js 16](https://nextjs.org) (App Router, bundled with webpack),
@@ -37,6 +41,7 @@ The site is generated as a static export (`output: 'export'` in
 ## Repository structure
 
 ```text
+docs/                     # notes for working on the site
 src/
 ├── app/                  # one directory per section: about, blog, collaborations,
 │                         # cv, learning, older_updates, reading, research
@@ -115,9 +120,8 @@ alt text, with underscores and hyphens shown as spaces.
 ### Reading and Learning
 
 The book list on the Reading page is defined in `src/app/reading/page.tsx`, and
-the cover images are in `public/covers/`. On both the Reading and Learning
-pages, the cards that link to subpages come from the section's
-`_data/posts.ts`.
+the cover images are in `public/covers/`. The cards on the Learning page, which
+link to its subpages, come from `src/app/learning/_data/posts.ts`.
 
 ### CV
 

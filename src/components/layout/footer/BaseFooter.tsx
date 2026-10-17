@@ -1,3 +1,9 @@
+// src/components/layout/footer/BaseFooter.tsx
+//
+// The parts every page footer shares: a faint dividing line, a row of links
+// supplied by the calling footer, the social icons and the copyright line.
+// HomepageFooter, SectionFooter and IndividualPageFooter are built on it; to
+// change a social link, edit the socialLinks list below.
 'use client'
 
 import { cn } from '@/lib/utils/utils'
@@ -7,7 +13,6 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 interface BaseFooterProps {
-    color?: string;
     navigationLinks?: React.ReactNode;
     className?: string;
     showToTop?: boolean;
@@ -16,15 +21,24 @@ interface BaseFooterProps {
     showCopyright?: boolean;
 }
 
-export function BaseFooter({ 
-    color = 'purple', 
-    navigationLinks, 
+/**
+ * The shared footer.
+ *
+ * @param navigationLinks the row of links to show, such as "To the Top | Home Page"
+ * @param show...         each switches one part of the footer on or off (all true
+ *                        by default); the link row appears when showToTop or
+ *                        showSectionName is on
+ */
+export function BaseFooter({
+    navigationLinks,
     className,
     showToTop = true,
     showSectionName = true,
     showSocialLinks = true,
     showCopyright = true
 }: BaseFooterProps) {
+    // The social icons, in order: each has the address it links to and the icon
+    // to show (icons from the react-icons package, Si... for Simple Icons)
     const socialLinks = [
         {href: "https://inspirehep.net/authors/1797180?ui-citation-summary=true", icon: < SiInspire className="w-4 h-4" />},
         {href: "https://scholar.google.com/citations?user=WpYbE3oAAAAJ&hl=en", icon: < SiGooglescholar className="w-4 h-4" />},
@@ -39,6 +53,7 @@ export function BaseFooter({
 
     return (
         <footer className={cn("mt-auto pt-12", className)}>
+            {/* The dividing line, fading out towards both ends */}
             <div className="relative w-full mb-8">
                 <div className="absolute inset-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent-muted/20 to-transparent" />
             </div>
@@ -59,6 +74,8 @@ export function BaseFooter({
                     <div className="flex flex-col items-center gap-4">
                         {showSocialLinks && (
                             <div className="flex items-center gap-6">
+                                {/* One icon per link; each lifts slightly on hover and
+                                    fades in a little after the one before */}
                                 {socialLinks.map((link, index) => (
                                     <motion.div
                                         key={link.href}
@@ -96,6 +113,7 @@ export function BaseFooter({
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.4 }}
                             >
+                                {/* The current year, worked out when the page is built */}
                                 © {new Date().getFullYear()} subhodeeps
                             </motion.span>
                         )}

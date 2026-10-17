@@ -1,3 +1,8 @@
+// src/components/ui/list/list.tsx
+//
+// Styled bulleted and numbered lists for use inside .tsx pages. No page uses
+// them at the moment (the blog post that did was removed); lists written in
+// Markdown are styled in src/lib/mdx/mdx-components.tsx instead.
 import { cn } from '@/lib/utils/utils'
 import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
 import { monoFont } from '@/styles/fonts/fonts'
@@ -19,6 +24,7 @@ interface ListItemProps {
 
 const listFontClass = monoFont.className
 
+// Font sizes; each value grows at the sm: and md: screen widths
 const listFontSize = {
     xs: 'text-[10px] sm:text-xs md:text-xs',           // 10px -> 12px -> 12px
     sm: 'text-xs sm:text-sm md:text-sm',               // 12px -> 14px -> 14px
@@ -29,12 +35,16 @@ const listFontSize = {
     '2xl': 'text-xl sm:text-2xl md:text-2xl'           // 20px -> 24px -> 24px
 }
 
+// Space between items
 const spacingStyles = {
     tight: 'space-y-0.5 sm:space-y-1',
     normal: 'space-y-1 sm:space-y-2',
     relaxed: 'space-y-2 sm:space-y-3'
 }
 
+// Bullet styles. Tailwind has no list-circle or list-square class, so those two
+// options currently show the default bullet; list-[circle] and list-[square]
+// would work.
 const markerStyles = {
     disc: 'list-disc',
     circle: 'list-circle',
@@ -51,8 +61,17 @@ const paddingLeftStyles = {
     none: 'pl-0'
 }
 
-export function List({ 
-    children, 
+/**
+ * A list, written <List> <ListItem>...</ListItem> </List>.
+ *
+ * @param type        'unordered' for bullets (default) or 'ordered' for numbers
+ * @param marker      the bullet style (default 'disc')
+ * @param spacing     space between items (default 'normal')
+ * @param fontSize    text size (default 'sm')
+ * @param paddingLeft indent of the items (default 'md')
+ */
+export function List({
+    children,
     className,
     type = 'unordered',
     variant = 'default',
@@ -61,8 +80,9 @@ export function List({
     fontSize = 'sm',
     paddingLeft = 'md'
 }: ListProps) {
+    // Draw an <ol> for a numbered list and a <ul> otherwise
     const Component = type === 'ordered' ? 'ol' : 'ul'
-    
+
     return (
         <Component
             className={cn(
@@ -81,6 +101,7 @@ export function List({
     )
 }
 
+/** One item of a List, with a dimmed bullet. */
 export function ListItem({ children, className }: ListItemProps) {
     return (
         <li className={cn(
@@ -94,20 +115,26 @@ export function ListItem({ children, className }: ListItemProps) {
     )
 }
 
-// Example of a nested list component for better organization
-export function NestedList({ 
-    items 
-}: { 
+/**
+ * A list with optional sub-lists, built from data rather than written out:
+ * <NestedList items={[{ content: 'Item', subitems: ['Sub 1', 'Sub 2'] }]} />.
+ * Nothing uses it at the moment.
+ */
+export function NestedList({
+    items
+}: {
     items: {
         content: React.ReactNode;
         subitems?: React.ReactNode[];
-    }[] 
+    }[]
 }) {
     return (
         <List>
+            {/* .map() is the {% for %} loop of JSX; each item needs a unique key */}
             {items.map((item, index) => (
                 <StackVertical key={index} gap="sm">
                     <ListItem>{item.content}</ListItem>
+                    {/* `a && b` shows b only when a exists, like {% if a %} */}
                     {item.subitems && (
                         <List marker="circle" spacing="tight" className="ml-4">
                             {item.subitems.map((subitem, subIndex) => (
@@ -119,4 +146,4 @@ export function NestedList({
             ))}
         </List>
     )
-} 
+}

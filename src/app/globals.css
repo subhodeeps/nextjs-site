@@ -1,4 +1,14 @@
+/*
+ * src/app/globals.css
+ *
+ * The site's one stylesheet, loaded by the root layout. Nearly all styling is
+ * done with Tailwind classes inside the components; this file holds what cannot
+ * be: the KaTeX styles for equations, Tailwind's own base rules, and the colour
+ * variables behind the theme colours (text-accent, bg-background and so on).
+ * Change a colour here and every page that uses it changes.
+ */
 @import 'katex/dist/katex.min.css';
+/* Tailwind inserts its reset rules, component classes and utility classes here */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -115,6 +125,11 @@
   }
 }
 
+/*
+ * Defaults for every element: borders use the theme's border colour unless a
+ * class says otherwise, and the page takes its background and text colour from
+ * the theme. (@apply uses Tailwind classes inside ordinary CSS.)
+ */
 @layer base {
   * {
     @apply border-border;

@@ -1,3 +1,10 @@
+// src/components/blocks/code-block/code-block.tsx
+//
+// A fenced code block in a post or note: a box with the language name, a copy
+// button, and the code coloured by syntax. Every ```bash ... ``` block in an .mdx
+// file is drawn by this component (see src/lib/mdx/mdx-components.tsx). The
+// 'use client' line below makes it run in the browser, for the copy button and
+// for the colours, which depend on the current theme.
 'use client'
 
 import { cn } from '@/lib/utils/utils'
@@ -6,10 +13,16 @@ import { Highlight } from 'prism-react-renderer'
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
 
-// Copy button component
+/**
+ * The bar at the top of a code block: the language name on the left, and on the
+ * right a button that copies the code and shows "COPIED!" for two seconds.
+ */
 const CopyButton = ({ code, language }: { code: string; language?: string }) => {
+    // Whether the code was just copied; changing it redraws the button
     const [copied, setCopied] = useState(false);
-    
+
+    // `async` lets the function wait (`await`) for the clipboard to accept the
+    // text; setTimeout then switches "COPIED!" off again after 2000 ms
     const copy = async () => {
         await navigator.clipboard.writeText(code);
         setCopied(true);
@@ -79,6 +92,10 @@ interface CodeBlockProps {
 const tone = (palette: string, isDark: boolean) =>
     `hsl(var(--amore-${palette}-${isDark ? 'light' : 'ink'}))`
 
+/**
+ * The colour scheme handed to the syntax highlighter: a colour for plain text,
+ * then one for each kind of token (keywords, comments, strings and so on).
+ */
 const getTheme = (isDark: boolean) => ({
     plain: {
         backgroundColor: 'transparent',
@@ -95,11 +112,19 @@ const getTheme = (isDark: boolean) => ({
     ]
 });
 
+/**
+ * A highlighted code block.
+ *
+ * @param code     the code to show
+ * @param language its language, such as 'bash' or 'python', which decides the colours
+ */
 export default function CodeBlock({ code, language, className }: CodeBlockProps) {
     const { theme, systemTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
-    // Prevent hydration mismatch
+    // Prevent hydration mismatch. The page is built before the visitor's theme is
+    // known; useEffect runs once the page is in the browser, and only then are the
+    // colours switched to the visitor's theme.
     useEffect(() => {
         setMounted(true);
     }, []);
@@ -116,6 +141,8 @@ export default function CodeBlock({ code, language, className }: CodeBlockProps)
         )}>
             <CopyButton code={code} language={language} />
             
+            {/* Highlight splits the code into lines of tokens and hands them to the
+                function inside it, which draws each line and each coloured token */}
             <Highlight
                 theme={getTheme(isDark)}
                 code={code}
@@ -134,6 +161,7 @@ export default function CodeBlock({ code, language, className }: CodeBlockProps)
                         )}
                         style={{ ...style, backgroundColor: 'transparent', fontFamily: 'inherit' }}
                     >
+                        {/* slice(0, -1) drops the empty last line that the Markdown leaves */}
                         {tokens.slice(0, -1).map((line, i) => (
                             <div key={i} {...getLineProps({ line, className: "leading-6 sm:leading-7" })}>
                                 {line.map((token, key) => (

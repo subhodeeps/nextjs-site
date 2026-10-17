@@ -1,4 +1,10 @@
-// src/app/collaborators/page.tsx
+// src/app/collaborations/page.tsx
+//
+// The Collaborations page at /collaborations: a short text and a grid of photos.
+// The photos are every image in public/collabs/. This file reads that folder when
+// the site is built (it has no 'use client', so it never runs in the browser) and
+// hands the list to grid.tsx, which shuffles it in the visitor's browser, so the
+// order changes on every visit. To add a photo, put it in public/collabs/.
 import fs from 'fs'
 import path from 'path'
 import sizeOf from 'image-size'
@@ -13,6 +19,8 @@ import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
 // Import the new client component
 import CollaboratorGrid from './grid'
 
+// One photo: its address, the alt text made from its file name, and its size in
+// pixels (the image component needs the size to reserve space for it)
 type CollaboratorPhoto = {
   id: string
   name: string
@@ -21,14 +29,19 @@ type CollaboratorPhoto = {
   height: number
 }
 
+/** The Collaborations page; it collects the photos, then draws the text and the grid. */
 export default function Collaborators() {
   const photosDirectory = path.join(process.cwd(), 'public', 'collabs')
+  // `let` (unlike `const`) allows the value to be replaced, as it is below
   let people: CollaboratorPhoto[] = []
 
+  // try/catch: if reading the folder fails, log the error and show no photos,
+  // instead of failing the whole build
   try {
     const files = fs.readdirSync(photosDirectory)
 
-    // Read the files statically at build time (no shuffling here)
+    // Read the files statically at build time (no shuffling here). Keep only image
+    // files, then turn each file name into a photo entry.
     people = files
       .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file))
       .map((file, index) => {
@@ -36,6 +49,8 @@ export default function Collaborators() {
         const imageBuffer = fs.readFileSync(filepath)
         const dimensions = sizeOf(imageBuffer)
 
+        // "anjan_da.jpg" becomes the alt text "anjan da"; `?? 1200` is the size to
+        // use if the image size cannot be read
         const nameWithoutExt = file.replace(/\.[^/.]+$/, '')
 
         return {
@@ -71,7 +86,7 @@ export default function Collaborators() {
         </div>
       </StackVertical>
 
-      <SectionFooter color="purple" showToTop={false} />
+      <SectionFooter showToTop={false} />
     </BaseContainer>
   )
 }

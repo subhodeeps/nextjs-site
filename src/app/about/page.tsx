@@ -1,3 +1,7 @@
+// src/app/about/page.tsx
+//
+// The About page at /about: the photo and the biography. To change the text,
+// edit the paragraphs below; the title in the browser tab is set in layout.tsx.
 "use client";
 
 import BaseContainer from "@/components/layout/container/base-container";
@@ -8,6 +12,7 @@ import Text from "@/components/ui/text/text";
 import { TerminalNav } from "@/components/ui/terminal-nav/terminal-nav";
 import Link from "next/link";
 
+/** The About page: navigation, title, date, photo with biography, footer. */
 export default function About() {
   return (
     <BaseContainer size="md" paddingX="md" paddingY="lg">
@@ -22,6 +27,8 @@ export default function About() {
             January 29, 2025
           </Text>
 
+          {/* The photo floats left, so the text wraps around it. It is a plain <img>,
+              which `npm run lint` warns about because Next.js prefers its <Image>. */}
           <div className="flow-root">
             <div className="float-left mr-6 mb-4 w-48 md:w-64">
               <img
@@ -101,7 +108,7 @@ export default function About() {
           </div>
         </div>
       </StackVertical>
-      <SectionFooter color="purple" />
+      <SectionFooter />
     </BaseContainer>
   );
 }

@@ -1,6 +1,8 @@
-// // src/app/collaborators/grid.tsx
-
-// src/app/collaborators/grid.tsx
+// src/app/collaborations/grid.tsx
+//
+// The photo grid on the Collaborations page, and the enlarged view that opens
+// when a photo is clicked. It runs in the browser ('use client' below), because
+// it shuffles the photos on each visit and reacts to clicks and the Esc key.
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -15,7 +17,10 @@ type CollaboratorPhoto = {
   height: number
 }
 
-// Fisher-Yates Shuffle Algorithm
+/**
+ * Returns a copy of the list in random order (the Fisher-Yates shuffle). The <T>
+ * means it works for a list of anything, and returns a list of the same kind.
+ */
 function shuffleArray<T>(array: T[]): T[] {
   const shuffled = [...array]
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -25,6 +30,15 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled
 }
 
+/**
+ * The photo grid.
+ *
+ * @param initialPeople the photos, in folder order, from page.tsx
+ *
+ * Three values are kept with useState: the photos in their current order,
+ * whether the shuffle has happened (the grid stays invisible until then, so the
+ * unshuffled order never flashes up), and the photo shown enlarged, if any.
+ */
 export default function CollaboratorGrid({ initialPeople }: { initialPeople: CollaboratorPhoto[] }) {
   const [people, setPeople] = useState<CollaboratorPhoto[]>(initialPeople)
   const [isMounted, setIsMounted] = useState(false)
@@ -57,7 +71,9 @@ export default function CollaboratorGrid({ initialPeople }: { initialPeople: Col
 
   return (
     <>
-      {/* The Masonry Grid */}
+      {/* The Masonry Grid: CSS columns (one, two from sm:, three from lg:), with
+          the photos flowing down each column, so photos of different heights
+          pack together. Clicking a photo enlarges it. */}
       <div 
         // className={`columns-1 sm:columns-2 gap-8 w-full transition-opacity duration-500 ${isMounted ? 'opacity-100' : 'opacity-0'}`}
          className={`columns-1 sm:columns-2 lg:columns-3 gap-6 w-full transition-opacity duration-500 ${isMounted ? 'opacity-100' : 'opacity-0'}`}
@@ -104,7 +120,9 @@ export default function CollaboratorGrid({ initialPeople }: { initialPeople: Col
         ))}
       </div>
 
-      {/* The Fullscreen Magnification Overlay */}
+      {/* The Fullscreen Magnification Overlay. AnimatePresence lets it animate out
+          when it closes, and the shared layoutId makes the photo grow from its
+          place in the grid. Clicking anywhere, or pressing Esc, closes it. */}
       <AnimatePresence>
         {selectedImage && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-12">
@@ -140,6 +158,11 @@ export default function CollaboratorGrid({ initialPeople }: { initialPeople: Col
     </>
   )
 }
+
+// ---------------------------------------------------------------------------
+// An older version of this grid, kept commented out. It has no effect on the
+// site and can be deleted.
+// ---------------------------------------------------------------------------
 
 // 'use client'
 

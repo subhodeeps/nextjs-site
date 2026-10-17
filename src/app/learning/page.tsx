@@ -1,3 +1,7 @@
+// src/app/learning/page.tsx
+//
+// The Learning page at /learning: an introduction, a link to the separate notes
+// site, and one card per entry in ./_data/posts.ts. To add a card, add an entry there.
 'use client'
 
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack";
@@ -11,6 +15,7 @@ import { SectionFooter } from "@/components/layout/footer/SectionFooter";
 import Link from 'next/link'
 import Image from "next/image"
 
+/** The Learning page: introduction, cards for the subpages, a photo and the footer. */
 export default function Learning() {
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">
@@ -45,6 +50,7 @@ export default function Learning() {
 
                 </Text>
                 <StackVertical gap="none">
+                    {/* One card per entry of ./_data/posts.ts; the last gets no line below it */}
                     {notes.map((note, index) => (
                         <ReferenceCard
                             key={note.id}
@@ -65,7 +71,7 @@ export default function Learning() {
                     />
                 </div>
 
-                <SectionFooter color="purple" showToTop={false} />
+                <SectionFooter showToTop={false} />
 
             </StackVertical>
         </BaseContainer>

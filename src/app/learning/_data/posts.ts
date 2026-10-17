@@ -1,3 +1,7 @@
+// src/app/learning/_data/posts.ts
+//
+// The cards shown on the Learning page, in order, like a _data file in Jekyll.
+// Each entry links to a subpage (href); add an entry to add a card.
 import { NotesTypes } from "../_types/note-types"
 
 export const notes: NotesTypes[] = [

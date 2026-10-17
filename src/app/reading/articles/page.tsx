@@ -1,3 +1,8 @@
+// src/app/reading/articles/page.tsx
+//
+// The page at /reading/articles: essays and fiction worth reading, written in
+// content.mdx next to this file. Edit content.mdx to change the list. (Nothing on
+// the Reading page links here at the moment.)
 "use client";
 
 import Content from "./content.mdx";
@@ -8,11 +13,15 @@ import { TerminalNav } from "@/components/ui/terminal-nav/terminal-nav";
 import { IndividualPageFooter } from "@/components/layout/footer/IndividualPageFooter";
 
 
-export default function References() {
+/** Draws content.mdx with the site's Markdown styles, between the navigation and the footer. */
+export default function ReadingArticles() {
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">
             <StackVertical gap="md">
                 <TerminalNav />
+                {/* The text of the .mdx file; mdxComponents decides how each Markdown element looks.
+                (The prose classes belong to Tailwind's typography plugin, which the site
+                does not install, so they have no effect.) */}
                 <div className="prose dark:prose-invert max-w-none">
                     <Content components={mdxComponents} />
                 </div>

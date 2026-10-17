@@ -1,3 +1,7 @@
+// src/app/reading/marginalia/page.tsx
+//
+// The Marginalia page at /reading/marginalia: links to short pieces of writing
+// worth keeping. Each piece is one <li> in the list below; copy one to add a piece.
 'use client'
 
 import BaseContainer from "@/components/layout/container/base-container"
@@ -8,6 +12,7 @@ import Text from "@/components/ui/text/text"
 import { TerminalNav } from "@/components/ui/terminal-nav/terminal-nav"
 import Link from "next/link"
 
+/** The Marginalia page: title, the list of pieces, and the footer. */
 export default function MarginaliaPage() {
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">
@@ -123,7 +128,7 @@ export default function MarginaliaPage() {
                 </div>
 
             </StackVertical>
-            <SectionFooter color="purple" showToTop={true} />
+            <SectionFooter showToTop={true} />
         </BaseContainer>
     )
 }

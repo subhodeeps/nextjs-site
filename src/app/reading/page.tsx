@@ -1,3 +1,9 @@
+// src/app/reading/page.tsx
+//
+// The Reading page at /reading: a link to Marginalia, then the books currently
+// being read. To change the books, edit the `books` list below; the cover images
+// are in public/covers/. (The files in _data and _components in this folder are
+// not used by this page.)
 'use client'
 
 import BaseContainer from "@/components/layout/container/base-container"
@@ -9,6 +15,11 @@ import { TerminalNav } from "@/components/ui/terminal-nav/terminal-nav"
 import Link from "next/link"
 import Image from 'next/image'
 
+/**
+ * The Reading page. `books` is the list of books shown in the gallery, like a
+ * _data file inside the page: each has a unique id, a title, an author and the
+ * path of its cover image.
+ */
 export default function Reading() {
     const books = [
         {
@@ -91,7 +102,8 @@ export default function Reading() {
                         Books that I am currently reading (or, at least, trying to). A simularca of (a fragment of) my library can be found <Link href="https://hobby-site.vercel.app/" className="text-accent font-bold hover:underline">here</Link>.
                     </Text>
 
-                    {/* Book Grid */}
+                    {/* Book Grid: two columns on phones, three from md:, five from lg:.
+                        One cover, title and author per book in the list above. */}
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
                         {books.map((book) => (
                             <div key={book.id} className="flex flex-col space-y-2">
@@ -117,7 +129,7 @@ export default function Reading() {
                     </div>
                 </div>
             </StackVertical>
-            <SectionFooter color="purple" showToTop={false} />
+            <SectionFooter showToTop={false} />
         </BaseContainer>
     )
 }

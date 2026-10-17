@@ -1,3 +1,10 @@
+// src/app/blog/posts/rsync-file-transfer/layout.tsx
+//
+// Metadata for /blog/posts/rsync-file-transfer, the counterpart of Jekyll front matter. Note that this
+// address is not the one readers use: the blog links to /blog/rsync-file-transfer, which is
+// drawn by src/app/blog/[slug]/page.tsx and takes its title and description
+// from the frontmatter of content.mdx. This file only matters if someone opens
+// /blog/posts/rsync-file-transfer directly.
 import { Metadata } from 'next'
 import { ogImages } from '@/lib/og/og-images'
 
@@ -19,6 +26,7 @@ export const metadata: Metadata = {
     }
 }
 
+/** Shows the page unchanged; this layout exists only for its metadata. */
 export default function Layout({
     children,
 }: {

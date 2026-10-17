@@ -1,4 +1,8 @@
-
+// src/app/older_updates/page.tsx
+//
+// The Older Updates page at /older_updates: the archive of updates that have left
+// the home page. To archive an update, move its entry from the `items` list in
+// src/components/blocks/homepage/CurrentWork.tsx to the top of `items` below.
 'use client'
 
 import BaseContainer from "@/components/layout/container/base-container"
@@ -10,6 +14,11 @@ import { SectionFooter } from "@/components/layout/footer/SectionFooter"
 import { motion } from "framer-motion"
 import { BookOpen, Brain, Briefcase, Video, Apple, FileText } from "lucide-react"
 
+/**
+ * One update: its icon in a tinted circle, then the text, fading in after
+ * `delay` seconds. Written as `const WorkItem = (...) => (...)`, which is another
+ * way of writing a function, one that returns the JSX directly.
+ */
 const WorkItem = ({
   icon,
   text,
@@ -32,6 +41,10 @@ const WorkItem = ({
   </motion.div>
 )
 
+/**
+ * The Older Updates page. `items` holds the updates, newest first: each has an
+ * icon (from lucide-react) and its text, here a link written as <a>.
+ */
 export default function OlderUpdates() {
   const items = [
     {
@@ -227,6 +240,7 @@ export default function OlderUpdates() {
           </Text>
 
           <StackVertical gap="md">
+            {/* One WorkItem per entry, each appearing 0.1 s after the one above */}
             {items.map((item, index) => (
               <WorkItem key={index} icon={item.icon} text={item.text} delay={index * 0.1} />
             ))}
@@ -234,7 +248,7 @@ export default function OlderUpdates() {
         </div>
       </StackVertical>
 
-      <SectionFooter color="purple" showToTop={false} />
+      <SectionFooter showToTop={false} />
     </BaseContainer>
   )
 }

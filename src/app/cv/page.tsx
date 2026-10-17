@@ -1,3 +1,8 @@
+// src/app/cv/page.tsx
+//
+// The CV page at /cv: a link to the full PDF (public/files/CV_subhodeep.pdf),
+// then employment, education and skills. Each entry is one row; copy a row to
+// add an entry.
 'use client';
 
 import BaseContainer from "@/components/layout/container/base-container";
@@ -10,6 +15,11 @@ import { Briefcase, GraduationCap, Code } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+/**
+ * The CV page. Each entry is a three-column row: a bullet, the description, and
+ * the dates. grid-cols-[auto_1fr_auto] sizes the outer columns to their content
+ * and gives the middle one the rest of the width.
+ */
 export default function CVPage() {
   return (
     <BaseContainer size="md" paddingX="md" paddingY="lg">
@@ -137,7 +147,7 @@ export default function CVPage() {
 
       </StackVertical>
 
-      <SectionFooter color="purple" showToTop={false} />
+      <SectionFooter showToTop={false} />
     </BaseContainer>
   );
 }

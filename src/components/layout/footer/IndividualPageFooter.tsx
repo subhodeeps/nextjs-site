@@ -1,3 +1,8 @@
+// src/components/layout/footer/IndividualPageFooter.tsx
+//
+// The footer of a page inside a section, such as a blog post: "To the Top |
+// <Parent> Page | Home Page", the social icons and the copyright line. The
+// parent page is worked out from the page's address.
 'use client'
 
 import { usePathname } from 'next/navigation'
@@ -15,7 +20,15 @@ interface IndividualPageFooterProps {
     showCopyright?: boolean;
 }
 
-export function IndividualPageFooter({ 
+/**
+ * A subpage's footer.
+ *
+ * @param sectionName    name of the section, used for pages one level below home
+ * @param parentPageName name to show for the parent page, instead of one made
+ *                       from the address
+ * @param show...        each switches one part of the footer on or off (all true by default)
+ */
+export function IndividualPageFooter({
     sectionName,
     parentPageName,
     showToTop = true,
@@ -24,32 +37,36 @@ export function IndividualPageFooter({
     showSocialLinks = true,
     showCopyright = true
 }: IndividualPageFooterProps) {
+    // The current address, such as "/blog/rsync-file-transfer"
     const pathname = usePathname()
-    
-    // Get the parent path and name dynamically if not provided
+
+    // Get the parent path and name dynamically if not provided. For
+    // "/learning/books" the parent is "/learning", shown as "Learning Page".
     const getParentInfo = () => {
         if (parentPageName) return { name: parentPageName, path: pathname.split('/').slice(0, -1).join('/') }
-        
+
         const pathParts = pathname.split('/')
         // Remove empty string and current page
         const filteredParts = pathParts.filter(part => part)
-        
+
         if (filteredParts.length <= 1) {
             return { name: sectionName || 'Home', path: '/' }
         }
-        
+
         // Get parent path (one level up)
         const parentPath = '/' + filteredParts.slice(0, -1).join('/')
-        
-        // Format the parent name
+
+        // Format the parent name: "scattering-from-black-holes" becomes
+        // "Scattering From Black Holes"
         const parentName = filteredParts[filteredParts.length - 2]
             .split('-')
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ')
-        
+
         return { name: parentName, path: parentPath }
     }
 
+    // Take `name` and `path` out of the result, renamed parentName and parentPath
     const { name: parentName, path: parentPath } = getParentInfo()
 
     const navigationLinks = (
@@ -73,7 +90,7 @@ export function IndividualPageFooter({
     )
 
     return (
-        <BaseFooter 
+        <BaseFooter
             navigationLinks={navigationLinks}
             className="mt-6"
             showToTop={showToTop}
