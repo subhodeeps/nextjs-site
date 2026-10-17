@@ -1,230 +1,22 @@
 // src/app/older_updates/page.tsx
 //
-// The Older Updates page at /older_updates: the archive of updates that have left
-// the home page. To archive an update, move its entry from the `items` list in
-// src/components/blocks/homepage/CurrentWork.tsx to the top of `items` below.
-'use client'
-
+// The Older Updates page at /older_updates: the updates in src/content/updates.md
+// that do not fit on the homepage. The homepage shows the newest few (the number
+// is set at the top of updates.md), so updates move here by themselves as new
+// ones are added. This file reads them when the site is built (it has no
+// 'use client', so it never runs in the browser).
 import BaseContainer from '@/components/layout/container/base-container'
 import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
 import TextHeading from '@/components/ui/text-heading/text-heading'
 import Text from '@/components/ui/text/text'
 import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
 import { SectionFooter } from '@/components/layout/footer/SectionFooter'
-import { motion } from 'framer-motion'
-import { BookOpen, Brain, Briefcase, Video, Apple, FileText } from 'lucide-react'
+import { UpdateList } from '@/components/blocks/updates/UpdateList'
+import { getOlderUpdates } from '@/lib/updates/updates'
 
-/**
- * One update: its icon in a tinted circle, then the text, fading in after
- * `delay` seconds. Written as `const WorkItem = (...) => (...)`, which is another
- * way of writing a function, one that returns the JSX directly.
- */
-const WorkItem = ({
-    icon,
-    text,
-    delay,
-}: {
-    icon: React.ReactNode
-    text: React.ReactNode
-    delay: number
-}) => (
-    <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay }}
-        className="flex items-center gap-4 mb-4"
-    >
-        <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-accent-subtle">
-            {icon}
-        </div>
-        <div className="flex-1">{text}</div>
-    </motion.div>
-)
-
-/**
- * The Older Updates page. `items` holds the updates, newest first: each has an
- * icon (from lucide-react) and its text, here a link written as <a>.
- */
+/** The Older Updates page: the title, a line of introduction, and the list. */
 export default function OlderUpdates() {
-    const items = [
-        {
-            icon: <Apple className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://nar.iiita.ac.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [07 -- 09 MAR 2025] Workshop on Numerical and Analytical Relativity @ IIITA.
-                </a>
-            ),
-        },
-
-        {
-            icon: <Apple className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://physics.iitm.ac.in/~csgc/events/sbhgw2024"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [10 -- 14 FEB 2025] Second School on Black Holes and Gravitational Waves @ IITM.
-                </a>
-            ),
-        },
-
-        {
-            icon: <Brain className="w-4 h-4" aria-hidden="true" />,
-            text: '[04 Nov 2024] Successfully defended my Ph.D. thesis at IIIT Allahabad.',
-        },
-
-        {
-            icon: <Briefcase className="w-4 h-4" aria-hidden="true" />,
-            text: '[01 Apr 2024] Joined the CSGC-IITM as a postdoctoral fellow.',
-        },
-
-        {
-            icon: <FileText className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://doi.org/10.48550/arXiv.2312.07295"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [13 Dec 2023] Preprint: Gravitational atoms in the braneworld scenario.
-                </a>
-            ),
-        },
-
-        {
-            icon: <BookOpen className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://doi.org/10.1103/PhysRevD.108.104002"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [01 Nov 2023] Published in PRD: Stability of quasinormal modes with positive Λ.
-                </a>
-            ),
-        },
-
-        {
-            icon: <FileText className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://arxiv.org/abs/2304.06829"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [13 Apr 2023] Preprint: Stability of quasinormal modes with positive Λ.
-                </a>
-            ),
-        },
-
-        {
-            icon: <Briefcase className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://www.ctp-jamia.res.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [08 Feb 2023] Joined CTP-JMI as Project Fellow under Prof. Anjan Sen.
-                </a>
-            ),
-        },
-
-        {
-            icon: <BookOpen className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://doi.org/10.1103/PhysRevD.105.084001"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [04 Apr 2022] Published in PRD: Can we detect a supertranslated black hole?
-                </a>
-            ),
-        },
-
-        {
-            icon: <Video className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://www.youtube.com/watch?v=2VA1N6MXTb8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [11 Mar 2022] Talk @ IIT-GN: Testing Strong Cosmic Censorship.
-                </a>
-            ),
-        },
-
-        {
-            icon: <BookOpen className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://doi.org/10.1103/PhysRevD.103.024008"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [05 Jan 2021] Published in PRD: Scalar perturbations in JT gravity.
-                </a>
-            ),
-        },
-
-        {
-            icon: <FileText className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://arxiv.org/abs/2011.08179"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [18 Nov 2020] Preprint: Scalar perturbations in JT gravity.
-                </a>
-            ),
-        },
-
-        {
-            icon: <BookOpen className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://doi.org/10.1103/PhysRevD.102.044030"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [17 Aug 2020] Published in PRD: Mass inflation and SCC in BTZ.
-                </a>
-            ),
-        },
-
-        {
-            icon: <FileText className="w-4 h-4" aria-hidden="true" />,
-            text: (
-                <a
-                    href="https://arxiv.org/abs/2005.09705"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                >
-                    [21 May 2020] Preprint: Mass inflation and SCC in BTZ.
-                </a>
-            ),
-        },
-    ]
+    const updates = getOlderUpdates()
 
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">
@@ -232,24 +24,14 @@ export default function OlderUpdates() {
                 <TerminalNav />
 
                 <div>
-                    <TextHeading as="h1" weight="bold">
+                    <TextHeading as="h1" weight="bold" className="mb-2">
                         Older Updates
                     </TextHeading>
-                    <Text variant="muted" className="mb-8">
-                        Archive of my past updates and activities
+                    <Text variant="muted" className="mb-12">
+                        Archive of my past updates and activities.
                     </Text>
 
-                    <StackVertical gap="md">
-                        {/* One WorkItem per entry, each appearing 0.1 s after the one above */}
-                        {items.map((item, index) => (
-                            <WorkItem
-                                key={index}
-                                icon={item.icon}
-                                text={item.text}
-                                delay={index * 0.1}
-                            />
-                        ))}
-                    </StackVertical>
+                    <UpdateList updates={updates} />
                 </div>
             </StackVertical>
 
