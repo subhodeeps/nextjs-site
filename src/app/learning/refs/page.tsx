@@ -5,21 +5,21 @@
 'use client'
 
 import Content from './content.mdx'
-import { mdxComponents } from '@/lib/mdx/mdx-components'
+import { listPageComponents } from '@/lib/mdx/list-page-components'
 import BaseContainer from '@/components/layout/container/base-container'
 import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
 import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
 import { IndividualPageFooter } from '@/components/layout/footer/IndividualPageFooter'
 
-/** Draws content.mdx with the site's Markdown styles, between the navigation and the footer. */
+/** Draws content.mdx in the style of the Marginalia page, between the navigation and the footer. */
 export default function References() {
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">
             <StackVertical gap="md">
                 <TerminalNav />
-                {/* The text of content.mdx; mdxComponents decides how each Markdown element looks */}
+                {/* The text of content.mdx, drawn like the Marginalia page (see list-page-components.tsx) */}
                 <div>
-                    <Content components={mdxComponents} />
+                    <Content components={listPageComponents} />
                 </div>
             </StackVertical>
 
