@@ -62,6 +62,7 @@ src/
 │                         # cv, learning, older_updates, reading, research
 ├── components/           # page blocks (including the homepage), layout, and UI
 ├── content/
+│   ├── cv.md             # the CV page
 │   └── updates.md        # the updates on the homepage and Older Updates
 ├── lib/
 │   ├── mdx/              # styling for MDX content
@@ -182,8 +183,10 @@ has to be moved by hand.
 
 ### CV
 
-The CV page links to `public/files/CV_subhodeep.pdf`. Replacing that file
-updates the downloadable CV.
+The CV page is written in `src/content/cv.md`, with a section for each heading
+of the form `## Name | Icon` and an entry for each list item of the form
+`- text | dates`. It links to `public/files/CV_subhodeep.pdf`; replacing that
+file updates the downloadable CV.
 
 ### Link previews
 

@@ -9,40 +9,12 @@
 // Each entry is a small component: `({ children }) => (...)` takes the
 // element's content, `children`, and returns the HTML to draw around it.
 
-import { Fragment } from 'react'
 import { MDXComponents } from 'mdx/types'
 import Ruler from '@/components/ui/ruler/ruler'
 import { cn } from '@/lib/utils/utils'
 import { headingFont, monoFont } from '@/styles/fonts/fonts'
 import CodeBlock from '@/components/blocks/code-block/code-block'
-
-/**
- * An image caption, with each [text](address) in it turned into a link that
- * opens in a new tab. split() with a capturing pattern keeps the matches: plain
- * text sits at every third position, each link's text and address after it.
- */
-function CaptionText({ text }: { text: string }) {
-    const parts = text.split(/\[([^\]]+)\]\(([^)\s]+)\)/)
-    return (
-        <>
-            {parts.map((part, i) => {
-                if (i % 3 === 0) return <Fragment key={i}>{part}</Fragment>
-                if (i % 3 === 2) return null
-                return (
-                    <a
-                        key={i}
-                        href={parts[i + 1]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline decoration-accent-muted/50 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent-muted"
-                    >
-                        {part}
-                    </a>
-                )
-            })}
-        </>
-    )
-}
+import { InlineLinks } from '@/components/ui/inline-links/inline-links'
 
 export const mdxComponents: MDXComponents = {
     // Headings use the heading font (Fira Code); dark:... sets the dark-theme colour
@@ -216,7 +188,10 @@ export const mdxComponents: MDXComponents = {
                         monoFont.className,
                     )}
                 >
-                    <CaptionText text={title} />
+                    <InlineLinks
+                        text={title}
+                        linkClassName="underline decoration-accent-muted/50 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent-muted"
+                    />
                 </span>
             )}
         </span>

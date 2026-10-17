@@ -7,7 +7,6 @@
 // animation.
 'use client'
 
-import { Fragment } from 'react'
 import { motion } from 'framer-motion'
 import {
     Apple,
@@ -21,6 +20,7 @@ import {
     type LucideIcon,
 } from 'lucide-react'
 import Text from '@/components/ui/text/text'
+import { InlineLinks, newTabProps, wholeLink } from '@/components/ui/inline-links/inline-links'
 import type { Update } from '@/lib/updates/updates'
 
 // The icon for each kind of update; an unknown or missing kind gets a dot
@@ -35,19 +35,13 @@ const icons: Record<string, LucideIcon> = {
     degree: Brain,
 }
 
-// A Markdown-style link, [text](address)
-const linkPattern = /\[([^\]]+)\]\(([^)\s]+)\)/
+// The look of links in the updates
+const link = 'text-accent hover:underline'
 
 /** A link in the accent colour; links to other websites open in a new tab */
 function UpdateLink({ href, children }: { href: string; children: React.ReactNode }) {
-    const external = href.startsWith('http')
     return (
-        <a
-            href={href}
-            target={external ? '_blank' : undefined}
-            rel={external ? 'noopener noreferrer' : undefined}
-            className="text-accent hover:underline"
-        >
+        <a href={href} {...newTabProps(href)} className={link}>
             {children}
         </a>
     )
@@ -59,24 +53,12 @@ function UpdateLink({ href, children }: { href: string; children: React.ReactNod
  * accent colour.
  */
 function UpdateText({ date, text }: { date: string; text: string }) {
-    const whole = text.match(new RegExp(`^${linkPattern.source}$`))
-    if (whole) return <UpdateLink href={whole[2]}>{`[${date}] ${whole[1]}`}</UpdateLink>
-
-    // split() with a capturing pattern keeps the matches: plain text sits at every
-    // third position, and each link's text and address follow it
-    const parts = text.split(new RegExp(linkPattern.source, 'g'))
+    const whole = wholeLink(text)
+    if (whole) return <UpdateLink href={whole.href}>{`[${date}] ${whole.text}`}</UpdateLink>
     return (
         <>
             {`[${date}] `}
-            {parts.map((part, i) => {
-                if (i % 3 === 0) return <Fragment key={i}>{part}</Fragment>
-                if (i % 3 === 2) return null
-                return (
-                    <UpdateLink key={i} href={parts[i + 1]}>
-                        {part}
-                    </UpdateLink>
-                )
-            })}
+            <InlineLinks text={text} linkClassName={link} />
         </>
     )
 }

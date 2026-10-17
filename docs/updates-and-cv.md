@@ -45,25 +45,38 @@ to the `lucide-react` import at the top of that file.
 
 ## The CV
 
-The CV page, `src/app/cv/page.tsx`, has three sections: Employment,
-Education, and Skills. Each entry under Employment and Education is one row;
-to add an entry, copy a row and change its text and dates:
+The CV page is written in `src/content/cv.md`:
 
-```tsx
-<div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2">
-    <Text>•</Text>
-    <Text>Postdoctoral Researcher, Department of Physics, IIT Gandhinagar</Text>
-    <Text variant="muted" className="whitespace-nowrap">
-        Jun 2026 – Ongoing!
-    </Text>
-</div>
+```md
+# Curriculum Vitae
+
+A summary of my academic and professional journey.
+
+You can find my complete CV [here](/files/CV_subhodeep.pdf).
+
+## Employment | Briefcase
+
+- Postdoctoral Researcher, IIT Gandhinagar | Jun 2026 – Ongoing!
+
+## Skills | Code
+
+python, jupyter, vulpix, ...
 ```
 
-The Skills paragraph is plain text.
+- The first paragraph after the title is shown in gray as the introduction;
+  later paragraphs are shown in the body color.
+- Each section starts with `## Name | Icon`. The icon is the name of an icon on
+  <https://lucide.dev/icons>, written as it appears there in the code examples
+  (e.g., `GraduationCap` or `Trophy`), and may be left out. A new section, such
+  as `## Awards | Trophy`, needs no other change.
+- Each list item, a line starting with a hyphen, is an entry, with its dates
+  after a vertical bar, shown on the right. Other lines in a section form a
+  paragraph, as under Skills.
+- Links are written as `[text](address)`. Links to other sites and to PDF files
+  open in a new tab.
 
-The link in "You can find my complete CV here" opens
-`public/files/CV_subhodeep.pdf`. To update the PDF, replace that file with the
-new version under the same name.
+To update the full CV, replace `public/files/CV_subhodeep.pdf` with the new
+version under the same name.
 
 ## The Learning page
 

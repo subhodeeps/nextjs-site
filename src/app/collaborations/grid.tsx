@@ -17,11 +17,12 @@
 // photos, and Esc, the close button, the backdrop or a click on the photo closes it.
 'use client'
 
-import { Fragment, useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion'
 import { X } from 'lucide-react'
 import { cn } from '@/lib/utils/utils'
+import { InlineLinks, stripLinks } from '@/components/ui/inline-links/inline-links'
 
 type CollaboratorPhoto = {
     id: string
@@ -30,40 +31,6 @@ type CollaboratorPhoto = {
     width: number
     height: number
     caption?: string // from ./_data/captions.ts; [text](address) is a link
-}
-
-// A Markdown-style link in a caption: [text](address)
-const captionLink = /\[([^\]]+)\]\(([^)]+)\)/g
-
-/** The caption without its link addresses, for the alt text: "With Sumanta da at RRI, Bangalore" */
-function captionText(caption: string) {
-    return caption.replace(captionLink, '$1')
-}
-
-/** The caption with its [text](address) parts turned into links that open in a new tab */
-function Caption({ caption }: { caption: string }) {
-    // split() with a capturing pattern keeps the matches: plain text sits at the
-    // even positions, and each link's text and address follow it
-    const parts = caption.split(captionLink)
-    return (
-        <>
-            {parts.map((part, i) => {
-                if (i % 3 === 0) return <Fragment key={i}>{part}</Fragment>
-                if (i % 3 === 2) return null
-                return (
-                    <a
-                        key={i}
-                        href={parts[i + 1]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn('rounded-sm text-accent hover:underline', focusRing)}
-                    >
-                        {part}
-                    </a>
-                )
-            })}
-        </>
-    )
 }
 
 // The outline shown around a photo or button reached with the Tab key
@@ -244,7 +211,7 @@ export default function CollaboratorGrid({
             >
                 <Image
                     src={person.photoUrl}
-                    alt={person.caption ? captionText(person.caption) : person.name}
+                    alt={person.caption ? stripLinks(person.caption) : person.name}
                     width={person.width}
                     height={person.height}
                     className="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.03]"
@@ -357,7 +324,7 @@ export default function CollaboratorGrid({
                             >
                                 <Image
                                     src={photo.photoUrl}
-                                    alt={photo.caption ? captionText(photo.caption) : photo.name}
+                                    alt={photo.caption ? stripLinks(photo.caption) : photo.name}
                                     width={photo.width}
                                     height={photo.height}
                                     draggable={false}
@@ -383,7 +350,13 @@ export default function CollaboratorGrid({
                                     animate={{ opacity: 1 }}
                                     className="mb-2 max-w-prose text-balance text-center text-sm text-foreground/80 sm:text-base"
                                 >
-                                    <Caption caption={photo.caption} />
+                                    <InlineLinks
+                                        text={photo.caption}
+                                        linkClassName={cn(
+                                            'rounded-sm text-accent hover:underline',
+                                            focusRing,
+                                        )}
+                                    />
                                 </motion.p>
                             )}
                             <div className="flex items-center gap-4">
