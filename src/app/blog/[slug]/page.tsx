@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getBlogPosts } from '../_data/posts' // Updated import
+import { ogImages } from '@/lib/og/og-images'
 
 type Params = Promise<{ slug: string }>
 
@@ -27,27 +28,13 @@ export async function generateMetadata({ params }: { params: Params }) {
       openGraph: {
         title: `${post.title} | subhodeep`,
         description: post.description,
-        images: [
-          {
-            url: `/blog/posts/${slug}/opengraph-image.png`,
-            width: 1200,
-            height: 630,
-            alt: post.description,
-          },
-        ],
+        images: ogImages(slug, 'blog'),
       },
       twitter: {
         card: "summary_large_image",
         title: `${post.title} | subhodeep`,
         description: post.description,
-        images: [
-          {
-            url: `/blog/posts/${slug}/twitter-image.png`,
-            width: 1200,
-            height: 630,
-            alt: post.description,
-          },
-        ],
+        images: ogImages(slug, 'blog'),
       },
     };
   }

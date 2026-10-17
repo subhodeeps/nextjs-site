@@ -96,7 +96,7 @@ export function BaseFooter({
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.4 }}
                             >
-                                © {new Date().getFullYear()} subhodeeps (template based on <a href="https://www.sumit.ml/">sumit.ml</a>)
+                                © {new Date().getFullYear()} subhodeeps
                             </motion.span>
                         )}
                     </div>

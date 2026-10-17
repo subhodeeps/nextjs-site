@@ -1,18 +1,8 @@
 import { motion } from "framer-motion";
 import {
-  Code,
   Briefcase,
-  Shield,
-  SquarePi,
-  Brain,
   Box,
-  Snowflake,
-  Divide,
-  Rotate3D,
   History,
-  BrainIcon,
-  Apple,
-  GraduationCap,
   BookOpen,
 } from "lucide-react";
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack";

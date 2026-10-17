@@ -1,18 +1,20 @@
 import { Metadata } from 'next'
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { ogImages } from '@/lib/og/og-images'
 
 export const metadata: Metadata = {
-    title: 'Learning Utensils | sumit.ml',
-    description: 'Tools, resources, and materials I use in my learning journey',
+    title: 'Older Updates | subhodeep',
+    description: 'Older news and updates',
     openGraph: {
-        title: 'Learning Utensils | sumit.ml',
-        description: 'Tools, resources, and materials I use in my learning journey',
+        title: 'Older Updates | subhodeep',
+        description: 'Older news and updates',
         type: 'website',
+        images: ogImages('older_updates'),
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Learning Utensils | sumit.ml',
-        description: 'Tools, resources, and materials I use in my learning journey',
+        title: 'Older Updates | subhodeep',
+        description: 'Older news and updates',
+        images: ogImages('older_updates'),
     }
 }
 
@@ -22,4 +24,4 @@ export default function Layout({
     children: React.ReactNode
 }) {
     return children
-} 
+}

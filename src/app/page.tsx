@@ -1,9 +1,5 @@
-import Homepage from 'app/homepage/page'
+import { Homepage } from '@/components/blocks/homepage/Homepage'
 
 export default function Home() {
-  return (
-    <>
-        <Homepage />
-    </>
-  )
+  return <Homepage />
 }

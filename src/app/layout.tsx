@@ -2,12 +2,21 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/ui/theme/theme-provider'
 import { cn } from '@/lib/utils/utils'
+import { ogImages } from '@/lib/og/og-images'
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://subhodeeps.vercel.app'),
   title: 'subhodeep | home',
   description: 'academic website, cv and stuff',
+  openGraph: {
+    images: ogImages('home'),
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ogImages('home'),
+  },
   verification: { 
     google: "JfvlM1XeQizWzQrb51mAuBNk0wpUeRdKKxJ9Voq0BHc" }
 }

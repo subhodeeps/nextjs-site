@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { ogImages } from '@/lib/og/og-images'
 
 export const metadata: Metadata = {
     title: 'Curriculum Vitae | subhodeep',
@@ -8,11 +8,13 @@ export const metadata: Metadata = {
         title: 'Curriculum Vitae |subhodeep',
         description: 'Curriculum Vitae',
         type: 'website',
+        images: ogImages('cv'),
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Curriculum Vitae | subhodeep',
         description: 'Curriculum Vitae',
+        images: ogImages('cv'),
     }
 }
 

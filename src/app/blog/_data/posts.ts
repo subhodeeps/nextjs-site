@@ -1,17 +1,3 @@
-// import { BlogPost } from "../_types/blog"
-
-// export const blogPosts: BlogPost[] = [
-    
-//     {
-//         id: 1,
-//         title: "Dummy Post",
-//         description: "A comprehensive guide on getting started with machine learning, from math to practical implementation.",
-//         date: "December 25, 2024",
-//         readingTime: "10 min read",
-//         slug: "getting-started-with-machine-learning"
-//     }
-// ] 
-
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -50,19 +36,6 @@ export function getBlogPosts(): BlogPost[] {
         }
     })
 
-    // 4. Add older React-only posts manually since they don't have an MDX file to read from
-    const legacyPosts: BlogPost[] = [
-        {
-            id: 999, // Just needs to be unique
-            title: "Getting Started with Machine Learning",
-            description: "A comprehensive guide on getting started with machine learning, from math to practical implementation.",
-            date: "December 25, 2024",
-            readingTime: "10 min read",
-            slug: "getting-started-with-machine-learning"
-        }
-    ]
-
-    // 5. Combine and sort newest to oldest
-    const allPosts = [...posts, ...legacyPosts]
-    return allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    // 4. Sort newest to oldest
+    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }

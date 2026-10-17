@@ -1,6 +1,5 @@
 "use client";
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import BaseContainer from "@/components/layout/container/base-container";
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack";
 import { HomepageFooter } from "@/components/layout/footer/HomepageFooter";
@@ -10,7 +9,7 @@ import { Navbar } from "@/components/ui/navbar/Navbar";
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
 import { HomepageSocials } from "@/components/blocks/homepage/HomepageSocials";
 
-export default function Homepage() {
+export function Homepage() {
   return (
     <>
       <BaseContainer size="md" paddingX="md" paddingY="lg">
@@ -28,4 +27,3 @@ export default function Homepage() {
     </>
   );
 }
-import type { Metadata } from "next";

@@ -1,16 +1,21 @@
 # Website for my blog
 
-## Installations
+## Development
 
 ```bash
-npx create-next-app@latest
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # static export to out/
+npm run lint
 ```
 
-```bash
-npm install framer-motion
-npm install next-themes
-npm install prism-react-renderer
-```
+## Deployment
+
+The site is a static export (`output: 'export'` in `next.config.mjs`). Vercel builds and deploys it from this GitHub repo.
+
+## Link previews
+
+Preview images for shared links live in `public/og/`. Name an image after a section (`home`, `about`, `blog`, `collaborations`, `cv`, `learning`, `older_updates`, `reading`, `research`) or after a blog post's folder (e.g. `rsync-file-transfer`), as `.jpg`, `.jpeg`, `.png` or `.webp`. Pages without their own image use `default.jpg`; blog posts try `blog` first. The lookup is in `src/lib/og/og-images.ts`.
 
 ## TODO
 
@@ -21,11 +26,4 @@ npm install prism-react-renderer
 
 Tools used: React, Next.js, Tailwind, TypeScript.
 
-Some components inside the [src/app/components/ui](src/app/styles/components/ui) are from [shadcn/ui](https://ui.shadcn.com/docs/):
-
-- [Breadcrumb](https://ui.shadcn.com/docs/components/breadcrumb)
-- [Button](https://ui.shadcn.com/docs/components/button)
-- [Navigation Menu](https://ui.shadcn.com/docs/components/navigation-menu)
-- [Accordion](https://ui.shadcn.com/docs/components/accordion)
-- [Separator](https://ui.shadcn.com/docs/components/separator)
-- [Hover Card](https://ui.shadcn.com/docs/components/hover-card)
+The breadcrumb in [src/components/ui/primitives](src/components/ui/primitives) is from [shadcn/ui](https://ui.shadcn.com/docs/components/breadcrumb).

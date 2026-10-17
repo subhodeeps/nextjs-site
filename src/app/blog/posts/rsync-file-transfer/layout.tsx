@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { ogImages } from '@/lib/og/og-images'
 
 export const metadata: Metadata = {
     title: 'Transfer Files from Ubuntu to Arch Linux over SSH/SFTP | subhodeeps.github.io',
@@ -8,19 +9,13 @@ export const metadata: Metadata = {
         description: 'A short guide to securely transferring files between Ubuntu and Arch Linux using rsync and SSH.',
         type: 'article',
         publishedTime: '2026-06-23T00:00:00.000Z',
-        images: [
-        {
-                url: '/blog/posts/ubuntu-to-arch-linux-ssh/opengraph-image.png',
-                width: 1200,
-                height: 630,
-            }
-        ],
+        images: ogImages('rsync-file-transfer', 'blog'),
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Transfer Files from Ubuntu to Arch Linux over SSH/SFTP',
         description: 'A short guide to securely transferring files between Ubuntu and Arch Linux using rsync and SSH.',
-        images: ['/blog/posts/ubuntu-to-arch-linux-ssh/twitter-image.png'],
+        images: ogImages('rsync-file-transfer', 'blog'),
     }
 }
 

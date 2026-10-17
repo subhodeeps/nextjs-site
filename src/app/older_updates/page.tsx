@@ -8,9 +8,8 @@ import Text from "@/components/ui/text/text"
 import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb"
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
 import { SectionFooter } from "@/components/layout/footer/SectionFooter"
-import Link from "next/link"
 import { motion } from "framer-motion"
-import { BookOpen, Brain, Briefcase, Video, Apple, GraduationCap, FileText } from "lucide-react"
+import { BookOpen, Brain, Briefcase, Video, Apple, FileText } from "lucide-react"
 
 const WorkItem = ({
   icon,

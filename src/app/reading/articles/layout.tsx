@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { ogImages } from '@/lib/og/og-images'
 
 export const metadata: Metadata = {
     title: 'Essays and Fiction Worth Reading',
@@ -8,11 +9,13 @@ export const metadata: Metadata = {
         description: 'Some essays and fiction that I have enjoyed reading.',
         type: 'article',
         publishedTime: '2025-01-14T00:00:00.000Z',
+        images: ogImages('reading'),
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Essays and Fiction Worth Reading',
         description: 'Some essays and fiction that I have enjoyed reading.',
+        images: ogImages('reading'),
     }
 }
 
