@@ -2,8 +2,7 @@
 
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack";
 import BaseContainer from "@/components/layout/container/base-container";
-import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb";
-import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
+import { TerminalNav } from "@/components/ui/terminal-nav/terminal-nav";
 import { notes } from "./_data/posts";
 import { ReferenceCard } from "./_components/ReferenceCard";
 import TextHeading from "@/components/ui/text-heading/text-heading";
@@ -17,15 +16,7 @@ export default function Learning() {
         <BaseContainer size="md" paddingX="md" paddingY="lg">
             <StackVertical gap="md">
 
-                <div className="flex items-center justify-between">
-                    <DynamicBreadcrumb
-                        items={[
-                            { href: "/", label: "Home", emoji: "👾" },
-                            { label: "Learning" }
-                        ]}
-                    />
-                    <ThemeToggle />
-                </div>
+                <TerminalNav />
 
                 <div>
                     <TextHeading as="h1" weight="bold">

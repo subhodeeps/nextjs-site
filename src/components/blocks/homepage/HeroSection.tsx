@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { monoFont } from "@/styles/fonts/fonts";
-import { cn } from "@/lib/utils/utils";
 import TextHeading from "@/components/ui/text-heading/text-heading";
 import Text from "@/components/ui/text/text";
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack";
@@ -20,22 +18,6 @@ export function HeroSection() {
     >
       <div className="relative">
         <StackVertical gap="xs">
-          {/* Floating emoji */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className={cn(
-              "text-2xl sm:text-3xl md:text-4xl",
-              monoFont.className,
-            )}
-          >
-            👾
-          </motion.div>
-
           {/* Title */}
           <motion.div
             initial={{ opacity: 0 }}

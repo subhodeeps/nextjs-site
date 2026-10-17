@@ -5,8 +5,7 @@ import { StackVertical } from "@/components/layout/layout-stack/layout-stack";
 import TextHeading from "@/components/ui/text-heading/text-heading";
 import { SectionFooter } from "@/components/layout/footer/SectionFooter";
 import Text from "@/components/ui/text/text";
-import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb";
-import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
+import { TerminalNav } from "@/components/ui/terminal-nav/terminal-nav";
 import Link from "next/link";
 import Ruler from "@/components/ui/ruler/ruler";
 import Image from "next/image";
@@ -15,16 +14,7 @@ export default function Learning() {
   return (
     <BaseContainer size="md" paddingX="md" paddingY="lg">
       <StackVertical gap="md">
-        {/* Breadcrumb */}
-        <div className="flex items-center justify-between">
-          <DynamicBreadcrumb
-            items={[
-              { href: "/", label: "Home", emoji: "👾" },
-              { label: "Research" },
-            ]}
-          />
-          <ThemeToggle />
-        </div>
+        <TerminalNav />
 
         {/* Header */}
         <div>

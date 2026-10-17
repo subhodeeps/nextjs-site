@@ -1,24 +1,14 @@
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack"
 import Text from "@/components/ui/text/text"
 import TextHeading from "@/components/ui/text-heading/text-heading"
-import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb"
-import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
+import { TerminalNav } from "@/components/ui/terminal-nav/terminal-nav"
 
 export function BlogHeader() {
     return (
         <StackVertical gap="md">
             <title>Field Notes on Exploring the Universe | Blog</title>
 
-            {/* Breadcrumb */}
-            <div className="flex items-center justify-between">
-                <DynamicBreadcrumb 
-                    items={[
-                        { href: '/', label: 'Home', emoji: '👾' },
-                        { label: 'Blog' }
-                    ]}
-                />
-                <ThemeToggle />
-            </div>
+            <TerminalNav />
 
             {/* Header Content */}
             <div>
