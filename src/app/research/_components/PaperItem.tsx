@@ -16,7 +16,7 @@ import type { Paper } from '../_lib/inspire'
 
 // The look shared by all chips: small, outlined and faint until hovered
 const chip =
-    'inline-flex items-center gap-1 rounded border px-1.5 py-0.5 text-[11px] leading-none transition-colors ' +
+    'inline-flex items-center gap-1 rounded border px-1.5 py-0.5 text-[0.6875rem] leading-none transition-colors ' +
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background'
 const quiet = 'border-border text-muted-foreground hover:border-accent-muted hover:text-accent'
 const active = 'border-accent-muted text-accent'
@@ -217,7 +217,7 @@ export function PaperItem({ paper, me }: { paper: Paper; me: string }) {
                     )}
                     {open === 'bib' && paper.bibtex && (
                         <div className="relative">
-                            <pre className="overflow-x-auto rounded-md border border-border bg-muted/30 p-3 pr-16 text-[11px] leading-relaxed">
+                            <pre className="overflow-x-auto rounded-md border border-border bg-muted/30 p-3 pr-16 text-[0.6875rem] leading-relaxed">
                                 {paper.bibtex}
                             </pre>
                             <button

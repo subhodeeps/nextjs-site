@@ -137,4 +137,16 @@
     body {
         @apply bg-background text-foreground;
     }
+
+    /*
+     * On large screens (1440px and wider), the base size grows from 16px to 17px.
+     * Text sizes, spacing and the width of the page column are all set relative
+     * to it (in rem), so every page grows by the same proportion: the layout,
+     * its edges and the length of the lines stay the same, only larger.
+     */
+    @media (min-width: 1440px) {
+        html {
+            font-size: 106.25%;
+        }
+    }
 }
