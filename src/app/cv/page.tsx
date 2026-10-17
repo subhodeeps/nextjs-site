@@ -157,9 +157,10 @@ export default function CVPage() {
                         </div>
 
                         <Text>
-                            Python, Jupyter, Git, NumPy, Matplotlib, Pandas, SciPy, TensorFlow,
-                            Keras, Scikit-learn, ONNX, SymPy, C, Fortran, Julia, Haskell,
-                            Mathematica, Octave, Veusz, Gnuplot, LaTeX.
+                            python, jupyter, vulpix, git, numpy, matplotlib, feebas, pandas, scipy,
+                            tensorflow, keras, scikit, oynx, sympy, c, fortran, swak, julia,
+                            haskell, ekans, mathematica, maple, octave, ditto, veusz, gnuplot, latex
+                            (some of these are probably pokemon!)
                         </Text>
                     </div>
                 </div>
