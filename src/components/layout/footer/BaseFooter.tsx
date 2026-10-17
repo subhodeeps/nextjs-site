@@ -12,12 +12,12 @@ import {
     SiArxiv,
     SiInspire,
     SiGithub,
-    SiGooglescholar,
     SiSemanticscholar,
     SiResearchgate,
     SiGmail,
     SiLinkedin,
 } from 'react-icons/si'
+import { FaGraduationCap } from 'react-icons/fa6'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
@@ -47,7 +47,8 @@ export function BaseFooter({
     showCopyright = true,
 }: BaseFooterProps) {
     // The social icons, in order: each has the address it links to and the icon
-    // to show (icons from the react-icons package, Si... for Simple Icons)
+    // to show. The icons come from the react-icons package: Si... are brand logos
+    // from Simple Icons, and Fa... are icons from Font Awesome.
     const socialLinks = [
         {
             href: 'https://inspirehep.net/authors/1797180?ui-citation-summary=true',
@@ -55,7 +56,8 @@ export function BaseFooter({
         },
         {
             href: 'https://scholar.google.com/citations?user=WpYbE3oAAAAJ&hl=en',
-            icon: <SiGooglescholar className="w-4 h-4" />,
+            // Google Scholar, shown as a graduation cap
+            icon: <FaGraduationCap className="w-4 h-4" />,
         },
         { href: 'https://arxiv.org/a/sarkar_s_11.html', icon: <SiArxiv className="w-4 h-4" /> },
         {

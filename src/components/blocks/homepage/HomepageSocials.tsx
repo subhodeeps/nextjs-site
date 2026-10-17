@@ -8,7 +8,7 @@ import Text from '@/components/ui/text/text'
 import Link from 'next/link'
 
 /**
- * The Socials section, with the email address and the Twitter link. <Link> from
+ * The Socials section, with the email address. <Link> from
  * next/link works like <a>; for pages of this site it also loads the next page
  * without a full reload.
  */
@@ -26,10 +26,6 @@ export function HomepageSocials() {
                     className="text-accent hover:underline"
                 >
                     physics.subhodeep@gmail.com
-                </Link>{' '}
-                or on{' '}
-                <Link href="https://x.com/astres_occlus" className="text-accent hover:underline">
-                    Twitter
                 </Link>{' '}
                 if you’d like to discuss or chat about something with me!
             </Text>
