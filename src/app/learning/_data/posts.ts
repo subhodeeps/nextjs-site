@@ -13,13 +13,6 @@ export const notes: NotesTypes[] = [
         lastUpdated: 'January 20, 2025',
         href: '/learning/refs',
     },
-    // {
-    //     id: 2,
-    //     title: "STEM Books",
-    //     description: "Notes and summaries from the books I'm reading to learn stuff.",
-    //     lastUpdated: "January 14, 2025",
-    //     href: "/learning/books"
-    // },
     {
         id: 2,
         title: 'Essays and Articles Worth Reading',

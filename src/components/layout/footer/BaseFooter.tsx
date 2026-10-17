@@ -10,7 +10,6 @@ import { cn } from '@/lib/utils/utils'
 import { monoFont } from '@/styles/fonts/fonts'
 import {
     SiArxiv,
-    SiX,
     SiInspire,
     SiGithub,
     SiGooglescholar,
@@ -75,7 +74,6 @@ export function BaseFooter({
             href: 'https://github.com/subhodeeps',
             icon: <SiGithub className="w-3 h-3 sm:w-4 sm:h-4" />,
         },
-        { href: 'https://x.com/astres_occlus', icon: <SiX className="w-3 h-3 sm:w-4 sm:h-4" /> },
         {
             href: 'https://in.linkedin.com/in/subhodeeps',
             icon: <SiLinkedin className="w-3 h-3 sm:w-4 sm:h-4" />,

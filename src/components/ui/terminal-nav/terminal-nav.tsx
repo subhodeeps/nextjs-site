@@ -15,7 +15,7 @@ import { ThemeToggle } from '@/components/ui/theme/theme-toggle'
 /*
  * Site navigation, written as a shell prompt:
  *
- *     👾 ~/learning/books ❯ ls ~  # tap to list
+ *     👾 ~/reading/marginalia ❯ ls ~  # tap to list
  *
  * and, once the command is tapped, its output:
  *
@@ -40,7 +40,7 @@ import { ThemeToggle } from '@/components/ui/theme/theme-toggle'
  * - The section you are in is shown in the accent colour.
  * - On small screens the listing wraps into two rows of three, still in order
  *   from left to right, and a long path is shortened the way the fish shell
- *   shortens it, ~/l/b/s/chapter-1, keeping the current directory in full. If
+ *   shortens it, ~/r/marginalia, keeping the current directory in full. If
  *   the prompt still does not fit, `❯ ls ~` moves to a second line as a whole,
  *   like a two-line shell prompt.
  * - The prompt starts with PROMPT_SYMBOL on every page, linking home. It
@@ -66,8 +66,8 @@ const focusRing =
  * @param className extra Tailwind classes, such as "mb-8" for space below
  */
 export function TerminalNav({ className }: { className?: string }) {
-    // The current address, such as "/learning/books", split into its parts:
-    // ["learning", "books"]. filter(Boolean) drops the empty part before the first /.
+    // The current address, such as "/reading/marginalia", split into its parts:
+    // ["reading", "marginalia"]. filter(Boolean) drops the empty part before the first /.
     const pathname = usePathname()
     const segments = pathname.split('/').filter(Boolean)
     const shorten = `~/${segments.join('/')}`.length > LONG_PATH

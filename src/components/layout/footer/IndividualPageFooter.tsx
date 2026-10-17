@@ -41,7 +41,7 @@ export function IndividualPageFooter({
     const pathname = usePathname()
 
     // Get the parent path and name dynamically if not provided. For
-    // "/learning/books" the parent is "/learning", shown as "Learning Page".
+    // "/learning/refs" the parent is "/learning", shown as "Learning Page".
     const getParentInfo = () => {
         if (parentPageName)
             return { name: parentPageName, path: pathname.split('/').slice(0, -1).join('/') }
@@ -57,8 +57,7 @@ export function IndividualPageFooter({
         // Get parent path (one level up)
         const parentPath = '/' + filteredParts.slice(0, -1).join('/')
 
-        // Format the parent name: "scattering-from-black-holes" becomes
-        // "Scattering From Black Holes"
+        // Format the parent name: a folder called "field-notes" becomes "Field Notes"
         const parentName = filteredParts[filteredParts.length - 2]
             .split('-')
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
