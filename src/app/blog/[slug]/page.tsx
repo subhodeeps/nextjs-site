@@ -1,6 +1,6 @@
 // src/app/blog/[slug]/page.tsx
 //
-// The address readers use for a post: /blog/rsync-file-transfer, for example.
+// The address readers use for a post: /blog/my-first-post, for example.
 // The [slug] folder name is a placeholder, like :title in a Jekyll permalink: one
 // file serves every post, and `slug` is the part of the address in its place.
 // Because the site is static, every post's page is built in advance; the list of
@@ -22,6 +22,11 @@ type Params = Promise<{ slug: string }>
  */
 export async function generateStaticParams() {
     const blogPosts = getBlogPosts()
+
+    // A static export refuses an empty list, so while there are no posts, a single
+    // placeholder is built instead, which shows the 404 page. Its slug starts with
+    // _, which no post's can (getBlogPosts skips such folders).
+    if (blogPosts.length === 0) return [{ slug: '_none' }]
 
     return blogPosts.map((post) => ({
         slug: post.slug,

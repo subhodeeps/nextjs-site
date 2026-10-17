@@ -37,7 +37,7 @@ export function IndividualPageFooter({
     showSocialLinks = true,
     showCopyright = true,
 }: IndividualPageFooterProps) {
-    // The current address, such as "/blog/rsync-file-transfer"
+    // The current address, such as "/learning/refs"
     const pathname = usePathname()
 
     // Get the parent path and name dynamically if not provided. For

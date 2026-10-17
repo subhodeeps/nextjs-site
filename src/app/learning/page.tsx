@@ -37,8 +37,7 @@ export default function Learning() {
                     interesting, mainly for my own reference. Since others might find them useful
                     too, I've made them public. Most of the collection lives in a separate{' '}
                     <Link
-                        href="https://just-the-notes.vercel.app/"
-
+                        href="https://quasinormal-notes.vercel.app/"
                         className="text-accent font-bold hover:underline"
                     >
                         repository

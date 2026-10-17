@@ -15,7 +15,7 @@ import { ThemeToggle } from '@/components/ui/theme/theme-toggle'
 /*
  * Site navigation, written as a shell prompt:
  *
- *     👾 ~/reading/marginalia ❯ ls ~  # tap to list
+ *     👾 ~/reading/marginalia ❯ ls ~ # tap to run
  *
  * and, once the command is tapped, its output:
  *
@@ -24,9 +24,10 @@ import { ThemeToggle } from '@/components/ui/theme/theme-toggle'
  * Design decisions, recorded here so they are not undone by accident:
  *
  * - The listing is hidden until you tap `ls ~`, so the prompt stays a single
- *   line. The dim shell comment after the command (# tap to list, or # click
- *   to list on a desktop) is the only hint, and it goes away while the listing
- *   is open. Tapping the command again, or pressing Esc, hides the listing.
+ *   line. The only hint is a shell comment after the command, # tap to run (or
+ *   # click to run on a desktop), in a faint accent colour so that it stays
+ *   innocuous. Tapping it also runs the command, and it goes away while the
+ *   listing is open. Tapping the command again, or pressing Esc, hides the listing.
  * - On the home page you are already in ~, so the command is plain `ls`, and
  *   its output starts open, like a session that has just run it. That is also
  *   where first-time visitors need the sections most.
@@ -40,9 +41,9 @@ import { ThemeToggle } from '@/components/ui/theme/theme-toggle'
  * - The section you are in is shown in the accent colour.
  * - On small screens the listing wraps into two rows of three, still in order
  *   from left to right, and a long path is shortened the way the fish shell
- *   shortens it, ~/r/marginalia, keeping the current directory in full. If
- *   the prompt still does not fit, `❯ ls ~` moves to a second line as a whole,
- *   like a two-line shell prompt.
+ *   shortens it, ~/r/marginalia, keeping the current directory in full. The
+ *   prompt never breaks onto a second line: when the hint does not fit after
+ *   `❯ ls ~`, it is left out, and a path too long even without it ends in "…".
  * - The prompt starts with PROMPT_SYMBOL on every page, linking home. It
  *   replaced the floating alien that used to sit in the home page hero.
  */
@@ -54,11 +55,13 @@ const PROMPT_SYMBOL = '👾'
 const SECTIONS = ['about', 'research', 'cv', 'learning', 'reading', 'blog']
 
 // Paths longer than this (in characters, ~/ included) are shortened on small
-// screens, so that most pages keep the prompt on one line
-const LONG_PATH = 15
+// screens, which leaves room for the hint on more pages
+const LONG_PATH = 12
 
+// The outline shown around a link or button reached with the Tab key. It is drawn
+// inside the element (ring-inset), because the prompt row hides anything outside it.
 const focusRing =
-    'rounded-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+    'rounded-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-ring'
 
 /**
  * The navigation prompt with its theme toggle.
@@ -93,80 +96,93 @@ export function TerminalNav({ className }: { className?: string }) {
             className={cn(monoFont.className, 'text-[13px] sm:text-sm', className)}
         >
             <div className="flex items-center justify-between gap-4">
-                <div className="flex min-w-0 flex-wrap items-baseline gap-x-2">
-                    {atHome ? (
-                        <span aria-hidden="true">{PROMPT_SYMBOL}</span>
-                    ) : (
-                        <Link href="/" aria-label="Home" className={focusRing}>
-                            {PROMPT_SYMBOL}
-                        </Link>
-                    )}
+                {/* The prompt row is exactly one line (24px) tall and hides anything
+                    below that line. The symbol, the path and the command are one unit
+                    that never breaks; the hint comes after it, so when there is no
+                    room for the hint, it wraps onto the hidden second line. */}
+                <div className="flex h-6 min-w-0 flex-wrap items-center gap-x-2 overflow-hidden leading-6">
+                    <span className="flex min-w-0 items-center gap-x-2 whitespace-nowrap">
+                        {atHome ? (
+                            <span aria-hidden="true">{PROMPT_SYMBOL}</span>
+                        ) : (
+                            <Link href="/" aria-label="Home" className={focusRing}>
+                                {PROMPT_SYMBOL}
+                            </Link>
+                        )}
 
-                    {/* The path: ~ followed by one part per segment. ['~', ...segments]
-                        is a new list with ~ in front; .map loops over it, and i is
-                        the position (0 for ~). */}
-                    <span>
-                        {['~', ...segments].map((label, i) => {
-                            const href = i === 0 ? '/' : `/${segments.slice(0, i).join('/')}`
-                            const current = i === segments.length
-                            const text =
-                                shorten && i > 0 && !current ? (
-                                    <>
-                                        <span className="sm:hidden">{label[0]}</span>
-                                        <span className="hidden sm:inline">{label}</span>
-                                    </>
-                                ) : (
-                                    label
-                                )
-                            return (
-                                <Fragment key={href}>
-                                    {i > 0 && <span className="text-muted-foreground/60">/</span>}
-                                    {current ? (
-                                        <span className="text-foreground">{text}</span>
+                        {/* The path: ~ followed by one part per segment. ['~', ...segments]
+                            is a new list with ~ in front; .map loops over it, and i is
+                            the position (0 for ~). `truncate` ends it in "…" if the
+                            command would otherwise not fit. */}
+                        <span className="min-w-0 truncate">
+                            {['~', ...segments].map((label, i) => {
+                                const href = i === 0 ? '/' : `/${segments.slice(0, i).join('/')}`
+                                const current = i === segments.length
+                                const text =
+                                    shorten && i > 0 && !current ? (
+                                        <>
+                                            <span className="sm:hidden">{label[0]}</span>
+                                            <span className="hidden sm:inline">{label}</span>
+                                        </>
                                     ) : (
-                                        <Link
-                                            href={href}
-                                            className={cn(
-                                                focusRing,
-                                                'text-muted-foreground transition-colors hover:text-accent',
-                                            )}
-                                        >
-                                            {text}
-                                        </Link>
-                                    )}
-                                </Fragment>
-                            )
-                        })}
+                                        label
+                                    )
+                                return (
+                                    <Fragment key={href}>
+                                        {i > 0 && (
+                                            <span className="text-muted-foreground/60">/</span>
+                                        )}
+                                        {current ? (
+                                            <span className="text-foreground">{text}</span>
+                                        ) : (
+                                            <Link
+                                                href={href}
+                                                className={cn(
+                                                    focusRing,
+                                                    'text-muted-foreground transition-colors hover:text-accent',
+                                                )}
+                                            >
+                                                {text}
+                                            </Link>
+                                        )}
+                                    </Fragment>
+                                )
+                            })}
+                        </span>
+
+                        <span className="shrink-0">
+                            <span aria-hidden="true" className="mr-2 text-accent-muted">
+                                ❯
+                            </span>
+                            <button
+                                type="button"
+                                onClick={() => setOpen(!open)}
+                                aria-expanded={open}
+                                aria-controls="terminal-nav-output"
+                                className={cn(
+                                    focusRing,
+                                    'text-left transition-colors hover:text-accent',
+                                    open ? 'text-accent' : 'text-foreground',
+                                )}
+                            >
+                                {atHome ? 'ls' : 'ls ~'}
+                            </button>
+                        </span>
                     </span>
 
-                    {/* Kept together, so it wraps to a second line as a whole */}
-                    <span className="whitespace-nowrap">
-                        <span aria-hidden="true" className="mr-2 text-accent-muted">
-                            ❯
-                        </span>
-                        <button
-                            type="button"
-                            onClick={() => setOpen(!open)}
-                            aria-expanded={open}
-                            aria-controls="terminal-nav-output"
-                            className={cn(
-                                focusRing,
-                                'text-left transition-colors hover:text-accent',
-                                open ? 'text-accent' : 'text-foreground',
-                            )}
+                    {/* The hint, a faint shell comment; tapping it also runs the command.
+                        Screen readers skip it, since the button above says the same. */}
+                    {!open && (
+                        <span
+                            aria-hidden="true"
+                            onClick={() => setOpen(true)}
+                            className="cursor-pointer whitespace-nowrap text-accent-muted/60"
                         >
-                            {atHome ? 'ls' : 'ls ~'}
-                            {!open && (
-                                <span className="ml-[2ch] text-muted-foreground/70">
-                                    # <span className="[@media(hover:hover)]:hidden">tap</span>
-                                    <span className="hidden [@media(hover:hover)]:inline">
-                                        click
-                                    </span>{' '}
-                                    to list
-                                </span>
-                            )}
-                        </button>
-                    </span>
+                            # <span className="[@media(hover:hover)]:hidden">tap</span>
+                            <span className="hidden [@media(hover:hover)]:inline">click</span> to
+                            run
+                        </span>
+                    )}
                 </div>
                 <ThemeToggle />
             </div>

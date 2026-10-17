@@ -43,7 +43,7 @@ export function getBlogPosts(): BlogPost[] {
                 description: data.description || '',
                 date: data.date || 'Unknown Date',
                 readingTime: data.readingTime || '5 min read',
-                slug: slug, // Uses the folder name (e.g., 'rsync-file-transfer')
+                slug: slug, // Uses the folder name (e.g., 'my-first-post')
             })
         }
     })

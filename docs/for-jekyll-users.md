@@ -32,10 +32,11 @@ the `ls ~` navigation.
   next to the pages that use them.
 - **Data files.** `_data/posts.yml` corresponds to the `_data/*.ts` files,
   which export lists of objects.
-- **Posts.** `_posts/2026-06-23-rsync.md` corresponds to
-  `src/app/blog/_posts/rsync-file-transfer/content.mdx`. MDX is Markdown that
-  may also contain components. As in Jekyll, a folder whose name starts with
-  an underscore is not turned into pages of its own.
+- **Posts.** `_posts/2026-06-23-my-first-post.md` corresponds to
+  `src/app/blog/_posts/my-first-post/content.mdx`, and a new post starts as a
+  copy of `src/app/blog/_posts/_template/`. MDX is Markdown that may also
+  contain components. As in Jekyll, a folder whose name starts with an
+  underscore is not turned into pages of its own.
 - **Assets.** `assets/` corresponds to `public/`, whose files are served
   unchanged: `public/photo.jpg` is available at `/photo.jpg`.
 - **Plugins.** Gems in a `Gemfile` correspond to npm packages listed in

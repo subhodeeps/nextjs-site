@@ -11,6 +11,7 @@ import { BlogCard } from './_components/BlogCard'
 import { BlogHeader } from './_components/BlogHeader'
 import { getBlogPosts } from './_data/posts'
 import { SectionFooter } from '@/components/layout/footer/SectionFooter'
+import Text from '@/components/ui/text/text'
 import { Metadata } from 'next'
 
 // This page's own metadata, which takes priority over blog/layout.tsx
@@ -37,6 +38,8 @@ export default function BlogListing() {
                             isLast={index === blogPosts.length - 1}
                         />
                     ))}
+                    {/* Like {% else %} in that loop: shown only when there are no posts */}
+                    {blogPosts.length === 0 && <Text variant="muted">No posts yet.</Text>}
                 </StackVertical>
             </StackVertical>
             <SectionFooter showToTop={false} />

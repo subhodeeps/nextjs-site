@@ -1,8 +1,10 @@
-// src/app/blog/_posts/set-up-python/page.tsx
+// src/app/blog/_posts/<slug>/page.tsx
 //
-// How this post is laid out: the navigation, the date line, the text from
+// How a post is laid out: the navigation, the date line, the text from
 // content.mdx, and the footer. The text itself is in content.mdx, next to this
-// file. Readers reach the post at /blog/set-up-python (see src/app/blog/[slug]/page.tsx).
+// file. Readers reach the post at /blog/<slug> (see src/app/blog/[slug]/page.tsx).
+// A new post starts as a copy of the _template folder, so this file is the same
+// in every post except for the date line.
 'use client'
 
 // The post text: importing an .mdx file gives a component that draws it

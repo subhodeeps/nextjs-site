@@ -73,7 +73,7 @@ icons, underlines, and other non-text accents. To change the accent, edit
 
 ## Navigation
 
-The top of every page is a shell prompt ending in `ls ~  # tap to list`.
+The top of every page is a shell prompt ending in `ls ~ # tap to run`.
 Tapping the command shows its output, the six sections of the site, so every
 section can be reached from every page. On the home page the command is plain
 `ls` and its output is already shown. The path in the prompt links to each
@@ -86,11 +86,12 @@ documented.
 
 ### Blog posts
 
-1. Create the directory `src/app/blog/_posts/<slug>/`. The directory name
-   determines the URL, `/blog/<slug>`; the leading underscore of `_posts`
-   keeps the folder itself from becoming a page.
-2. Write the post in `content.mdx`, beginning with the following frontmatter,
-   which also sets the page title and description:
+1. Copy the directory `src/app/blog/_posts/_template/` to
+   `src/app/blog/_posts/<slug>/`. The directory name determines the URL,
+   `/blog/<slug>`; the leading underscore of `_posts` keeps the folder itself
+   from becoming a page.
+2. Write the post in `content.mdx`, in place of the sample text, and fill in
+   its frontmatter, which also sets the page title and description:
 
    ```mdx
    ---
@@ -101,12 +102,12 @@ documented.
    ---
    ```
 
-3. Copy `page.tsx` and `section-ids.ts` from an existing post, such as
-   `rsync-file-transfer`, and update the date line in `page.tsx`.
+3. Update the date line in `page.tsx` to match the frontmatter.
 4. Optionally, add a link-preview image at `public/og/<slug>.jpg`.
 
 The blog index lists every post directory that contains a `content.mdx` file,
-newest first.
+newest first. Directories whose names begin with an underscore, such as
+`_template`, are left out.
 
 ### Equations
 
@@ -136,9 +137,9 @@ Link-preview images, the Open Graph and Twitter cards shown when a page is
 shared, are kept in `public/og/`. To give a page its own image, name the file
 after its section (`home`, `about`, `blog`, `collaborations`, `cv`, `learning`,
 `older_updates`, `reading`, or `research`) or after a blog post's directory,
-e.g., `rsync-file-transfer.jpg`. JPEG, PNG, and WebP files are accepted. Pages
-without their own image use `default.jpg`, and blog posts try `blog` before
-falling back to the default. The lookup is implemented in
+e.g., `my-first-post.jpg` for `/blog/my-first-post`. JPEG, PNG, and WebP files
+are accepted. Pages without their own image use `default.jpg`, and blog posts
+try `blog` before falling back to the default. The lookup is implemented in
 `src/lib/og/og-images.ts`.
 
 ## Acknowledgments

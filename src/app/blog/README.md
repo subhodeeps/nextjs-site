@@ -11,6 +11,7 @@ src/app/blog/
 ├── _data/
 │   └── posts.ts          # reads the list of posts from _posts/
 ├── _posts/
+│   ├── _template/        # copy this folder to start a new post
 │   └── <slug>/           # one folder per post
 │       ├── content.mdx   # the text, with its frontmatter
 │       ├── page.tsx      # how the post is laid out
