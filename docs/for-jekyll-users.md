@@ -33,14 +33,16 @@ the `ls ~` navigation.
 - **Data files.** `_data/posts.yml` corresponds to the `_data/*.ts` files,
   which export lists of objects.
 - **Posts.** `_posts/2026-06-23-rsync.md` corresponds to
-  `src/app/blog/posts/rsync-file-transfer/content.mdx`. MDX is Markdown that
-  may also contain components.
+  `src/app/blog/_posts/rsync-file-transfer/content.mdx`. MDX is Markdown that
+  may also contain components. As in Jekyll, a folder whose name starts with
+  an underscore is not turned into pages of its own.
 - **Assets.** `assets/` corresponds to `public/`, whose files are served
   unchanged: `public/photo.jpg` is available at `/photo.jpg`.
 - **Plugins.** Gems in a `Gemfile` correspond to npm packages listed in
   `package.json`, and `npm install` plays the role of `bundle install`.
 - **Commands.** `jekyll serve` is `npm run dev`, and `jekyll build` is
-  `npm run build`.
+  `npm run build`. After editing code, `npm run format` fixes its indentation
+  and layout.
 
 ## Liquid and JSX side by side
 

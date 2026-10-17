@@ -6,5 +6,5 @@ import { Homepage } from '@/components/blocks/homepage/Homepage'
 
 /** The page component for /. Next.js renders whatever it returns. */
 export default function Home() {
-  return <Homepage />
+    return <Homepage />
 }

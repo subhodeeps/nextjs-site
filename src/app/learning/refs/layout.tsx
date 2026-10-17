@@ -7,8 +7,6 @@
 import { Metadata } from 'next'
 import { ogImages } from '@/lib/og/og-images'
 
-
-
 export const metadata: Metadata = {
     title: 'References',
     description: 'refs',
@@ -24,14 +22,10 @@ export const metadata: Metadata = {
         title: 'References',
         description: 'refs',
         images: ogImages('learning'),
-    }
+    },
 }
 
 /** Shows the page unchanged; this layout exists only for its metadata. */
-export default function Layout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
     return children
 }

@@ -6,12 +6,12 @@ import { cn } from '@/lib/utils/utils'
 import { headingFont } from '@/styles/fonts/fonts'
 
 interface TextHeadingProps {
-    children: React.ReactNode;
-    className?: string;
-    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-    weight?: 'normal' | 'semibold' | 'medium' | 'bold' | 'light' | 'thin';
-    margin?: 'mb-4 mt-6' | 'mb-3 mt-5' | 'mb-2 mt-4' | 'mb-1 mt-3' | 'mb-1 mt-2' | 'mb-1 mt-1';
-    id?: string;
+    children: React.ReactNode
+    className?: string
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+    weight?: 'normal' | 'semibold' | 'medium' | 'bold' | 'light' | 'thin'
+    margin?: 'mb-4 mt-6' | 'mb-3 mt-5' | 'mb-2 mt-4' | 'mb-1 mt-3' | 'mb-1 mt-2' | 'mb-1 mt-1'
+    id?: string
 }
 
 // Font size for each level; each grows at the sm:, md: and lg: screen widths
@@ -21,7 +21,7 @@ const defaultSizes = {
     h3: 'text-base sm:text-lg md:text-lg lg:text-xl',
     h4: 'text-sm sm:text-base md:text-base lg:text-lg',
     h5: 'text-xs sm:text-sm md:text-sm lg:text-base',
-    h6: 'text-[10px] sm:text-xs md:text-xs lg:text-sm'
+    h6: 'text-[10px] sm:text-xs md:text-xs lg:text-sm',
 }
 
 const fontWeights = {
@@ -30,7 +30,7 @@ const fontWeights = {
     medium: 'font-medium',
     bold: 'font-bold',
     light: 'font-light',
-    thin: 'font-thin'
+    thin: 'font-thin',
 }
 
 // Space above and below for each level
@@ -40,7 +40,7 @@ const defaultMargin = {
     h3: 'mb-2 mt-4',
     h4: 'mb-1 mt-3',
     h5: 'mb-1 mt-2',
-    h6: 'mb-1 mt-1'
+    h6: 'mb-1 mt-1',
 }
 
 /**
@@ -53,9 +53,16 @@ const defaultMargin = {
  * @param id        an anchor, so the heading can be linked to as #id
  * @param className extra Tailwind classes, which win over the defaults
  */
-export default function TextHeading({ children, className, as = 'h1', weight = 'semibold', margin = 'mb-4 mt-6', id }: TextHeadingProps) {
+export default function TextHeading({
+    children,
+    className,
+    as = 'h1',
+    weight = 'semibold',
+    margin = 'mb-4 mt-6',
+    id,
+}: TextHeadingProps) {
     // The tag to draw (h1, h2, ...), chosen by the `as` prop
-    const Component = as;
+    const Component = as
     return (
         <Component
             id={id}
@@ -65,10 +72,10 @@ export default function TextHeading({ children, className, as = 'h1', weight = '
                 fontWeights[weight],
                 margin && defaultMargin[as],
                 'text-foreground dark:text-amore-slate-shade',
-                className
+                className,
             )}
         >
             {children}
         </Component>
-    );
+    )
 }

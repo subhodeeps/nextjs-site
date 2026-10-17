@@ -15,8 +15,8 @@ import { mdxComponents as customComponents } from '@/lib/mdx/mdx-components'
  * it as a React hook.
  */
 export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return {
-    ...components,
-    ...customComponents,
-  }
+    return {
+        ...components,
+        ...customComponents,
+    }
 }

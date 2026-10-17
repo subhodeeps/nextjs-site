@@ -5,16 +5,15 @@
 // new post folder appears here without any change to this file. Folders whose
 // names start with _ (here _components, _data, _types) are not pages; Next.js
 // ignores them when it builds the site's addresses.
-import BaseContainer from "@/components/layout/container/base-container"
-import { StackVertical } from "@/components/layout/layout-stack/layout-stack"
-import { BlogCard } from "./_components/BlogCard"
-import { BlogHeader } from "./_components/BlogHeader"
-import { getBlogPosts } from "./_data/posts"
-import { SectionFooter } from "@/components/layout/footer/SectionFooter"
-import { Metadata } from "next"
+import BaseContainer from '@/components/layout/container/base-container'
+import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
+import { BlogCard } from './_components/BlogCard'
+import { BlogHeader } from './_components/BlogHeader'
+import { getBlogPosts } from './_data/posts'
+import { SectionFooter } from '@/components/layout/footer/SectionFooter'
+import { Metadata } from 'next'
 
-// This page's own metadata, which takes priority over blog/layout.tsx. (BlogHeader
-// also writes a <title>; browsers use the first title on the page, which is that one.)
+// This page's own metadata, which takes priority over blog/layout.tsx
 export const metadata: Metadata = {
     title: 'Blog | subhodeep',
     description: 'thoughts on stuff',
@@ -23,7 +22,7 @@ export const metadata: Metadata = {
 /** The blog index: the header, then one BlogCard per post, then the footer. */
 export default function BlogListing() {
     // Read the list of posts; this runs once, when the site is built
-    const blogPosts = getBlogPosts();
+    const blogPosts = getBlogPosts()
 
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">
@@ -32,9 +31,9 @@ export default function BlogListing() {
                 <StackVertical gap="none">
                     {/* The {% for post in posts %} loop; the last card gets no line below it */}
                     {blogPosts.map((post, index) => (
-                        <BlogCard 
-                            key={post.id} 
-                            post={post} 
+                        <BlogCard
+                            key={post.id}
+                            post={post}
                             isLast={index === blogPosts.length - 1}
                         />
                     ))}

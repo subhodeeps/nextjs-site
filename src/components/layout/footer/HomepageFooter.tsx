@@ -8,9 +8,9 @@ import { BaseFooter } from './BaseFooter'
 import { FooterLink } from './_components/FooterLink'
 
 interface HomepageFooterProps {
-    showToTop?: boolean;
-    showSocialLinks?: boolean;
-    showCopyright?: boolean;
+    showToTop?: boolean
+    showSocialLinks?: boolean
+    showCopyright?: boolean
 }
 
 /**
@@ -20,12 +20,10 @@ interface HomepageFooterProps {
 export function HomepageFooter({
     showToTop = true,
     showSocialLinks = true,
-    showCopyright = true
+    showCopyright = true,
 }: HomepageFooterProps) {
     // The link row: just "To the Top", or nothing (null draws nothing)
-    const navigationLinks = showToTop ? (
-        <FooterLink href="#top">To the Top</FooterLink>
-    ) : null
+    const navigationLinks = showToTop ? <FooterLink href="#top">To the Top</FooterLink> : null
 
     return (
         <BaseFooter

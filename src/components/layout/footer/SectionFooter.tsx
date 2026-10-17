@@ -9,10 +9,10 @@ import { FooterLink } from './_components/FooterLink'
 import { FooterDivider } from './_components/FooterDivider'
 
 interface SectionFooterProps {
-    showToTop?: boolean;
-    showHomePage?: boolean;
-    showSocialLinks?: boolean;
-    showCopyright?: boolean;
+    showToTop?: boolean
+    showHomePage?: boolean
+    showSocialLinks?: boolean
+    showCopyright?: boolean
 }
 
 /**
@@ -23,7 +23,7 @@ export function SectionFooter({
     showToTop = true,
     showHomePage = true,
     showSocialLinks = true,
-    showCopyright = true
+    showCopyright = true,
 }: SectionFooterProps) {
     // The link row; the divider appears only when there is a link on each side
     const navigationLinks = (
@@ -34,9 +34,7 @@ export function SectionFooter({
                     {showHomePage && <FooterDivider />}
                 </>
             )}
-            {showHomePage && (
-                <FooterLink href="/">Home Page</FooterLink>
-            )}
+            {showHomePage && <FooterLink href="/">Home Page</FooterLink>}
         </>
     )
 

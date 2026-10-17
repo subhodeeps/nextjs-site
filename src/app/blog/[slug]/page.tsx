@@ -6,9 +6,9 @@
 // Because the site is static, every post's page is built in advance; the list of
 // slugs comes from generateStaticParams below.
 //
-// The post itself lives in src/app/blog/posts/<slug>/ (content.mdx for the text,
-// page.tsx for how it is laid out). That folder also makes the same post
-// available at /blog/posts/<slug>, which nothing links to.
+// The post itself lives in src/app/blog/_posts/<slug>/ (content.mdx for the text,
+// page.tsx for how it is laid out). The _ in _posts keeps Next.js from turning
+// that folder into pages of its own, so each post has exactly one address.
 import { notFound } from 'next/navigation'
 import { getBlogPosts } from '../_data/posts'
 import { ogImages } from '@/lib/og/og-images'
@@ -38,50 +38,45 @@ export async function generateMetadata({ params }: { params: Params }) {
     const blogPosts = getBlogPosts()
 
     // Find the post once for efficiency
-    const post = blogPosts.find(p => p.slug === slug)
+    const post = blogPosts.find((p) => p.slug === slug)
 
     // If it doesn't exist, return empty metadata
     if (!post) return {}
 
     return {
-      title: `${post.title} | subhodeep`,
-      openGraph: {
         title: `${post.title} | subhodeep`,
-        description: post.description,
-        images: ogImages(slug, 'blog'),
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: `${post.title} | subhodeep`,
-        description: post.description,
-        images: ogImages(slug, 'blog'),
-      },
-    };
-  }
-
+        openGraph: {
+            title: `${post.title} | subhodeep`,
+            description: post.description,
+            images: ogImages(slug, 'blog'),
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${post.title} | subhodeep`,
+            description: post.description,
+            images: ogImages(slug, 'blog'),
+        },
+    }
+}
 
 /**
  * The post's page: finds the post and draws its own page.tsx. An unknown slug
  * gives the 404 page.
  */
-export default async function BlogPost({
-    params
-}: {
-    params: Params
-}) {
+export default async function BlogPost({ params }: { params: Params }) {
     const { slug } = await params
     const blogPosts = getBlogPosts()
 
     // Find the matching blog post
-    const post = blogPosts.find(post => post.slug === slug)
+    const post = blogPosts.find((post) => post.slug === slug)
 
     // If no matching post is found, return 404
     if (!post) {
         notFound()
     }
 
-    // Load src/app/blog/posts/<slug>/page.tsx and draw it. `.default` is that
+    // Load src/app/blog/_posts/<slug>/page.tsx and draw it. `.default` is that
     // file's main export, the post's page component.
-    const PostComponent = (await import(`../posts/${slug}/page`)).default
+    const PostComponent = (await import(`../_posts/${slug}/page`)).default
     return <PostComponent />
 }

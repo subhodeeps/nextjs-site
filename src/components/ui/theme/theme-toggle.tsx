@@ -35,10 +35,12 @@ export function ThemeToggle({ className }: { className?: string }) {
     // This prevents layout shift and keeps Next.js happy during SSR
     if (!mounted) {
         return (
-            <div className={cn(
-                'relative p-2 rounded-lg inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9',
-                className
-            )} />
+            <div
+                className={cn(
+                    'relative p-2 rounded-lg inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9',
+                    className,
+                )}
+            />
         )
     }
 
@@ -55,7 +57,7 @@ export function ThemeToggle({ className }: { className?: string }) {
                 'text-muted-foreground hover:text-foreground',
                 'transition-colors duration-200',
                 'hover:bg-muted',
-                className
+                className,
             )}
             aria-label="Toggle theme"
         >
@@ -64,7 +66,7 @@ export function ThemeToggle({ className }: { className?: string }) {
                 initial={false}
                 animate={{
                     rotate: isDark ? 360 : 0,
-                    scale: isDark ? [1, 0.8, 1] : [1, 0.8, 1]
+                    scale: isDark ? [1, 0.8, 1] : [1, 0.8, 1],
                 }}
                 transition={{ duration: 0.4, ease: 'easeInOut' }}
                 className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5"

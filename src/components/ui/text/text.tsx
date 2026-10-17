@@ -6,14 +6,14 @@ import { cn } from '@/lib/utils/utils'
 import { monoFont } from '@/styles/fonts/fonts'
 
 interface TextProps {
-    children: React.ReactNode;
-    className?: string;
-    size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl';
-    weight?: 'normal' | 'medium' | 'semibold' | 'bold';
-    variant?: 'default' | 'purple' | 'blue' | 'green' | 'red' | 'orange' | 'muted' | 'caption';
-    align?: 'left' | 'center' | 'right' | 'justify';
-    transform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
-    truncate?: boolean;
+    children: React.ReactNode
+    className?: string
+    size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl'
+    weight?: 'normal' | 'medium' | 'semibold' | 'bold'
+    variant?: 'default' | 'purple' | 'blue' | 'green' | 'red' | 'orange' | 'muted' | 'caption'
+    align?: 'left' | 'center' | 'right' | 'justify'
+    transform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize'
+    truncate?: boolean
 }
 
 // Define types for the default styles. TextProps['size'] means "the type of the
@@ -31,24 +31,24 @@ const defaultStyles = {
     variant: 'default' as TextVariant,
     align: 'left' as TextAlign,
     transform: 'none' as TextTransform,
-    truncate: false
+    truncate: false,
 }
 
 // Font size for each size name; the size grows at the sm: and md: screen widths
 const textSizes = {
-    xs: 'text-[10px] sm:text-xs md:text-xs',           // 10px -> 12px -> 12px
-    sm: 'text-xs sm:text-sm md:text-sm',               // 12px -> 14px -> 14px
-    base: 'text-sm sm:text-base md:text-base',         // 14px -> 16px -> 16px
-    lg: 'text-base sm:text-lg md:text-lg',             // 16px -> 18px -> 18px
-    xl: 'text-lg sm:text-xl md:text-xl',               // 18px -> 20px -> 20px
-    '2xl': 'text-xl sm:text-2xl md:text-2xl'           // 20px -> 24px -> 24px
+    xs: 'text-[10px] sm:text-xs md:text-xs', // 10px -> 12px -> 12px
+    sm: 'text-xs sm:text-sm md:text-sm', // 12px -> 14px -> 14px
+    base: 'text-sm sm:text-base md:text-base', // 14px -> 16px -> 16px
+    lg: 'text-base sm:text-lg md:text-lg', // 16px -> 18px -> 18px
+    xl: 'text-lg sm:text-xl md:text-xl', // 18px -> 20px -> 20px
+    '2xl': 'text-xl sm:text-2xl md:text-2xl', // 20px -> 24px -> 24px
 }
 
 const fontWeights = {
     normal: 'font-normal',
     medium: 'font-medium',
     semibold: 'font-semibold',
-    bold: 'font-bold'
+    bold: 'font-bold',
 }
 
 // Text colour for each variant. The colours come from the amore palettes; a
@@ -61,21 +61,21 @@ const variants = {
     red: 'text-amore-red-ink dark:text-amore-red-light',
     orange: 'text-amore-amber-ink dark:text-amore-amber-light',
     muted: 'text-muted-foreground',
-    caption: 'text-xs text-muted-foreground'
+    caption: 'text-xs text-muted-foreground',
 }
 
 const alignments = {
     left: 'text-left',
     center: 'text-center',
     right: 'text-right',
-    justify: 'text-justify'
+    justify: 'text-justify',
 }
 
 const transforms = {
     none: '',
     uppercase: 'uppercase',
     lowercase: 'lowercase',
-    capitalize: 'capitalize'
+    capitalize: 'capitalize',
 }
 
 /**
@@ -97,7 +97,7 @@ export default function Text({
     variant = defaultStyles.variant,
     align = defaultStyles.align,
     transform = defaultStyles.transform,
-    truncate = defaultStyles.truncate
+    truncate = defaultStyles.truncate,
 }: TextProps) {
     // Use the provided value or fall back to default. (The defaults above already
     // do this; these lines are a second safety net. `a || b` means a, or b if a
@@ -109,17 +109,19 @@ export default function Text({
     const finalTransform = transform || defaultStyles.transform
 
     return (
-        <p className={cn(
-            monoFont.className,
-            textSizes[finalSize],
-            fontWeights[finalWeight],
-            variants[finalVariant],
-            alignments[finalAlign],
-            transforms[finalTransform],
-            truncate && 'truncate',
-            className
-        )}>
+        <p
+            className={cn(
+                monoFont.className,
+                textSizes[finalSize],
+                fontWeights[finalWeight],
+                variants[finalVariant],
+                alignments[finalAlign],
+                transforms[finalTransform],
+                truncate && 'truncate',
+                className,
+            )}
+        >
             {children}
         </p>
-    );
+    )
 }

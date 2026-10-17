@@ -36,8 +36,7 @@ import { ThemeToggle } from '@/components/ui/theme/theme-toggle'
  *   Collaborations is linked from the About and Research pages, and Older
  *   Updates from the updates on the home page.
  * - The path is clickable: ~ and each parent directory link to that page, so it
- *   also works as a breadcrumb. The current directory is plain text, and so is
- *   blog/posts, which holds the post files but is not a page.
+ *   also works as a breadcrumb. The current directory is plain text.
  * - The section you are in is shown in the accent colour.
  * - On small screens the listing wraps into two rows of three, still in order
  *   from left to right, and a long path is shortened the way the fish shell
@@ -54,14 +53,12 @@ const PROMPT_SYMBOL = '👾'
 // The sections listed by `ls ~`, in the order of the original nav row
 const SECTIONS = ['about', 'research', 'cv', 'learning', 'reading', 'blog']
 
-// Folders in a path that are not pages of their own, so they are not linked
-const NOT_PAGES = ['/blog/posts']
-
 // Paths longer than this (in characters, ~/ included) are shortened on small
 // screens, so that most pages keep the prompt on one line
 const LONG_PATH = 15
 
-const focusRing = 'rounded-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+const focusRing =
+    'rounded-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
 
 /**
  * The navigation prompt with its theme toggle.
@@ -91,13 +88,18 @@ export function TerminalNav({ className }: { className?: string }) {
     }, [open])
 
     return (
-        <nav aria-label="Site" className={cn(monoFont.className, 'text-[13px] sm:text-sm', className)}>
+        <nav
+            aria-label="Site"
+            className={cn(monoFont.className, 'text-[13px] sm:text-sm', className)}
+        >
             <div className="flex items-center justify-between gap-4">
                 <div className="flex min-w-0 flex-wrap items-baseline gap-x-2">
                     {atHome ? (
                         <span aria-hidden="true">{PROMPT_SYMBOL}</span>
                     ) : (
-                        <Link href="/" aria-label="Home" className={focusRing}>{PROMPT_SYMBOL}</Link>
+                        <Link href="/" aria-label="Home" className={focusRing}>
+                            {PROMPT_SYMBOL}
+                        </Link>
                     )}
 
                     {/* The path: ~ followed by one part per segment. ['~', ...segments]
@@ -107,19 +109,28 @@ export function TerminalNav({ className }: { className?: string }) {
                         {['~', ...segments].map((label, i) => {
                             const href = i === 0 ? '/' : `/${segments.slice(0, i).join('/')}`
                             const current = i === segments.length
-                            const text = shorten && i > 0 && !current ? (
-                                <>
-                                    <span className="sm:hidden">{label[0]}</span>
-                                    <span className="hidden sm:inline">{label}</span>
-                                </>
-                            ) : label
+                            const text =
+                                shorten && i > 0 && !current ? (
+                                    <>
+                                        <span className="sm:hidden">{label[0]}</span>
+                                        <span className="hidden sm:inline">{label}</span>
+                                    </>
+                                ) : (
+                                    label
+                                )
                             return (
                                 <Fragment key={href}>
                                     {i > 0 && <span className="text-muted-foreground/60">/</span>}
-                                    {current || NOT_PAGES.includes(href) ? (
-                                        <span className={current ? 'text-foreground' : 'text-muted-foreground'}>{text}</span>
+                                    {current ? (
+                                        <span className="text-foreground">{text}</span>
                                     ) : (
-                                        <Link href={href} className={cn(focusRing, 'text-muted-foreground transition-colors hover:text-accent')}>
+                                        <Link
+                                            href={href}
+                                            className={cn(
+                                                focusRing,
+                                                'text-muted-foreground transition-colors hover:text-accent',
+                                            )}
+                                        >
                                             {text}
                                         </Link>
                                     )}
@@ -130,19 +141,28 @@ export function TerminalNav({ className }: { className?: string }) {
 
                     {/* Kept together, so it wraps to a second line as a whole */}
                     <span className="whitespace-nowrap">
-                        <span aria-hidden="true" className="mr-2 text-accent-muted">❯</span>
+                        <span aria-hidden="true" className="mr-2 text-accent-muted">
+                            ❯
+                        </span>
                         <button
                             type="button"
                             onClick={() => setOpen(!open)}
                             aria-expanded={open}
                             aria-controls="terminal-nav-output"
-                            className={cn(focusRing, 'text-left transition-colors hover:text-accent', open ? 'text-accent' : 'text-foreground')}
+                            className={cn(
+                                focusRing,
+                                'text-left transition-colors hover:text-accent',
+                                open ? 'text-accent' : 'text-foreground',
+                            )}
                         >
                             {atHome ? 'ls' : 'ls ~'}
                             {!open && (
                                 <span className="ml-[2ch] text-muted-foreground/70">
                                     # <span className="[@media(hover:hover)]:hidden">tap</span>
-                                    <span className="hidden [@media(hover:hover)]:inline">click</span> to list
+                                    <span className="hidden [@media(hover:hover)]:inline">
+                                        click
+                                    </span>{' '}
+                                    to list
                                 </span>
                             )}
                         </button>
@@ -153,7 +173,10 @@ export function TerminalNav({ className }: { className?: string }) {
 
             {/* The output of `ls`, drawn only while `open` is true */}
             {open && (
-                <ul id="terminal-nav-output" className="mt-1 grid grid-cols-[repeat(3,max-content)] gap-x-[2ch] sm:flex sm:flex-wrap">
+                <ul
+                    id="terminal-nav-output"
+                    className="mt-1 grid grid-cols-[repeat(3,max-content)] gap-x-[2ch] sm:flex sm:flex-wrap"
+                >
                     {SECTIONS.map((name) => (
                         <li key={name}>
                             <Link
@@ -162,7 +185,9 @@ export function TerminalNav({ className }: { className?: string }) {
                                 className={cn(
                                     focusRing,
                                     'inline-block py-1 transition-colors sm:py-0.5',
-                                    segments[0] === name ? 'text-accent' : 'text-muted-foreground hover:text-accent'
+                                    segments[0] === name
+                                        ? 'text-accent'
+                                        : 'text-muted-foreground hover:text-accent',
                                 )}
                             >
                                 {name}/

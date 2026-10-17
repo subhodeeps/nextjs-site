@@ -27,7 +27,8 @@ other. Every code file also begins with a comment that explains what it does.
 npm install
 npm run dev     # http://localhost:3000
 npm run build   # static export to out/
-npm run lint
+npm run lint    # check the code for likely mistakes
+npm run format  # lay out the code consistently (Prettier)
 ```
 
 To preview the production build, serve the `out/` directory with a static file
@@ -85,9 +86,11 @@ documented.
 
 ### Blog posts
 
-1. Create the directory `src/app/blog/posts/<slug>/`. The directory name
-   determines the URL, `/blog/<slug>`.
-2. Write the post in `content.mdx`, beginning with the following frontmatter:
+1. Create the directory `src/app/blog/_posts/<slug>/`. The directory name
+   determines the URL, `/blog/<slug>`; the leading underscore of `_posts`
+   keeps the folder itself from becoming a page.
+2. Write the post in `content.mdx`, beginning with the following frontmatter,
+   which also sets the page title and description:
 
    ```mdx
    ---
@@ -98,9 +101,8 @@ documented.
    ---
    ```
 
-3. Copy `page.tsx`, `layout.tsx`, and `section-ids.ts` from an existing post,
-   such as `rsync-file-transfer`. Then update the date line in `page.tsx` and
-   the title and description in `layout.tsx`.
+3. Copy `page.tsx` and `section-ids.ts` from an existing post, such as
+   `rsync-file-transfer`, and update the date line in `page.tsx`.
 4. Optionally, add a link-preview image at `public/og/<slug>.jpg`.
 
 The blog index lists every post directory that contains a `content.mdx` file,

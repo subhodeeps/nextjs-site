@@ -1,15 +1,24 @@
+# The blog folder
 
-```
+Folders whose names start with an underscore hold code and posts, not pages;
+only `page.tsx` and `[slug]/page.tsx` produce addresses.
+
+```text
 src/app/blog/
 ├── _components/
-│   ├── BlogCard.tsx       # Individual blog post card component
-│   └── BlogHeader.tsx     # Header with breadcrumb and title
-├── _types/
-│   └── blog.ts           # TypeScript interfaces for blog data
+│   ├── BlogCard.tsx      # one post's entry in the index
+│   └── BlogHeader.tsx    # navigation, title, and subtitle of the index
 ├── _data/
-│   └── posts.ts          # Blog posts data
-└── page.tsx              # Main blog listing page
-└── [slug]/              # Slug for the blog post
-    ├── page.tsx          # Blog post page
-
+│   └── posts.ts          # reads the list of posts from _posts/
+├── _posts/
+│   └── <slug>/           # one folder per post
+│       ├── content.mdx   # the text, with its frontmatter
+│       ├── page.tsx      # how the post is laid out
+│       └── section-ids.ts
+├── _types/
+│   └── blog.ts           # the fields of a post
+├── [slug]/
+│   └── page.tsx          # serves each post at /blog/<slug>
+├── layout.tsx            # metadata for /blog
+└── page.tsx              # the index at /blog
 ```

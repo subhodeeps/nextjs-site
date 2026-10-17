@@ -11,13 +11,13 @@ import { FooterLink } from './_components/FooterLink'
 import { FooterDivider } from './_components/FooterDivider'
 
 interface IndividualPageFooterProps {
-    sectionName?: string;
-    parentPageName?: string;
-    showToTop?: boolean;
-    showParentPage?: boolean;
-    showHomePage?: boolean;
-    showSocialLinks?: boolean;
-    showCopyright?: boolean;
+    sectionName?: string
+    parentPageName?: string
+    showToTop?: boolean
+    showParentPage?: boolean
+    showHomePage?: boolean
+    showSocialLinks?: boolean
+    showCopyright?: boolean
 }
 
 /**
@@ -35,7 +35,7 @@ export function IndividualPageFooter({
     showParentPage = true,
     showHomePage = true,
     showSocialLinks = true,
-    showCopyright = true
+    showCopyright = true,
 }: IndividualPageFooterProps) {
     // The current address, such as "/blog/rsync-file-transfer"
     const pathname = usePathname()
@@ -43,11 +43,12 @@ export function IndividualPageFooter({
     // Get the parent path and name dynamically if not provided. For
     // "/learning/books" the parent is "/learning", shown as "Learning Page".
     const getParentInfo = () => {
-        if (parentPageName) return { name: parentPageName, path: pathname.split('/').slice(0, -1).join('/') }
+        if (parentPageName)
+            return { name: parentPageName, path: pathname.split('/').slice(0, -1).join('/') }
 
         const pathParts = pathname.split('/')
         // Remove empty string and current page
-        const filteredParts = pathParts.filter(part => part)
+        const filteredParts = pathParts.filter((part) => part)
 
         if (filteredParts.length <= 1) {
             return { name: sectionName || 'Home', path: '/' }
@@ -60,7 +61,7 @@ export function IndividualPageFooter({
         // "Scattering From Black Holes"
         const parentName = filteredParts[filteredParts.length - 2]
             .split('-')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ')
 
         return { name: parentName, path: parentPath }
@@ -83,9 +84,7 @@ export function IndividualPageFooter({
                     {showHomePage && <FooterDivider />}
                 </>
             )}
-            {showHomePage && (
-                <FooterLink href="/">Home Page</FooterLink>
-            )}
+            {showHomePage && <FooterLink href="/">Home Page</FooterLink>}
         </div>
     )
 

@@ -22,71 +22,76 @@ import CollaboratorGrid from './grid'
 // One photo: its address, the alt text made from its file name, and its size in
 // pixels (the image component needs the size to reserve space for it)
 type CollaboratorPhoto = {
-  id: string
-  name: string
-  photoUrl: string
-  width: number
-  height: number
+    id: string
+    name: string
+    photoUrl: string
+    width: number
+    height: number
 }
 
 /** The Collaborations page; it collects the photos, then draws the text and the grid. */
 export default function Collaborators() {
-  const photosDirectory = path.join(process.cwd(), 'public', 'collabs')
-  // `let` (unlike `const`) allows the value to be replaced, as it is below
-  let people: CollaboratorPhoto[] = []
+    const photosDirectory = path.join(process.cwd(), 'public', 'collabs')
+    // `let` (unlike `const`) allows the value to be replaced, as it is below
+    let people: CollaboratorPhoto[] = []
 
-  // try/catch: if reading the folder fails, log the error and show no photos,
-  // instead of failing the whole build
-  try {
-    const files = fs.readdirSync(photosDirectory)
+    // try/catch: if reading the folder fails, log the error and show no photos,
+    // instead of failing the whole build
+    try {
+        const files = fs.readdirSync(photosDirectory)
 
-    // Read the files statically at build time (no shuffling here). Keep only image
-    // files, then turn each file name into a photo entry.
-    people = files
-      .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file))
-      .map((file, index) => {
-        const filepath = path.join(photosDirectory, file)
-        const imageBuffer = fs.readFileSync(filepath)
-        const dimensions = sizeOf(imageBuffer)
+        // Read the files statically at build time (no shuffling here). Keep only image
+        // files, then turn each file name into a photo entry.
+        people = files
+            .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file))
+            .map((file, index) => {
+                const filepath = path.join(photosDirectory, file)
+                const imageBuffer = fs.readFileSync(filepath)
+                const dimensions = sizeOf(imageBuffer)
 
-        // "anjan_da.jpg" becomes the alt text "anjan da"; `?? 1200` is the size to
-        // use if the image size cannot be read
-        const nameWithoutExt = file.replace(/\.[^/.]+$/, '')
+                // "anjan_da.jpg" becomes the alt text "anjan da"; `?? 1200` is the size to
+                // use if the image size cannot be read
+                const nameWithoutExt = file.replace(/\.[^/.]+$/, '')
 
-        return {
-          id: String(index),
-          name: nameWithoutExt.replace(/[_-]/g, ' '),
-          photoUrl: `/collabs/${file}`,
-          width: dimensions.width ?? 1200,
-          height: dimensions.height ?? 1200,
-        }
-      })
-  } catch (error) {
-    console.error('Failed to read collabs directory:', error)
-  }
+                return {
+                    id: String(index),
+                    name: nameWithoutExt.replace(/[_-]/g, ' '),
+                    photoUrl: `/collabs/${file}`,
+                    width: dimensions.width ?? 1200,
+                    height: dimensions.height ?? 1200,
+                }
+            })
+    } catch (error) {
+        console.error('Failed to read collabs directory:', error)
+    }
 
-  return (
-    <BaseContainer size="md" paddingX="md" paddingY="lg">
-      <StackVertical gap="md">
-        <TerminalNav />
+    return (
+        <BaseContainer size="md" paddingX="md" paddingY="lg">
+            <StackVertical gap="md">
+                <TerminalNav />
 
-        {/* Header */}
-        <div>
-          <TextHeading as="h1" weight="bold">
-            Collaborations (for lack of a better word)
-          </TextHeading>
+                {/* Header */}
+                <div>
+                    <TextHeading as="h1" weight="bold">
+                        Collaborations (for lack of a better word)
+                    </TextHeading>
 
-          <Text variant="muted" className="mb-10">
-            Research is rarely a solitary endeavor. I have been incredibly fortunate to collaborate and regularly interact with many amazing individuals whose insight, work ethic, generosity, and enthusiasm for physics have profoundly influenced my own approach to research. This page contains photographs of some of the people with whom I have worked, from whom I have learned, and with whom I have exchanged ideas. It is necessarily incomplete, and I hope it remains that way for as long as I'm in the business.
-          </Text>
+                    <Text variant="muted" className="mb-10">
+                        Research is rarely a solitary endeavor. I have been incredibly fortunate to
+                        collaborate and regularly interact with many amazing individuals whose
+                        insight, work ethic, generosity, and enthusiasm for physics have profoundly
+                        influenced my own approach to research. This page contains photographs of
+                        some of the people with whom I have worked, from whom I have learned, and
+                        with whom I have exchanged ideas. It is necessarily incomplete, and I hope
+                        it remains that way for as long as I'm in the business.
+                    </Text>
 
-          {/* Pass the static data into the Client Component to handle the random shuffle */}
-          <CollaboratorGrid initialPeople={people} />
-          
-        </div>
-      </StackVertical>
+                    {/* Pass the static data into the Client Component to handle the random shuffle */}
+                    <CollaboratorGrid initialPeople={people} />
+                </div>
+            </StackVertical>
 
-      <SectionFooter showToTop={false} />
-    </BaseContainer>
-  )
+            <SectionFooter showToTop={false} />
+        </BaseContainer>
+    )
 }

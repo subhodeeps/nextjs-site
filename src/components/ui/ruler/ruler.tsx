@@ -6,13 +6,13 @@
 import { cn } from '@/lib/utils/utils'
 
 interface RulerProps {
-    className?: string;
-    orientation?: 'horizontal' | 'vertical';
-    weight?: 'thin' | 'normal' | 'slightlyThick' | 'thick' | 'heavy';
-    color?: 'default' | 'muted' | 'purple' | 'gray' | 'white' | 'colorless';
-    marginTop?: 'none' | 'sm' | 'md' | 'lg';
-    marginBottom?: 'none' | 'sm' | 'md' | 'lg';
-    fullWidth?: boolean;
+    className?: string
+    orientation?: 'horizontal' | 'vertical'
+    weight?: 'thin' | 'normal' | 'slightlyThick' | 'thick' | 'heavy'
+    color?: 'default' | 'muted' | 'purple' | 'gray' | 'white' | 'colorless'
+    marginTop?: 'none' | 'sm' | 'md' | 'lg'
+    marginBottom?: 'none' | 'sm' | 'md' | 'lg'
+    fullWidth?: boolean
 }
 
 // Line thickness
@@ -21,7 +21,7 @@ const weights = {
     normal: 'border-[1px]',
     slightlyThick: 'border-[1.5px]',
     thick: 'border-[2px]',
-    heavy: 'border-[4px]'
+    heavy: 'border-[4px]',
 }
 
 // Line colour; 'purple' is the theme accent, and 'gray' is the amore slate palette
@@ -31,7 +31,7 @@ const colors = {
     purple: 'border-accent-muted/50',
     gray: 'border-amore-slate-light dark:border-amore-slate-main',
     white: 'border-white',
-    colorless: 'border-transparent'
+    colorless: 'border-transparent',
 }
 
 // Space above and below a horizontal line. The ! makes these win over margins
@@ -40,14 +40,14 @@ const marginTop = {
     none: '!mt-0',
     sm: '!mt-2 sm:!mt-2',
     md: '!mt-4 sm:!mt-4',
-    lg: '!mt-8 sm:!mt-8'
+    lg: '!mt-8 sm:!mt-8',
 }
 
 const marginBottom = {
     none: '!mb-0',
     sm: '!mb-2 sm:!mb-2',
     md: '!mb-4 sm:!mb-4',
-    lg: '!mb-8 sm:!mb-8'
+    lg: '!mb-8 sm:!mb-8',
 }
 
 // Space to the left and right of a vertical line (it reuses the marginTop prop)
@@ -55,7 +55,7 @@ const verticalSpacings = {
     none: 'mx-0',
     sm: 'mx-2',
     md: 'mx-4',
-    lg: 'mx-8'
+    lg: 'mx-8',
 }
 
 /**
@@ -75,7 +75,7 @@ export default function Ruler({
     color = 'gray',
     marginTop: mt = 'md',
     marginBottom: mb = 'md',
-    fullWidth = true
+    fullWidth = true,
 }: RulerProps) {
     const isHorizontal = orientation === 'horizontal'
 
@@ -91,7 +91,7 @@ export default function Ruler({
                 isHorizontal ? [marginTop[mt], marginBottom[mb]] : verticalSpacings[mt],
                 !fullWidth && 'w-1/2 mx-auto',
                 'transition-colors duration-200',
-                className
+                className,
             )}
             role="separator"
             aria-orientation={orientation}

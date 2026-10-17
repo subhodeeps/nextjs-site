@@ -13,21 +13,20 @@ import { IndividualPageFooter } from '@/components/layout/footer/IndividualPageF
 
 /** Draws notes.mdx with the site's Markdown styles, between the navigation and the footer. */
 export default function Chapter1() {
-  return (
-    <>
-      <BaseContainer size="md" paddingX="md" paddingY="lg">
-        <StackVertical gap="md">
-          <TerminalNav />
+    return (
+        <>
+            <BaseContainer size="md" paddingX="md" paddingY="lg">
+                <StackVertical gap="md">
+                    <TerminalNav />
 
-          {/* MDX Content. (The prose classes belong to Tailwind's typography plugin,
-              which the site does not install, so they have no effect.) */}
-          <div className="prose dark:prose-invert max-w-none">
-            <Notes components={mdxComponents} />
-          </div>
-        </StackVertical>
-      </BaseContainer>
+                    {/* The text of notes.mdx; mdxComponents decides how each Markdown element looks */}
+                    <div>
+                        <Notes components={mdxComponents} />
+                    </div>
+                </StackVertical>
+            </BaseContainer>
 
-      <IndividualPageFooter parentPageName='BH Scattering Book' showToTop={false}/>
-    </>
-  )
+            <IndividualPageFooter parentPageName="BH Scattering Book" showToTop={false} />
+        </>
+    )
 }

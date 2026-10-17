@@ -2,15 +2,16 @@
 //
 // The cards shown on the Learning page, in order, like a _data file in Jekyll.
 // Each entry links to a subpage (href); add an entry to add a card.
-import { NotesTypes } from "../_types/note-types"
+import { NotesTypes } from '../_types/note-types'
 
 export const notes: NotesTypes[] = [
     {
         id: 1,
-        title: "Physics References",
-        description: "A collection of useful and interesting references and reviews on a various topics in physics and allied areas",
-        lastUpdated: "January 20, 2025",
-        href: "/learning/refs"
+        title: 'Physics References',
+        description:
+            'A collection of useful and interesting references and reviews on a various topics in physics and allied areas',
+        lastUpdated: 'January 20, 2025',
+        href: '/learning/refs',
     },
     // {
     //     id: 2,
@@ -19,10 +20,12 @@ export const notes: NotesTypes[] = [
     //     lastUpdated: "January 14, 2025",
     //     href: "/learning/books"
     // },
-    {id: 2,
-    title: "Essays and Articles Worth Reading",
-    description: "Some essays and articles that I have enjoyed reading. These are mostly non-technical in style, and occasionally cover subjects beyond math and science. ",
-    lastUpdated: "January 14, 2025",
-    href: "/learning/articles"
-    }
-] 
+    {
+        id: 2,
+        title: 'Essays and Articles Worth Reading',
+        description:
+            'Some essays and articles that I have enjoyed reading. These are mostly non-technical in style, and occasionally cover subjects beyond math and science. ',
+        lastUpdated: 'January 14, 2025',
+        href: '/learning/articles',
+    },
+]

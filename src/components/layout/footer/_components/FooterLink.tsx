@@ -9,10 +9,10 @@ import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils/utils'
 
 interface FooterLinkProps {
-    href: string;
-    children: React.ReactNode;
-    external?: boolean;
-    icon?: React.ReactNode;
+    href: string
+    children: React.ReactNode
+    external?: boolean
+    icon?: React.ReactNode
 }
 
 /**
@@ -27,22 +27,22 @@ export function FooterLink({ href, children, external, icon }: FooterLinkProps) 
         <Link
             href={href}
             className={cn(
-                "flex items-center",
-                "gap-1 sm:gap-2",
-                "text-accent hover:text-accent-muted",
-                "text-[11px] sm:text-sm font-medium",
-                "transition-all duration-200 ease-in-out",
-                "hover:translate-y-[-1px]",
+                'flex items-center',
+                'gap-1 sm:gap-2',
+                'text-accent hover:text-accent-muted',
+                'text-[11px] sm:text-sm font-medium',
+                'transition-all duration-200 ease-in-out',
+                'hover:translate-y-[-1px]',
                 // The underline: an empty after: element, 1px high, whose width
                 // grows from 0 to the full width of the link on hover
                 "relative after:content-[''] after:absolute after:w-0 after:h-[1px]",
-                "after:bg-accent-muted after:left-0 after:bottom-[-2px]",
-                "after:transition-all after:duration-200",
-                "hover:after:w-full"
+                'after:bg-accent-muted after:left-0 after:bottom-[-2px]',
+                'after:transition-all after:duration-200',
+                'hover:after:w-full',
             )}
             // For external links, add target="_blank" (new tab) and a safety
             // setting; `...` spreads these attributes into the tag
-            {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+            {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
         >
             {icon && (
                 <motion.div

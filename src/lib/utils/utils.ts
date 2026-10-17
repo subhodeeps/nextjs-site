@@ -1,8 +1,8 @@
 // src/lib/utils/utils.ts
 //
 // Small helpers shared by the whole site.
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 /**
  * Joins Tailwind class lists into one className string. It skips empty values,
@@ -15,5 +15,5 @@ import { twMerge } from "tailwind-merge"
  * `...inputs` means the function takes any number of arguments.
  */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+    return twMerge(clsx(inputs))
 }

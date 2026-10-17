@@ -21,14 +21,10 @@ export const metadata: Metadata = {
         title: 'Collaborations (for lack of a better word) | subhodeep',
         description: 'My research collaborators and co-authors, a.k.a. the real MVPs',
         images: ogImages('collaborations'),
-    }
+    },
 }
 
 /** Shows the page unchanged; this layout exists only for its metadata. */
-export default function Layout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
     return children
 }

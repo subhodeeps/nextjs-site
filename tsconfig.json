@@ -6,11 +6,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     // Check types strictly, which catches more mistakes
@@ -33,18 +29,10 @@
     "baseUrl": "src/",
     // Shortcuts used in imports: "@/components/x" means "src/components/x"
     "paths": {
-      "@/styles/*": [
-        "styles/*"
-      ],
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/lib/*": [
-        "lib/*"
-      ],
-      "@/app/*": [
-        "app/*"
-      ]
+      "@/styles/*": ["styles/*"],
+      "@/components/*": ["components/*"],
+      "@/lib/*": ["lib/*"],
+      "@/app/*": ["app/*"]
     }
   },
   // The files to check; .next/types holds types that Next.js generates
@@ -55,7 +43,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

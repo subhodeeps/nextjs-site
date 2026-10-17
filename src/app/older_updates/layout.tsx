@@ -21,14 +21,10 @@ export const metadata: Metadata = {
         title: 'Older Updates | subhodeep',
         description: 'Older news and updates',
         images: ogImages('older_updates'),
-    }
+    },
 }
 
 /** Shows the page unchanged; this layout exists only for its metadata. */
-export default function Layout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
     return children
 }

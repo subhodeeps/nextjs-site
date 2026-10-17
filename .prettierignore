@@ -1,0 +1,11 @@
+# Files that `npm run format` leaves alone: generated output, dependencies,
+# images and downloads, and the writing in Markdown and MDX files.
+.next
+out
+node_modules
+package-lock.json
+next-env.d.ts
+public
+licenses
+*.md
+*.mdx

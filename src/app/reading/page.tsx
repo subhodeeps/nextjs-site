@@ -2,17 +2,16 @@
 //
 // The Reading page at /reading: a link to Marginalia, then the books currently
 // being read. To change the books, edit the `books` list below; the cover images
-// are in public/covers/. (The files in _data and _components in this folder are
-// not used by this page.)
+// are in public/covers/.
 'use client'
 
-import BaseContainer from "@/components/layout/container/base-container"
-import { StackVertical } from "@/components/layout/layout-stack/layout-stack"
-import TextHeading from "@/components/ui/text-heading/text-heading"
-import { SectionFooter } from "@/components/layout/footer/SectionFooter"
-import Text from "@/components/ui/text/text"
-import { TerminalNav } from "@/components/ui/terminal-nav/terminal-nav"
-import Link from "next/link"
+import BaseContainer from '@/components/layout/container/base-container'
+import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
+import TextHeading from '@/components/ui/text-heading/text-heading'
+import { SectionFooter } from '@/components/layout/footer/SectionFooter'
+import Text from '@/components/ui/text/text'
+import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
+import Link from 'next/link'
 import Image from 'next/image'
 
 /**
@@ -24,47 +23,47 @@ export default function Reading() {
     const books = [
         {
             id: 1,
-            title: "Figuring",
-            author: "Maria Popova",
-            cover: "/covers/popova.jpg"
+            title: 'Figuring',
+            author: 'Maria Popova',
+            cover: '/covers/popova.jpg',
         },
         {
             id: 2,
-            title: "Pachinko",
-            author: "Min Jin Lee",
-            cover: "/covers/pachinko.jpg"
+            title: 'Pachinko',
+            author: 'Min Jin Lee',
+            cover: '/covers/pachinko.jpg',
         },
         {
             id: 3,
-            title: "Inspector Imanishi Investigates",
-            author: "Seicho Matsumoto",
-            cover: "/covers/imanishi.jpg"
+            title: 'Inspector Imanishi Investigates',
+            author: 'Seicho Matsumoto',
+            cover: '/covers/imanishi.jpg',
         },
         {
             id: 4,
             title: "Aristotle: Understanding the World's Greatest Philosopher",
-            author: "John Sellars",
-            cover: "/covers/aristotle.jpg"
+            author: 'John Sellars',
+            cover: '/covers/aristotle.jpg',
         },
         {
             id: 5,
-            title: "In a Flight of Starlings: The Wonders of Complex Systems",
-            author: "Giorgio Parisi",
-            cover:  "/covers/parisi.jpg"
+            title: 'In a Flight of Starlings: The Wonders of Complex Systems',
+            author: 'Giorgio Parisi',
+            cover: '/covers/parisi.jpg',
         },
         {
             id: 6,
             title: "The Sense of Style: The Thinking Person's Guide to Writing in the 21st Century",
-            author: "Steven Pinker",
-            cover:  "/covers/sos.jpg"
+            author: 'Steven Pinker',
+            cover: '/covers/sos.jpg',
         },
         {
             id: 7,
-            title: "Ghost-Eye",
-            author: "Amitav Ghosh",
-            cover:  "/covers/ghosteye.jpg"
-        }
-    ];
+            title: 'Ghost-Eye',
+            author: 'Amitav Ghosh',
+            cover: '/covers/ghosteye.jpg',
+        },
+    ]
 
     return (
         <BaseContainer size="md" paddingX="md" paddingY="lg">
@@ -76,9 +75,10 @@ export default function Reading() {
                     <TextHeading as="h1" weight="bold" className="mb-2">
                         Reading
                     </TextHeading>
-                    
+
                     <Text variant="muted" className="mb-12">
-                        Notes on things I've read, links to pieces I love, plus the books I'm trying to get through.
+                        Notes on things I've read, links to pieces I love, plus the books I'm trying
+                        to get through.
                     </Text>
 
                     {/* Marginalia Section Header */}
@@ -86,9 +86,17 @@ export default function Reading() {
                         <TextHeading as="h3" weight="semibold" className="mb-2 text-xl sm:text-2xl">
                             Marginalia
                         </TextHeading>
-                        
+
                         <Text variant="muted">
-                            Excerpts, takeaways and collections of short-form writing that left an impression. You can browse the collection <Link href="/reading/marginalia" className="text-accent font-bold hover:underline">here</Link>.
+                            Excerpts, takeaways and collections of short-form writing that left an
+                            impression. You can browse the collection{' '}
+                            <Link
+                                href="/reading/marginalia"
+                                className="text-accent font-bold hover:underline"
+                            >
+                                here
+                            </Link>
+                            .
                         </Text>
                     </div>
 
@@ -96,10 +104,18 @@ export default function Reading() {
                     <TextHeading as="h3" weight="semibold" className="mb-2 text-xl sm:text-2xl">
                         Currently Reading
                     </TextHeading>
-                    
+
                     {/* Combined Text */}
                     <Text variant="muted" className="mb-8">
-                        Books that I am currently reading (or, at least, trying to). A simularca of (a fragment of) my library can be found <Link href="https://hobby-site.vercel.app/" className="text-accent font-bold hover:underline">here</Link>.
+                        Books that I am currently reading (or, at least, trying to). A simularca of
+                        (a fragment of) my library can be found{' '}
+                        <Link
+                            href="https://hobby-site.vercel.app/"
+                            className="text-accent font-bold hover:underline"
+                        >
+                            here
+                        </Link>
+                        .
                     </Text>
 
                     {/* Book Grid: two columns on phones, three from md:, five from lg:.
@@ -120,9 +136,7 @@ export default function Reading() {
                                     <TextHeading as="h3" weight="medium" className="line-clamp-2">
                                         {book.title}
                                     </TextHeading>
-                                    <Text variant="muted">
-                                        {book.author}
-                                    </Text>
+                                    <Text variant="muted">{book.author}</Text>
                                 </div>
                             </div>
                         ))}

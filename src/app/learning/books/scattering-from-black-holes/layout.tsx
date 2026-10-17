@@ -22,14 +22,10 @@ export const metadata: Metadata = {
         title: 'Scattering from black holes',
         description: '',
         images: ogImages('learning'),
-    }
+    },
 }
 
 /** Shows the page unchanged; this layout exists only for its metadata. */
-export default function Layout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
     return children
 }

@@ -21,14 +21,10 @@ export const metadata: Metadata = {
         title: 'Research | subhodeep',
         description: 'My research and publications',
         images: ogImages('research'),
-    }
+    },
 }
 
 /** Shows the page unchanged; this layout exists only for its metadata. */
-export default function Layout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
     return children
 }

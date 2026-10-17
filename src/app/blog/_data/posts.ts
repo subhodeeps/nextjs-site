@@ -9,13 +9,13 @@ import { BlogPost } from '../_types/blog'
 
 /**
  * Returns every post, newest first. Each post is a folder in
- * src/app/blog/posts/ that contains a content.mdx; the title, description, date
+ * src/app/blog/_posts/ that contains a content.mdx; the title, description, date
  * and reading time come from the frontmatter (the --- block) at its top, read
  * with the gray-matter package, and the folder name is the slug.
  */
 export function getBlogPosts(): BlogPost[] {
     // 1. Point exactly to the posts directory inside src/
-    const blogDirectory = path.join(process.cwd(), 'src/app/blog/posts')
+    const blogDirectory = path.join(process.cwd(), 'src/app/blog/_posts')
 
     const entries = fs.readdirSync(blogDirectory, { withFileTypes: true })
     const posts: BlogPost[] = []
@@ -39,11 +39,11 @@ export function getBlogPosts(): BlogPost[] {
             // `a || b` uses the default b when the frontmatter has no value for a
             posts.push({
                 id: index + 1, // Generate ID dynamically
-                title: data.title || "Untitled Post",
-                description: data.description || "",
-                date: data.date || "Unknown Date",
-                readingTime: data.readingTime || "5 min read",
-                slug: slug // Uses the folder name (e.g., 'rsync-file-transfer')
+                title: data.title || 'Untitled Post',
+                description: data.description || '',
+                date: data.date || 'Unknown Date',
+                readingTime: data.readingTime || '5 min read',
+                slug: slug, // Uses the folder name (e.g., 'rsync-file-transfer')
             })
         }
     })
