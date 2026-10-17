@@ -9,11 +9,40 @@
 // Each entry is a small component: `({ children }) => (...)` takes the
 // element's content, `children`, and returns the HTML to draw around it.
 
+import { Fragment } from 'react'
 import { MDXComponents } from 'mdx/types'
 import Ruler from '@/components/ui/ruler/ruler'
 import { cn } from '@/lib/utils/utils'
 import { headingFont, monoFont } from '@/styles/fonts/fonts'
 import CodeBlock from '@/components/blocks/code-block/code-block'
+
+/**
+ * An image caption, with each [text](address) in it turned into a link that
+ * opens in a new tab. split() with a capturing pattern keeps the matches: plain
+ * text sits at every third position, each link's text and address after it.
+ */
+function CaptionText({ text }: { text: string }) {
+    const parts = text.split(/\[([^\]]+)\]\(([^)\s]+)\)/)
+    return (
+        <>
+            {parts.map((part, i) => {
+                if (i % 3 === 0) return <Fragment key={i}>{part}</Fragment>
+                if (i % 3 === 2) return null
+                return (
+                    <a
+                        key={i}
+                        href={parts[i + 1]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-accent-muted/50 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent-muted"
+                    >
+                        {part}
+                    </a>
+                )
+            })}
+        </>
+    )
+}
 
 export const mdxComponents: MDXComponents = {
     // Headings use the heading font (Fira Code); dark:... sets the dark-theme colour
@@ -161,6 +190,37 @@ export const mdxComponents: MDXComponents = {
 
     // A --- line becomes a horizontal rule
     hr: () => <Ruler color="gray" marginTop="lg" marginBottom="lg" />,
+
+    // ![description](/path/image.png "Caption"): the image across the full width,
+    // with rounded corners and a faint border, and the caption (the text in quotes,
+    // if any) in small grey type under it; a link in the caption is written as in
+    // Markdown, [text](address). The description is read out by screen readers.
+    // Markdown puts an image inside a paragraph, where a <figure> is not allowed,
+    // so the parts are <span>s shown as blocks.
+    img: ({ src, alt, title }) => (
+        <span className="my-8 block">
+            {/* A plain <img>: the site is a static export, so Next.js's <Image>
+                would not resize it anyway, and the size of an image in a post
+                is not known in advance */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+                src={src}
+                alt={alt ?? ''}
+                loading="lazy"
+                className="block h-auto w-full rounded-lg border border-border"
+            />
+            {title && (
+                <span
+                    className={cn(
+                        'mt-2 block text-center text-xs text-muted-foreground',
+                        monoFont.className,
+                    )}
+                >
+                    <CaptionText text={title} />
+                </span>
+            )}
+        </span>
+    ),
 
     // Links: body-coloured text with a faint accent underline. Links to other
     // websites (starting with http) open in a new tab.

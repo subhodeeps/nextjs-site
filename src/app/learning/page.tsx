@@ -45,13 +45,9 @@ export default function Learning() {
                     . Below are a few highlights from the collection.
                 </Text>
                 <StackVertical gap="none">
-                    {/* One card per entry of ./_data/posts.ts; the last gets no line below it */}
-                    {notes.map((note, index) => (
-                        <ReferenceCard
-                            key={note.id}
-                            post={note}
-                            isLast={index === notes.length - 1}
-                        />
+                    {/* One card per entry of ./_data/posts.ts */}
+                    {notes.map((note) => (
+                        <ReferenceCard key={note.id} post={note} />
                     ))}
                 </StackVertical>
 

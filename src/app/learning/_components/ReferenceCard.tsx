@@ -12,10 +12,9 @@ import { NotesTypes } from '../_types/note-types'
 /**
  * A card for one entry of ../_data/posts.ts.
  *
- * @param post   the entry; an href starting with http opens in a new tab
- * @param isLast true for the last card, which gets no dividing line below it
+ * @param post the entry; an href starting with http opens in a new tab
  */
-export function ReferenceCard({ post, isLast }: { post: NotesTypes; isLast?: boolean }) {
+export function ReferenceCard({ post }: { post: NotesTypes }) {
     const isExternalLink = post.href.startsWith('http')
 
     return (
@@ -57,7 +56,6 @@ export function ReferenceCard({ post, isLast }: { post: NotesTypes; isLast?: boo
                     </StackVertical>
                 </article>
             </Link>
-            {!isLast && <hr className="border-border mt-3" />}
         </div>
     )
 }

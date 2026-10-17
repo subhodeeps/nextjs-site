@@ -105,6 +105,10 @@ documented.
 3. Update the date line in `page.tsx` to match the frontmatter.
 4. Optionally, add a link-preview image at `public/og/<slug>.jpg`.
 
+Images for a post go in `public/blog/<slug>/` and are included with
+`![description](/blog/<slug>/image.png "Caption")`. The image spans the width
+of the text, and the caption, if given, appears beneath it.
+
 The blog index lists every post directory that contains a `content.mdx` file,
 newest first. Directories whose names begin with an underscore, such as
 `_template`, are left out.
