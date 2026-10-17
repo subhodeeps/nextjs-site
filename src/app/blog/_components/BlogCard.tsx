@@ -22,7 +22,7 @@ export function BlogCard({ post, isLast }: { post: BlogPost; isLast?: boolean })
                             as="h4" 
                             weight="medium" 
                             className={cn(
-                                "group-hover:text-purple-500 transition-colors duration-300"
+                                "group-hover:text-accent transition-colors duration-300"
                             )}
                         >
                             {post.title}
@@ -48,7 +48,7 @@ export function BlogCard({ post, isLast }: { post: BlogPost; isLast?: boolean })
             </Link>
             {/* Separator line with reduced top margin */}
             {!isLast && (
-                <hr className="border-gray-500/20 mt-3" />
+                <hr className="border-border mt-3" />
             )}
         </div>
     )

@@ -40,7 +40,7 @@ export function BaseFooter({
     return (
         <footer className={cn("mt-auto pt-12", className)}>
             <div className="relative w-full mb-8">
-                <div className="absolute inset-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-400/20 to-transparent" />
+                <div className="absolute inset-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent-muted/20 to-transparent" />
             </div>
 
             <div className={cn(
@@ -75,11 +75,11 @@ export function BaseFooter({
                                             href={link.href}
                                             target={link.href.startsWith('mailto:') ? undefined : '_blank'}
                                             className={cn(
-                                                "block text-purple-400/80 hover:text-purple-400",
+                                                "block text-accent-muted hover:text-accent",
                                                 "transition-all duration-200",
                                                 "-m-2 p-2",
-                                                "hover:bg-purple-400/10 rounded-md",
-                                                "hover:shadow-md hover:shadow-purple-500/5"
+                                                "hover:bg-accent-muted/10 rounded-md",
+                                                "hover:shadow-md hover:shadow-accent-muted/5"
                                             )}
                                         >
                                             {link.icon}
@@ -91,7 +91,7 @@ export function BaseFooter({
                         
                         {showCopyright && (
                             <motion.span 
-                                className="text-[10px] sm:text-xs text-purple-400"
+                                className="text-[10px] sm:text-xs text-accent"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.4 }}

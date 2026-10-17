@@ -34,11 +34,11 @@ function WorkItem({
       transition={{ delay, duration: 0.5 }}
       className="flex items-center gap-3"
     >
-      <div className="text-purple-500">{icon}</div>
+      <div className="text-accent-muted">{icon}</div>
       <Text variant="muted" size="sm">
         {text}
         {hyperlink && hyperlinkText && (
-          <Link href={hyperlink} className="text-purple-500 hover:underline">
+          <Link href={hyperlink} className="text-accent hover:underline">
             {hyperlinkText}
           </Link>
         )}
@@ -64,7 +64,7 @@ export function CurrentWork() {
           href="https://arxiv.org/abs/2605.28951"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [29 May 2026] The Vaidya QNM preprint is out!
         </a>
@@ -78,7 +78,7 @@ export function CurrentWork() {
       href="https://sites.google.com/site/nsm2015iiserm/home/schedule?authuser=0"
       target="_blank"
       rel="noopener noreferrer"
-      className="text-purple-500 hover:underline"
+      className="text-accent hover:underline"
     >
       [11 Mar 2026] Talk at FRoG 26, IISER Mohali.
     </a>
@@ -93,7 +93,7 @@ export function CurrentWork() {
           href="https://arxiv.org/abs/2511.14841"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [20 Nov 2025] Vitor's ICTS lecture notes are out!
         </a>
@@ -116,7 +116,7 @@ export function CurrentWork() {
         <a
           href="/older_updates"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [OLDER UPDATES]
         </a>

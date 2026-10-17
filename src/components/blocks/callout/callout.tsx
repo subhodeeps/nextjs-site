@@ -33,40 +33,42 @@ const marginBottom = {
     lg: '!mb-8 sm:!mb-8'
 }
 
+// Each variant uses one amore palette: shade background, ink text and a light
+// border on the light theme; a tinted ink background and light text on the dark one.
 const variants = {
     purple: {
-        container: 'bg-purple-50 dark:bg-purple-950 text-purple-950 dark:text-purple-50',
-        title: 'text-purple-800 dark:text-purple-200 font-bold',
-        icon: 'text-purple-700 dark:text-purple-300',
-        border: 'border-purple-200 dark:border-purple-800',
+        container: 'bg-amore-plum-shade dark:bg-amore-plum-ink/30 text-amore-plum-ink dark:text-amore-plum-shade',
+        title: 'text-amore-plum-ink dark:text-amore-plum-light font-bold',
+        icon: 'text-amore-plum-main',
+        border: 'border-amore-plum-light dark:border-amore-plum-ink',
         Icon: Lightbulb
     },
     orange: {
-        container: 'bg-orange-50 dark:bg-orange-950 text-orange-950 dark:text-orange-50',
-        title: 'text-orange-800 dark:text-orange-200 font-bold',
-        icon: 'text-orange-700 dark:text-orange-300',
-        border: 'border-orange-200 dark:border-orange-800',
+        container: 'bg-amore-amber-shade dark:bg-amore-amber-ink/30 text-amore-amber-ink dark:text-amore-amber-shade',
+        title: 'text-amore-amber-ink dark:text-amore-amber-light font-bold',
+        icon: 'text-amore-amber-main',
+        border: 'border-amore-amber-light dark:border-amore-amber-ink',
         Icon: AlertTriangle
     },
     red: {
-        container: 'bg-red-50 dark:bg-red-950 text-red-950 dark:text-red-50',
-        title: 'text-red-800 dark:text-red-200 font-bold',
-        icon: 'text-red-700 dark:text-red-300',
-        border: 'border-red-200 dark:border-red-800',
+        container: 'bg-amore-red-shade dark:bg-amore-red-ink/30 text-amore-red-ink dark:text-amore-red-shade',
+        title: 'text-amore-red-ink dark:text-amore-red-light font-bold',
+        icon: 'text-amore-red-main',
+        border: 'border-amore-red-light dark:border-amore-red-ink',
         Icon: AlertCircle
     },
     green: {
-        container: 'bg-emerald-50/80 dark:bg-green-950 text-emerald-800 dark:text-green-50',
-        title: 'text-emerald-700 dark:text-green-200 font-bold',
-        icon: 'text-emerald-600 dark:text-green-300',
-        border: 'border-emerald-200 dark:border-green-800',
+        container: 'bg-amore-green-shade dark:bg-amore-green-ink/30 text-amore-green-ink dark:text-amore-green-shade',
+        title: 'text-amore-green-ink dark:text-amore-green-light font-bold',
+        icon: 'text-amore-green-main',
+        border: 'border-amore-green-light dark:border-amore-green-ink',
         Icon: CheckCircle2
     },
     blue: {
-        container: 'bg-blue-50 dark:bg-blue-950 text-blue-950 dark:text-blue-50',
-        title: 'text-blue-800 dark:text-blue-200 font-bold',
-        icon: 'text-blue-700 dark:text-blue-300',
-        border: 'border-blue-200 dark:border-blue-800',
+        container: 'bg-amore-blue-shade dark:bg-amore-blue-ink/30 text-amore-blue-ink dark:text-amore-blue-shade',
+        title: 'text-amore-blue-ink dark:text-amore-blue-light font-bold',
+        icon: 'text-amore-blue-main',
+        border: 'border-amore-blue-light dark:border-amore-blue-ink',
         Icon: Info
     }
 }

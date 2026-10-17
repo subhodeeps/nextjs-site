@@ -47,7 +47,7 @@ export default function TextHeading({ children, className, as = 'h1', weight = '
                 sansFont.className, 
                 fontWeights[weight], 
                 margin && defaultMargin[as],
-                'text-foreground dark:text-white',
+                'text-foreground dark:text-amore-slate-shade',
                 className
             )}
         >

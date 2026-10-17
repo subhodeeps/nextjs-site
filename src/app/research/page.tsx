@@ -49,7 +49,7 @@ export default function Learning() {
             these areas. The{" "}
             <Link
               href="/collaborations"
-              className="text-purple-500 font-bold hover:underline"
+              className="text-accent font-bold hover:underline"
             >
               collaborations
             </Link>{" "}
@@ -62,10 +62,10 @@ export default function Learning() {
           </TextHeading>
 
           <StackVertical gap="md">
-            <Text className="font-bold hover:text-purple-500">
+            <Text className="font-bold hover:text-accent">
               <Link
                 href="https://inspirehep.net/literature/3162425"
-                className="text-purple-500 font-bold hover:underline"
+                className="text-accent font-bold hover:underline"
               >
                 When the Ringing Stops: Purely Imaginary Modes in the Ringdown
                 Spectrum of Dynamical Black Holes
@@ -77,10 +77,10 @@ export default function Learning() {
               arXiv:2605.28951 [gr-qc]
             </Text>
 
-            <Text className="font-bold hover:text-purple-500">
+            <Text className="font-bold hover:text-accent">
               <Link
                 href="https://inspirehep.net/literature/3084799"
-                className="text-purple-500 font-bold hover:underline"
+                className="text-accent font-bold hover:underline"
               >
                 The Physics of Black Holes and Their Environments: Consequences
                 for Gravitational Wave Science
@@ -97,10 +97,10 @@ export default function Learning() {
           </TextHeading>
 
           <StackVertical gap="md">
-            <Text className="font-bold hover:text-purple-500">
+            <Text className="font-bold hover:text-accent">
               <Link
                 href="https://inspirehep.net/literature/2735894"
-                className="text-purple-500 font-bold hover:underline"
+                className="text-accent font-bold hover:underline"
               >
                 Gravitational atoms in the braneworld scenario
               </Link>
@@ -110,10 +110,10 @@ export default function Learning() {
               Phys. Rev. D 2024.
             </Text>
 
-            <Text className="font-bold hover:text-purple-500">
+            <Text className="font-bold hover:text-accent">
               <Link
                 href="https://inspirehep.net/literature/2651487"
-                className="text-purple-500 font-bold hover:underline"
+                className="text-accent font-bold hover:underline"
               >
                 Perturbing the perturbed: Stability of quasinormal modes in
                 presence of a positive cosmological constant
@@ -124,10 +124,10 @@ export default function Learning() {
               Phys. Rev. D 2023.
             </Text>
 
-            <Text className="font-bold hover:text-purple-500">
+            <Text className="font-bold hover:text-accent">
               <Link
                 href="https://inspirehep.net/literature/1940051"
-                className="text-purple-500 font-bold hover:underline"
+                className="text-accent font-bold hover:underline"
               >
                 Can we detect a supertranslated black hole?
               </Link>
@@ -137,10 +137,10 @@ export default function Learning() {
               Phys. Rev. D 2022.
             </Text>
 
-            <Text className="font-bold hover:text-purple-500">
+            <Text className="font-bold hover:text-accent">
               <Link
                 href="https://inspirehep.net/literature/1830603"
-                className="text-purple-500 font-bold hover:underline"
+                className="text-accent font-bold hover:underline"
               >
                 Scalar perturbations of black holes in Jackiw-Teitelboim gravity
               </Link>
@@ -150,10 +150,10 @@ export default function Learning() {
               Phys. Rev. D 2021.
             </Text>
 
-            <Text className="font-bold hover:text-purple-500">
+            <Text className="font-bold hover:text-accent">
               <Link
                 href="https://inspirehep.net/literature/1797104"
-                className="text-purple-500 font-bold hover:underline"
+                className="text-accent font-bold hover:underline"
               >
                 Mass inflation and strong cosmic censorship in a nonextreme BTZ
                 black hole
@@ -173,7 +173,7 @@ export default function Learning() {
         Please visit my{" "}
         <Link
           href="https://inspirehep.net/authors/1797180?ui-citation-summary=true"
-          className="text-purple-500 font-bold hover:underline"
+          className="text-accent font-bold hover:underline"
         >
           INSPIRE-HEP profile
         </Link>{" "}
@@ -238,20 +238,20 @@ export default function Learning() {
 
 //                     <StackVertical gap="md">
 
-//                         <Text className="font-bold hover:text-purple-500">
-//                             <Link href="https://inspirehep.net/literature/2735894" className="text-purple-500 font-bold hover:underline">Gravitational atoms in the braneworld scenario </Link><br />Sunil Singh Bohra, Subhodeep Sarkar, and Anjan Ananda Sen<br />Phys. Rev. D 2024.
+//                         <Text className="font-bold hover:text-accent">
+//                             <Link href="https://inspirehep.net/literature/2735894" className="text-accent font-bold hover:underline">Gravitational atoms in the braneworld scenario </Link><br />Sunil Singh Bohra, Subhodeep Sarkar, and Anjan Ananda Sen<br />Phys. Rev. D 2024.
 //                         </Text>
-//                         <Text className="font-bold hover:text-purple-500">
-//                             <Link href="https://inspirehep.net/literature/2651487" className="text-purple-500 font-bold hover:underline">Perturbing the perturbed: Stability of quasinormal modes in presence of a positive cosmological constant</Link><br />Subhodeep Sarkar, Mostafizur Rahman, and Sumanta Chakraborty<br />Phys. Rev. D 2023.
+//                         <Text className="font-bold hover:text-accent">
+//                             <Link href="https://inspirehep.net/literature/2651487" className="text-accent font-bold hover:underline">Perturbing the perturbed: Stability of quasinormal modes in presence of a positive cosmological constant</Link><br />Subhodeep Sarkar, Mostafizur Rahman, and Sumanta Chakraborty<br />Phys. Rev. D 2023.
 //                         </Text>
-//                         <Text className="font-bold hover:text-purple-500">
-//                             <Link href="https://inspirehep.net/literature/1940051" className="text-purple-500 font-bold hover:underline">Can we detect a supertranslated black hole?</Link><br />Subhodeep Sarkar, Shailesh Kumar, and Srijit Bhattacharjee<br />Phys. Rev. D 2022.
+//                         <Text className="font-bold hover:text-accent">
+//                             <Link href="https://inspirehep.net/literature/1940051" className="text-accent font-bold hover:underline">Can we detect a supertranslated black hole?</Link><br />Subhodeep Sarkar, Shailesh Kumar, and Srijit Bhattacharjee<br />Phys. Rev. D 2022.
 //                         </Text>
-//                         <Text className="font-bold hover:text-purple-500">
-//                             <Link href="https://inspirehep.net/literature/1830603" className="text-purple-500 font-bold hover:underline">Scalar perturbations of black holes in Jackiw-Teitelboim gravity</Link><br />Srijit Bhattacharjee, Subhodeep Sarkar, and Arpan Bhattacharyya<br />Phys. Rev. D 2021.
+//                         <Text className="font-bold hover:text-accent">
+//                             <Link href="https://inspirehep.net/literature/1830603" className="text-accent font-bold hover:underline">Scalar perturbations of black holes in Jackiw-Teitelboim gravity</Link><br />Srijit Bhattacharjee, Subhodeep Sarkar, and Arpan Bhattacharyya<br />Phys. Rev. D 2021.
 //                         </Text>
-//                         <Text className="font-bold hover:text-purple-500">
-//                             <Link href="https://inspirehep.net/literature/1797104" className="text-purple-500 font-bold hover:underline">Mass inflation and strong cosmic censorship in a nonextreme BTZ black hole</Link><br />Srijit Bhattacharjee, Shailesh Kumar, and Subhodeep Sarkar<br />Phys. Rev. D 2020.
+//                         <Text className="font-bold hover:text-accent">
+//                             <Link href="https://inspirehep.net/literature/1797104" className="text-accent font-bold hover:underline">Mass inflation and strong cosmic censorship in a nonextreme BTZ black hole</Link><br />Srijit Bhattacharjee, Shailesh Kumar, and Subhodeep Sarkar<br />Phys. Rev. D 2020.
 //                         </Text>
 
 //                     </StackVertical>
@@ -260,7 +260,7 @@ export default function Learning() {
 
 //              <Ruler color='colorless' marginTop='lg' marginBottom='none'/>
 //             <Text variant="muted" className="mb-8">
-//                 Please visit my <Link href="https://inspirehep.net/authors/1797180?ui-citation-summary=true" className="text-purple-500 font-bold hover:underline">INSPIRE-HEP profile </Link> for bibliometrics and a possibly updated list of papers.
+//                 Please visit my <Link href="https://inspirehep.net/authors/1797180?ui-citation-summary=true" className="text-accent font-bold hover:underline">INSPIRE-HEP profile </Link> for bibliometrics and a possibly updated list of papers.
 //             </Text>
 //             <SectionFooter color="purple" showToTop={false} />
 //         </BaseContainer>

@@ -38,7 +38,7 @@ export function ThemeToggle({ className }: { className?: string }) {
                 'relative p-2 rounded-lg inline-flex items-center justify-center',
                 'text-muted-foreground hover:text-foreground',
                 'transition-colors duration-200',
-                'hover:bg-gray-100 dark:hover:bg-gray-800',
+                'hover:bg-muted',
                 className
             )}
             aria-label="Toggle theme"

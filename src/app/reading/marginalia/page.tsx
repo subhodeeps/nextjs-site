@@ -45,7 +45,7 @@ export default function MarginaliaPage() {
                                     href="https://app.box.com/s/6ptwjwfgf13jni7qcnynwi2irvfa31d7"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                    className="underline decoration-accent-muted decoration-1 underline-offset-4 hover:text-accent transition-colors"
                                 >
                                     Why Read the Classics?
                                 </Link>
@@ -60,7 +60,7 @@ export default function MarginaliaPage() {
                                     href="https://app.box.com/s/ks1vlfuhd7bk3jopwgql3s8mk1vljmih"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                    className="underline decoration-accent-muted decoration-1 underline-offset-4 hover:text-accent transition-colors"
                                 >
                                     Düssel…
                                 </Link>
@@ -69,7 +69,7 @@ export default function MarginaliaPage() {
                                     href="https://www.nybooks.com/articles/2018/07/19/dussel/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                    className="underline decoration-accent-muted decoration-1 underline-offset-4 hover:text-accent transition-colors"
                                 >
                                     New York Review of Books
                                 </Link>.
@@ -82,7 +82,7 @@ export default function MarginaliaPage() {
                                 href="https://app.box.com/s/l2wc6ju4go4n0w71oleeuexqw2hgq0x9"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                className="underline decoration-accent-muted decoration-1 underline-offset-4 hover:text-accent transition-colors"
                             >
                                 This is Water
                             </Link>
@@ -91,7 +91,7 @@ export default function MarginaliaPage() {
                                 href="https://fs.blog/david-foster-wallace-this-is-water/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                className="underline decoration-accent-muted decoration-1 underline-offset-4 hover:text-accent transition-colors"
                             >
                                 transcript
                             </Link>
@@ -100,7 +100,7 @@ export default function MarginaliaPage() {
                                 href="https://youtu.be/eC7xzavzEKY?si=CLrkt0vJFs4K_-dU"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                className="underline decoration-accent-muted decoration-1 underline-offset-4 hover:text-accent transition-colors"
                             >
                                 audio
                             </Link>
@@ -114,7 +114,7 @@ export default function MarginaliaPage() {
                                     href="https://app.box.com/s/7n5x9erqmgmp76mnn65x391qt1xdyjce"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                    className="underline decoration-accent-muted decoration-1 underline-offset-4 hover:text-accent transition-colors"
                                 >
                                     Samsa in Love
                                 </Link>
@@ -123,7 +123,7 @@ export default function MarginaliaPage() {
                                     href="https://www.newyorker.com/magazine/2013/10/28/samsa-in-love"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="underline decoration-purple-500 decoration-1 underline-offset-4 hover:text-purple-400 transition-colors"
+                                    className="underline decoration-accent-muted decoration-1 underline-offset-4 hover:text-accent transition-colors"
                                 >
                                     The New Yorker
                                 </Link>.

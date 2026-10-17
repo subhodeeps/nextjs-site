@@ -42,7 +42,7 @@ export default function CVPage() {
                 href="/files/CV_subhodeep.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-500 hover:underline"
+                className="text-accent hover:underline"
               >
                 here
               </Link>.
@@ -52,7 +52,7 @@ export default function CVPage() {
           {/* Employment */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
-              <Briefcase className="w-5 h-5 text-purple-500" />
+              <Briefcase className="w-5 h-5 text-accent-muted" />
               <TextHeading as="h2" weight="bold">
                 Employment
               </TextHeading>
@@ -90,7 +90,7 @@ export default function CVPage() {
           {/* Education */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
-              <GraduationCap className="w-5 h-5 text-purple-500" />
+              <GraduationCap className="w-5 h-5 text-accent-muted" />
               <TextHeading as="h2" weight="bold">
                 Education
               </TextHeading>
@@ -118,7 +118,7 @@ export default function CVPage() {
           {/* Skills */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
-              <Code className="w-5 h-5 text-purple-500" />
+              <Code className="w-5 h-5 text-accent-muted" />
               <TextHeading as="h2" weight="bold">
                 Skills
               </TextHeading>

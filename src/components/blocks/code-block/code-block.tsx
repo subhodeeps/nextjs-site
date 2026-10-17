@@ -17,9 +17,9 @@ const CopyButton = ({ code, language }: { code: string; language?: string }) => 
     };
 
     return (
-        <div className="flex items-center justify-between border-b border-neutral-200/80 dark:border-neutral-800/80 bg-transparent px-4 py-2">
+        <div className="flex items-center justify-between border-b border-border bg-transparent px-4 py-2">
             {/* Language Label */}
-            <div className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+            <div className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 {language || 'text'}
             </div>
 
@@ -27,7 +27,7 @@ const CopyButton = ({ code, language }: { code: string; language?: string }) => 
             <div className="flex items-center gap-2">
                 <div className={cn(
                     "text-[10px] sm:text-xs transition-all duration-300 pointer-events-none",
-                    "text-purple-600 dark:text-purple-400",
+                    "text-accent",
                     copied ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
                 )}>
                     COPIED!
@@ -36,10 +36,10 @@ const CopyButton = ({ code, language }: { code: string; language?: string }) => 
                     onClick={copy}
                     className={cn(
                         "p-1.5 rounded-md transition-all duration-300 ease-in-out",
-                        "hover:bg-purple-100 dark:hover:bg-purple-500/20",
-                        copied 
-                            ? "text-purple-600 dark:text-purple-400"
-                            : "text-neutral-500 hover:text-purple-600 dark:text-neutral-400 dark:hover:text-purple-300"
+                        "hover:bg-accent-subtle",
+                        copied
+                            ? "text-accent"
+                            : "text-muted-foreground hover:text-accent"
                     )}
                     aria-label="Copy code"
                 >
@@ -74,19 +74,24 @@ interface CodeBlockProps {
     className?: string;
 }
 
+// Syntax colours from the amore palettes in globals.css: ink tones on the light
+// theme, light tones on the dark theme.
+const tone = (palette: string, isDark: boolean) =>
+    `hsl(var(--amore-${palette}-${isDark ? 'light' : 'ink'}))`
+
 const getTheme = (isDark: boolean) => ({
     plain: {
         backgroundColor: 'transparent',
-        color: isDark ? '#cdd6f4' : '#4c4f69'
+        color: tone('slate', isDark)
     },
     styles: [
-        { types: ['keyword', 'builtin'], style: { color: isDark ? '#cba6f7' : '#8839ef' } },
-        { types: ['comment'], style: { color: isDark ? '#6c7086' : '#8c8fa1', fontStyle: 'italic' as const } },
-        { types: ['class-name', 'function'], style: { color: isDark ? '#89b4fa' : '#1e66f5' } },
-        { types: ['string', 'attr-value'], style: { color: isDark ? '#a6e3a1' : '#40a02b' } },
-        { types: ['punctuation', 'operator'], style: { color: isDark ? '#89dceb' : '#04a5e5' } },
-        { types: ['number', 'constant'], style: { color: isDark ? '#fab387' : '#fe640b' } },
-        { types: ['variable'], style: { color: isDark ? '#f5c2e7' : '#ea76cb' } }
+        { types: ['keyword', 'builtin'], style: { color: 'hsl(var(--accent))' } },
+        { types: ['comment'], style: { color: 'hsl(var(--muted-foreground))', fontStyle: 'italic' as const } },
+        { types: ['class-name', 'function'], style: { color: tone('blue', isDark) } },
+        { types: ['string', 'attr-value'], style: { color: tone('green', isDark) } },
+        { types: ['punctuation', 'operator'], style: { color: tone('teal', isDark) } },
+        { types: ['number', 'constant'], style: { color: tone('amber', isDark) } },
+        { types: ['variable'], style: { color: tone('red', isDark) } }
     ]
 });
 
@@ -106,8 +111,7 @@ export default function CodeBlock({ code, language, className }: CodeBlockProps)
     return (
         <div className={cn(
             "relative my-6 w-full rounded-lg overflow-hidden border shadow-none",
-            "bg-white border-neutral-200", // Tailwind Light mode fallback
-            "dark:bg-[#111111] dark:border-neutral-800", // Tailwind Dark mode (Instant CSS)
+            "bg-background border-border",
             className
         )}>
             <CopyButton code={code} language={language} />

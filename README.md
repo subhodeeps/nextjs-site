@@ -52,6 +52,18 @@ public/
 └── og/                   # link-preview images
 ```
 
+## Theme
+
+The light and dark themes use the palettes of my Matplotlib style,
+[amore.mplstyle](https://github.com/subhodeeps/amore.mplstyle). The neutrals
+come from its slate palette, and the accent is a purple between its plum
+palette and the violet of its default color cycle. All 32 colors are defined
+once, as CSS variables in `src/app/globals.css`, and are also available as
+Tailwind classes such as `text-amore-teal-ink`. Darker tones carry text on the
+light theme and lighter tones on the dark theme, while mid tones are kept for
+icons, underlines, and other non-text accents. To change the accent, edit
+`--accent`, `--accent-muted`, and `--accent-subtle` in both themes.
+
 ## Adding content
 
 ### Blog posts
@@ -113,7 +125,9 @@ falling back to the default. The lookup is implemented in
 
 ## Acknowledgments
 
-The site is based on the
+The color palettes come from
+[amore.mplstyle](https://github.com/subhodeeps/amore.mplstyle), my Matplotlib
+style for research figures. The site is based on the
 [sumitdotml/website](https://github.com/sumitdotml/website) template
 (© 2025 sumitdotml), which is distributed under the MIT License. A copy of the
 license is included in

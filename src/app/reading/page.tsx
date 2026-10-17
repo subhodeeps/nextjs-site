@@ -87,7 +87,7 @@ export default function Reading() {
                         </TextHeading>
                         
                         <Text variant="muted">
-                            Excerpts, takeaways and collections of short-form writing that left an impression. You can browse the collection <Link href="/reading/marginalia" className="text-purple-500 font-bold hover:underline">here</Link>.
+                            Excerpts, takeaways and collections of short-form writing that left an impression. You can browse the collection <Link href="/reading/marginalia" className="text-accent font-bold hover:underline">here</Link>.
                         </Text>
                     </div>
 
@@ -98,7 +98,7 @@ export default function Reading() {
                     
                     {/* Combined Text */}
                     <Text variant="muted" className="mb-8">
-                        Books that I am currently reading (or, at least, trying to). A simularca of (a fragment of) my library can be found <Link href="https://hobby-site.vercel.app/" className="text-purple-500 font-bold hover:underline">here</Link>.
+                        Books that I am currently reading (or, at least, trying to). A simularca of (a fragment of) my library can be found <Link href="https://hobby-site.vercel.app/" className="text-accent font-bold hover:underline">here</Link>.
                     </Text>
 
                     {/* Book Grid */}

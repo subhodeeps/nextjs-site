@@ -1,4 +1,19 @@
 // /** @type {import('tailwindcss').Config} */
+
+// Theme colours are CSS variables in src/app/globals.css, stored as HSL channels
+// so that opacity modifiers such as bg-accent-muted/10 work.
+const hsl = (name: string) => `hsl(var(--${name}) / <alpha-value>)`
+
+// The amore.mplstyle palettes, as classes such as text-amore-teal-ink.
+const amore = Object.fromEntries(
+  ['red', 'amber', 'olive', 'green', 'teal', 'blue', 'plum', 'slate'].map((palette) => [
+    palette,
+    Object.fromEntries(
+      ['ink', 'main', 'light', 'shade'].map((tone) => [tone, hsl(`amore-${palette}-${tone}`)])
+    ),
+  ])
+)
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -14,39 +29,42 @@ module.exports = {
         mono: ["var(--font-mono)", "monospace"],
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        border: hsl('border'),
+        input: hsl('input'),
+        ring: hsl('ring'),
+        background: hsl('background'),
+        foreground: hsl('foreground'),
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
+          DEFAULT: hsl('primary'),
+          foreground: hsl('primary-foreground')
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
+          DEFAULT: hsl('secondary'),
+          foreground: hsl('secondary-foreground')
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
+          DEFAULT: hsl('destructive'),
+          foreground: hsl('destructive-foreground')
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          DEFAULT: hsl('muted'),
+          foreground: hsl('muted-foreground')
         },
+        // Accent text (links), muted (icons, underlines) and subtle (tinted backgrounds)
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
+          DEFAULT: hsl('accent'),
+          muted: hsl('accent-muted'),
+          subtle: hsl('accent-subtle')
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
+          DEFAULT: hsl('popover'),
+          foreground: hsl('popover-foreground')
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
-        }
+          DEFAULT: hsl('card'),
+          foreground: hsl('card-foreground')
+        },
+        amore
       },
       borderRadius: {
         lg: 'var(--radius)',

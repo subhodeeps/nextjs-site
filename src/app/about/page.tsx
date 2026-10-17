@@ -69,7 +69,7 @@ export default function About() {
                 more about my work, please check out my{" "}
                 <Link
                   href="/research"
-                  className="text-purple-500 font-bold hover:underline"
+                  className="text-accent font-bold hover:underline"
                 >
                   publications
                 </Link>
@@ -95,7 +95,7 @@ export default function About() {
                 more about my collaborators and co-authors on my{" "}
                 <Link
                   href="/collaborations"
-                  className="text-purple-500 font-bold hover:underline"
+                  className="text-accent font-bold hover:underline"
                 >
                   collaborations
                 </Link>{" "}

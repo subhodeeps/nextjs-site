@@ -85,7 +85,7 @@ export function ListItem({ children, className }: ListItemProps) {
     return (
         <li className={cn(
             'pl-1 sm:pl-2', // Reduced padding on mobile
-            'marker:text-muted-foreground dark:marker:text-gray-400',
+            'marker:text-muted-foreground',
             listFontClass,
             className
         )}>

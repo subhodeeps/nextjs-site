@@ -2,71 +2,119 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
+  /*
+   * The 32 colours of amore.mplstyle (https://github.com/subhodeeps/amore.mplstyle):
+   * eight palettes, each with an ink, main, light and shade tone. They are stored as
+   * HSL channels so Tailwind opacity modifiers work, e.g. bg-amore-teal-main/20.
+   */
+  :root {
+    --amore-red-ink: 350 57.4% 26.7%; /* #6b1d2a */
+    --amore-red-main: 352.4 51.4% 63.7%; /* #d2737f */
+    --amore-red-light: 354.9 59.5% 84.5%; /* #efc0c4 */
+    --amore-red-shade: 352.5 50% 96.9%; /* #fbf3f4 */
+    --amore-amber-ink: 36.5 71.9% 25.1%; /* #6e4a12 */
+    --amore-amber-main: 37.7 63.2% 53.1%; /* #d39b3c */
+    --amore-amber-light: 40.2 72.6% 77.1%; /* #efd39a */
+    --amore-amber-shade: 40 65.2% 95.5%; /* #fbf6ec */
+    --amore-olive-ink: 68.4 47.3% 17.8%; /* #3d4318 */
+    --amore-olive-main: 66.4 35.6% 46.3%; /* #97a04c */
+    --amore-olive-light: 64.6 38.8% 73.7%; /* #d2d6a2 */
+    --amore-olive-shade: 66 41.7% 95.3%; /* #f7f8ee */
+    --amore-green-ink: 157 43.9% 21%; /* #1e4d3b */
+    --amore-green-main: 147.9 25.2% 54.9%; /* #6fa98a */
+    --amore-green-light: 138.8 31.4% 80%; /* #bcdcc6 */
+    --amore-green-shade: 132 23.8% 95.9%; /* #f2f7f3 */
+    --amore-teal-ink: 184.2 56.4% 19.8%; /* #164b4f */
+    --amore-teal-main: 180.7 34.2% 46.5%; /* #4e9e9f */
+    --amore-teal-light: 177.2 32.8% 74.3%; /* #a8d3d1 */
+    --amore-teal-shade: 180 30.4% 95.5%; /* #f0f7f7 */
+    --amore-blue-ink: 254.3 61.8% 26.7%; /* #2e1a6e */
+    --amore-blue-main: 203.6 48.9% 57.1%; /* #5c9dc7 */
+    --amore-blue-light: 206.4 50% 80.4%; /* #b4d0e6 */
+    --amore-blue-shade: 240 37.5% 96.9%; /* #f4f4fa */
+    --amore-plum-ink: 292.9 43.6% 22.9%; /* #4e2154 */
+    --amore-plum-main: 288 25.2% 53.3%; /* #9a6aa6 */
+    --amore-plum-light: 287.6 29.3% 80.6%; /* #d6bfdc */
+    --amore-plum-shade: 290 30% 96.1%; /* #f7f2f8 */
+    --amore-slate-ink: 214.3 20.8% 19.8%; /* #28313d */
+    --amore-slate-main: 210 12.3% 52.2%; /* #768594 */
+    --amore-slate-light: 212 14% 79%; /* #c2c9d1 */
+    --amore-slate-shade: 220 15.8% 96.3%; /* #f4f5f7 */
+  }
+
+  /*
+   * Light theme: slate for the neutrals. The accent is a purple (hue 271) between
+   * amore's plum and the violet #8678b2 of its colour cycle. Text uses the darker
+   * tones; mid tones are for icons, underlines and other non-text accents.
+   */
   :root {
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: var(--amore-slate-ink);
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
- 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
- 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
- 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
- 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --card-foreground: var(--amore-slate-ink);
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
- 
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--amore-slate-ink);
+
+    --primary: var(--amore-slate-ink);
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: var(--amore-slate-shade);
+    --secondary-foreground: var(--amore-slate-ink);
+
+    --muted: var(--amore-slate-shade);
+    --muted-foreground: 211.2 11.6% 42.2%; /* #5f6b78, between slate ink and main */
+
+    --accent: 271 35% 40%; /* #67428a */
+    --accent-muted: 271 26% 57%; /* #9275ae */
+    --accent-subtle: 271 36% 96.5%; /* #f6f3f9 */
+
+    --destructive: var(--amore-red-ink);
+    --destructive-foreground: var(--amore-red-shade);
+
+    --border: 213.3 14.3% 87.6%; /* #dbdfe4, between slate light and shade */
+    --input: 213.3 14.3% 87.6%;
+    --ring: var(--accent-muted);
+
     --radius: 0.5rem;
   }
- 
+
+  /* Dark theme: the same palettes, with light tones for text. */
   .dark {
-    --background: 222 47% 5%;
-    --foreground: 210 20% 85%;
- 
-    --card: 222 47% 5%;
-    --card-foreground: 210 20% 85%;
- 
-    --popover: 222 47% 5%;
-    --popover-foreground: 210 20% 85%;
- 
-    --primary: 210 20% 85%;
-    --primary-foreground: 222 47% 5%;
- 
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 20% 85%;
- 
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 16% 70%;
- 
-    --accent: 217 32% 17%;
-    --accent-foreground: 210 20% 85%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 85%;
- 
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 212.7 26.8% 83.9%;
+    --background: 216 21.7% 9%; /* #12161c, slate darker than its ink */
+    --foreground: var(--amore-slate-light);
+
+    --card: 216 21.7% 9%;
+    --card-foreground: var(--amore-slate-light);
+
+    --popover: 216 21.7% 9%;
+    --popover-foreground: var(--amore-slate-light);
+
+    --primary: var(--amore-slate-light);
+    --primary-foreground: 216 21.7% 9%;
+
+    --secondary: var(--amore-slate-ink);
+    --secondary-foreground: var(--amore-slate-light);
+
+    --muted: var(--amore-slate-ink);
+    --muted-foreground: var(--amore-slate-main);
+
+    --accent: 271 38% 70%; /* #b395d0 */
+    --accent-muted: 271 26% 57%; /* #9275ae */
+    --accent-subtle: 271 30% 17%; /* #2c1e38 */
+
+    --destructive: var(--amore-red-main);
+    --destructive-foreground: 216 21.7% 9%;
+
+    --border: var(--amore-slate-ink);
+    --input: var(--amore-slate-ink);
+    --ring: var(--accent-muted);
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
@@ -75,4 +123,3 @@
     @apply bg-background text-foreground;
   }
 }
-

@@ -46,14 +46,14 @@ const fontWeights = {
 }
 
 const variants = {
-    default: 'text-foreground dark:text-white',
-    purple: 'text-purple-600 dark:text-purple-400',
-    blue: 'text-blue-600 dark:text-blue-400',
-    green: 'text-green-600 dark:text-green-400',
-    red: 'text-red-600 dark:text-red-400',
-    orange: 'text-orange-600 dark:text-orange-400',
-    muted: 'text-muted-foreground dark:text-gray-400',
-    caption: 'text-xs text-muted-foreground dark:text-gray-400'
+    default: 'text-foreground',
+    purple: 'text-accent',
+    blue: 'text-amore-blue-ink dark:text-amore-blue-light',
+    green: 'text-amore-green-ink dark:text-amore-green-light',
+    red: 'text-amore-red-ink dark:text-amore-red-light',
+    orange: 'text-amore-amber-ink dark:text-amore-amber-light',
+    muted: 'text-muted-foreground',
+    caption: 'text-xs text-muted-foreground'
 }
 
 const alignments = {

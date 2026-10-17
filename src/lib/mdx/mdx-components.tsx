@@ -9,41 +9,41 @@ import CodeBlock from '@/components/blocks/code-block/code-block'
 export const mdxComponents: MDXComponents = {
     // Headings - Clean margins and crisp white text
     h1: ({ children }) => (
-        <h1 className={cn("mt-10 mb-6 text-2xl sm:text-3xl font-bold tracking-tight text-foreground dark:text-white")}>
+        <h1 className={cn("mt-10 mb-6 text-2xl sm:text-3xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade")}>
             {children}
         </h1>
     ),
     h2: ({ children }) => (
-        <h2 className={cn("mt-8 mb-4 text-xl sm:text-2xl font-bold tracking-tight text-foreground dark:text-gray-100", monoFont.className)}>
+        <h2 className={cn("mt-8 mb-4 text-xl sm:text-2xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade", monoFont.className)}>
             {children}
         </h2>
     ),
     h3: ({ children }) => (
-        <h3 className={cn("mt-6 mb-4 text-lg sm:text-xl font-semibold tracking-tight text-foreground dark:text-gray-200", monoFont.className)}>
+        <h3 className={cn("mt-6 mb-4 text-lg sm:text-xl font-semibold tracking-tight text-foreground dark:text-amore-slate-shade", monoFont.className)}>
             {children}
         </h3>
     ),
     h4: ({ children }) => (
-        <h4 className={cn("mt-6 mb-4 text-base sm:text-lg font-semibold tracking-tight text-foreground dark:text-gray-200", monoFont.className)}>
+        <h4 className={cn("mt-6 mb-4 text-base sm:text-lg font-semibold tracking-tight text-foreground dark:text-amore-slate-shade", monoFont.className)}>
             {children}
         </h4>
     ),
 
     // Paragraphs - Tall line height and soft gray color exactly like the screenshot
     p: ({ children }) => (
-        <p className={cn("mb-6 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-neutral-700 dark:text-gray-300", monoFont.className)}>
+        <p className={cn("mb-6 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-foreground", monoFont.className)}>
             {children}
         </p>
     ),
 
     // Lists - Proper hanging indents, spaced items, and dimmed markers
     ul: ({ children }) => (
-        <ul className={cn("mb-6 ml-6 list-disc space-y-3 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-neutral-700 dark:text-gray-300 marker:text-neutral-500", monoFont.className)}>
+        <ul className={cn("mb-6 ml-6 list-disc space-y-3 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-foreground marker:text-muted-foreground", monoFont.className)}>
             {children}
         </ul>
     ),
     ol: ({ children }) => (
-        <ol className={cn("mb-6 ml-6 list-decimal space-y-3 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-neutral-700 dark:text-gray-300 marker:text-neutral-500", monoFont.className)}>
+        <ol className={cn("mb-6 ml-6 list-decimal space-y-3 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-foreground marker:text-muted-foreground", monoFont.className)}>
             {children}
         </ol>
     ),
@@ -55,12 +55,12 @@ export const mdxComponents: MDXComponents = {
 
     // Inline text styling
     strong: ({ children }) => (
-        <strong className={cn("font-bold text-foreground dark:text-white", monoFont.className)}>
+        <strong className={cn("font-bold text-foreground dark:text-amore-slate-shade", monoFont.className)}>
             {children}
         </strong>
     ),
     em: ({ children }) => (
-        <span className={cn("italic text-muted-foreground dark:text-gray-400", monoFont.className)}>
+        <span className={cn("italic text-muted-foreground", monoFont.className)}>
             {children}
         </span>
     ),
@@ -81,8 +81,8 @@ export const mdxComponents: MDXComponents = {
                 <code className={cn(
                     monoFont.className,
                     "px-1.5 py-0.5 mx-0.5 my-0.5",
-                    "bg-purple-100/80 dark:bg-purple-900/40",
-                    "text-purple-800 dark:text-purple-200",
+                    "bg-accent-subtle",
+                    "text-accent",
                     "rounded-md text-[0.85em]",
                     "inline-block leading-normal"
                 )}>
@@ -104,9 +104,9 @@ export const mdxComponents: MDXComponents = {
     // Blockquotes
     blockquote: ({ children }) => (
         <blockquote className={cn(
-            "pl-4 border-l-2 border-purple-500/50",
+            "pl-4 border-l-2 border-accent-muted/50",
             "my-6 italic",
-            "text-muted-foreground/90 dark:text-gray-400",
+            "text-muted-foreground",
             monoFont.className
         )}>
             {children}
@@ -121,10 +121,10 @@ export const mdxComponents: MDXComponents = {
         <a 
             href={href} 
             className={cn(
-                "text-foreground dark:text-gray-200 font-medium",
+                "text-foreground dark:text-amore-slate-shade font-medium",
                 "transition-colors duration-200",
                 "underline underline-offset-4",
-                "decoration-purple-500/50 hover:decoration-purple-400",
+                "decoration-accent-muted/50 hover:decoration-accent-muted",
                 monoFont.className
             )}
             target={href?.startsWith('http') ? '_blank' : undefined}

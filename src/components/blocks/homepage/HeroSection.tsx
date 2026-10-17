@@ -61,7 +61,7 @@ export function HeroSection() {
               Hey, how are you! I am{" "}
               <Link
                 href="/about"
-                className="text-purple-500 font-bold hover:underline"
+                className="text-accent font-bold hover:underline"
               >
                 Subhodeep
               </Link>
@@ -96,7 +96,7 @@ export function HeroSection() {
                 out my{" "}
                 <Link
                   href="/research"
-                  className="text-purple-500 font-bold hover:underline"
+                  className="text-accent font-bold hover:underline"
                 >
                   publications
                 </Link>
@@ -109,7 +109,7 @@ export function HeroSection() {
                 You can find my complete CV{" "}
                 <Link
                   href="/cv"
-                  className="text-purple-500 font-bold hover:underline"
+                  className="text-accent font-bold hover:underline"
                 >
                   here
                 </Link>
@@ -122,7 +122,7 @@ export function HeroSection() {
                 You may find some of my technical{" "}
                 <Link
                   href="/learning"
-                  className="text-purple-500 font-bold hover:underline"
+                  className="text-accent font-bold hover:underline"
                 >
                   notes and tutorials
                 </Link>{" "}
@@ -130,14 +130,14 @@ export function HeroSection() {
                 reading for pleasure. You can take a look at those{" "}
                 <Link
                   href="/reading"
-                  className="text-purple-500 font-bold hover:underline"
+                  className="text-accent font-bold hover:underline"
                 >
                   here
                 </Link>
                 . You can also find some of my other notes and writings on my{" "}
                 <Link
                   href="/blog"
-                  className="text-purple-500 font-bold hover:underline"
+                  className="text-accent font-bold hover:underline"
                 >
                   blog
                 </Link>

@@ -33,7 +33,7 @@ export default function Books() {
                     </Text>
 
                 <StackVertical gap="md">
-                    <Text className="underline font-bold hover:text-purple-500">
+                    <Text className="underline font-bold hover:text-accent">
                         <Link href="/learning/books/scattering-from-black-holes/">Scattering from black holes by Futterman, Handler and Matzner</Link>
                     </Text>
                     <Text variant = 'red'>

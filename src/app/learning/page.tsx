@@ -44,7 +44,7 @@ export default function Learning() {
 
                         href="https://just-the-notes.vercel.app/"
 
-                        className="text-purple-500 font-bold hover:underline"
+                        className="text-accent font-bold hover:underline"
 
                     >
 

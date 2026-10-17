@@ -25,7 +25,7 @@ export function ReferenceCard({ post, isLast }: { post: NotesTypes; isLast?: boo
                             as="h4" 
                             weight="medium" 
                             className={cn(
-                                "group-hover:text-purple-500 transition-colors duration-300"
+                                "group-hover:text-accent transition-colors duration-300"
                             )}
                         >
                             {post.title}
@@ -46,7 +46,7 @@ export function ReferenceCard({ post, isLast }: { post: NotesTypes; isLast?: boo
                 </article>
             </Link>
             {!isLast && (
-                <hr className="border-gray-500/20 mt-3" />
+                <hr className="border-border mt-3" />
             )}
         </div>
     )

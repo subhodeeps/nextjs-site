@@ -26,7 +26,7 @@ const WorkItem = ({
     transition={{ duration: 0.5, delay }}
     className="flex items-center gap-4 mb-4"
   >
-    <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900">
+    <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-accent-subtle">
       {icon}
     </div>
     <div className="flex-1">{text}</div>
@@ -42,7 +42,7 @@ export default function OlderUpdates() {
           href="https://nar.iiita.ac.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [07 -- 09 MAR 2025] Workshop on Numerical and Analytical Relativity @ IIITA.
         </a>
@@ -56,7 +56,7 @@ export default function OlderUpdates() {
           href="https://physics.iitm.ac.in/~csgc/events/sbhgw2024"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [10 -- 14 FEB 2025] Second School on Black Holes and Gravitational Waves @ IITM.
         </a>
@@ -80,7 +80,7 @@ export default function OlderUpdates() {
           href="https://doi.org/10.48550/arXiv.2312.07295"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [13 Dec 2023] Preprint: Gravitational atoms in the braneworld scenario.
         </a>
@@ -94,7 +94,7 @@ export default function OlderUpdates() {
           href="https://doi.org/10.1103/PhysRevD.108.104002"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [01 Nov 2023] Published in PRD: Stability of quasinormal modes with positive Λ.
         </a>
@@ -108,7 +108,7 @@ export default function OlderUpdates() {
           href="https://arxiv.org/abs/2304.06829"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [13 Apr 2023] Preprint: Stability of quasinormal modes with positive Λ.
         </a>
@@ -122,7 +122,7 @@ export default function OlderUpdates() {
           href="https://www.ctp-jamia.res.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [08 Feb 2023] Joined CTP-JMI as Project Fellow under Prof. Anjan Sen.
         </a>
@@ -136,7 +136,7 @@ export default function OlderUpdates() {
           href="https://doi.org/10.1103/PhysRevD.105.084001"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [04 Apr 2022] Published in PRD: Can we detect a supertranslated black hole?
         </a>
@@ -150,7 +150,7 @@ export default function OlderUpdates() {
           href="https://www.youtube.com/watch?v=2VA1N6MXTb8"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [11 Mar 2022] Talk @ IIT-GN: Testing Strong Cosmic Censorship.
         </a>
@@ -164,7 +164,7 @@ export default function OlderUpdates() {
           href="https://doi.org/10.1103/PhysRevD.103.024008"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [05 Jan 2021] Published in PRD: Scalar perturbations in JT gravity.
         </a>
@@ -178,7 +178,7 @@ export default function OlderUpdates() {
           href="https://arxiv.org/abs/2011.08179"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [18 Nov 2020] Preprint: Scalar perturbations in JT gravity.
         </a>
@@ -192,7 +192,7 @@ export default function OlderUpdates() {
           href="https://doi.org/10.1103/PhysRevD.102.044030"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [17 Aug 2020] Published in PRD: Mass inflation and SCC in BTZ.
         </a>
@@ -206,7 +206,7 @@ export default function OlderUpdates() {
           href="https://arxiv.org/abs/2005.09705"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-500 hover:underline"
+          className="text-accent hover:underline"
         >
           [21 May 2020] Preprint: Mass inflation and SCC in BTZ.
         </a>
