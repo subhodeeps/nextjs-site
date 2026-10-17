@@ -1,7 +1,8 @@
 // src/components/layout/footer/BaseFooter.tsx
 //
 // The parts every page footer shares: a faint dividing line, a row of links
-// supplied by the calling footer, the social icons and the copyright line.
+// supplied by the calling footer, the social icons, the copyright line and a
+// quotation from Marcus Aurelius under it.
 // HomepageFooter, SectionFooter and IndividualPageFooter are built on it; to
 // change a social link, edit the socialLinks list below.
 'use client'
@@ -153,6 +154,28 @@ export function BaseFooter({
                                 {/* The current year, worked out when the page is built */}©{' '}
                                 {new Date().getFullYear()} subhodeeps
                             </motion.span>
+                        )}
+
+                        {/* A quotation under the copyright line, small and faint. On
+                            phones it wraps into lines of even length (text-balance);
+                            from md: it breaks once, after "your last,", so that it is
+                            wide and low rather than a square block. */}
+                        {showCopyright && (
+                            <motion.figure
+                                className="max-w-md text-balance text-center text-[10px] leading-relaxed text-muted-foreground/50 sm:text-xs md:max-w-none"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                            >
+                                <blockquote>
+                                    Perfection of character is this: to live each day as if it were
+                                    your last, <br className="hidden md:inline" />
+                                    without frenzy, without apathy, without pretence.
+                                </blockquote>
+                                <figcaption className="mt-1 text-muted-foreground/40">
+                                    ~ Marcus Aurelius, Meditations (7:69)
+                                </figcaption>
+                            </motion.figure>
                         )}
                     </div>
                 )}
