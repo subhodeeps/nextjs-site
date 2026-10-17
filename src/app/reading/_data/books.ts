@@ -55,9 +55,4 @@ export const books: Book[] = [
         author: 'Steven Pinker',
         cover: '/covers/sos.jpg',
     },
-    {
-        title: 'Ghost-Eye',
-        author: 'Amitav Ghosh',
-        cover: '/covers/ghosteye.jpg',
-    },
 ]
