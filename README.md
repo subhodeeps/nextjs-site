@@ -68,7 +68,8 @@ icons, underlines, and other non-text accents. To change the accent, edit
 
 The top of every page is a shell prompt ending in `ls ~  # tap to list`.
 Tapping the command shows its output, the six sections of the site, so every
-section can be reached from every page. The path in the prompt links to each
+section can be reached from every page. On the home page the command is plain
+`ls` and its output is already shown. The path in the prompt links to each
 parent page, like a breadcrumb. The sections, their order, the two pages left
 out (Collaborations and Older Updates), and the prompt symbol are set at the
 top of `src/components/ui/terminal-nav/terminal-nav.tsx`, where the design is

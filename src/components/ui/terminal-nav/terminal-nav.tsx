@@ -22,6 +22,9 @@ import { ThemeToggle } from '@/components/ui/theme/theme-toggle'
  *   line. The dim shell comment after the command (# tap to list, or # click
  *   to list on a desktop) is the only hint, and it goes away while the listing
  *   is open. Tapping the command again, or pressing Esc, hides the listing.
+ * - On the home page you are already in ~, so the command is plain `ls`, and
+ *   its output starts open, like a session that has just run it. That is also
+ *   where first-time visitors need the sections most.
  * - The listing is the six sections, so every section can be reached from
  *   every page. They are in the order of the original nav row, not
  *   alphabetical. collaborations/ and older_updates/ are left out on purpose:
@@ -59,7 +62,8 @@ export function TerminalNav({ className }: { className?: string }) {
     const pathname = usePathname()
     const segments = pathname.split('/').filter(Boolean)
     const shorten = `~/${segments.join('/')}`.length > LONG_PATH
-    const [open, setOpen] = useState(false)
+    const atHome = segments.length === 0
+    const [open, setOpen] = useState(atHome)
 
     useEffect(() => {
         if (!open) return
@@ -74,10 +78,10 @@ export function TerminalNav({ className }: { className?: string }) {
         <nav aria-label="Site" className={cn(monoFont.className, 'text-[13px] sm:text-sm', className)}>
             <div className="flex items-center justify-between gap-4">
                 <div className="flex min-w-0 flex-wrap items-baseline gap-x-2">
-                    {segments.length > 0 ? (
-                        <Link href="/" aria-label="Home" className={focusRing}>{PROMPT_SYMBOL}</Link>
-                    ) : (
+                    {atHome ? (
                         <span aria-hidden="true">{PROMPT_SYMBOL}</span>
+                    ) : (
+                        <Link href="/" aria-label="Home" className={focusRing}>{PROMPT_SYMBOL}</Link>
                     )}
 
                     <span>
@@ -115,7 +119,7 @@ export function TerminalNav({ className }: { className?: string }) {
                             aria-controls="terminal-nav-output"
                             className={cn(focusRing, 'text-left transition-colors hover:text-accent', open ? 'text-accent' : 'text-foreground')}
                         >
-                            ls ~
+                            {atHome ? 'ls' : 'ls ~'}
                             {!open && (
                                 <span className="ml-[2ch] text-muted-foreground/70">
                                     # <span className="[@media(hover:hover)]:hidden">tap</span>
