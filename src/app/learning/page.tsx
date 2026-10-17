@@ -27,7 +27,7 @@ export default function Learning() {
                         Learning
                     </TextHeading>
                     <Text variant="muted" className="mb-8">
-                        A collection of references and notes, mostly on physics, maths and
+                        A collection of references and notes, mostly on physics, math, and
                         programming.
                     </Text>
                 </div>

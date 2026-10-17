@@ -15,10 +15,14 @@ export function BlogHeader() {
             {/* Header Content */}
             <div>
                 <TextHeading as="h1" weight="bold">
-                    Field Notes on Exploring the Universe | Blog
+                    Blog
                 </TextHeading>
                 <Text variant="muted" size="sm">
-                    physics • maths • coding • ideas • opinions • rants
+                    {/* One line of verse set as two, broken at the pause after "code,".
+                        The same line is the blog's description in ../layout.tsx. */}
+                    on physics, math, and code,
+                    <br />
+                    and random tangents
                 </Text>
             </div>
         </StackVertical>

@@ -7,19 +7,23 @@
 import { Metadata } from 'next'
 import { ogImages } from '@/lib/og/og-images'
 
+// The blog's description in search results and link previews: the same line as
+// the subtitle under the title, in _components/BlogHeader.tsx
+const DESCRIPTION = 'on physics, math, and code, and random tangents'
+
 export const metadata: Metadata = {
     title: 'Blog | subhodeep',
-    description: 'Thoughts',
+    description: DESCRIPTION,
     openGraph: {
         title: 'Blog | subhodeep',
-        description: 'Thoughts',
+        description: DESCRIPTION,
         type: 'website',
         images: ogImages('blog'),
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Blog | subhodeep',
-        description: 'Thoughts',
+        description: DESCRIPTION,
         images: ogImages('blog'),
     },
 }
