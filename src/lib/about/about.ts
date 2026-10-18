@@ -11,6 +11,7 @@ export type About = {
     photo: string
     photoAlt: string
     caption: string
+    titleCredit: string // where the title comes from, shown small at the end
     paragraphs: string[] // may contain links written as [text](address)
 }
 
@@ -23,6 +24,7 @@ export function getAbout(): About {
         photo: String(data.photo),
         photoAlt: String(data.photoAlt ?? ''),
         caption: String(data.caption ?? ''),
+        titleCredit: String(data.titleCredit ?? ''),
         paragraphs,
     }
 }

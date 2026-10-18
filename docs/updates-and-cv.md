@@ -50,18 +50,21 @@ date: 'January 29, 2025'
 photo: /photo.jpg
 photoAlt: 'Profile photo'
 caption: 'Bengaluru, Jun 2026.'
+titleCredit: 'The title is borrowed from [Ami Amar Mone](https://...).'
 ---
 
-# In the time of chimpanzees, I was a monkey...
+# আমি, আমার মন - ছোট্ট সংগঠন
 
 Hey! I'm Subhodeep, a postdoctoral researcher at the Indian Institute of
 Technology Gandhinagar.
 ```
 
-- The line starting with a single `#` is the title, and `date` is shown under
-  it.
+- The line starting with a single `#` is the title, which is also used in the
+  browser tab and in link previews, and `date` is shown under it.
 - `photo` is the picture beside the text, a file in `public/`; `photoAlt` is
   its description for screen readers, and `caption` the line under it.
+- `titleCredit` is a small, faint line at the end of the page saying where the
+  title comes from. It may be left out.
 - Paragraphs are separated by blank lines, and links are written as
   `[text](address)`.
 

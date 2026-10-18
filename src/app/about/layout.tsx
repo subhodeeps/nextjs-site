@@ -3,25 +3,32 @@
 // The layout for /about and every page below it. It only sets the metadata, the
 // counterpart of Jekyll front matter: the title in the browser tab, the
 // description, and the text and image of link previews on social media. The
-// page itself is page.tsx in the same folder.
+// title is the page's own, from src/content/about.md. The page itself is
+// page.tsx in the same folder.
 import { Metadata } from 'next'
 import { ogImages } from '@/lib/og/og-images'
-export const metadata: Metadata = {
-    title: 'In the time of chimpanzees I was a monkey | subhodeep',
-    description: "I don't really know what I'm doing",
+import { getAbout } from '@/lib/about/about'
 
-    openGraph: {
-        title: 'In the time of chimpanzees I was a monkey | subhodeep',
+/** The metadata, worked out when the site is built */
+export function generateMetadata(): Metadata {
+    const title = `${getAbout().title} | subhodeep`
+    return {
+        title,
         description: "I don't really know what I'm doing",
-        type: 'website',
-        images: ogImages('about'),
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'In the time of chimpanzees I was a monkey | subhodeep',
-        description: "I don't really know what I'm doing",
-        images: ogImages('about'),
-    },
+
+        openGraph: {
+            title,
+            description: "I don't really know what I'm doing",
+            type: 'website',
+            images: ogImages('about'),
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description: "I don't really know what I'm doing",
+            images: ogImages('about'),
+        },
+    }
 }
 
 /** Shows the page unchanged; this layout exists only for its metadata. */
