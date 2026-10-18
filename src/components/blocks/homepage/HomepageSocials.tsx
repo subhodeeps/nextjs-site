@@ -27,7 +27,7 @@ export function HomepageSocials({ paragraphs }: { paragraphs: string[] }) {
             transition={{ delay: 0.6, duration: 0.5 }}
         >
             <SectionHeading icon={AtSign}>Socials</SectionHeading>
-            <Text size="smaller">
+            <Text size="section">
                 <InlineLinks text={lead ?? ''} linkClassName="text-accent hover:underline" />
             </Text>
             {rest.map((paragraph, i) => (

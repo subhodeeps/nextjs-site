@@ -17,7 +17,7 @@ import { codeFont } from '@/styles/fonts/code'
 import CodeBlock from '@/components/blocks/code-block/code-block'
 import AlgorithmBlock from '@/components/blocks/algorithm-block/algorithm-block'
 import MermaidDiagram from '@/components/blocks/mermaid/mermaid-diagram'
-import { InlineLinks } from '@/components/ui/inline-links/inline-links'
+import ZoomImage from '@/components/blocks/zoom-image/zoom-image'
 
 export const mdxComponents: MDXComponents = {
     // Headings use the heading font (Fira Code); dark:... sets the dark-theme colour.
@@ -175,38 +175,11 @@ export const mdxComponents: MDXComponents = {
     hr: () => <Ruler color="gray" marginTop="lg" marginBottom="lg" />,
 
     // ![description](/path/image.png "Caption"): the image across the full width,
-    // with rounded corners and a faint border, and the caption (the text in quotes,
-    // if any) in small grey type under it; a link in the caption is written as in
-    // Markdown, [text](address). The description is read out by screen readers.
-    // Markdown puts an image inside a paragraph, where a <figure> is not allowed,
-    // so the parts are <span>s shown as blocks.
-    img: ({ src, alt, title }) => (
-        <span className="my-8 block">
-            {/* A plain <img>: the site is a static export, so Next.js's <Image>
-                would not resize it anyway, and the size of an image in a post
-                is not known in advance */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-                src={src}
-                alt={alt ?? ''}
-                loading="lazy"
-                className="block h-auto w-full rounded-lg border border-border"
-            />
-            {title && (
-                <span
-                    className={cn(
-                        'mt-2 block text-center text-xs text-muted-foreground',
-                        monoFont.className,
-                    )}
-                >
-                    <InlineLinks
-                        text={title}
-                        linkClassName="underline decoration-accent-muted/50 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent-muted"
-                    />
-                </span>
-            )}
-        </span>
-    ),
+    // with the caption (the text in quotes, if any) under it; clicking it opens it
+    // enlarged, with the caption. A link in the caption is written as in Markdown,
+    // [text](address). The description is read out by screen readers. See
+    // src/components/blocks/zoom-image/zoom-image.tsx.
+    img: ({ src, alt, title }) => <ZoomImage src={src} alt={alt} title={title} />,
 
     // Links: body-coloured text with a faint accent underline. Links to other
     // websites (starting with http) open in a new tab.

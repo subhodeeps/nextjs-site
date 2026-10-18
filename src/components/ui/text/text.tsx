@@ -8,7 +8,7 @@ import { monoFont } from '@/styles/fonts/fonts'
 interface TextProps {
     children: React.ReactNode
     className?: string
-    size?: 'xs' | 'smaller' | 'sm' | 'base' | 'lg' | 'xl' | '2xl'
+    size?: 'xs' | 'section' | 'smaller' | 'sm' | 'base' | 'lg' | 'xl' | '2xl'
     weight?: 'normal' | 'medium' | 'semibold' | 'bold'
     variant?:
         'default' | 'purple' | 'blue' | 'green' | 'red' | 'orange' | 'muted' | 'faint' | 'caption'
@@ -38,8 +38,9 @@ const defaultStyles = {
 // Font size for each size name; the size grows at the sm: and md: screen widths
 const textSizes = {
     xs: 'text-[10px] sm:text-xs md:text-xs', // 10px -> 12px -> 12px
-    // A step below the body text, for a page's introduction and the text under a
-    // section heading
+    // The text under a section heading, kept well below the heading's 14-18px
+    section: 'text-[11px] sm:text-xs', // 11px -> 12px
+    // A step below the body text, for a page's introduction
     smaller: 'text-[11px] sm:text-[13px]', // 11px -> 13px
     sm: 'text-xs sm:text-sm md:text-sm', // 12px -> 14px -> 14px
     base: 'text-sm sm:text-base md:text-base', // 14px -> 16px -> 16px
