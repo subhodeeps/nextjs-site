@@ -143,8 +143,10 @@ include them by file name:
 
 The text in square brackets describes the image for screen readers. The
 caption, in quotation marks, is optional; it appears under the image and may
-contain links written as `[text](address)`. A full path, such as
-`/covers/book.jpg`, or the address of an image on another site, also works.
+contain links written as `[text](address)`. Clicking an image enlarges it, with
+its caption beneath, as the covers on the Reading page are enlarged. A full
+path, such as `/covers/book.jpg`, or the address of an image on another site,
+also works.
 Shrink large images first (see [Images](README.md#images)).
 
 ## Plots

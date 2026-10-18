@@ -1,7 +1,8 @@
 # Collaborations page: photos and captions
 
 Every image in `public/collabs/` (`.jpg`, `.jpeg`, `.png`, or `.webp`) appears
-on the Collaborations page. There is no list to maintain; adding or deleting
+on the Collaborations page, at `/research/collaborations`, which is linked from
+the Research and About pages. There is no list to maintain; adding or deleting
 a file adds or removes the photo.
 
 ## How the photos are shown
@@ -33,9 +34,9 @@ screen readers, with underscores shown as spaces.
 
 ## Captions
 
-Captions are written in `src/app/research/collaborations/_data/captions.ts`, one line
-per photo, next to its file name. A caption is shown under the photo when it
-is enlarged. A link is written as in Markdown, `[text](address)`:
+Captions are written in `src/app/research/collaborations/_data/captions.ts`,
+one line per photo, next to its file name. A caption is shown under the photo
+when it is enlarged. A link is written as in Markdown, `[text](address)`:
 
 ```ts
 export const captions: Record<string, string> = {

@@ -149,4 +149,5 @@ or animating with `framer-motion`.
 - `src/styles/`: fonts.
 - `public/`: images and files served as they are.
 
-The README describes the common tasks, such as adding a blog post.
+The guides in [docs/](README.md) describe the common tasks, such as adding a
+blog post.
