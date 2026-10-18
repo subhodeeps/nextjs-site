@@ -6,13 +6,13 @@ date: 'January 29, 2025'
 photo: /photo.jpg
 photoAlt: 'Profile photo'
 caption: 'Bengaluru, Jun 2026.'
-titleCredit: 'The title, “my self and I, a tiny party of its own,” is borrowed from [Ami Amar Mone](https://www.youtube.com/watch?v=kipkTSGn--w) by Chandrabindoo.'
+titleCredit: 'The title, which loosely translates to *my self and I, a tiny party of its own*, is borrowed from [Ami Amar Mone](https://www.youtube.com/watch?v=kipkTSGn--w) by Chandrabindoo.'
 ---
 
 <!--
 The About page (/about). The "# " line is the title, which is also used in the
 browser tab and in link previews, and paragraphs are separated by a blank
-line. Links are written as [text](address).
+line. Links are written as [text](address), and *text* is set in italics.
 -->
 
 # আমি, আমার মন - ছোট্ট সংগঠন

@@ -24,6 +24,26 @@ const titleFont = {
     fontFamily: `${headingFont.style.fontFamily}, ${bengaliFont.style.fontFamily}`,
 }
 
+/**
+ * Text from about.md, with each *text* in italics and each [text](address)
+ * drawn as a link. Splitting at "*" puts the italic parts at the odd positions.
+ */
+function AboutText({ text, linkClassName = link }: { text: string; linkClassName?: string }) {
+    return (
+        <>
+            {text.split('*').map((part, i) =>
+                i % 2 === 1 ? (
+                    <em key={i}>
+                        <InlineLinks text={part} linkClassName={linkClassName} />
+                    </em>
+                ) : (
+                    <InlineLinks key={i} text={part} linkClassName={linkClassName} />
+                ),
+            )}
+        </>
+    )
+}
+
 /** The About page: navigation, title, date, photo with biography, footer. */
 export default function About() {
     const about = getAbout()
@@ -54,14 +74,14 @@ export default function About() {
                                 className="rounded-lg w-full aspect-[4/5] object-cover mb-2"
                             />
                             <Text size="xs" variant="muted" className="text-center">
-                                <InlineLinks text={about.caption} linkClassName={link} />
+                                <AboutText text={about.caption} />
                             </Text>
                         </div>
 
                         <div className="space-y-8">
                             {about.paragraphs.map((paragraph, i) => (
                                 <Text key={i}>
-                                    <InlineLinks text={paragraph} linkClassName={link} />
+                                    <AboutText text={paragraph} />
                                 </Text>
                             ))}
 
@@ -73,7 +93,7 @@ export default function About() {
                                     variant="muted"
                                     className="pt-4 text-muted-foreground/60"
                                 >
-                                    <InlineLinks
+                                    <AboutText
                                         text={about.titleCredit}
                                         linkClassName="underline decoration-dotted underline-offset-2 hover:text-accent"
                                     />

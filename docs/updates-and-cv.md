@@ -65,8 +65,8 @@ Technology Gandhinagar.
   its description for screen readers, and `caption` the line under it.
 - `titleCredit` is a small, faint line at the end of the page saying where the
   title comes from. It may be left out.
-- Paragraphs are separated by blank lines, and links are written as
-  `[text](address)`.
+- Paragraphs are separated by blank lines. Links are written as
+  `[text](address)`, and `*text*` is set in italics.
 
 ## Updates
 
