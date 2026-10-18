@@ -4,8 +4,10 @@
 // content.mdx, and the footer. The text itself is in content.mdx, next to this
 // file. Readers reach the post at /blog/<slug> (see src/app/blog/[slug]/page.tsx).
 // A new post starts as a copy of the _template folder, so this file is the same
-// in every post except for the date line.
-'use client'
+// in every post except for the date line. There is no 'use client' here: the
+// post is drawn when the site is built, and only its HTML reaches the browser,
+// not a script holding the text. The navigation and the footer, which need the
+// browser, carry their own.
 
 // The post text: importing an .mdx file gives a component that draws it
 import Content from './content.mdx'
