@@ -62,7 +62,9 @@ src/
 │                         # cv, learning, older_updates, reading, research
 ├── components/           # page blocks (including the homepage), layout, and UI
 ├── content/
+│   ├── bio.md            # the introduction and photo on the homepage
 │   ├── cv.md             # the CV page
+│   ├── socials.md        # the Socials section of the homepage
 │   └── updates.md        # the updates on the homepage and Older Updates
 ├── lib/
 │   ├── mdx/              # styling for MDX content
@@ -172,6 +174,13 @@ details are optional: the translator, publisher, publication date, page count,
 ISBN, blurb, and a link to a review. Most of them can be copied from calibre's
 book details. The cards on the Learning page, which link to its subpages, come
 from `src/app/learning/_data/posts.ts`.
+
+### Homepage
+
+The introduction at the top of the homepage is written in
+`src/content/bio.md`, which also names the photo shown below it, and the
+Socials section at the bottom in `src/content/socials.md`. Both are plain
+paragraphs with links written in Markdown.
 
 ### Updates
 

@@ -1,27 +1,53 @@
 // src/components/blocks/homepage/HeroSection.tsx
 //
 // The top of the home page: the title, the introduction paragraphs and the photo.
-// Edit the text here to change the introduction. The 'use client' line below lets
-// the entrance animations run in the browser.
+// The text and the photo are set in src/content/bio.md. The 'use client' line
+// below lets the entrance animations run in the browser.
 'use client'
 
 import { motion } from 'framer-motion'
 import TextHeading from '@/components/ui/text-heading/text-heading'
 import Text from '@/components/ui/text/text'
 import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
-import Link from 'next/link'
 import Image from 'next/image'
 import Ruler from '@/components/ui/ruler/ruler'
+import { InlineLinks } from '@/components/ui/inline-links/inline-links'
+import type { Bio } from '@/lib/homepage/homepage'
+
+// The look of the links written in bio.md
+const link = 'text-accent font-bold hover:underline'
+
+/**
+ * A paragraph's text, with each ~~text~~ struck through and each [text](address)
+ * drawn as a link. Splitting at "~~" puts the struck-through parts at the odd
+ * positions.
+ */
+function BioText({ text }: { text: string }) {
+    return (
+        <>
+            {text.split('~~').map((part, i) =>
+                i % 2 === 1 ? (
+                    <del key={i}>
+                        <InlineLinks text={part} linkClassName={link} />
+                    </del>
+                ) : (
+                    <InlineLinks key={i} text={part} linkClassName={link} />
+                ),
+            )}
+        </>
+    )
+}
 
 /**
  * The home page's introduction.
  *
  * Each <motion.div> fades its content in: it starts at `initial` (invisible) and
  * moves to `animate` (visible) after `delay` seconds, so the paragraphs appear one
- * after another. {" "} inserts a space, because JSX drops the spaces at the end of
- * a line, before a tag such as <Link>.
+ * after another, the later ones together.
+ *
+ * @param bio the title, paragraphs and photo, from src/lib/homepage/homepage.ts
  */
-export function HeroSection() {
+export function HeroSection({ bio }: { bio: Bio }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -42,99 +68,28 @@ export function HeroSection() {
                             as="h1"
                             className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
                         >
-                            subhodeep's homepage
+                            {bio.title}
                         </TextHeading>
                     </motion.div>
 
-                    {/* Intro */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                    >
-                        <Text>
-                            Hey, how are you! I am{' '}
-                            <Link href="/about" className="text-accent font-bold hover:underline">
-                                Subhodeep
-                            </Link>
-                            .
-                        </Text>
-
-                        <Ruler color="colorless" marginTop="lg" marginBottom="none" />
-
-                        {/* Paragraph 1 */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                        >
-                            <Text>
-                                I am a postdoctoral researcher at IIT <del>Madras</del> Gandhinagar,
-                                India. I love gravity, programming, and books. Welcome to my corner
-                                of the internet! :3
-                            </Text>
-                        </motion.div>
-
-                        {/* Paragraph 2 */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                        >
-                            <Ruler color="colorless" marginTop="lg" marginBottom="none" />
-
-                            <Text>
-                                I am interested in various aspects of black holes in general
-                                relativity and beyond. To know more about my work, please check out
-                                my{' '}
-                                <Link
-                                    href="/research"
-                                    className="text-accent font-bold hover:underline"
-                                >
-                                    publications
-                                </Link>
-                                .
-                            </Text>
-
-                            <Ruler color="colorless" marginTop="lg" marginBottom="none" />
-
-                            <Text>
-                                You can find my complete CV{' '}
-                                <Link href="/cv" className="text-accent font-bold hover:underline">
-                                    here
-                                </Link>
-                                .
-                            </Text>
-
-                            <Ruler color="colorless" marginTop="lg" marginBottom="none" />
-
-                            <Text>
-                                You may find some of my technical{' '}
-                                <Link
-                                    href="/learning"
-                                    className="text-accent font-bold hover:underline"
-                                >
-                                    notes and tutorials
-                                </Link>{' '}
-                                on various topics interesting. I also try to document what I am
-                                reading for pleasure. You can take a look at those{' '}
-                                <Link
-                                    href="/reading"
-                                    className="text-accent font-bold hover:underline"
-                                >
-                                    here
-                                </Link>
-                                . You can also find some of my other notes and writings on my{' '}
-                                <Link
-                                    href="/blog"
-                                    className="text-accent font-bold hover:underline"
-                                >
-                                    blog
-                                </Link>
-                                .
-                            </Text>
-                        </motion.div>
-                    </motion.div>
+                    {/* Paragraphs, with space between them */}
+                    <div>
+                        {bio.paragraphs.map((paragraph, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: Math.min(0.4 + 0.1 * i, 0.6) }}
+                            >
+                                {i > 0 && (
+                                    <Ruler color="colorless" marginTop="lg" marginBottom="none" />
+                                )}
+                                <Text>
+                                    <BioText text={paragraph} />
+                                </Text>
+                            </motion.div>
+                        ))}
+                    </div>
                 </StackVertical>
             </div>
 
@@ -150,8 +105,8 @@ export function HeroSection() {
                     <Image
                         className="object-cover"
                         fill
-                        src="/pretty.jpg"
-                        alt="A shrub with flowers inside the Jamia campus, photographed November 2023."
+                        src={bio.photo}
+                        alt={bio.photoAlt}
                         priority
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
                     />

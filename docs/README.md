@@ -7,7 +7,7 @@ to copy.
 - [Collaborations page: photos and captions](collaborators.md)
 - [Research page: papers, preprints, and the thesis](papers.md)
 - [Blog posts](blog-posts.md)
-- [Homepage updates, the CV, and the Learning page](updates-and-cv.md)
+- [The homepage, its updates, the CV, and the Learning page](updates-and-cv.md)
 - [The daily rebuild that refreshes citation counts](daily-rebuild.md)
 - [Next.js for Jekyll users](for-jekyll-users.md), which explains how the
   code is organized

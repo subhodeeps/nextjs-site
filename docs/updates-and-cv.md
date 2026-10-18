@@ -1,4 +1,43 @@
-# Homepage updates, the CV, and the Learning page
+# The homepage, its updates, the CV, and the Learning page
+
+## The homepage introduction
+
+The text at the top of the homepage is written in `src/content/bio.md`:
+
+```md
+---
+photo: /pretty.jpg
+photoAlt: 'A shrub with flowers inside the Jamia campus.'
+---
+
+# subhodeep's homepage
+
+Hey, how are you! I am [Subhodeep](/about).
+
+I am a postdoctoral researcher at IIT ~~Madras~~ Gandhinagar, India.
+```
+
+- The line starting with a single `#` is the title.
+- Each paragraph is separated from the next by a blank line. A paragraph may
+  span several lines, which are joined when the page is built. The paragraphs
+  fade in one after another and are spaced apart on the page.
+- Links are written as `[text](address)` and shown in bold in the accent
+  color. Text written as `~~text~~` is struck through.
+- `photo` is the image below the introduction, a file in `public/`, and
+  `photoAlt` is its description for screen readers.
+
+## The Socials section
+
+The Socials section at the bottom of the homepage is written in
+`src/content/socials.md`. The first paragraph, with the email address, is shown
+in the body color. Any later paragraph is shown in smaller gray type, with its
+links underlined by dots, which suits short asides such as the line linking to
+the notes site and the hobby site:
+
+```md
+Elsewhere: my [technical notes](https://quasinormal-notes.vercel.app/) and a
+[site for my hobbies](https://hobby-site.vercel.app/books/).
+```
 
 ## Updates
 
