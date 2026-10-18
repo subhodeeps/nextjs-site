@@ -9,7 +9,9 @@ src/app/blog/
 │   ├── BlogCard.tsx      # one post's entry in the index
 │   └── BlogHeader.tsx    # navigation, title, and subtitle of the index
 ├── _data/
-│   └── posts.ts          # reads the list of posts from _posts/
+│   └── posts.ts          # reads the list of posts from _posts/ (and, with
+│                         # npm run dev, from _drafts/)
+├── _drafts/              # drafts, shown only by npm run dev; ignored by Git
 ├── _posts/
 │   ├── _template/        # copy this folder to start a new post
 │   └── <slug>/           # one folder per post

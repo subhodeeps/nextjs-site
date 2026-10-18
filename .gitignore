@@ -57,3 +57,10 @@ out/
 
 # TypeScript
 *.tsbuildinfo
+
+# Blog drafts and their images: shown by `npm run dev`, never committed, so they
+# reach neither GitHub nor the live site (see docs/blog-posts.md). The README
+# keeps the drafts folder in place.
+src/app/blog/_drafts/*
+!src/app/blog/_drafts/README.md
+public/blog/_drafts/

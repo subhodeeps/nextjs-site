@@ -7,8 +7,9 @@
 // slugs comes from generateStaticParams below.
 //
 // The post itself lives in src/app/blog/_posts/<slug>/ (content.mdx for the text,
-// page.tsx for how it is laid out). The _ in _posts keeps Next.js from turning
-// that folder into pages of its own, so each post has exactly one address.
+// page.tsx for how it is laid out), or, for a draft, in _drafts/<slug>/. The _ in
+// _posts keeps Next.js from turning that folder into pages of its own, so each
+// post has exactly one address.
 import { notFound } from 'next/navigation'
 import { getBlogPosts } from '../_data/posts'
 import { ogImages } from '@/lib/og/og-images'
@@ -81,8 +82,13 @@ export default async function BlogPost({ params }: { params: Params }) {
         notFound()
     }
 
-    // Load src/app/blog/_posts/<slug>/page.tsx and draw it. `.default` is that
-    // file's main export, the post's page component.
-    const PostComponent = (await import(`../_posts/${slug}/page`)).default
+    // Load src/app/blog/_posts/<slug>/page.tsx (for a draft, _drafts/<slug>/page.tsx)
+    // and draw it. `.default` is that file's main export, the post's page component.
+    // The test of NODE_ENV comes first because `npm run build` replaces it with
+    // false, so the build leaves the drafts out of its scripts altogether.
+    const PostComponent =
+        process.env.NODE_ENV === 'development' && post.draft
+            ? (await import(`../_drafts/${slug}/page`)).default
+            : (await import(`../_posts/${slug}/page`)).default
     return <PostComponent />
 }

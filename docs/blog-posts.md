@@ -35,6 +35,34 @@ How-to posts and reference notes belong on the notes site,
    development server shows an error for a new post, restart it (see
    [Previewing and publishing](README.md#previewing-and-publishing-a-change)).
 
+## Drafts
+
+A post that is not ready to be published can be kept as a draft in
+`src/app/blog/_drafts/`. A draft is made in the same way as a post, by copying
+`src/app/blog/_posts/_template/` into `_drafts/` and renaming the copy. While
+the site runs with `npm run dev`, drafts appear on the blog index, marked as
+drafts, and at their addresses, such as `/blog/my-new-post`. The production
+build, `npm run build`, which Vercel runs, leaves them out.
+
+Git ignores everything in `_drafts/` except its README, so drafts are never
+committed. They therefore appear neither on the live site nor on GitHub, where
+the repository is public. For the same reason, Git does not back them up; they
+exist only on the computer on which they were written.
+
+Images for a draft go in `public/blog/_drafts/<post-folder>/`, which Git also
+ignores, and are included as `/blog/_drafts/<post-folder>/figure.png`.
+
+To publish a draft, move its folder into `_posts/` and its images into
+`public/blog/<post-folder>/`, and remove `_drafts/` from the image paths in
+`content.mdx`:
+
+```sh
+mv src/app/blog/_drafts/my-new-post src/app/blog/_posts/
+mv public/blog/_drafts/my-new-post public/blog/
+```
+
+The post is then committed and pushed like any other change.
+
 ## Writing in MDX
 
 MDX is Markdown that can also contain code, so in ordinary text `{` must be

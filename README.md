@@ -143,6 +143,12 @@ The blog index lists every post directory that contains a `content.mdx` file,
 newest first. Directories whose names begin with an underscore, such as
 `_template`, are left out.
 
+Drafts are kept in `src/app/blog/_drafts/` instead, with their images in
+`public/blog/_drafts/`. Git ignores both, so drafts appear only while the site
+runs with `npm run dev`, and never on GitHub or the live site. A draft is
+published by moving its directory into `_posts/`; the steps are given in
+[docs/blog-posts.md](docs/blog-posts.md#drafts).
+
 ### Equations
 
 In MDX files, write inline equations as `$...$` and displayed equations as

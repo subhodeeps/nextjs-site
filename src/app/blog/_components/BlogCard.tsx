@@ -47,6 +47,12 @@ export function BlogCard({ post, isLast }: { post: BlogPost; isLast?: boolean })
                             <Text variant="muted" size="xs">
                                 {post.readingTime}
                             </Text>
+                            {/* Drafts are listed only by `npm run dev`; this marks them */}
+                            {post.draft && (
+                                <Text size="xs" className="text-accent">
+                                    • draft
+                                </Text>
+                            )}
                         </StackHorizontal>
                     </StackVertical>
                 </article>
