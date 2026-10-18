@@ -10,8 +10,8 @@ import { UpdateList } from '@/components/blocks/updates/UpdateList'
 import type { Update } from '@/lib/updates/updates'
 
 /**
- * The Updates section, which fades in a second after the page opens; its lines
- * then slide in one after another.
+ * The Updates section, which fades in just after the introduction; its lines
+ * then slide in, 0.02 seconds apart.
  *
  * @param updates  the newest updates, from src/lib/updates/updates.ts
  * @param hasOlder whether to end with a link to the Older Updates page
@@ -21,12 +21,13 @@ export function CurrentWork({ updates, hasOlder }: { updates: Update[]; hasOlder
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.5 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
         >
             <SectionHeading icon={Newspaper}>Updates</SectionHeading>
             <UpdateList
                 updates={updates}
-                startDelay={1.2}
+                startDelay={0.45}
+                step={0.02}
                 footer={
                     hasOlder
                         ? { icon: History, text: '[OLDER UPDATES]', href: '/older_updates' }

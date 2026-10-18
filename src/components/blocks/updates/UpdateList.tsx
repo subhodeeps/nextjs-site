@@ -92,18 +92,20 @@ function UpdateLine({
  * The list of updates.
  *
  * @param updates    the updates, newest first
- * @param startDelay seconds before the first line slides in; each later line
- *                   follows 0.1 s after the one above
+ * @param startDelay seconds before the first line slides in
+ * @param step       seconds between one line and the next (0.1 unless given)
  * @param footer     an optional last line, such as the link to the Older Updates
  *                   page, given as its icon, text and address
  */
 export function UpdateList({
     updates,
     startDelay = 0,
+    step = 0.1,
     footer,
 }: {
     updates: Update[]
     startDelay?: number
+    step?: number
     footer?: { icon: LucideIcon; text: string; href: string }
 }) {
     return (
@@ -112,13 +114,13 @@ export function UpdateList({
                 <UpdateLine
                     key={`${update.date}-${i}`}
                     icon={icons[update.kind] ?? Dot}
-                    delay={startDelay + i * 0.1}
+                    delay={startDelay + i * step}
                 >
                     <UpdateText date={update.date} text={update.text} />
                 </UpdateLine>
             ))}
             {footer && (
-                <UpdateLine icon={footer.icon} delay={startDelay + updates.length * 0.1}>
+                <UpdateLine icon={footer.icon} delay={startDelay + updates.length * step}>
                     <UpdateLink href={footer.href}>{footer.text}</UpdateLink>
                 </UpdateLine>
             )}

@@ -4,6 +4,7 @@
 // copyright line. The shared parts are drawn by BaseFooter.tsx.
 'use client'
 
+import { motion } from 'framer-motion'
 import { BaseFooter } from './BaseFooter'
 import { FooterLink } from './_components/FooterLink'
 
@@ -14,8 +15,8 @@ interface HomepageFooterProps {
 }
 
 /**
- * The home page footer. Each `show...` prop (all true by default) switches one
- * part of it on or off.
+ * The home page footer, which fades in last, just after the Socials section.
+ * Each `show...` prop (all true by default) switches one part of it on or off.
  */
 export function HomepageFooter({
     showToTop = true,
@@ -26,12 +27,18 @@ export function HomepageFooter({
     const navigationLinks = showToTop ? <FooterLink href="#top">To the Top</FooterLink> : null
 
     return (
-        <BaseFooter
-            navigationLinks={navigationLinks}
-            className="mt-6"
-            showToTop={showToTop}
-            showSocialLinks={showSocialLinks}
-            showCopyright={showCopyright}
-        />
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65, duration: 0.5 }}
+        >
+            <BaseFooter
+                navigationLinks={navigationLinks}
+                className="mt-6"
+                showToTop={showToTop}
+                showSocialLinks={showSocialLinks}
+                showCopyright={showCopyright}
+            />
+        </motion.div>
     )
 }

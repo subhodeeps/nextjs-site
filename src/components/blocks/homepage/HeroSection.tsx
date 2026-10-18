@@ -42,8 +42,9 @@ function BioText({ text }: { text: string }) {
  * The home page's introduction.
  *
  * Each <motion.div> fades its content in: it starts at `initial` (invisible) and
- * moves to `animate` (visible) after `delay` seconds, so the paragraphs appear one
- * after another, the later ones together.
+ * moves to `animate` (visible) after `delay` seconds. The section rises into
+ * place at once and the title fades in after 0.2 seconds; the paragraphs and the
+ * photo follow just after it, 0.02 seconds apart, so they appear almost together.
  *
  * @param bio the title, paragraphs and photo, from src/lib/homepage/homepage.ts
  */
@@ -79,7 +80,7 @@ export function HeroSection({ bio }: { bio: Bio }) {
                                 key={i}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: Math.min(0.4 + 0.1 * i, 0.6) }}
+                                transition={{ delay: 0.25 + 0.02 * i }}
                             >
                                 {i > 0 && (
                                     <Ruler color="colorless" marginTop="lg" marginBottom="none" />
@@ -98,7 +99,7 @@ export function HeroSection({ bio }: { bio: Bio }) {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.7 }}
+                transition={{ delay: 0.25 + 0.02 * bio.paragraphs.length }}
                 className="mt-8 -mb-8"
             >
                 <div className="relative w-full aspect-[4/3] sm:aspect-[2/1] md:aspect-[21/9] rounded-lg overflow-hidden">

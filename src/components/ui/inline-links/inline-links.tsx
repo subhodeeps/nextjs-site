@@ -48,8 +48,9 @@ export function InlineLinks({ text, linkClassName }: { text: string; linkClassNa
                 if (i % 3 === 0) return <Fragment key={i}>{part}</Fragment>
                 if (i % 3 === 2) return null
                 const href = parts[i + 1]
-                // A page of this site opens without reloading the whole site
-                if (href.startsWith('/') && !href.endsWith('.pdf')) {
+                // A page of this site, such as /research, opens without reloading
+                // the whole site; a file, such as /files/CV_subhodeep.pdf, does not
+                if (href.startsWith('/') && !/\.\w+$/.test(href.split(/[?#]/)[0])) {
                     return (
                         <Link key={i} href={href} className={linkClassName}>
                             {part}
