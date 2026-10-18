@@ -16,8 +16,9 @@ icons, underlines, and other non-text accents. To change the accent, edit
 `--accent`, `--accent-muted`, and `--accent-subtle` in both themes.
 
 Text sizes are defined in `src/components/ui/text/text.tsx`. Text under a
-section heading, such as the updates on the homepage, uses the size `section`,
-which is kept well below that of the heading.
+section heading, such as the updates on the homepage, uses the size `smaller`,
+11 to 13 pixels against the heading's 14 to 18. The icons in the list of
+updates are smaller than the heading's icon, 12 to 14 pixels against 16.
 
 ## Navigation
 

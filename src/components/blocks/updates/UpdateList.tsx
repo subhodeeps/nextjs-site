@@ -80,8 +80,9 @@ function UpdateLine({
             transition={{ delay, duration: 0.5 }}
             className="flex items-center gap-3"
         >
-            <Icon aria-hidden className="h-4 w-4 shrink-0 text-accent-muted" />
-            <Text variant="muted" size="section">
+            {/* Smaller than the 16px icon of the section heading above the list */}
+            <Icon aria-hidden className="h-3 w-3 shrink-0 text-accent-muted sm:h-3.5 sm:w-3.5" />
+            <Text variant="muted" size="smaller">
                 {children}
             </Text>
         </motion.div>

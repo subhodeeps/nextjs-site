@@ -70,8 +70,8 @@ export default function CVPage() {
                                             key={i}
                                             className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2"
                                         >
-                                            <Text size="section">•</Text>
-                                            <Text size="section">
+                                            <Text size="smaller">•</Text>
+                                            <Text size="smaller">
                                                 <InlineLinks
                                                     text={entry.text}
                                                     linkClassName={link}
@@ -79,7 +79,7 @@ export default function CVPage() {
                                             </Text>
                                             <Text
                                                 variant="muted"
-                                                size="section"
+                                                size="smaller"
                                                 className="whitespace-nowrap"
                                             >
                                                 {entry.dates}
@@ -90,7 +90,7 @@ export default function CVPage() {
                             )}
 
                             {section.paragraphs.map((paragraph, i) => (
-                                <Text key={i} size="section">
+                                <Text key={i} size="smaller">
                                     <InlineLinks text={paragraph} linkClassName={link} />
                                 </Text>
                             ))}
