@@ -67,8 +67,69 @@ Posts are plain Markdown, so `{` and `<` need no escaping.
   displayed equation, as in LaTeX.
 - **Quotations**: start the lines with `>`.
 - **A horizontal rule**: a line with `---` and blank lines around it.
-- **Code**: a fenced code block, with the language after the opening fence.
+- **Code, algorithms, and diagrams**: fenced blocks, described in the next
+  sections.
 - **Notes to oneself**: text between `<!--` and `-->` is not shown.
+
+## Code
+
+A fenced code block, with the language after the opening backticks, is shown
+in the code font, on a tinted background, with its syntax colored and a
+button that copies it:
+
+````md
+```python
+def f(x):
+    return x**2
+```
+````
+
+The languages colored are Python, Julia, C, C++, Fortran, Bash (`bash`,
+`shell`, or `sh`), LaTeX (`latex` or `tex`), Mathematica (`mathematica` or
+`wolfram`), Haskell, MATLAB, JavaScript, TypeScript, JSON, YAML, TOML,
+Markdown, and diffs (`diff`). Further languages from Prism, the highlighter,
+are added in `src/components/blocks/code-block/prism-languages.ts`; code in
+any other language is shown without colors.
+
+## Algorithms
+
+A block whose language is `algorithm` is drawn like the algorithm environment
+of LaTeX, with numbered lines:
+
+````md
+```algorithm
+Algorithm 1: Euler's method
+Input: $f$, $y_0$, and the step $h$
+for $n = 0$ to $N - 1$ do
+    $y_{n+1} \gets y_n + h f(y_n)$  // one step
+end for
+return $y_N$
+```
+````
+
+A first line that begins with `Algorithm` is the caption, and lines that begin
+with `Input:`, `Output:`, `Require:`, or `Ensure:` are shown above the
+numbered lines. Indentation is kept, keywords such as `for`, `if`, and
+`return` are set in bold, `$...$` is typeset as mathematics, and text after
+`//` is shown as a comment.
+
+## Diagrams
+
+A block whose language is `mermaid` is drawn as a diagram, in the colors of
+the site, and is drawn again when the theme changes:
+
+````md
+```mermaid
+flowchart TD
+    start(["Start"]) --> step["One step"]
+    step --> done{"Finished?"}
+    done -- no --> step
+```
+````
+
+The syntax of flowcharts, sequence diagrams, and the other kinds is described
+at <https://mermaid.js.org>. Diagrams are drawn in the browser, and the
+library that draws them is loaded only on pages that contain one.
 
 ## Images
 
@@ -85,6 +146,25 @@ caption, in quotation marks, is optional; it appears under the image and may
 contain links written as `[text](address)`. A full path, such as
 `/covers/book.jpg`, or the address of an image on another site, also works.
 Shrink large images first (see [Images](README.md#images)).
+
+## Plots
+
+Plots are drawn with Matplotlib in the amore style,
+<https://github.com/subhodeeps/amore.mplstyle>, in its default, light
+version, which serves for both themes of the site. `scripts/dev-env.sh plots`
+makes the Python environment `.venv/` and installs amore into it; amore also
+needs LaTeX. The script that draws a post's plots is kept in `aux/<name>/`,
+which Git ignores, as it is not part of the site. It saves each figure as a
+PNG about 1600 pixels across, which for amore's standard figure means
+`amore.save(fig, "public/blog/<name>/figure", dpi=270, formats=("png",))`,
+and the post then includes the figure as an image. It is run from the root
+of the site:
+
+```bash
+.venv/bin/python aux/my-new-post/plot.py
+```
+
+The figures of a draft go in `public/drafts/<name>/`, which Git also ignores.
 
 ## Link previews
 

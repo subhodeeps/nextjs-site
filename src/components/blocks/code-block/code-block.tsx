@@ -1,15 +1,17 @@
 // src/components/blocks/code-block/code-block.tsx
 //
 // A fenced code block in a post or note: a box with the language name, a copy
-// button, and the code coloured by syntax. Every ```bash ... ``` block in an .mdx
-// file is drawn by this component (see src/lib/mdx/mdx-components.tsx). The
-// 'use client' line below makes it run in the browser, for the copy button and
-// for the colours, which depend on the current theme.
+// button, and the code coloured by syntax. Every ```python ... ``` block in a
+// post or an .mdx file is drawn by this component (see
+// src/lib/mdx/mdx-components.tsx); the languages it can colour are listed in
+// prism-languages.ts. The 'use client' line below makes it run in the browser,
+// for the copy button and for the colours, which depend on the current theme.
 'use client'
 
 import { cn } from '@/lib/utils/utils'
-import { monoFont } from '@/styles/fonts/fonts'
+import { codeFont } from '@/styles/fonts/code'
 import { Highlight } from 'prism-react-renderer'
+import './prism-languages'
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
 
@@ -166,7 +168,8 @@ export default function CodeBlock({ code, language, className }: CodeBlockProps)
         <div
             className={cn(
                 'relative my-6 w-full rounded-lg overflow-hidden border shadow-none',
-                'bg-background border-border',
+                // A grey tint, so the block stands apart from the page in either theme
+                'bg-muted/50 border-border',
                 className,
             )}
         >
@@ -179,7 +182,7 @@ export default function CodeBlock({ code, language, className }: CodeBlockProps)
                     <pre
                         className={cn(
                             className,
-                            monoFont.className,
+                            codeFont.className,
                             'overflow-x-auto whitespace-pre-wrap break-words',
                             'transition-colors duration-200',
                             'p-4 pt-3',

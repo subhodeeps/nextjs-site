@@ -13,7 +13,10 @@ import { MDXComponents } from 'mdx/types'
 import Ruler from '@/components/ui/ruler/ruler'
 import { cn } from '@/lib/utils/utils'
 import { headingFont, monoFont } from '@/styles/fonts/fonts'
+import { codeFont } from '@/styles/fonts/code'
 import CodeBlock from '@/components/blocks/code-block/code-block'
+import AlgorithmBlock from '@/components/blocks/algorithm-block/algorithm-block'
+import MermaidDiagram from '@/components/blocks/mermaid/mermaid-diagram'
 import { InlineLinks } from '@/components/ui/inline-links/inline-links'
 
 export const mdxComponents: MDXComponents = {
@@ -121,11 +124,11 @@ export const mdxComponents: MDXComponents = {
         const language = match ? match[1] : ''
 
         if (!language) {
-            // Inline code: tinted accent background, accent text
+            // Inline code: in the code font, with a tinted accent background and accent text
             return (
                 <code
                     className={cn(
-                        monoFont.className,
+                        codeFont.className,
                         'px-1.5 py-0.5 mx-0.5 my-0.5',
                         'bg-accent-subtle',
                         'text-accent',
@@ -137,6 +140,11 @@ export const mdxComponents: MDXComponents = {
                 </code>
             )
         }
+
+        // ```algorithm and ```mermaid blocks are drawn as an algorithm, in the style
+        // of LaTeX, and as a diagram (components/blocks/algorithm-block and mermaid)
+        if (language === 'algorithm') return <AlgorithmBlock source={String(children)} />
+        if (language === 'mermaid') return <MermaidDiagram code={String(children)} />
 
         // A code block: highlighted, with a copy button (components/blocks/code-block)
         return (

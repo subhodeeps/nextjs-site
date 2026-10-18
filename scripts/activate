@@ -1,0 +1,34 @@
+# scripts/activate
+#
+# Makes this site's own Node.js, in .node/ (see scripts/dev-env.sh setup), the
+# one used in the current shell, as a Python virtual environment does, in bash
+# or zsh:
+#
+#     . scripts/activate    # node, npm and npx are now the site's
+#     deactivate            # back to those of the system
+
+if [ -n "${ZSH_VERSION:-}" ]; then
+    _site_root="${${(%):-%x}:A:h:h}"
+else
+    _site_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+fi
+
+if [ ! -x "$_site_root/.node/bin/node" ]; then
+    echo "There is no Node.js in .node/ yet; run scripts/dev-env.sh setup first."
+    unset _site_root
+    return 1
+fi
+
+_site_old_path="$PATH"
+_site_old_ps1="${PS1-}"
+export PATH="$_site_root/.node/bin:$_site_root/node_modules/.bin:$PATH"
+PS1="(site) ${PS1-}"
+
+deactivate() {
+    export PATH="$_site_old_path"
+    PS1="$_site_old_ps1"
+    unset _site_old_path _site_old_ps1 _site_root
+    unset -f deactivate
+}
+
+echo "Using Node.js $(node --version) from $_site_root/.node (deactivate to leave)"

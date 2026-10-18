@@ -14,14 +14,17 @@ to copy.
 
 ## Previewing and publishing a change
 
-1. Start the site on your computer with `npm run dev`, and open
-   <http://localhost:3000>. Pages update as you save files. If a new folder,
-   such as a new blog post, does not show up, stop the server (Ctrl+C), run
-   `rm -rf .next/dev`, and start it again.
+1. Start the site on your computer with `scripts/dev-env.sh dev`, which also
+   sets it up on a new computer (see the
+   [README](../README.md#local-development)), or with `npm run dev`, and open
+   <http://localhost:3000>. Pages update as you save files. If a new post
+   does not show up, stop the server (Ctrl+C), run `rm -rf .next/dev`, and
+   start it again.
 2. Format the code with `npm run format`.
-3. Optionally, check that the whole site builds with `npm run build`. The
-   build changes `next-env.d.ts`; undo that with
-   `git checkout -- next-env.d.ts`.
+3. Optionally, check that the whole site builds, and look at the result, with
+   `scripts/dev-env.sh serve`, which serves the production build at
+   <http://localhost:4000>. A build made with `npm run build` instead changes
+   `next-env.d.ts`; undo that with `git checkout -- next-env.d.ts`.
 4. Commit and push:
 
    ```sh

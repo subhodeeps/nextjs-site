@@ -64,3 +64,14 @@ out/
 src/content/drafts/*
 !src/content/drafts/README.md
 public/drafts/
+
+# The Python environment for drawing plots for posts (see docs/blog-posts.md)
+.venv/
+
+# Auxiliary files kept out of the site, such as the scripts that draw the plots in
+# posts (see docs/blog-posts.md)
+aux/
+
+# The local Node.js of scripts/dev-env.sh, and the notes for the next working session
+.node/
+HANDOFF.md

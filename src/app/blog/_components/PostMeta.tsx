@@ -3,11 +3,11 @@
 // A post's date and reading time, and the mark of a draft, as small chips in the
 // style of inline code: on the blog index, and at the top of each post.
 import { cn } from '@/lib/utils/utils'
-import { monoFont } from '@/styles/fonts/fonts'
+import { codeFont } from '@/styles/fonts/code'
 
-// The shape of inline code in posts (src/lib/mdx/mdx-components.tsx)
+// The shape and font of inline code in posts (src/lib/mdx/mdx-components.tsx)
 const chip = cn(
-    monoFont.className,
+    codeFont.className,
     'px-1.5 py-0.5 rounded-md text-[10px] sm:text-xs leading-normal',
 )
 

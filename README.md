@@ -16,25 +16,43 @@ a paper, or a blog post, are listed in [docs/README.md](docs/README.md).
 - [Next.js 16](https://nextjs.org) (App Router, bundled with webpack),
   React 19, and TypeScript
 - Tailwind CSS 3 for styling
-- JetBrains Mono for text and code, and Fira Code for headings
-- MDX for long-form pages, with KaTeX for equations and prism-react-renderer
-  for syntax highlighting
+- JetBrains Mono for text, Source Code Pro for code, Fira Code for headings,
+  and Anek Bangla for Bengali
+- Markdown and MDX for long-form pages, with KaTeX for equations,
+  prism-react-renderer for syntax highlighting, and Mermaid for diagrams
 - framer-motion for animation and next-themes for the light and dark modes
 - lucide-react and react-icons for icons
 - Vercel Analytics and Speed Insights for traffic and performance metrics
 
 ## Local development
 
+On a new computer running macOS or Linux, `scripts/dev-env.sh` sets up the
+site and runs it. It downloads Node.js, at the version given in
+`.node-version`, into `.node/` inside the project, in the manner of a Python
+virtual environment, so nothing is installed system-wide and no `sudo` is
+needed. Besides Git, it requires only `curl` and `tar`, which macOS includes;
+on Arch Linux, `sudo pacman -S --needed git curl tar` provides all three.
+
 ```bash
-npm install
+scripts/dev-env.sh setup   # Node.js in .node/, then the packages (npm ci)
+scripts/dev-env.sh dev     # the development server, at http://localhost:3000
+scripts/dev-env.sh serve   # the production build, at http://localhost:4000
+scripts/dev-env.sh plots   # .venv/ with amore, for drawing plots for posts
+```
+
+The commands `dev`, `build`, and `serve` run the setup first whenever it is
+needed, and `PORT=5000` placed before a command changes its port. Sourcing
+`scripts/activate` (`. scripts/activate`) makes the project's `node` and `npm`
+those of the current shell, until `deactivate`. The usual npm scripts also
+work:
+
+```bash
 npm run dev     # http://localhost:3000
 npm run build   # static export to out/
+npm start       # serve out/ at http://localhost:4000
 npm run lint    # check the code for likely mistakes
 npm run format  # lay out the code consistently (Prettier)
 ```
-
-To preview the production build, serve the `out/` directory with a static file
-server, e.g., `npx serve@latest out`.
 
 ## Deployment
 
@@ -57,6 +75,8 @@ the secret, testing them, and fixing common problems are in
 ```text
 .github/workflows/        # the daily rebuild (refresh-citations.yml)
 docs/                     # notes for working on the site
+scripts/                  # dev-env.sh (setup and local servers), activate,
+│                         # and serve-static.mjs
 src/
 ├── app/                  # one directory per section: about, blog, collaborations,
 │                         # cv, learning, older_updates, reading, research
@@ -87,6 +107,11 @@ public/
 ├── files/                # CV PDFs
 └── og/                   # link-preview images
 ```
+
+Git ignores the directories made locally: `.node/` and `.venv/`, the Node.js
+and Python environments; `aux/`, for auxiliary files such as the scripts that
+draw the plots in posts; `src/content/drafts/` and `public/drafts/`, the
+drafts; and `node_modules/`, `.next/`, and `out/`.
 
 ## Theme
 
