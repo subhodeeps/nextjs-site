@@ -152,7 +152,7 @@ export function BaseFooter({
                                 transition={{ delay: 0.4 }}
                             >
                                 {/* The current year, worked out when the page is built */}©{' '}
-                                {new Date().getFullYear()} subhodeeps
+                                {new Date().getFullYear()} Subhodeep Vicky Sarkar
                             </motion.span>
                         )}
 
