@@ -20,6 +20,8 @@ the `ls ~` navigation.
   settings) and `tailwind.config.ts` (design settings).
 - **Pages.** `about.md`, served at `/about/`, corresponds to
   `src/app/about/page.tsx`, served at `/about`. The folder path is the URL.
+  The text of the About page, the homepage, and the CV is kept in Markdown
+  files in `src/content/`, which the pages read when the site is built.
 - **Layouts.** `_layouts/default.html` corresponds to `src/app/layout.tsx`,
   which wraps every page. A `layout.tsx` inside a folder wraps every page in
   that folder and below it, like a layout that names another as its parent.

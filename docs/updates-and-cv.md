@@ -1,4 +1,4 @@
-# The homepage, its updates, the CV, and the Learning page
+# The homepage, the About page, the CV, and the Learning page
 
 ## The homepage introduction
 
@@ -38,6 +38,32 @@ the notes site and the hobby site:
 Elsewhere: my [technical notes](https://quasinormal-notes.vercel.app/) and a
 [site for my hobbies](https://hobby-site.vercel.app/books/).
 ```
+
+## The About page
+
+The About page is written in `src/content/about.md`, in the same way as the
+homepage introduction:
+
+```md
+---
+date: 'January 29, 2025'
+photo: /photo.jpg
+photoAlt: 'Profile photo'
+caption: 'Bengaluru, Jun 2026.'
+---
+
+# In the time of chimpanzees, I was a monkey...
+
+Hey! I'm Subhodeep, a postdoctoral researcher at the Indian Institute of
+Technology Gandhinagar.
+```
+
+- The line starting with a single `#` is the title, and `date` is shown under
+  it.
+- `photo` is the picture beside the text, a file in `public/`; `photoAlt` is
+  its description for screen readers, and `caption` the line under it.
+- Paragraphs are separated by blank lines, and links are written as
+  `[text](address)`.
 
 ## Updates
 
