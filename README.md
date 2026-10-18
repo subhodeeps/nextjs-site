@@ -62,6 +62,8 @@ src/
 │                         # cv, learning, older_updates, reading, research
 ├── components/           # page blocks (including the homepage), layout, and UI
 ├── content/
+│   ├── blog/             # the blog posts, one Markdown file each
+│   ├── drafts/           # unpublished posts, ignored by Git
 │   ├── about.md          # the About page
 │   ├── bio.md            # the introduction and photo on the homepage
 │   ├── cv.md             # the CV page
@@ -116,37 +118,38 @@ This section summarizes where each kind of content is kept; the guides in
 
 ### Blog posts
 
-1. Copy the directory `src/app/blog/_posts/_template/` to
-   `src/app/blog/_posts/<slug>/`. The directory name determines the URL,
-   `/blog/<slug>`; the leading underscore of `_posts` keeps the folder itself
-   from becoming a page.
-2. Write the post in `content.mdx`, in place of the sample text, and fill in
-   its frontmatter, which also sets the page title and description:
+Each post is a single Markdown file in `src/content/blog/`, and the file name,
+without `.md`, determines the URL, `/blog/<slug>`. Every post is laid out in
+the same way, from its frontmatter and text, so a post involves no code.
 
-   ```mdx
+1. Copy `src/content/blog/_template.md` to `src/content/blog/<slug>.md`.
+2. Fill in the frontmatter, which also sets the page title and description:
+
+   ```md
    ---
    title: "Post title"
    description: "One-line summary"
    date: "June 23, 2026"
-   readingTime: "5 min read"
    ---
    ```
 
-3. Update the date line in `page.tsx` to match the frontmatter.
+   The reading time is estimated from the length of the post, unless the
+   frontmatter gives one, as in `readingTime: "5 min read"`.
+3. Write the post in Markdown, in place of the sample text. The title is shown
+   as its heading, so the text starts with the first paragraph.
 4. Optionally, add a link-preview image at `public/og/<slug>.jpg`.
 
-Images for a post go in `public/blog/<slug>/` and are included with
-`![description](/blog/<slug>/image.png "Caption")`. The image spans the width
-of the text, and the caption, if given, appears beneath it.
+Images for a post go in `public/blog/<slug>/` and are included by file name,
+as in `![description](image.png "Caption")`. The image spans the width of the
+text, and the caption, if given, appears beneath it.
 
-The blog index lists every post directory that contains a `content.mdx` file,
-newest first. Directories whose names begin with an underscore, such as
-`_template`, are left out.
+The blog index lists the posts newest first. Files whose names begin with an
+underscore, such as `_template.md`, are left out.
 
-Drafts are kept in `src/app/blog/_drafts/` instead, with their images in
-`public/blog/_drafts/`. Git ignores both, so drafts appear only while the site
-runs with `npm run dev`, and never on GitHub or the live site. A draft is
-published by moving its directory into `_posts/`; the steps are given in
+Drafts are kept in `src/content/drafts/` instead, with their images in
+`public/drafts/`. Git ignores both, so drafts appear only while the site runs
+with `npm run dev`, and never on GitHub or the live site. A draft is published
+by moving its file into `src/content/blog/`; the steps are given in
 [docs/blog-posts.md](docs/blog-posts.md#drafts).
 
 ### Equations

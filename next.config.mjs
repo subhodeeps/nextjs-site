@@ -30,8 +30,11 @@ const nextConfig = {
 // plugins read the --- block at the top of a post. rehype-katex then turns the
 // math into HTML when the site is built, so no math library runs in the browser.
 // The plugins are handed over as functions, which only webpack supports; that is
-// why the npm scripts run Next.js with --webpack.
+// why the npm scripts run Next.js with --webpack. `extension` lets plain .md files,
+// such as the blog posts in src/content/blog/, be compiled as well; they are read
+// as ordinary Markdown, so { and < need no escaping there.
 const withMDX = createMDX({
+    extension: /\.(md|mdx)$/,
     options: {
         remarkPlugins: [remarkMath, remarkFrontmatter, remarkMdxFrontmatter],
         rehypePlugins: [rehypeKatex],

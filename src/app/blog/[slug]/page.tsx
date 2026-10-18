@@ -6,13 +6,26 @@
 // Because the site is static, every post's page is built in advance; the list of
 // slugs comes from generateStaticParams below.
 //
-// The post itself lives in src/app/blog/_posts/<slug>/ (content.mdx for the text,
-// page.tsx for how it is laid out), or, for a draft, in _drafts/<slug>/. The _ in
-// _posts keeps Next.js from turning that folder into pages of its own, so each
-// post has exactly one address.
+// Each post is one Markdown file, src/content/blog/<slug>.md (a draft,
+// src/content/drafts/<slug>.md), and this file lays out every post in the same
+// way, like a Jekyll layout: the navigation, the date and reading time, the title
+// from the frontmatter, the text, and the footer.
 import { notFound } from 'next/navigation'
+import type { ComponentProps, ReactNode } from 'react'
 import { getBlogPosts } from '../_data/posts'
+import { PostMeta } from '../_components/PostMeta'
 import { ogImages } from '@/lib/og/og-images'
+import { mdxComponents } from '@/lib/mdx/mdx-components'
+import BaseContainer from '@/components/layout/container/base-container'
+import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
+import { TerminalNav } from '@/components/ui/terminal-nav/terminal-nav'
+import { IndividualPageFooter } from '@/components/layout/footer/IndividualPageFooter'
+import { cn } from '@/lib/utils/utils'
+import { monoFont } from '@/styles/fonts/fonts'
+
+// The title and the images of a post are drawn as in the text of every post
+const PostTitle = mdxComponents.h1 as (props: ComponentProps<'h1'>) => ReactNode
+const PostImage = mdxComponents.img as (props: ComponentProps<'img'>) => ReactNode
 
 // What Next.js passes in: the slug, which has to be waited for with `await`
 type Params = Promise<{ slug: string }>
@@ -36,7 +49,7 @@ export async function generateStaticParams() {
 
 /**
  * The metadata of one post's page: its title and description, taken from the
- * frontmatter of its content.mdx, and its link-preview image.
+ * frontmatter of its Markdown file, and its link-preview image.
  */
 export async function generateMetadata({ params }: { params: Params }) {
     // Take `slug` out of the params; `const { slug } = ...` is shorthand for that
@@ -67,7 +80,8 @@ export async function generateMetadata({ params }: { params: Params }) {
 }
 
 /**
- * The post's page: finds the post and draws its own page.tsx. An unknown slug
+ * The post's page. The text is compiled from the post's Markdown file when the
+ * site is built, so no script holding it is sent to the browser. An unknown slug
  * gives the 404 page.
  */
 export default async function BlogPost({ params }: { params: Params }) {
@@ -82,13 +96,49 @@ export default async function BlogPost({ params }: { params: Params }) {
         notFound()
     }
 
-    // Load src/app/blog/_posts/<slug>/page.tsx (for a draft, _drafts/<slug>/page.tsx)
-    // and draw it. `.default` is that file's main export, the post's page component.
-    // The test of NODE_ENV comes first because `npm run build` replaces it with
-    // false, so the build leaves the drafts out of its scripts altogether.
-    const PostComponent =
+    // The post's Markdown file, as a component that draws its text. The test of
+    // NODE_ENV comes first because `npm run build` replaces it with false, so the
+    // build leaves the drafts out altogether.
+    const { default: Content } =
         process.env.NODE_ENV === 'development' && post.draft
-            ? (await import(`../_drafts/${slug}/page`)).default
-            : (await import(`../_posts/${slug}/page`)).default
-    return <PostComponent />
+            ? await import(`../../../content/drafts/${slug}.md`)
+            : await import(`../../../content/blog/${slug}.md`)
+
+    // An image written by file name alone, ![...](photo.jpg), is in the post's own
+    // folder in public/: public/blog/<slug>/, or, for a draft, public/drafts/<slug>/
+    const folder = `/${post.draft ? 'drafts' : 'blog'}/${slug}/`
+    const components = {
+        ...mdxComponents,
+        img: ({ src, ...rest }: ComponentProps<'img'>) => (
+            <PostImage
+                {...rest}
+                src={typeof src === 'string' && !/^(\/|[a-z]+:)/i.test(src) ? folder + src : src}
+            />
+        ),
+    }
+
+    return (
+        <BaseContainer size="md" paddingX="md" paddingY="lg">
+            <StackVertical gap="md">
+                <TerminalNav />
+
+                <article id="article-content">
+                    <PostMeta
+                        date={post.date}
+                        readingTime={post.readingTime}
+                        draft={post.draft}
+                        className="mb-8"
+                    />
+
+                    {/* The title, then the text; mdxComponents decides how each part looks */}
+                    <div className={cn('max-w-none', monoFont.className)}>
+                        <PostTitle>{post.title}</PostTitle>
+                        <Content components={components} />
+                    </div>
+                </article>
+            </StackVertical>
+
+            <IndividualPageFooter sectionName="Blog" showToTop={true} />
+        </BaseContainer>
+    )
 }

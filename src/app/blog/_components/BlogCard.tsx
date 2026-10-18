@@ -4,10 +4,11 @@
 // time, all linking to the post.
 import Link from 'next/link'
 import { cn } from '@/lib/utils/utils'
-import { StackVertical, StackHorizontal } from '@/components/layout/layout-stack/layout-stack'
+import { StackVertical } from '@/components/layout/layout-stack/layout-stack'
 import Text from '@/components/ui/text/text'
 import TextHeading from '@/components/ui/text-heading/text-heading'
 import { BlogPost } from '../_types/blog'
+import { PostMeta } from './PostMeta'
 
 /**
  * A post's entry in the blog index.
@@ -37,23 +38,14 @@ export function BlogCard({ post, isLast }: { post: BlogPost; isLast?: boolean })
                         <Text variant="muted" size="sm" className="line-clamp-2">
                             {post.description}
                         </Text>
-                        <StackHorizontal className="text-muted-foreground" gap="xs">
-                            <Text variant="muted" size="xs">
-                                {post.date}
-                            </Text>
-                            <Text variant="muted" size="xs">
-                                •
-                            </Text>
-                            <Text variant="muted" size="xs">
-                                {post.readingTime}
-                            </Text>
-                            {/* Drafts are listed only by `npm run dev`; this marks them */}
-                            {post.draft && (
-                                <Text size="xs" className="text-accent">
-                                    • draft
-                                </Text>
-                            )}
-                        </StackHorizontal>
+                        {/* The date and reading time as chips; drafts, listed only by
+                            `npm run dev`, get a third one */}
+                        <PostMeta
+                            date={post.date}
+                            readingTime={post.readingTime}
+                            draft={post.draft}
+                            className="mt-1"
+                        />
                     </StackVertical>
                 </article>
             </Link>

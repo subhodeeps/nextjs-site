@@ -35,10 +35,13 @@ the `ls ~` navigation.
 - **Data files.** `_data/posts.yml` corresponds to the `_data/*.ts` files,
   which export lists of objects.
 - **Posts.** `_posts/2026-06-23-my-first-post.md` corresponds to
-  `src/app/blog/_posts/my-first-post/content.mdx`, and a new post starts as a
-  copy of `src/app/blog/_posts/_template/`. MDX is Markdown that may also
-  contain components. As in Jekyll, a folder whose name starts with an
-  underscore is not turned into pages of its own.
+  `src/content/blog/my-first-post.md`, and a new post starts as a copy of
+  `src/content/blog/_template.md`. The date is given in the frontmatter rather
+  than in the file name, and `src/app/blog/[slug]/page.tsx` plays the part of
+  the post layout. `_drafts/` corresponds to `src/content/drafts/`, whose
+  posts are shown only by `npm run dev`, as with `jekyll serve --drafts`. As in
+  Jekyll, a folder whose name starts with an underscore is not turned into
+  pages of its own.
 - **Assets.** `assets/` corresponds to `public/`, whose files are served
   unchanged: `public/photo.jpg` is available at `/photo.jpg`.
 - **Plugins.** Gems in a `Gemfile` correspond to npm packages listed in

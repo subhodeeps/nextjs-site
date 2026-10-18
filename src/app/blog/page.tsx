@@ -3,7 +3,7 @@
 // The blog index at /blog: every post, newest first. The list comes from
 // getBlogPosts() in ./_data/posts.ts, which reads each post's frontmatter, so a
 // new post folder appears here without any change to this file. Folders whose
-// names start with _ (here _components, _data, _posts, _types) are not pages;
+// names start with _ (here _components, _data, _types) are not pages;
 // Next.js ignores them when it builds the site's addresses. The page's title and
 // description are set in layout.tsx.
 import BaseContainer from '@/components/layout/container/base-container'

@@ -5,8 +5,6 @@ date: "October 18, 2026"
 readingTime: "3 min read"
 ---
 
-# We Need to Rethink First-Author Culture
-
 The undue importance attached to first or "lead" authorship is one of the more absurd features of modern academic culture. In theoretical high-energy physics, this obsession has largely been abandoned because intellectual contributions are often distributed across a collaboration, and author order is a poor proxy for who did what. A paper is not a rat race in which the first name gets the prize.
 
 Even in fields that do not, or only loosely, follow alphabetical author order, first authorship is often partly a bureaucratic convention. PhD students may be given first authorship because institutional or career requirements demand "first-author papers" for a thesis, degree, or future postdoctoral applications, even when such requirements are not explicitly stated. In the typical setup involving a PhD student, a postdoc, and faculty, the chances of a postdoc getting a first-author paper can therefore be greatly diminished. Their contribution may nevertheless be more important to the success of the work than that of the nominal first author. Yet simplistic metrics reduce everything to a position in the author list. It is especially strange when a postdoc gets less credit despite shaping the project, developing the numerics, and mentoring junior researchers.
@@ -23,4 +21,4 @@ That undermines mentorship, collaboration, and the transfer of expertise. It is 
 
 **N.B.** I leave you with a [proposed solution](https://arxiv.org/abs/2304.01393): use the principle of superposition and make everyone "first author". And there is even a LaTeX package for this!
 
-![The first page of Every Author as First Author, with the names of its two authors printed on top of each other](/blog/first-author-culture/every-author-as-first-author.png "Erik D. Demaine and Martin L. Demaine, Every Author as First Author, [arXiv:2304.01393](https://arxiv.org/abs/2304.01393)")
+![The first page of Every Author as First Author, with the names of its two authors printed on top of each other](every-author-as-first-author.png "Erik D. Demaine and Martin L. Demaine, Every Author as First Author, [arXiv:2304.01393](https://arxiv.org/abs/2304.01393)")
