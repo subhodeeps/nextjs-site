@@ -27,7 +27,7 @@ export default function OlderUpdates() {
                     <TextHeading as="h1" weight="bold" className="mb-2">
                         Older Updates
                     </TextHeading>
-                    <Text variant="muted" className="mb-12">
+                    <Text variant="faint" size="smaller" className="mb-12">
                         Archive of my past updates and activities.
                     </Text>
 

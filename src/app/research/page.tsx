@@ -61,7 +61,7 @@ export default async function Research() {
                         Research and Publications
                     </TextHeading>
 
-                    <Text variant="muted" className="mb-8">
+                    <Text variant="faint" size="smaller" className="mb-8">
                         My research focuses on strong-field probes of general relativity, black
                         holes, and gravitational-wave physics. I use theoretical and computational
                         methods, particularly black hole perturbation theory and numerical
@@ -72,7 +72,7 @@ export default async function Research() {
                         motion can be used to test gravity in the strong-field regime.
                     </Text>
 
-                    <Text variant="muted" className="mb-8">
+                    <Text variant="faint" size="smaller" className="mb-8">
                         I have also been fortunate to collaborate with many researchers in these
                         areas. The{' '}
                         <Link

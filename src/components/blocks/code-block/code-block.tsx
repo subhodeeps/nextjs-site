@@ -186,7 +186,7 @@ export default function CodeBlock({ code, language, className }: CodeBlockProps)
                             'overflow-x-auto whitespace-pre-wrap break-words',
                             'transition-colors duration-200',
                             'p-4 pt-3',
-                            'text-[13px] sm:text-sm',
+                            'text-[11px] sm:text-[13px]',
                             'bg-transparent', // Forces Prism to inherit our Tailwind background!
                         )}
                         style={{ ...style, backgroundColor: 'transparent', fontFamily: 'inherit' }}
@@ -195,7 +195,7 @@ export default function CodeBlock({ code, language, className }: CodeBlockProps)
                         {tokens.slice(0, -1).map((line, i) => (
                             <div
                                 key={i}
-                                {...getLineProps({ line, className: 'leading-6 sm:leading-7' })}
+                                {...getLineProps({ line, className: 'leading-5 sm:leading-6' })}
                             >
                                 {line.map((token, key) => (
                                     <span key={key} {...getTokenProps({ token })} />

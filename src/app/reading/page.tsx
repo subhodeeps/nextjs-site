@@ -48,7 +48,7 @@ export default function Reading() {
                         Reading
                     </TextHeading>
 
-                    <Text variant="muted" className="mb-12">
+                    <Text variant="faint" size="smaller" className="mb-12">
                         Notes on things I've read, links to pieces I love, plus the books I'm trying
                         to get through.
                     </Text>
@@ -57,7 +57,7 @@ export default function Reading() {
                     <div className="mb-12">
                         <SectionHeading icon={NotebookPen}>Marginalia</SectionHeading>
 
-                        <Text variant="muted">
+                        <Text variant="muted" size="smaller">
                             Excerpts, takeaways and collections of short-form writing that left an
                             impression. You can browse the collection{' '}
                             <Link
@@ -74,7 +74,7 @@ export default function Reading() {
                     <SectionHeading icon={BookOpen}>Currently Reading</SectionHeading>
 
                     {/* Combined Text */}
-                    <Text variant="muted" className="mb-8">
+                    <Text variant="muted" size="smaller" className="mb-8">
                         Books that I am currently reading (or, at least, trying to). A simulacrum of
                         (a fragment of) my library can be found{' '}
                         <Link

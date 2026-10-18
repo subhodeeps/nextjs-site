@@ -26,7 +26,7 @@ export default function Learning() {
                     <TextHeading as="h1" weight="bold">
                         Learning
                     </TextHeading>
-                    <Text variant="muted" className="mb-8">
+                    <Text variant="faint" size="smaller" className="mb-8">
                         A collection of references and notes, mostly on physics, math, and
                         programming.
                     </Text>

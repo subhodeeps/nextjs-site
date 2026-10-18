@@ -170,7 +170,7 @@ site:
 - `icon` is optional. It is an icon from <https://lucide.dev/icons>, whose
   name must also be added to the `lucide-react` import at the top of the file.
 
-### Physics References, and Essays and Articles Worth Reading
+### The reading lists under Learning
 
 These two pages are written in Markdown, in
 `src/app/learning/refs/content.mdx` and
@@ -179,7 +179,7 @@ Marginalia page. Each has a title, a one-paragraph introduction, and a
 bulleted list:
 
 ```md
-# Essays and Articles Worth Reading
+# Essays and Articles
 
 Some essays and articles that I have enjoyed reading.
 

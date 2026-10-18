@@ -20,11 +20,13 @@ import MermaidDiagram from '@/components/blocks/mermaid/mermaid-diagram'
 import { InlineLinks } from '@/components/ui/inline-links/inline-links'
 
 export const mdxComponents: MDXComponents = {
-    // Headings use the heading font (Fira Code); dark:... sets the dark-theme colour
+    // Headings use the heading font (Fira Code); dark:... sets the dark-theme colour.
+    // The title (h1) has the size of every page's title, and h2 that of a section
+    // heading, as on the other pages (components/ui/text-heading).
     h1: ({ children }) => (
         <h1
             className={cn(
-                'mt-10 mb-6 text-2xl sm:text-3xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade',
+                'mt-10 mb-6 text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade',
                 headingFont.className,
             )}
         >
@@ -34,7 +36,7 @@ export const mdxComponents: MDXComponents = {
     h2: ({ children }) => (
         <h2
             className={cn(
-                'mt-8 mb-4 text-xl sm:text-2xl font-bold tracking-tight text-foreground dark:text-amore-slate-shade',
+                'mt-8 mb-4 text-sm sm:text-base lg:text-lg font-bold tracking-tight text-foreground dark:text-amore-slate-shade',
                 headingFont.className,
             )}
         >
@@ -44,7 +46,7 @@ export const mdxComponents: MDXComponents = {
     h3: ({ children }) => (
         <h3
             className={cn(
-                'mt-6 mb-4 text-lg sm:text-xl font-semibold tracking-tight text-foreground dark:text-amore-slate-shade',
+                'mt-6 mb-3 text-sm sm:text-base font-semibold tracking-tight text-foreground dark:text-amore-slate-shade',
                 headingFont.className,
             )}
         >
@@ -54,7 +56,7 @@ export const mdxComponents: MDXComponents = {
     h4: ({ children }) => (
         <h4
             className={cn(
-                'mt-6 mb-4 text-base sm:text-lg font-semibold tracking-tight text-foreground dark:text-amore-slate-shade',
+                'mt-6 mb-3 text-xs sm:text-sm font-semibold tracking-tight text-foreground dark:text-amore-slate-shade',
                 headingFont.className,
             )}
         >
@@ -62,11 +64,12 @@ export const mdxComponents: MDXComponents = {
         </h4>
     ),
 
-    // Paragraphs: 15px on phones, 16px from the sm: width up, with tall line spacing
+    // Paragraphs: the size of the text on the About page (12px on phones, 14px from
+    // the sm: width up), with a little more line spacing for long reading
     p: ({ children }) => (
         <p
             className={cn(
-                'mb-6 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-foreground',
+                'mb-6 text-xs sm:text-sm leading-relaxed text-foreground',
                 monoFont.className,
             )}
         >
@@ -78,7 +81,7 @@ export const mdxComponents: MDXComponents = {
     ul: ({ children }) => (
         <ul
             className={cn(
-                'mb-6 ml-6 list-disc space-y-3 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-foreground marker:text-muted-foreground',
+                'mb-6 ml-6 list-disc space-y-3 text-xs sm:text-sm leading-relaxed text-foreground marker:text-muted-foreground',
                 monoFont.className,
             )}
         >
@@ -88,7 +91,7 @@ export const mdxComponents: MDXComponents = {
     ol: ({ children }) => (
         <ol
             className={cn(
-                'mb-6 ml-6 list-decimal space-y-3 text-[15px] sm:text-base leading-loose sm:leading-[1.8] text-foreground marker:text-muted-foreground',
+                'mb-6 ml-6 list-decimal space-y-3 text-xs sm:text-sm leading-relaxed text-foreground marker:text-muted-foreground',
                 monoFont.className,
             )}
         >

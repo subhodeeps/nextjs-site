@@ -18,7 +18,7 @@ export const notes: NotesTypes[] = [
     },
     {
         id: 2,
-        title: 'Essays and Articles Worth Reading',
+        title: 'Essays and Articles',
         description:
             'Some essays and articles that I have enjoyed reading. These are mostly non-technical in style, and occasionally cover subjects beyond math and science. ',
         lastUpdated: 'January 14, 2025',

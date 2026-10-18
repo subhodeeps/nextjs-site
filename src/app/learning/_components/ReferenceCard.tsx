@@ -45,7 +45,7 @@ export function ReferenceCard({ post }: { post: NotesTypes }) {
                                 {post.title}
                             </TextHeading>
                         </div>
-                        <Text variant="muted" size="sm" className="line-clamp-2">
+                        <Text variant="muted" size="smaller" className="line-clamp-2">
                             {post.description}
                         </Text>
                         <StackHorizontal className="text-muted-foreground" gap="xs">

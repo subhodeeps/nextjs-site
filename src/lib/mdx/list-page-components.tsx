@@ -1,7 +1,7 @@
 // src/lib/mdx/list-page-components.tsx
 //
-// How Markdown is drawn on the reading lists under Learning (Physics References,
-// and Essays and Articles Worth Reading), so that they look like the Marginalia
+// How Markdown is drawn on the reading lists under Learning (Physics References
+// and Essays and Articles), so that they look like the Marginalia
 // page: a bold title, a short grey introduction, and a bulleted list of links in
 // the site's small text. A page uses it as <Content components={listPageComponents} />;
 // anything not listed here is drawn as in ./mdx-components.tsx.
@@ -22,9 +22,9 @@ export const listPageComponents: MDXComponents = {
         </TextHeading>
     ),
 
-    // A paragraph (the introduction under the title), in grey
+    // A paragraph (the introduction under the title), smaller and fainter
     p: ({ children }) => (
-        <Text variant="muted" className="mb-12">
+        <Text variant="faint" size="smaller" className="mb-12">
             {children}
         </Text>
     ),

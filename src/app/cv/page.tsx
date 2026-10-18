@@ -41,7 +41,7 @@ export default function CVPage() {
 
                     {/* The first paragraph in gray, any others in the body color */}
                     {lead && (
-                        <Text variant="muted" className="mb-8">
+                        <Text variant="faint" size="smaller" className="mb-8">
                             <InlineLinks text={lead} linkClassName={link} />
                         </Text>
                     )}
@@ -70,14 +70,18 @@ export default function CVPage() {
                                             key={i}
                                             className="grid grid-cols-[auto_1fr_auto] items-start gap-x-2"
                                         >
-                                            <Text>•</Text>
-                                            <Text>
+                                            <Text size="smaller">•</Text>
+                                            <Text size="smaller">
                                                 <InlineLinks
                                                     text={entry.text}
                                                     linkClassName={link}
                                                 />
                                             </Text>
-                                            <Text variant="muted" className="whitespace-nowrap">
+                                            <Text
+                                                variant="muted"
+                                                size="smaller"
+                                                className="whitespace-nowrap"
+                                            >
                                                 {entry.dates}
                                             </Text>
                                         </div>
@@ -86,7 +90,7 @@ export default function CVPage() {
                             )}
 
                             {section.paragraphs.map((paragraph, i) => (
-                                <Text key={i}>
+                                <Text key={i} size="smaller">
                                     <InlineLinks text={paragraph} linkClassName={link} />
                                 </Text>
                             ))}

@@ -102,7 +102,7 @@ export function PaperItem({ paper, me }: { paper: Paper; me: string }) {
     }
 
     return (
-        <article className="text-xs sm:text-sm">
+        <article className="text-[11px] sm:text-[13px]">
             <a
                 href={`https://inspirehep.net/literature/${paper.inspire}`}
                 target="_blank"

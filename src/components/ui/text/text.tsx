@@ -8,9 +8,10 @@ import { monoFont } from '@/styles/fonts/fonts'
 interface TextProps {
     children: React.ReactNode
     className?: string
-    size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl'
+    size?: 'xs' | 'smaller' | 'sm' | 'base' | 'lg' | 'xl' | '2xl'
     weight?: 'normal' | 'medium' | 'semibold' | 'bold'
-    variant?: 'default' | 'purple' | 'blue' | 'green' | 'red' | 'orange' | 'muted' | 'caption'
+    variant?:
+        'default' | 'purple' | 'blue' | 'green' | 'red' | 'orange' | 'muted' | 'faint' | 'caption'
     align?: 'left' | 'center' | 'right' | 'justify'
     transform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize'
     truncate?: boolean
@@ -37,6 +38,9 @@ const defaultStyles = {
 // Font size for each size name; the size grows at the sm: and md: screen widths
 const textSizes = {
     xs: 'text-[10px] sm:text-xs md:text-xs', // 10px -> 12px -> 12px
+    // A step below the body text, for a page's introduction and the text under a
+    // section heading
+    smaller: 'text-[11px] sm:text-[13px]', // 11px -> 13px
     sm: 'text-xs sm:text-sm md:text-sm', // 12px -> 14px -> 14px
     base: 'text-sm sm:text-base md:text-base', // 14px -> 16px -> 16px
     lg: 'text-base sm:text-lg md:text-lg', // 16px -> 18px -> 18px
@@ -61,6 +65,8 @@ const variants = {
     red: 'text-amore-red-ink dark:text-amore-red-light',
     orange: 'text-amore-amber-ink dark:text-amore-amber-light',
     muted: 'text-muted-foreground',
+    // Fainter than muted, for the introduction under a page's title
+    faint: 'text-muted-foreground/90',
     caption: 'text-xs text-muted-foreground',
 }
 

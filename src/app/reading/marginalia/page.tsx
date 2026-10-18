@@ -24,7 +24,7 @@ export default function MarginaliaPage() {
                         Marginalia
                     </TextHeading>
 
-                    <Text variant="muted" className="mb-12">
+                    <Text variant="faint" size="smaller" className="mb-12">
                         Excerpts, takeaways and collections of short-form writing that left an
                         impression.
                     </Text>

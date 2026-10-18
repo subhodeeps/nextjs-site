@@ -81,7 +81,7 @@ export default function AlgorithmBlock({ source }: { source: string }) {
             className={cn(
                 monoFont.className,
                 'my-8 rounded-lg border border-border bg-muted/50 px-4',
-                'text-[13px] sm:text-sm leading-relaxed text-foreground',
+                'text-[11px] sm:text-[13px] leading-relaxed text-foreground',
             )}
         >
             {caption && (

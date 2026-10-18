@@ -81,7 +81,7 @@ export default function Collaborators() {
                         Collaborations (for lack of a better word)
                     </TextHeading>
 
-                    <Text variant="muted" className="mb-10">
+                    <Text variant="faint" size="smaller" className="mb-10">
                         Research is rarely a solitary endeavor. I have been incredibly fortunate to
                         collaborate and regularly interact with many amazing individuals whose
                         insight, work ethic, generosity, and enthusiasm for physics have profoundly

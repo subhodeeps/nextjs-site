@@ -17,7 +17,7 @@ export function BlogHeader() {
                 <TextHeading as="h1" weight="bold">
                     Blog
                 </TextHeading>
-                <Text variant="muted" size="sm">
+                <Text variant="faint" size="smaller">
                     {/* One line of verse set as two, broken at the pause after "code,".
                         The same line is the blog's description in ../layout.tsx. */}
                     on physics, math, and code,

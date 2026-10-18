@@ -81,7 +81,7 @@ function UpdateLine({
             className="flex items-center gap-3"
         >
             <Icon aria-hidden className="h-4 w-4 shrink-0 text-accent-muted" />
-            <Text variant="muted" size="sm">
+            <Text variant="muted" size="smaller">
                 {children}
             </Text>
         </motion.div>
