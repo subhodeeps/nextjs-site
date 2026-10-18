@@ -1,4 +1,4 @@
-// src/app/collaborations/_data/captions.ts
+// src/app/research/collaborations/_data/captions.ts
 //
 // The captions of the photos on the Collaborations page, like a _data file in
 // Jekyll. Each entry pairs a file name in public/collabs/ with its caption, which

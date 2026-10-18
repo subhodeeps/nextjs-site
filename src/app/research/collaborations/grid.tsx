@@ -1,4 +1,4 @@
-// src/app/collaborations/grid.tsx
+// src/app/research/collaborations/grid.tsx
 //
 // The photo grid on the Collaborations page, and the enlarged view that opens
 // when a photo is clicked. It runs in the browser ('use client' below), because

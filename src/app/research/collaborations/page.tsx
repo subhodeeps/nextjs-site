@@ -1,6 +1,6 @@
-// src/app/collaborations/page.tsx
+// src/app/research/collaborations/page.tsx
 //
-// The Collaborations page at /collaborations: a short text and a grid of photos.
+// The Collaborations page at /research/collaborations: a short text and a grid of photos.
 // The photos are every image in public/collabs/. This file reads that folder when
 // the site is built (it has no 'use client', so it never runs in the browser) and
 // hands the list to grid.tsx, which shuffles it in the visitor's browser, so the

@@ -78,8 +78,8 @@ docs/                     # notes for working on the site
 scripts/                  # dev-env.sh (setup and local servers), activate,
 │                         # and serve-static.mjs
 src/
-├── app/                  # one directory per section: about, blog, collaborations,
-│                         # cv, learning, older_updates, reading, research
+├── app/                  # one directory per section: about, blog, cv, learning,
+│                         # older_updates, reading, research (with collaborations)
 ├── components/           # page blocks (including the homepage), layout, and UI
 ├── content/
 │   ├── blog/             # the blog posts, one Markdown file each
@@ -187,7 +187,7 @@ In MDX files, write inline equations as `$...$` and displayed equations as
 Every image in `public/collabs/` (`.jpg`, `.jpeg`, `.png`, or `.webp`) appears
 on the Collaborations page. The file name, without its extension, serves as the
 alt text, with underscores and hyphens shown as spaces. A photo can be given a
-caption in `src/app/collaborations/_data/captions.ts`, with links written as in
+caption in `src/app/research/collaborations/_data/captions.ts`, with links written as in
 Markdown; the caption appears under the enlarged photo and replaces the alt
 text.
 

@@ -49,7 +49,7 @@ Physics, Jamia Millia Islamia, and worked closely with Anjan Ananda Sen. I then
 joined IIT Madras, where I worked with Dawood Kothawala. At IIT Gandhinagar, I
 work with Sudipta Sarkar. I also collaborate closely with Sumanta Chakraborty at
 IACS, Kolkata. You can find more about my collaborators and co-authors on my
-[collaborations](/collaborations) page.
+[collaborations](/research/collaborations) page.
 
 I enjoy interacting and collaborating with new people, and I am always open to
 conversations on the topics mentioned above. Feel free to drop a line to discuss

@@ -1,0 +1,9 @@
+{
+    "redirects": [
+        {
+            "source": "/collaborations",
+            "destination": "/research/collaborations",
+            "permanent": true
+        }
+    ]
+}

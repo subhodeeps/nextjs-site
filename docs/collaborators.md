@@ -33,7 +33,7 @@ screen readers, with underscores shown as spaces.
 
 ## Captions
 
-Captions are written in `src/app/collaborations/_data/captions.ts`, one line
+Captions are written in `src/app/research/collaborations/_data/captions.ts`, one line
 per photo, next to its file name. A caption is shown under the photo when it
 is enlarged. A link is written as in Markdown, `[text](address)`:
 

@@ -33,9 +33,9 @@ import { ThemeToggle } from '@/components/ui/theme/theme-toggle'
  *   where first-time visitors need the sections most.
  * - The listing is the six sections, so every section can be reached from
  *   every page. They are in the order of the original nav row, not
- *   alphabetical. collaborations/ and older_updates/ are left out on purpose:
- *   Collaborations is linked from the About and Research pages, and Older
- *   Updates from the updates on the home page.
+ *   alphabetical. older_updates/ is left out on purpose: Older Updates is
+ *   linked from the updates on the home page. Collaborations is a subdirectory,
+ *   research/collaborations, like reading/marginalia.
  * - The path is clickable: ~ and each parent directory link to that page, so it
  *   also works as a breadcrumb. The current directory is plain text.
  * - The section you are in is shown in the accent colour.

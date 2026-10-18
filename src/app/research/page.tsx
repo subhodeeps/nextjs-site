@@ -76,7 +76,7 @@ export default async function Research() {
                         I have also been fortunate to collaborate with many researchers in these
                         areas. The{' '}
                         <Link
-                            href="/collaborations"
+                            href="/research/collaborations"
                             className="text-accent font-bold hover:underline"
                         >
                             collaborations

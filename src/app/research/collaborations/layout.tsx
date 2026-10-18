@@ -1,9 +1,9 @@
-// src/app/collaborations/layout.tsx
+// src/app/research/collaborations/layout.tsx
 //
-// The layout for /collaborations and every page below it. It only sets the metadata, the
-// counterpart of Jekyll front matter: the title in the browser tab, the
-// description, and the text and image of link previews on social media. The
-// page itself is page.tsx in the same folder.
+// The layout for /research/collaborations and every page below it. It only sets
+// the metadata, the counterpart of Jekyll front matter: the title in the browser
+// tab, the description, and the text and image of link previews on social media.
+// The page itself is page.tsx in the same folder.
 import { Metadata } from 'next'
 import { ogImages } from '@/lib/og/og-images'
 
